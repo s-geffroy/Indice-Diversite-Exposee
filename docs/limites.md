@@ -732,3 +732,26 @@ Un instrument construit pour vérifier les affirmations d'autrui doit être reto
 siennes, et il l'est ici plus souvent qu'il ne l'a été contre le fil d'origine. C'est la seule
 défense contre le biais qui consiste à éprouver rigoureusement ce qu'on croit faux et
 superficiellement ce qu'on croit vrai.
+
+**Ce que ces trois régularités ne prouvent pas.** Elles ont été promues un temps en conclusion du
+dépôt, sous le titre « la méthode est le vrai résultat ». C'était un excès, et il est retiré pour
+trois raisons.
+
+* Les règles qu'on en tire — mesurer plutôt qu'estimer, éprouver un protocole sur des données dont
+  on connaît la réponse, tester une explication comme un chiffre — sont **banales**. Personne ne
+  les conteste, elles ne s'énoncent pas ici pour la première fois, et aucun relecteur ne les
+  recevra comme un résultat.
+* La démonstration est **circulaire**. L'argument était « la méthode vaut parce qu'elle a rattrapé
+  vingt-trois erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
+  ses propres fautes se compare à une référence qu'elle a fabriquée. Sans erreur, rien à rattraper
+  et la valeur affichée tombe à zéro.
+* Rien n'a été **validé de l'extérieur**. Les 599 tests vérifient que le code fait ce qui est
+  annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé
+  ([appel à relecture](relecture.md)).
+
+Ce qui se transmet d'un dépôt, ce sont ses **objets** : un test exact d'échangeabilité, une
+spécification agrégée en six colonnes, un exposant d'attention mesuré, dix résultats négatifs.
+Chacun s'applique à d'autres données et répond seul. Un précepte, non : il demande qu'on y adhère.
+Ce qui reste des trois régularités est un avertissement chiffré, et sa place est ici, dans un
+audit, non en conclusion : un travail averti a violé les trois règles **en les connaissant**, et
+le coût de chaque violation est consigné plus haut, épisode par épisode.

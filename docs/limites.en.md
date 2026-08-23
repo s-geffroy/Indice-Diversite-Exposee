@@ -647,3 +647,25 @@ from having measured.
 built to check other people's claims must be turned against one's own, and here it is turned that
 way more often than it was against the original thread. That is the only defence against the bias
 of testing rigorously what one believes false and superficially what one believes true.
+
+**What these three regularities do not prove.** They were briefly promoted to the repository's
+conclusion, under the heading "the method is the real result". That was an overclaim, and it is
+withdrawn, for three reasons.
+
+* The rules drawn from them — measure rather than estimate, test a protocol on data whose answer
+  is known, test an explanation like a figure — are **banal**. Nobody disputes them, they are not
+  being stated here for the first time, and no reviewer will receive them as a result.
+* The demonstration is **circular**. The argument was "the method is worth something because it
+  caught twenty-three errors"; but the same work produced those errors. A method assessed on its
+  own faults is compared against a baseline it manufactured. With no error, there is nothing to
+  catch and the claimed value drops to zero.
+* Nothing has been **validated from the outside**. The 599 tests check that the code does what is
+  claimed, not that what is claimed is true, and no reviewer has been through it
+  ([call for review](relecture.md)).
+
+What carries over from a repository is its **objects**: an exact exchangeability test, a
+six-column aggregate specification, a measured attention exponent, ten negative results. Each
+applies to other people's data and answers on its own. A precept does not: it asks to be believed.
+What remains of the three regularities is a quantified warning, and its place is here, in an
+audit, not in a conclusion: a forewarned piece of work broke all three rules **while knowing
+them**, and the cost of each breach is recorded above, episode by episode.

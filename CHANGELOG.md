@@ -7,6 +7,28 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Retiré — « la méthode est le vrai résultat »
+
+L'entrée précédente donnait pour conclusion au dépôt trois règles de méthode. C'était un excès,
+signalé en relecture, et il est retiré. Trois raisons, désormais consignées dans
+[`docs/limites.md`](docs/limites.md) :
+
+- les règles — mesurer plutôt qu'estimer, éprouver un protocole sur des données dont on connaît la
+  réponse, tester une explication comme un chiffre — sont **banales** : personne ne les conteste,
+  et aucun relecteur ne les recevra comme un résultat ;
+- la démonstration est **circulaire** : une méthode dont la valeur se prouve par les vingt-trois
+  erreurs qu'elle a rattrapées se compare à une référence que le même travail a fabriquée ;
+- rien n'a été **validé de l'extérieur** : les 599 tests vérifient que le code fait ce qui est
+  annoncé, non que ce qui est annoncé soit vrai.
+
+Ce qui se transmet d'un dépôt, ce sont ses **objets** — un test exact, une spécification agrégée,
+un exposant mesuré, dix résultats négatifs : chacun s'applique à d'autres données et répond seul,
+là où un précepte demande qu'on y adhère. La section de méthode disparaît de l'accueil et du
+README ; la phrase de conclusion devient *« les instruments tiennent, mais seulement après
+correction — et ce qui se transmet d'un dépôt, ce sont ses objets, pas la discipline qui les a
+produits »* ; « ce qui n'est pas tranché » gagne l'entrée qui manquait — **rien n'a été validé de
+l'extérieur**, et c'est le seul verrou que ce dépôt ne peut pas lever seul.
+
 ### Modifié — la conclusion générale, remise à l'état des mesures
 
 La page d'accueil avait de nouveau grossi par accrétion : six paragraphes commençant par « Et… »,

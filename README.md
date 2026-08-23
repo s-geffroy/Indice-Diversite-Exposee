@@ -32,23 +32,15 @@ comme tel, y compris quand ce qui tombe vient du dépôt lui-même.
 | les instruments de mesure | **valides après correction** : trois restreints, deux conclusions retirées |
 | l'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : 0,88 ± 0,05 — non 1,09 comme estimé |
 
-**La théorie n'a pas tenu ; la métrologie tient, mais seulement parce qu'elle a été corrigée à
-chaque étape — et ce qui survit le mieux n'est aucun instrument en particulier, c'est la
-méthode.**
-
-### La méthode, qui est le vrai résultat
-
-1. **Mesurer plutôt qu'estimer.** Le dépôt a construit trois contrôles, un estimateur à effets
-   fixes, un étalonnage de puissance et une limite d'identification — pour approcher une grandeur
-   qui était dans une colonne du fichier. → **[Exposition mesurée](docs/exposition-mesuree.md)**
-2. **Tout protocole s'applique d'abord à des données dont on connaît la réponse.** Trois fois un
-   protocole raisonnable a fabriqué son propre résultat ; trois fois un contrôle sur données
-   simulées l'a rattrapé avant publication. → **[Test de forme](docs/test-de-forme.md)**
-3. **Une explication se teste comme un chiffre.** L'écart entre formuler et vérifier est
-   l'endroit exact où une affirmation fausse s'installe.
-   → **[Format et retour](docs/format-et-retour.md)**
+**La théorie n'a pas tenu ; les instruments tiennent, mais seulement après correction — et ce qui
+se transmet d'un dépôt, ce sont ses objets, pas la discipline qui les a produits.**
 
 ### Ce qui tient
+
+Quatre objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
+statistique s'applique à d'autres données et répond seul, sans qu'on ait à croire celui qui l'a
+écrit. Les préceptes de méthode que ce dépôt a un temps promus au rang de résultat n'ont pas cette
+propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
 
 - **Trois contrôles à passer sur un journal, dans cet ordre** : l'**échangeabilité** — l'ordre
   dit-il quelque chose ? — qui ne détecte rien dans MIND ($z = +0{,}12$) et rejette à $z = -206$

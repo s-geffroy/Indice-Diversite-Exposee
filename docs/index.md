@@ -19,7 +19,7 @@ et un état des lieux qui ne ressemble ni à ce que le projet annonçait, ni à 
 clics](figures/fig23_exposition_mesuree.png)
 
 /// caption
-Le résultat qui résume la méthode : pendant six chapitres, ce dépôt a **estimé** l'exposition à
+Le résultat le plus net du dépôt : pendant six chapitres, ce dépôt a **estimé** l'exposition à
 travers les clics ; une colonne du fichier permettait de la **mesurer**. L'estimation surestimait
 la décroissance de 23 %. Figure régénérée par
 [le notebook 23](notebooks/23_exposition_mesuree.ipynb).
@@ -38,25 +38,17 @@ la décroissance de 23 %. Figure régénérée par
 | Les instruments de mesure | **valides après correction** — trois d'entre eux ont dû être restreints, et deux conclusions retirées → [contre-expertise](contre-expertise.md) |
 | L'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : $0{,}88 \pm 0{,}05$ — non $1{,}09$ comme estimé → [exposition mesurée](exposition-mesuree.md) |
 
-**En une phrase : la théorie n'a pas tenu ; la métrologie tient, mais seulement parce qu'elle a
-été corrigée à chaque étape — et ce qui survit le mieux n'est aucun instrument en particulier,
-c'est la méthode.**
-
-## La méthode, qui est le vrai résultat
-
-Trois règles, chacune acquise en violant la précédente :
-
-1. **Mesurer plutôt qu'estimer.** Le dépôt a construit trois contrôles, un estimateur à effets
-   fixes, un étalonnage de puissance et une limite d'identification — pour approcher une grandeur
-   qui était dans une colonne du fichier. → [exposition mesurée](exposition-mesuree.md)
-2. **Tout protocole s'applique d'abord à des données dont on connaît la réponse.** Trois fois un
-   protocole apparemment raisonnable a fabriqué son propre résultat ; trois fois un contrôle sur
-   données simulées l'a rattrapé avant publication. → [test de forme](test-de-forme.md)
-3. **Une explication se teste comme un chiffre.** Une hypothèse mécanique se formule en une phrase
-   et se vérifie en une heure ; l'écart entre les deux est l'endroit exact où une affirmation
-   fausse s'installe. → [format et retour](format-et-retour.md)
+**En une phrase : la théorie n'a pas tenu ; les instruments tiennent, mais seulement après
+correction — et ce qui se transmet d'un dépôt, ce sont ses objets, pas la discipline qui les a
+produits.**
 
 ## Ce qui tient
+
+Quatre objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne. Un test
+statistique s'applique à d'autres données et répond seul ; il ne demande pas qu'on croie celui qui
+l'a écrit. C'est le critère qui les distingue des préceptes de méthode que ce dépôt a un temps
+promus au rang de résultat, à tort — cette page le disait, et l'[audit](limites.md) dit pourquoi
+c'était un excès.
 
 **Trois contrôles à passer sur un journal, dans cet ordre.** L'**échangeabilité** — l'ordre
 enregistré dit-il quelque chose ? — ne détecte rien dans MIND ($z = +0{,}12$) et rejette à
@@ -122,6 +114,9 @@ qu'une mesure a montré ce qu'on perdait sans elle.
 * **Le niveau du plancher est une décision politique**, comme le catalogue de points de vue. La
   mesure décrit, elle ne prescrit pas.
 * **Les trois codeurs de l'annotation sont des instances du même modèle de langue.**
+* **Rien n'a été validé de l'extérieur.** Les 599 tests vérifient que le code fait ce qui est
+  annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
+  verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 * **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique.**
 
 ## Les deux instruments
