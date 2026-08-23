@@ -15,6 +15,7 @@ from ide.logs import (
     save_digest,
     simulate_cascade,
     simulate_feeds,
+    upstream_dependence_test,
 )
 
 
@@ -139,4 +140,112 @@ def test_le_masque_d_examen_est_coherent_avec_les_clics():
 def test_une_probabilite_de_poursuite_hors_bornes_est_refusee():
     with pytest.raises(ValueError, match=r"\[0, 1\]"):
         simulate_cascade([5] * 10, continuation=1.5)
+
+
+def budgeted_position_feeds(budget, seed=5, feeds=8000, slots=10, catalogue=120):
+    """Modèle de POSITION pur, mais le lecteur cesse de cliquer après ``budget`` clics.
+
+    L'examen y est intact — il ne dépend que du rang. C'est le contre-exemple qui borne ce que
+    le test de forme peut établir.
+    """
+    generator = np.random.default_rng(seed)
+    quality = 0.25 * generator.lognormal(0.0, 0.8, size=catalogue)
+    items = generator.integers(0, catalogue, size=feeds * slots).reshape(feeds, slots)
+    ranks = np.tile(np.arange(1, slots + 1), (feeds, 1))
+    drawn = generator.random((feeds, slots)) < np.clip(
+        quality[items] * ranks.astype(float) ** (-1.0), 0.0, 1.0)
+    kept = drawn & (np.cumsum(drawn, axis=1) <= budget)
+    return Impressions(
+        items=items.ravel().astype(np.int64), ranks=ranks.ravel().astype(np.int64),
+        clicks=kept.ravel().astype(float),
+        feeds=np.repeat(np.arange(feeds), slots).astype(np.int64),
+        feed_lengths=np.full(feeds, slots, dtype=np.int64))
+
+
+def test_le_test_de_forme_ne_rejette_pas_un_modele_de_position():
+    """Contrôle négatif : sans cascade ni budget, l'amont ne dit rien de l'aval.
+
+    L'assertion porte sur l'écart réduit et non sur le verdict à 5 % : un test de niveau 5 %
+    rejette une fois sur vingt par construction, et l'affirmation contraire rendrait cette suite
+    intermittente sans rien établir de plus.
+    """
+    for severity in (0.0, 1.0, 2.0):
+        feeds = simulate_feeds([10] * 20_000, severity=severity, catalogue=150,
+                               rng=np.random.default_rng(4))
+
+        assert abs(upstream_dependence_test(feeds).deviation) < 3.0, f"faux rejet à η = {severity}"
+
+
+def test_le_test_de_forme_rejette_une_cascade_et_du_bon_cote():
+    """Contrôle positif : un clic au-dessus supprime les clics en dessous, donc z est négatif."""
+    feeds = simulate_cascade([10] * 20_000, continuation=0.85, catalogue=150,
+                             rng=np.random.default_rng(4))
+
+    verdict = upstream_dependence_test(feeds)
+
+    assert verdict.deviation < -20.0
+    assert not verdict.position_like
+
+
+def test_un_budget_de_clics_est_indiscernable_d_une_cascade():
+    """La limite d'identification que le test ne peut pas franchir, figée ici.
+
+    Un lecteur qui cesse de cliquer une fois servi — tout en continuant de parcourir le fil —
+    produit la même signature qu'une cascade. Les séparer demande une mesure de l'examen, pas
+    des clics.
+    """
+    budgeted = upstream_dependence_test(budgeted_position_feeds(budget=1))
+    cascade = upstream_dependence_test(
+        simulate_cascade([10] * 8000, continuation=0.85, catalogue=120,
+                         rng=np.random.default_rng(5)))
+
+    assert not budgeted.position_like, "un budget de un doit rejeter, comme une cascade"
+    assert budgeted.deviation < -10.0
+    assert cascade.deviation < -10.0
+
+    # et un budget illimité ne produit pas la signature : c'est bien le budget qui la produit
+    assert abs(upstream_dependence_test(budgeted_position_feeds(budget=99)).deviation) < 3.0
+
+
+def test_restreindre_aux_fils_a_plusieurs_clics_fabrique_la_signature():
+    """Le collider, figé : le protocole qui semblait séparer budget et cascade est invalide.
+
+    Le nombre de clics d'un fil est un collider de ses clics individuels ; conditionner dessus
+    induit une dépendance négative entre eux, et fabrique donc exactement ce que le test cherche
+    — sur un journal où il n'y a pourtant rien à trouver.
+    """
+    feeds = budgeted_position_feeds(budget=99)
+    assert abs(upstream_dependence_test(feeds).deviation) < 3.0, "le journal de départ est sain"
+
+    per_feed = np.bincount(feeds.feeds, weights=feeds.clicks, minlength=feeds.feed_count)
+    keep = np.isin(feeds.feeds, np.flatnonzero(per_feed >= 2))
+    restricted = Impressions(items=feeds.items[keep], ranks=feeds.ranks[keep],
+                             clicks=feeds.clicks[keep], feeds=feeds.feeds[keep],
+                             feed_lengths=feeds.feed_lengths)
+
+    verdict = upstream_dependence_test(restricted)
+
+    assert verdict.deviation < -10.0, "la restriction doit fabriquer un faux rejet"
+
+
+def test_le_test_de_forme_exige_l_identite_des_contenus():
+    feeds = simulate_feeds([6] * 100, severity=1.0, rng=np.random.default_rng(0))
+    anonymous = Impressions(items=None, ranks=feeds.ranks, clicks=feeds.clicks,
+                            feeds=feeds.feeds, feed_lengths=feeds.feed_lengths)
+
+    with pytest.raises(ValueError, match="identité des contenus"):
+        upstream_dependence_test(anonymous)
+    with pytest.raises(ValueError, match="au moins deux impressions"):
+        upstream_dependence_test(feeds, minimum_impressions=1)
+
+
+def test_un_journal_vide_ne_fait_pas_echouer_le_test():
+    empty = Impressions(items=np.zeros(0, dtype=np.int64), ranks=np.zeros(0, dtype=np.int64),
+                        clicks=np.zeros(0), feeds=np.zeros(0, dtype=np.int64),
+                        feed_lengths=np.zeros(0, dtype=np.int64))
+
+    verdict = upstream_dependence_test(empty)
+
+    assert verdict.cells_used == 0
+    assert np.isnan(verdict.deviation)
 

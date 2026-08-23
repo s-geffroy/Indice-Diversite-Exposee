@@ -124,13 +124,14 @@ literature explicitly doubts for results pages.
 
 **The baselines are restricted too**: their ranking holds, their gap to chance does not.
 
-## Open lead
+## Lead — now settled, without settling the question
 
-Test the **shape** of examination, not only its existence. A log recording rank should in
-principle allow geometric decay to be told from polynomial decay: under cascade, examination of a
-rank depends on the **clicks above it**, which leaves a signature a conditional test could detect.
-That would be the third check in the series, after exchangeability and identifiability — and this
-repository has not built it.
+~~Test the **shape** of examination, not only its existence.~~ → **[done](test-de-forme.en.md)**.
+The third check exists: it never rejects under a position model and rejects massively under
+cascade. Applied to Baidu-ULTR it detects **no cascade signature** — but it meets a limit that is
+not its own: a **click budget** produces exactly the same signature as a cascade, and nothing in
+the clicks separates them. Settling it requires a measure of **examination** — display time,
+scroll depth — which Baidu-ULTR publishes and this repository has never read.
 
 ---
 

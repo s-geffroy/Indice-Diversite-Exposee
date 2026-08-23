@@ -991,6 +991,55 @@ At realistic relevance, the gap between re-rankers therefore matters far less th
 the underlying relevance engine --- which reinforces, by a third route, the conclusion that this
 work's contribution is not its algorithm.
 
+
+\subsection{A third check: the shape of examination}
+\label{sec:formtest}
+
+The exchangeability test says whether a log's order carries information; it does not say in what
+form, and \S\ref{sec:blindspots} showed the form decides everything. A third check is therefore
+required, and it rests on a \emph{conditional independence} rather than on a shape: under a
+position model, examination of rank $R$ depends only on $R$, so the click is independent of what
+happened above; under cascade, a click above suppresses examination below.
+
+For each cell $s = (\text{item}, \text{rank})$, the $n_s$ impressions split into $n_{1s}$ preceded
+by a click and $n_{0s}$ not, for $k_s$ clicks in total. Under independence those clicks distribute
+as a draw without replacement:
+\begin{equation}
+\mathbb{E}[a_s] = \frac{k_s n_{1s}}{n_s}, \qquad
+\mathbb{V}[a_s] = \frac{k_s (n_s - k_s)\, n_{1s} n_{0s}}{n_s^2 (n_s - 1)} .
+\label{eq:form}
+\end{equation}
+This is the Mantel-Haenszel statistic, stratified by cell; conditioning removes item quality.
+
+\paragraph{The check works.} It never rejects under a position model ($|z| < 1$ for
+$\eta \in \{0, 0.5, 1, 2\}$) and rejects massively under cascade ($z = -97$ to $-307$).
+
+\paragraph{But it does not settle what it was meant to settle.} A reader who stops clicking once
+served --- while still scanning the feed --- produces the same signature: $z = -144$ under a
+\emph{pure} position model with a one-click budget, against $-179$ under cascade. Nothing in the
+clicks distinguishes them, as expected: in both cases the log shows that after a click there is
+nothing. The difference is nonetheless decisive, since under a budget the item placed below a
+click is examined, and under cascade it is not.
+
+\paragraph{On Baidu-ULTR, no cascade signature.} The standardised deviation there is
+\emph{positive} --- $+5.6$ at the most permissive threshold, $+0.5$ to $+0.6$ at the strictest ---
+whereas a cascade would make it negative. The sign is that of the heterogeneity confounder, which
+the test announced as its limit. Three readings remain open: examination there is close to a
+position model; a cascade exists but the confounder masks it; or coverage is too thin, $108$ cells
+at the strictest threshold.
+
+\paragraph{A protocol error, caught.} Restricting the log to multi-click sessions --- where a
+one-click budget is excluded by construction --- looked like the obvious way to separate the two
+models, and gives $z = -8.2$ ($p = 2 \times 10^{-16}$) on Baidu-ULTR. Yet a feed's click count is
+a \emph{collider} of its individual clicks: conditioning on it induces negative dependence between
+them, and therefore manufactures the sought signature. On a log simulated under a pure position
+model, the same restriction moves $z$ from $+0.74$ to $-45.7$. What was measured was not a
+property of the log but the selection performed.
+
+\paragraph{What would settle it.} A measure of \emph{examination} rather than of clicks --- display
+time, scroll depth, items slipped off screen. Baidu-ULTR publishes those columns; this work has
+not read them.
+
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}
 

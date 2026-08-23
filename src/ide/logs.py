@@ -35,6 +35,7 @@ __all__ = [
     "Digest",
     "ExchangeabilityTest",
     "Impressions",
+    "UpstreamDependenceTest",
     "click_rate_by_rank",
     "detectable_severity",
     "digest_split",
@@ -45,6 +46,7 @@ __all__ = [
     "save_digest",
     "simulate_cascade",
     "simulate_feeds",
+    "upstream_dependence_test",
 ]
 
 #: Seuil d'impressions en deçà duquel une cellule (contenu, rang) n'est pas conservée dans un
@@ -133,6 +135,48 @@ class ExchangeabilityTest:
     @property
     def exchangeable(self) -> bool:
         """Vrai si l'ordre enregistré est indiscernable d'un mélange, au seuil de 5 %."""
+        return self.p_value >= 0.05
+
+
+@dataclass(frozen=True)
+class UpstreamDependenceTest:
+    """Le verdict du test de **forme** de l'examen.
+
+    Le [test d'échangeabilité](exchangeability_test) dit si l'ordre d'un journal porte de
+    l'information sur les clics. Il ne dit pas **sous quelle forme**, et les deux formes usuelles
+    ne se distinguent pas par leur allure : une décroissance géométrique et une décroissance
+    polynomiale s'ajustent aussi bien l'une que l'autre sur les premiers rangs.
+
+    Elles se distinguent en revanche par une **indépendance conditionnelle** :
+
+    * sous un modèle de **position**, l'examen du rang :math:`R` ne dépend que de :math:`R`. À
+      contenu et rang fixés, le clic est donc indépendant de ce qui s'est passé au-dessus ;
+    * sous un modèle **à cascade**, le lecteur s'arrête dès qu'il a trouvé. Un clic au-dessus
+      **supprime** l'examen en dessous, donc le clic.
+
+    Le test compare, pour chaque cellule (contenu, rang), le taux de clic selon qu'un clic a eu
+    lieu ou non plus haut dans le même fil. Le conditionnement à la cellule élimine la qualité du
+    contenu ; ce qui subsiste est la seule variation qui distingue les deux modèles.
+
+    Attributes:
+        statistic: nombre de clics observés dans les impressions précédées d'un clic.
+        expectation: son espérance sous l'hypothèse d'indépendance, marges fixées.
+        deviation: écart réduit :math:`z`. Une cascade le rend **négatif** : un clic au-dessus
+            fait disparaître les clics en dessous.
+        p_value: probabilité bilatérale d'un écart au moins aussi grand.
+        cells_used: nombre de cellules informatives — celles où les deux groupes existent et où
+            au moins un clic a été observé. Les autres ne contraignent rien.
+    """
+
+    statistic: float
+    expectation: float
+    deviation: float
+    p_value: float
+    cells_used: int
+
+    @property
+    def position_like(self) -> bool:
+        """Vrai si l'examen est indiscernable d'un modèle de position, au seuil de 5 %."""
         return self.p_value >= 0.05
 
 
@@ -275,6 +319,121 @@ def exchangeability_test(impressions: Impressions) -> ExchangeabilityTest:
     deviation = (statistic - expectation) / math.sqrt(variance)
     p_value = math.erfc(abs(deviation) / math.sqrt(2.0))
     return ExchangeabilityTest(statistic, expectation, deviation, p_value, int(informative.sum()))
+
+
+def upstream_dependence_test(
+    impressions: Impressions, minimum_impressions: int = 2
+) -> UpstreamDependenceTest:
+    """Teste si l'examen d'un rang dépend des **clics au-dessus**, à contenu et rang fixés.
+
+    C'est le troisième contrôle de la série, après l'échangeabilité — l'ordre dit-il quelque
+    chose ? — et l'identifiabilité — y a-t-il de quoi estimer ? Celui-ci demande : **sous quelle
+    forme** ?
+
+    Pour chaque cellule :math:`s = (\\text{contenu}, \\text{rang})`, les :math:`n_s` impressions
+    se répartissent en :math:`n_{1s}` précédées d'un clic dans le même fil et :math:`n_{0s}` qui
+    ne le sont pas, pour :math:`k_s` clics au total. Sous l'hypothèse d'indépendance, les
+    :math:`k_s` clics se répartissent entre les deux groupes comme un tirage sans remise, dont
+    les moments sont connus exactement :
+
+    .. math:: \\mathbb{E}[a_s] = \\frac{k_s n_{1s}}{n_s}, \\qquad
+              \\mathbb{V}[a_s] = \\frac{k_s (n_s - k_s) n_{1s} n_{0s}}{n_s^2 (n_s - 1)}
+
+    C'est la statistique de Mantel-Haenszel, stratifiée par cellule. Le conditionnement à la
+    cellule est ce qui rend le test utilisable : sans lui, les fils qui contiennent un clic en
+    haut sont aussi ceux dont les contenus sont meilleurs, et la comparaison ne mesurerait que
+    cela.
+
+    .. note::
+        Un confondant subsiste, et il joue **en faveur de l'hypothèse nulle** : un lecteur plus
+        enclin à cliquer clique davantage partout, donc plus haut *et* plus bas. Il pousse
+        l'écart réduit vers le **positif**, alors qu'une cascade le pousse vers le négatif. Le
+        test est donc **conservateur** pour ce qu'il cherche à détecter — il sous-estime la
+        cascade plutôt que de l'inventer.
+
+    .. danger::
+        **Ne jamais restreindre le journal aux fils portant au moins :math:`k` clics.** Le
+        nombre de clics d'un fil est un *collider* de ses clics individuels : conditionner
+        dessus induit une dépendance négative entre eux, et fabrique donc la signature même que
+        le test cherche. Sur un journal simulé sous modèle de position pur, la restriction aux
+        fils à deux clics ou plus fait passer l'écart réduit de :math:`-0{,}5` à :math:`-53`.
+
+    .. warning::
+        **Ce que le test ne peut pas séparer.** Un lecteur qui ne cherche qu'une chose cesse de
+        cliquer une fois servi, même s'il continue de parcourir le fil. Ce *budget de clics* est
+        indiscernable d'une cascade dans des données de clic seules : sous modèle de position
+        pur avec un budget de un, le test rejette à :math:`z = -144`, contre :math:`-179` sous
+        cascade véritable. Les séparer demande une mesure de l'**examen** — temps d'affichage,
+        profondeur de défilement — et non des clics.
+
+    Args:
+        impressions: le journal. Il doit porter l'identité des contenus servis, faute de quoi la
+            qualité du contenu ne peut pas être éliminée.
+        minimum_impressions: nombre d'impressions en deçà duquel une cellule est écartée. Une
+            cellule qui ne contient qu'une impression n'a pas deux groupes à comparer.
+
+    Returns:
+        Le verdict, avec de quoi juger sur quoi il repose.
+    """
+    if impressions.items is None:
+        raise ValueError("le test de forme exige l'identité des contenus servis")
+    if minimum_impressions < 2:
+        raise ValueError("une cellule doit contenir au moins deux impressions pour être scindée")
+
+    if impressions.served == 0:
+        return UpstreamDependenceTest(float("nan"), float("nan"), float("nan"), float("nan"), 0)
+
+    order = np.lexsort((impressions.ranks, impressions.feeds))
+    feeds = impressions.feeds[order]
+    clicks = impressions.clicks[order]
+    items = impressions.items[order]
+    ranks = impressions.ranks[order]
+
+    # Un clic a-t-il eu lieu plus haut dans le même fil ? Somme cumulée remise à zéro par fil.
+    cumulative = np.cumsum(clicks)
+    starts = np.concatenate([[0], np.flatnonzero(np.diff(feeds)) + 1])
+    offsets = np.zeros(clicks.size)
+    offsets[starts] = cumulative[starts] - clicks[starts]
+    preceded = (cumulative - clicks - np.maximum.accumulate(offsets)) > 0
+
+    keys, cell = np.unique(np.stack([items, ranks], axis=1), axis=0, return_inverse=True)
+    total = np.bincount(cell, minlength=len(keys)).astype(float)
+    exposed = np.bincount(cell, weights=preceded.astype(float), minlength=len(keys))
+    successes = np.bincount(cell, weights=clicks, minlength=len(keys))
+    observed = np.bincount(cell, weights=clicks * preceded, minlength=len(keys))
+
+    usable = (
+        (total >= minimum_impressions)
+        & (exposed > 0)
+        & (exposed < total)
+        & (successes > 0)
+        & (successes < total)
+    )
+    if not usable.any():
+        return UpstreamDependenceTest(float("nan"), float("nan"), float("nan"), float("nan"), 0)
+
+    kept_total = total[usable]
+    kept_exposed = exposed[usable]
+    kept_successes = successes[usable]
+
+    statistic = float(observed[usable].sum())
+    expectation = float((kept_successes * kept_exposed / kept_total).sum())
+    variance = float(
+        (
+            kept_successes
+            * (kept_total - kept_successes)
+            * kept_exposed
+            * (kept_total - kept_exposed)
+            / (kept_total**2 * (kept_total - 1.0))
+        ).sum()
+    )
+    if variance <= 0.0:
+        return UpstreamDependenceTest(statistic, expectation, float("nan"), float("nan"),
+                                      int(usable.sum()))
+
+    deviation = (statistic - expectation) / math.sqrt(variance)
+    p_value = math.erfc(abs(deviation) / math.sqrt(2.0))
+    return UpstreamDependenceTest(statistic, expectation, deviation, p_value, int(usable.sum()))
 
 
 def rank_coverage(impressions: Impressions, minimum_impressions: int = 5) -> Coverage:

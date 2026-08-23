@@ -5,7 +5,7 @@
 [![Licence : MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Documentation : CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE-DOCS)
 [![Champ : sociophysique](https://img.shields.io/badge/champ-sociophysique-8a2be2.svg)](https://s-geffroy.github.io/Indice-Diversite-Exposee/)
-[![Tests : 587](https://img.shields.io/badge/tests-587-brightgreen.svg)](tests/)
+[![Tests : 593](https://img.shields.io/badge/tests-593-brightgreen.svg)](tests/)
 
 📖 **[Documentation complète](https://s-geffroy.github.io/Indice-Diversite-Exposee/)**
 · [English](https://s-geffroy.github.io/Indice-Diversite-Exposee/en/)
@@ -61,6 +61,12 @@ publié comme tel.
   l'exposition d'un facteur **40 à 4 110**. Et sous pertinence **estimée**, l'avantage des
   méthodes réglées sur le hasard passe de 16,4 à 5,8 points, puis s'inverse.
   → **[Les deux angles morts](docs/angles-morts.md)**
+- **Et un troisième contrôle, qui fonctionne sans trancher.** Le **test de forme** sépare
+  parfaitement modèle de position et cascade quand ils sont purs — mais un simple **budget de
+  clics** produit la même signature, et rien dans les clics ne les sépare. Sur Baidu-ULTR, aucune
+  cascade détectée. Et le protocole qui semblait devoir trancher **fabrique** la signature qu'il
+  cherche : un collider, rattrapé avant publication.
+  → **[Le test de forme](docs/test-de-forme.md)**
 - **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
   → **[Article 40](docs/article-40.md)**
@@ -83,7 +89,7 @@ l'étiquetage ; un plancher d'index [se sature à coût nul](docs/gaming.md) ; l
 
 ## À lire d'abord : ce que le travail ne prétend pas
 
-L'**[audit critique](docs/limites.md)** recense **vingt corrections** apportées au
+L'**[audit critique](docs/limites.md)** recense **vingt-et-une corrections** apportées au
 raisonnement d'origine — dont **cinq formules invalides**, et une découverte en tentant de
 mesurer — et énumère les limites qui subsistent, y compris celles qui touchent à l'usage
 réglementaire de l'index : il est manipulable, sa discrétisation en points de vue est un choix
@@ -110,7 +116,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 587 tests, dont les exemples de docstrings
+docker compose run --rm test          # 593 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -148,8 +154,8 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              587 tests — validation physique, numérique et statistique
-notebooks/          01 à 21, un par bloc théorique, exécutables
+tests/              593 tests — validation physique, numérique et statistique
+notebooks/          01 à 22, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné
@@ -186,10 +192,12 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
 | aucune méthode ne dépasse la frontière exacte, et le tirage au sort en reste loin | fige la borne contre laquelle le filtre est jugé |
 | le test d'échangeabilité **rejette aussi sous un modèle à cascade** | sans quoi son verdict négatif sur MIND ne distinguerait rien |
 | le tirage au sort est **invariant** au bruit de pertinence, les autres non | fige la raison mécanique pour laquelle le hasard rattrape |
+| un **budget de clics** produit la même signature qu'une cascade | fige la limite d'identification que le test de forme ne franchit pas |
+| restreindre aux fils à plusieurs clics **fabrique** un faux rejet | fige le collider, à l'endroit où quelqu'un le refera |
 
 ## Contenu du dépôt
 
-- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt corrections et les
+- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-et-une corrections et les
   limites qui subsistent.
 - [`docs/calibration.md`](docs/calibration.md) — **la mesure de $\gamma\alpha/\lambda$** sur
   données publiques, ses trois enseignements et ses réserves.
@@ -218,6 +226,8 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
   travail** : une conclusion retirée, une restreinte, une incertitude élargie.
 - [`docs/angles-morts.md`](docs/angles-morts.md) — **les deux hypothèses les plus profondes**
   éprouvées : modèle de clic à cascade, et pertinence estimée plutôt que connue.
+- [`docs/test-de-forme.md`](docs/test-de-forme.md) — **le troisième contrôle** : il fonctionne, ne
+  tranche pas, et a failli publier un collider.
 - [`docs/bibliographie.md`](docs/bibliographie.md) — **toutes les références**, avec ce que
   chacune sert ici ; page dérivée de `paper/refs.bib` et verrouillée par un test.
 - [`docs/feuille-de-route.md`](docs/feuille-de-route.md) — comment combler ces limites,

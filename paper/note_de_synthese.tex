@@ -1024,6 +1024,57 @@ la pertinence, donc le seul dont le manque à gagner soit invariant au bruit.
 moteur de pertinence sous-jacent --- ce qui renforce, par une troisième voie, la conclusion que la
 contribution de ce travail n'est pas son algorithme.
 
+
+\subsection{Un troisième contrôle : la forme de l'examen}
+\label{sec:testdeforme}
+
+Le test d'échangeabilité dit si l'ordre d'un journal porte de l'information ; il ne dit pas sous
+quelle forme, et \S\ref{sec:anglesmorts} a montré que la forme décide de tout. Un troisième
+contrôle s'impose donc, et il repose sur une \emph{indépendance conditionnelle} plutôt que sur une
+allure : sous un modèle de position, l'examen du rang $R$ ne dépend que de $R$, donc le clic y est
+indépendant de ce qui s'est passé au-dessus ; sous cascade, un clic au-dessus supprime l'examen en
+dessous.
+
+Pour chaque cellule $s = (\text{contenu}, \text{rang})$, les $n_s$ impressions se répartissent en
+$n_{1s}$ précédées d'un clic et $n_{0s}$ qui ne le sont pas, pour $k_s$ clics au total. Sous
+l'hypothèse d'indépendance, ces clics se répartissent comme un tirage sans remise :
+\begin{equation}
+\mathbb{E}[a_s] = \frac{k_s n_{1s}}{n_s}, \qquad
+\mathbb{V}[a_s] = \frac{k_s (n_s - k_s)\, n_{1s} n_{0s}}{n_s^2 (n_s - 1)} .
+\label{eq:forme}
+\end{equation}
+C'est la statistique de Mantel-Haenszel, stratifiée par cellule ; le conditionnement élimine la
+qualité du contenu.
+
+\paragraph{Le contrôle fonctionne.} Il ne rejette jamais sous modèle de position ($|z| < 1$ pour
+$\eta \in \{0 ; 0{,}5 ; 1 ; 2\}$) et rejette massivement sous cascade ($z = -97$ à $-307$).
+
+\paragraph{Mais il ne tranche pas ce qu'il devait trancher.} Un lecteur qui cesse de cliquer une
+fois servi --- tout en continuant de parcourir le fil --- produit la même signature : $z = -144$
+sous modèle de position \emph{pur} avec un budget de un clic, contre $-179$ sous cascade. Rien
+dans les clics ne les distingue, et c'est attendu : dans les deux cas le journal montre qu'après
+un clic il n'y a plus rien. La différence est pourtant décisive, puisque sous budget le contenu
+placé sous un clic est examiné, et sous cascade il ne l'est pas.
+
+\paragraph{Sur Baidu-ULTR, aucune signature de cascade.} L'écart réduit y est \emph{positif} ---
+$+5{,}6$ au seuil le plus permissif, $+0{,}5$ à $+0{,}6$ aux plus stricts --- alors qu'une cascade
+le rendrait négatif. Le signe est celui du confondant d'hétérogénéité, que le test annonçait comme
+sa limite. Trois lectures restent ouvertes : l'examen y est proche d'un modèle de position ; une
+cascade existe mais le confondant la masque ; ou la couverture est trop mince, $108$ cellules au
+seuil le plus strict.
+
+\paragraph{Une erreur de protocole, rattrapée.} Restreindre le journal aux sessions à plusieurs
+clics --- où un budget de un est exclu par construction --- semblait la façon évidente de séparer
+les deux modèles, et donne sur Baidu-ULTR $z = -8{,}2$ ($p = 2 \times 10^{-16}$). Le nombre de
+clics d'un fil est pourtant un \emph{collider} de ses clics individuels : conditionner dessus
+induit entre eux une dépendance négative, et fabrique donc la signature recherchée. Sur un journal
+simulé sous modèle de position pur, la même restriction fait passer $z$ de $+0{,}74$ à $-45{,}7$.
+Ce qui était mesuré n'était pas une propriété du journal mais la sélection opérée.
+
+\paragraph{Ce qui trancherait.} Une mesure de l'\emph{examen} plutôt que du clic --- temps
+d'affichage, profondeur de défilement, contenu sorti de l'écran. Baidu-ULTR publie ces colonnes ;
+ce travail ne les a pas lues.
+
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}
 

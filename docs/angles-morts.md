@@ -131,13 +131,15 @@ vérifie, et que la littérature met explicitement en doute pour les pages de r�
 
 **Les lignes de base sont restreintes aussi** : leur classement tient, leur écart au hasard non.
 
-## Piste ouverte
+## Piste — désormais réglée, et sans trancher
 
-Tester la **forme** de l'examen, pas seulement son existence. Un journal qui enregistre le rang
-permet en principe de distinguer une décroissance géométrique d'une décroissance polynomiale :
-sous cascade, l'examen d'un rang dépend des **clics au-dessus**, ce qui laisse une signature
-qu'un test conditionnel pourrait détecter. Ce serait le troisième contrôle de la série, après
-l'échangeabilité et l'identifiabilité — et le dépôt ne l'a pas construit.
+~~Tester la **forme** de l'examen, pas seulement son existence.~~ →
+**[fait](test-de-forme.md)**. Le troisième contrôle existe : il ne rejette jamais sous modèle de
+position et rejette massivement sous cascade. Appliqué à Baidu-ULTR, il ne détecte **aucune
+signature de cascade** — mais il rencontre une limite qui n'est pas la sienne : un **budget de
+clics** produit exactement la même signature qu'une cascade, et rien dans les clics ne les
+sépare. Trancher demande une mesure de l'**examen** — temps d'affichage, profondeur de
+défilement — que Baidu-ULTR publie et que ce dépôt n'a jamais lue.
 
 ---
 

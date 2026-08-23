@@ -7,7 +7,7 @@ analogies. That method produces sound intuitions alongside shortcuts that do not
 Publishing the thread as-is would expose the whole to being dismissed over a detail,
 when the starting intuition deserves better.
 
-Twenty points are documented. Each follows the same structure: what the thread claimed, why it is a
+Twenty-one points are documented. Each follows the same structure: what the thread claimed, why it is a
 problem, and the formulation adopted. Every correction is **traceable** — implemented in
 `src/`, verified in `tests/`, illustrated in a notebook.
 
@@ -453,6 +453,31 @@ tested. It is the open lead of the [blind spots page](angles-morts.en.md).
 **What this episode teaches about method.** An instrument that assumes nothing survives a change
 of model; an instrument that assumes a shape survives only as long as that shape holds. The
 repository had both and had tested only the first.
+
+
+### 21. Restricting to multi-click feeds, and manufacturing one's own answer
+
+**What I was about to publish.** The [form test](test-de-forme.en.md) cannot separate a cascade
+from a simple **click budget** — a reader who stops clicking once served. The natural idea was to
+restrict the log to **multi-click** sessions, where a budget of one is excluded by construction.
+Applied to Baidu-ULTR, the restriction gives $z = -8.2$ ($p = 2 \times 10^{-16}$): a clear
+cascade signature on real data.
+
+**The problem.** A feed's click count is a **collider** of its individual clicks. Conditioning on
+it induces negative dependence between them — Berkson's paradox — and therefore manufactures
+exactly the signature the test seeks. On a log simulated under a **pure** position model, with
+neither cascade nor budget, the restriction moves the deviation from $+0.74$ to $\mathbf{-45.7}$.
+
+**What the restriction measured** was therefore not a property of the log but the selection I had
+just performed.
+
+**Adopted.** The restriction is proscribed, and the warning sits in the function's documentation —
+where someone will have the idea of doing it again.
+
+**What this episode teaches about method.** This is the third time a seemingly reasonable protocol
+manufactures its own result, and the third time a check on **simulated data** catches it before
+publication. The rule deserves writing down: *any protocol applied to real data must first be
+applied to data whose answer is known.*
 
 ---
 

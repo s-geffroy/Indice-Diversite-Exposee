@@ -80,6 +80,7 @@ plugins:
             Lignes de base: Baselines
             Contre-expertise: Counter-expertise
             Les deux angles morts: The two blind spots
+            Le test de forme: The form test
             Bibliographie: Bibliography
             Mémorandum de régulation: Regulatory memorandum
             Réserves: Caveats
@@ -143,6 +144,7 @@ nav:
       - Lignes de base: lignes-de-base.md
       - Contre-expertise: contre-expertise.md
       - Les deux angles morts: angles-morts.md
+      - Le test de forme: test-de-forme.md
       - Mémorandum de régulation: memorandum.md
   - Réserves:
       - Audit critique et limites: limites.md
@@ -172,3 +174,4 @@ nav:
       - 19 — Lignes de base: notebooks/19_lignes_de_base.ipynb
       - 20 — Contre-expertise: notebooks/20_contre_expertise.ipynb
       - 21 — Angles morts: notebooks/21_angles_morts.ipynb
+      - 22 — Test de forme: notebooks/22_test_de_forme.ipynb

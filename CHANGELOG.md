@@ -7,6 +7,58 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — le test de forme, troisième contrôle de la série
+
+La piste ouverte par les angles morts : tester la **forme** de l'examen, pas seulement son
+existence. Détail : [`docs/test-de-forme.md`](docs/test-de-forme.md) et le
+[notebook 22](notebooks/22_test_de_forme.ipynb).
+
+- **`ide.logs.upstream_dependence_test`** — statistique de Mantel-Haenszel stratifiée par cellule
+  (contenu, rang), qui teste si le clic dépend de ce qui s'est passé **au-dessus** dans le même
+  fil. Sous modèle de position il n'en dépend pas ; sous cascade, un clic au-dessus supprime les
+  clics en dessous. Les moments sont exacts sous l'hypothèse nulle.
+- **`notebooks/22_test_de_forme.ipynb`**, `paper/figures/fig22_test_de_forme.png` et 6 tests
+  supplémentaires (593 au total).
+
+### Résultats — il fonctionne, et ne tranche pas
+
+- **Les deux contrôles passent.** Aucun rejet sous modèle de position ($|z| < 1$ pour
+  $\eta \in \{0 ; 0{,}5 ; 1 ; 2\}$), rejet massif sous cascade ($z = -97$ à $-307$). Le test
+  sépare parfaitement les deux modèles **quand ils sont purs**.
+- **Mais un budget de clics imite une cascade.** Un lecteur qui cesse de cliquer une fois servi —
+  tout en continuant de parcourir le fil — produit $z = -144$ sous modèle de position **pur**,
+  contre $-179$ sous cascade véritable. **Rien dans les clics ne les sépare**, et la différence
+  est pourtant décisive : sous budget, le contenu placé sous un clic est examiné ; sous cascade,
+  il ne l'est pas.
+- **Sur Baidu-ULTR, aucune signature de cascade** : $z = +5{,}6$ au seuil le plus permissif,
+  $+0{,}5$ à $+0{,}6$ aux plus stricts — le signe est celui du confondant d'hétérogénéité, pas
+  celui de la cascade. Trois lectures restent ouvertes, dont la couverture trop mince : 108
+  cellules au seuil le plus strict.
+- **Ce non-rejet ne valide pas la loi de puissance** : les angles morts ont montré qu'elle se
+  trompe d'un facteur 4 110 au douzième rang *si* l'examen est une cascade.
+
+### Corrigé — un collider, rattrapé avant publication
+
+- Restreindre le journal aux **sessions à plusieurs clics** semblait la façon évidente de séparer
+  budget et cascade. Appliquée à Baidu-ULTR, la restriction donne $z = -8{,}2$
+  ($p = 2 \times 10^{-16}$) : une signature nette, que j'allais publier.
+- Le nombre de clics d'un fil est un **collider** de ses clics individuels : conditionner dessus
+  induit une dépendance négative entre eux — paradoxe de Berkson — et fabrique donc la signature
+  recherchée. Sur un journal simulé sous modèle de position **pur**, la restriction fait passer
+  $z$ de $+0{,}74$ à $\mathbf{-45{,}7}$.
+- La restriction est proscrite, la mise en garde figure dans la documentation de la fonction, et
+  un test fige le faux rejet. Vingt-et-unième entrée de l'[audit](docs/limites.md).
+- **Troisième occurrence** d'un protocole qui fabrique son propre résultat, et troisième fois
+  qu'un contrôle sur données simulées le rattrape. La règle est désormais écrite : *tout protocole
+  appliqué à des données réelles doit d'abord être appliqué à des données dont on connaît la
+  réponse.*
+
+### Modifié
+
+- [`docs/angles-morts.md`](docs/angles-morts.md) — la piste ouverte est réglée, sans trancher.
+- Les deux notes LaTeX reçoivent la sous-section *un troisième contrôle : la forme de l'examen*
+  et sont recompilées (23 pages chacune).
+
 ### Ajouté — les deux angles morts de la contre-expertise, éprouvés
 
 La contre-expertise s'était terminée en énonçant ce qu'elle n'avait pas fait. Ce sont les deux

@@ -10,7 +10,7 @@ Un **instrument** — une mesure de la diversité qu'un fil d'actualité expose 
 lecteur, calculable sans accès au code de la plateforme — et la **méthode adverse** qui l'a
 mis à l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel.
 
-Il en reste vingt-et-un notebooks exécutables, 587 tests, vingt corrections consignées, et un
+Il en reste vingt-deux notebooks exécutables, 593 tests, vingt-et-une corrections consignées, et un
 état des lieux qui ne ressemble pas à ce que le projet annonçait.
 
 ![Une plateforme certifiée à 0,70 par une mesure aveugle au rang n'expose que 0,36 de
@@ -74,6 +74,13 @@ loi de puissance $R^{-\eta}$ s'effondre : au douzième rang, elle surestime l'ex
 facteur **40 à 4 110**. Et sous pertinence **estimée** plutôt que connue, l'avantage des méthodes
 réglées sur le tirage au sort passe de 16,4 à 5,8 points, puis **s'inverse**.
 → [Les deux angles morts](angles-morts.md)
+
+**Et un troisième contrôle, qui fonctionne sans trancher.** Le [test de forme](test-de-forme.md)
+sépare parfaitement modèle de position et cascade **quand ils sont purs** — mais un simple
+**budget de clics** produit la même signature qu'une cascade, et rien dans les clics ne les
+sépare. Sur Baidu-ULTR il ne détecte **aucune cascade**. Et le protocole qui semblait devoir
+trancher — restreindre aux sessions à plusieurs clics — **fabrique** la signature qu'il cherche :
+un *collider*, rattrapé avant publication. → [Le test de forme](test-de-forme.md)
 
 **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
 agrégés, sans aucune donnée personnelle, dont il est prouvé qu'ils recalculent les mesures **à
@@ -143,7 +150,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-et-un notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-deux notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -169,6 +176,7 @@ note. Chacun se lit indépendamment.
 | [19 — Lignes de base](notebooks/19_lignes_de_base.ipynb) | le filtre jugé contre quatre concurrents et contre la frontière exacte |
 | [20 — Contre-expertise](notebooks/20_contre_expertise.ipynb) | cinq contre-épreuves, dont une qui retire une conclusion publiée |
 | [21 — Angles morts](notebooks/21_angles_morts.ipynb) | le test tient sous cascade, la loi de puissance non |
+| [22 — Test de forme](notebooks/22_test_de_forme.ipynb) | le troisième contrôle, et le collider qu'il a failli publier |
 
 ## Reproduire
 
@@ -178,7 +186,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 587 tests
+docker compose run --rm test          # 593 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

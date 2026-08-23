@@ -7,7 +7,7 @@ journée, par accumulation d'analogies. Cette méthode produit des intuitions ju
 et des raccourcis qui ne tiennent pas. Publier le fil tel quel exposerait
 l'ensemble à être écarté sur un détail, alors que l'intuition de départ mérite mieux.
 
-Vingt points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
+Vingt-et-un points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
 c'est un problème, et la formulation retenue. Les corrections sont **traçables** :
 chacune est implémentée dans `src/`, vérifiée dans `tests/`, et illustrée dans un
 notebook.
@@ -521,6 +521,33 @@ tester. C'est la piste ouverte de la [page des angles morts](angles-morts.md).
 **Ce que cet épisode enseigne sur la méthode.** Un instrument qui ne suppose rien survit à un
 changement de modèle ; un instrument qui suppose une forme ne survit qu'à ce que cette forme
 tienne. Le dépôt avait les deux et n'avait éprouvé que le premier.
+
+
+### 21. Restreindre aux fils à plusieurs clics, et fabriquer sa propre réponse
+
+**Ce que j'allais publier.** Le [test de forme](test-de-forme.md) ne peut pas séparer une cascade
+d'un simple **budget de clics** — un lecteur qui cesse de cliquer une fois servi. L'idée vint
+naturellement de restreindre le journal aux sessions à **plusieurs clics**, où un budget de un
+est exclu par construction. Appliquée à Baidu-ULTR, la restriction donne $z = -8{,}2$
+($p = 2 \times 10^{-16}$) : une signature de cascade nette, sur données réelles.
+
+**Le problème.** Le nombre de clics d'un fil est un **collider** de ses clics individuels.
+Conditionner dessus induit une dépendance négative entre eux — c'est le paradoxe de Berkson — et
+fabrique donc exactement la signature que le test cherche. Sur un journal simulé sous modèle de
+position **pur, sans cascade ni budget**, la restriction fait passer l'écart réduit de $+0{,}74$
+à $\mathbf{-45{,}7}$.
+
+**Ce que la restriction mesurait** n'était donc pas une propriété du journal mais la sélection
+que je venais d'opérer.
+
+**Retenu.** La restriction est proscrite, et la mise en garde figure dans la documentation de la
+fonction — à l'endroit où quelqu'un aura l'idée de la refaire.
+
+**Ce que cet épisode enseigne sur la méthode.** C'est la troisième fois qu'un protocole
+apparemment raisonnable fabrique son propre résultat, et la troisième fois qu'un contrôle sur
+**données simulées** le rattrape avant publication. La règle vaut d'être écrite : *tout protocole
+appliqué à des données réelles doit d'abord être appliqué à des données dont on connaît la
+réponse.*
 
 ---
 
