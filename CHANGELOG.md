@@ -17,8 +17,12 @@ existence. Détail : [`docs/test-de-forme.md`](docs/test-de-forme.md) et le
   (contenu, rang), qui teste si le clic dépend de ce qui s'est passé **au-dessus** dans le même
   fil. Sous modèle de position il n'en dépend pas ; sous cascade, un clic au-dessus supprime les
   clics en dessous. Les moments sont exacts sous l'hypothèse nulle.
-- **`notebooks/22_test_de_forme.ipynb`**, `paper/figures/fig22_test_de_forme.png` et 6 tests
-  supplémentaires (593 au total).
+- **`ide.logs.upstream_dependence_from_counts`** et **quatre comptes par cellule dans les deux
+  condensés** — impressions, impressions précédées d'un clic, clics, clics précédés. Le test se
+  recalcule ainsi **à l'identique** sans le journal brut, ce qu'un test vérifie, et il devient
+  calculable depuis des agrégats au même titre que les trois autres mesures du dépôt.
+- **`notebooks/22_test_de_forme.ipynb`**, `paper/figures/fig22_test_de_forme.png` et 8 tests
+  supplémentaires (595 au total).
 
 ### Résultats — il fonctionne, et ne tranche pas
 
@@ -48,6 +52,9 @@ existence. Détail : [`docs/test-de-forme.md`](docs/test-de-forme.md) et le
   $z$ de $+0{,}74$ à $\mathbf{-45{,}7}$.
 - La restriction est proscrite, la mise en garde figure dans la documentation de la fonction, et
   un test fige le faux rejet. Vingt-et-unième entrée de l'[audit](docs/limites.md).
+- **Un signal manqué, noté après coup** : la restriction exige le journal **complet** — elle ne se
+  calcule pas depuis des comptes agrégés. Un protocole qui a besoin de revenir aux lignes
+  individuelles opère une sélection, et une sélection se paie.
 - **Troisième occurrence** d'un protocole qui fabrique son propre résultat, et troisième fois
   qu'un contrôle sur données simulées le rattrape. La règle est désormais écrite : *tout protocole
   appliqué à des données réelles doit d'abord être appliqué à des données dont on connaît la

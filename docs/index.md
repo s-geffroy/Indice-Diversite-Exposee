@@ -10,7 +10,7 @@ Un **instrument** — une mesure de la diversité qu'un fil d'actualité expose 
 lecteur, calculable sans accès au code de la plateforme — et la **méthode adverse** qui l'a
 mis à l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel.
 
-Il en reste vingt-deux notebooks exécutables, 593 tests, vingt-et-une corrections consignées, et un
+Il en reste vingt-deux notebooks exécutables, 595 tests, vingt-et-une corrections consignées, et un
 état des lieux qui ne ressemble pas à ce que le projet annonçait.
 
 ![Une plateforme certifiée à 0,70 par une mesure aveugle au rang n'expose que 0,36 de
@@ -186,7 +186,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 593 tests
+docker compose run --rm test          # 595 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

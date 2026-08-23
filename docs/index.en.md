@@ -10,7 +10,7 @@ An **instrument** — a measure of the diversity a news feed actually exposes to
 computable without access to the platform's code — and the **adversarial method** that put it to
 the test: every proposition here is attacked, and whatever falls is published as fallen.
 
-What remains: twenty-two executable notebooks, 593 tests, twenty-one recorded corrections, and a
+What remains: twenty-two executable notebooks, 595 tests, twenty-one recorded corrections, and a
 state of affairs that does not resemble what the project announced.
 
 ![A platform certified at 0.70 by a rank-blind measure exposes only 0.36 of real
@@ -188,7 +188,7 @@ Everything runs in containers. Nothing is installed on the host.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 593 tests
+docker compose run --rm test          # 595 tests
 docker compose run --rm notebooks     # regenerate every figure
 docker compose up lab                 # JupyterLab on :8888
 docker compose up site                # this documentation on :8000

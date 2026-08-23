@@ -174,7 +174,26 @@ séparer les deux modèles.
 
 ---
 
-*Implémentation : `ide.logs.upstream_dependence_test` · Notebook :
+## Reproductibilité
+
+Le journal brut de Baidu-ULTR n'est pas versionné — 0,9 Go, licence CC BY-NC. Le condensé porte
+désormais les **quatre comptes par cellule** dont le test a besoin : impressions, impressions
+précédées d'un clic, clics, et clics précédés. Aucune ligne n'y désigne un lecteur, et le
+résultat s'y recalcule **à l'identique** — écart nul, ce qu'un test vérifie.
+
+C'est aussi une propriété utile pour la [demande d'accès aux données](article-40.md) : le test de
+forme est calculable depuis des agrégats, au même titre que les trois autres mesures du dépôt.
+
+!!! note "Une exception, et ce qu'elle signale"
+    La restriction aux sessions à plusieurs clics, elle, **exige le journal complet** — elle ne se
+    calcule pas depuis des comptes agrégés. Cela aurait dû être un premier avertissement : un
+    protocole qui a besoin de revenir aux lignes individuelles opère une sélection, et une
+    sélection se paie.
+
+---
+
+*Implémentation : `ide.logs.upstream_dependence_test`,
+`ide.logs.upstream_dependence_from_counts` · Notebook :
 [22 — Le test de forme](notebooks/22_test_de_forme.ipynb) ·
 [les deux angles morts](angles-morts.md) · [exploration de MIND](mind.md) ·
 [journaux qui enregistrent le rang](rang-servi.md)*

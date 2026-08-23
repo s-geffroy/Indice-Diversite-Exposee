@@ -15,6 +15,7 @@ from ide.logs import (
     save_digest,
     simulate_cascade,
     simulate_feeds,
+    upstream_dependence_from_counts,
     upstream_dependence_test,
 )
 
@@ -248,4 +249,32 @@ def test_un_journal_vide_ne_fait_pas_echouer_le_test():
 
     assert verdict.cells_used == 0
     assert np.isnan(verdict.deviation)
+
+
+def test_le_test_de_forme_se_recalcule_depuis_les_seuls_comptes(tmp_path):
+    """Le verrou de reproductibilité : quatre entiers par cellule suffisent.
+
+    Aucun journal brut de ce dépôt n'est versionné. Un résultat publié doit donc se recalculer
+    depuis le condensé, à l'identique — pas approximativement.
+    """
+    feeds = simulate_cascade([10] * 4000, continuation=0.8, catalogue=120,
+                             rng=np.random.default_rng(2))
+    digest = Digest(sources={"x": "sha"}, minimum_impressions=1,
+                    splits={"x": digest_split(feeds, minimum_impressions=1)})
+    reloaded = load_digest(save_digest(digest, tmp_path / "d.npz"))
+
+    for minimum in (2, 5):
+        direct = upstream_dependence_test(feeds, minimum_impressions=minimum)
+        aggregated = upstream_dependence_from_counts(*reloaded.upstream_counts("x"),
+                                                     minimum_impressions=minimum)
+        assert aggregated.deviation == pytest.approx(direct.deviation)
+        assert aggregated.cells_used == direct.cells_used
+
+
+def test_les_comptes_d_amont_sont_absents_d_un_condense_qui_ne_les_porte_pas():
+    digest = Digest(sources={"x": "sha"}, minimum_impressions=1,
+                    splits={"x": {"cell_items": np.asarray([1])}})
+
+    with pytest.raises(ValueError, match="comptes d'amont"):
+        digest.upstream_counts("x")
 

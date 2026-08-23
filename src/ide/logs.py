@@ -46,6 +46,7 @@ __all__ = [
     "save_digest",
     "simulate_cascade",
     "simulate_feeds",
+    "upstream_dependence_from_counts",
     "upstream_dependence_test",
 ]
 
@@ -402,21 +403,54 @@ def upstream_dependence_test(
     successes = np.bincount(cell, weights=clicks, minlength=len(keys))
     observed = np.bincount(cell, weights=clicks * preceded, minlength=len(keys))
 
+    return upstream_dependence_from_counts(total, exposed, successes, observed,
+                                           minimum_impressions=minimum_impressions)
+
+
+def upstream_dependence_from_counts(
+    exposures: np.ndarray,
+    preceded: np.ndarray,
+    clicks: np.ndarray,
+    clicks_preceded: np.ndarray,
+    minimum_impressions: int = 2,
+) -> UpstreamDependenceTest:
+    """Le même test, depuis les seuls **comptes par cellule**.
+
+    Quatre entiers par cellule (contenu, rang) suffisent : impressions, impressions précédées
+    d'un clic, clics, et clics parmi les impressions précédées. C'est ce que
+    :func:`upstream_dependence_test` calcule d'abord, et c'est aussi ce qu'un condensé versionné
+    ou une demande d'accès agrégée peuvent porter — aucune ligne n'y désigne un lecteur.
+
+    Args:
+        exposures: impressions de chaque cellule.
+        preceded: parmi elles, celles précédées d'un clic dans le même fil.
+        clicks: clics de la cellule.
+        clicks_preceded: parmi eux, ceux survenus dans une impression précédée d'un clic.
+        minimum_impressions: seuil en deçà duquel une cellule est écartée.
+
+    Returns:
+        Le verdict, identique à celui obtenu depuis le journal complet.
+    """
+    exposures = np.asarray(exposures, dtype=float)
+    preceded = np.asarray(preceded, dtype=float)
+    clicks = np.asarray(clicks, dtype=float)
+    clicks_preceded = np.asarray(clicks_preceded, dtype=float)
+
     usable = (
-        (total >= minimum_impressions)
-        & (exposed > 0)
-        & (exposed < total)
-        & (successes > 0)
-        & (successes < total)
+        (exposures >= minimum_impressions)
+        & (preceded > 0)
+        & (preceded < exposures)
+        & (clicks > 0)
+        & (clicks < exposures)
     )
     if not usable.any():
         return UpstreamDependenceTest(float("nan"), float("nan"), float("nan"), float("nan"), 0)
 
-    kept_total = total[usable]
-    kept_exposed = exposed[usable]
-    kept_successes = successes[usable]
+    kept_total = exposures[usable]
+    kept_exposed = preceded[usable]
+    kept_successes = clicks[usable]
 
-    statistic = float(observed[usable].sum())
+    statistic = float(clicks_preceded[usable].sum())
     expectation = float((kept_successes * kept_exposed / kept_total).sum())
     variance = float(
         (
@@ -704,6 +738,14 @@ class Digest:
             maximum_rank=int(arrays["maximum_rank"]),
         )
 
+    def upstream_counts(self, split: str) -> tuple[np.ndarray, ...]:
+        """Les quatre comptes par cellule dont vit :func:`upstream_dependence_from_counts`."""
+        arrays = self.splits[split]
+        if "upstream_exposures" not in arrays:
+            raise ValueError(f"le condensé de {split!r} ne retient pas les comptes d'amont")
+        return (arrays["upstream_exposures"], arrays["upstream_preceded"],
+                arrays["upstream_clicks"], arrays["upstream_clicks_preceded"])
+
     def rows(self, split: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Redéploie les cellules conservées en lignes ``(contenu, rang, clic)``.
 
@@ -794,6 +836,21 @@ def digest_split(impressions: Impressions,
     clicks = impressions.clicks[order]
     lengths = impressions.feed_lengths
 
+    # Comptes du test de forme : quatre entiers par cellule, sans aucune ligne par lecteur.
+    upstream = np.lexsort((impressions.ranks, impressions.feeds))
+    ordered_feeds = impressions.feeds[upstream]
+    ordered_clicks = impressions.clicks[upstream]
+    cumulative = np.cumsum(ordered_clicks)
+    feed_starts = np.concatenate([[0], np.flatnonzero(np.diff(ordered_feeds)) + 1])
+    baseline = np.zeros(ordered_clicks.size)
+    baseline[feed_starts] = cumulative[feed_starts] - ordered_clicks[feed_starts]
+    was_preceded = (cumulative - ordered_clicks - np.maximum.accumulate(baseline)) > 0
+    upstream_cell = np.unique(
+        np.stack([impressions.items[upstream], impressions.ranks[upstream]], axis=1),
+        axis=0, return_inverse=True,
+    )[1]
+    upstream_size = int(upstream_cell.max()) + 1 if upstream_cell.size else 0
+
     # Un fil « canonique » occupe exactement les rangs 1 à L : sa structure d'ordre se résume
     # alors à sa longueur, et il suffit de retenir où sont tombés les clics. Ce n'est pas vrai
     # partout — une page de résultats peut sauter des rangs — et le condensé le vérifie plutôt
@@ -812,6 +869,16 @@ def digest_split(impressions: Impressions,
 
     return {
         **structure,
+        "upstream_exposures": np.bincount(upstream_cell, minlength=upstream_size).astype(np.int32),
+        "upstream_preceded": np.bincount(
+            upstream_cell, weights=was_preceded.astype(float), minlength=upstream_size
+        ).astype(np.int32),
+        "upstream_clicks": np.bincount(
+            upstream_cell, weights=ordered_clicks, minlength=upstream_size
+        ).astype(np.int32),
+        "upstream_clicks_preceded": np.bincount(
+            upstream_cell, weights=ordered_clicks * was_preceded, minlength=upstream_size
+        ).astype(np.int32),
         "cell_items": keys[kept, 0].astype(np.int32),
         "cell_ranks": keys[kept, 1].astype(np.int32),
         "cell_exposures": exposures[kept].astype(np.int32),

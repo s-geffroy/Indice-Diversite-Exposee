@@ -170,7 +170,25 @@ the two models.
 
 ---
 
-*Implementation: `ide.logs.upstream_dependence_test` · Notebook:
+## Reproducibility
+
+Baidu-ULTR's raw log is not versioned — 0.9 GB, CC BY-NC licence. The digest now carries the
+**four counts per cell** the test needs: impressions, impressions preceded by a click, clicks, and
+clicks preceded. No row designates a reader, and the result is recomputed **identically** — zero
+gap, which a test verifies.
+
+This is also a useful property for the [data access request](article-40.en.md): the form test is
+computable from aggregates, like the repository's other three measurements.
+
+!!! note "One exception, and what it signals"
+    The restriction to multi-click sessions **requires the full log** — it cannot be computed from
+    aggregate counts. That should have been a first warning: a protocol needing to return to
+    individual rows performs a selection, and a selection has a price.
+
+---
+
+*Implementation: `ide.logs.upstream_dependence_test`,
+`ide.logs.upstream_dependence_from_counts` · Notebook:
 [22 — The form test](notebooks/22_test_de_forme.ipynb) ·
 [the two blind spots](angles-morts.en.md) · [MIND's exploration](mind.en.md) ·
 [logs that record the rank](rang-servi.en.md)*

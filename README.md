@@ -5,7 +5,7 @@
 [![Licence : MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Documentation : CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE-DOCS)
 [![Champ : sociophysique](https://img.shields.io/badge/champ-sociophysique-8a2be2.svg)](https://s-geffroy.github.io/Indice-Diversite-Exposee/)
-[![Tests : 593](https://img.shields.io/badge/tests-593-brightgreen.svg)](tests/)
+[![Tests : 595](https://img.shields.io/badge/tests-595-brightgreen.svg)](tests/)
 
 📖 **[Documentation complète](https://s-geffroy.github.io/Indice-Diversite-Exposee/)**
 · [English](https://s-geffroy.github.io/Indice-Diversite-Exposee/en/)
@@ -116,7 +116,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 593 tests, dont les exemples de docstrings
+docker compose run --rm test          # 595 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -154,7 +154,7 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              593 tests — validation physique, numérique et statistique
+tests/              595 tests — validation physique, numérique et statistique
 notebooks/          01 à 22, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
