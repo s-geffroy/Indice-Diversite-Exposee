@@ -1040,6 +1040,42 @@ property of the log but the selection performed.
 time, scroll depth, items slipped off screen. Baidu-ULTR publishes those columns; this work has
 not read them.
 
+
+\subsection{Exposure measured rather than estimated}
+\label{sec:measuredexposure}
+
+Baidu-ULTR publishes a \texttt{displayed\_time} column --- the display time of each document ---
+which this work had not read. It measures directly what was \emph{shown}, where everything above
+observed only what was \emph{clicked}.
+
+\paragraph{It lifts the ambiguity of \S\ref{sec:formtest}.} On clicks, cascade and budget are
+conflated; on examination, separation is total: $z = -158$ to $-412$ under cascade against
+$z = -1.03$ under budget, whatever the budget. Applied to Baidu-ULTR, the measure \textbf{refutes
+cascade}: examination below a click is there \emph{more} frequent, not less --- $0.221$ against
+$0.136$ at rank nine, $z = +8.4$ to $+10.9$ depending on threshold. This is the heterogeneity
+confounder, measured directly.
+
+\paragraph{It revises the published figure.} Exposure severity, measured by document fixed effects
+on display, is $0.882 \pm 0.046$ over \textbf{143} documents, against $1.085 \pm 0.093$ over $55$
+for the click-based estimate. The estimate \textbf{overstates decay by $23\%$}, and the gap is not
+imprecision but an identified confounder: a click is the product of examination and attractiveness,
+and attractiveness also declines with rank.
+
+\paragraph{It calls into question the form used throughout.} Fitted on the \emph{measured} curve,
+the three candidate forms give $R^2 = 0.72$ for the power law --- with $42\%$ maximum error ---,
+$0.96$ for geometric decay and $0.99$ for a \emph{screen fold} model. The $R^{-\eta}$ law is the
+worst of the three, and it errs most where the standard is decided: at rank two it predicts $0.47$
+where measurement gives $0.88$.
+
+\paragraph{Consequence for \S\ref{sec:request}.} The four tables requested bear on clicks. One more
+column --- the number of impressions actually \emph{displayed} per cell --- would remove at a
+stroke the need to estimate $\eta$, the shape assumption that accompanies it, and the
+attractiveness confounder. It is moreover less sensitive than clicks: knowing an item was displayed
+says less about a reader than knowing they chose it.
+
+\paragraph{Reservation.} A positive display time attests that the document was shown, not that it
+was looked at. The measure therefore overstates exposure, by an amount this work cannot quantify.
+
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}
 

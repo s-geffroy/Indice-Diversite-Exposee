@@ -323,7 +323,9 @@ def exchangeability_test(impressions: Impressions) -> ExchangeabilityTest:
 
 
 def upstream_dependence_test(
-    impressions: Impressions, minimum_impressions: int = 2
+    impressions: Impressions,
+    minimum_impressions: int = 2,
+    outcome: np.ndarray | None = None,
 ) -> UpstreamDependenceTest:
     """Teste si l'examen d'un rang dépend des **clics au-dessus**, à contenu et rang fixés.
 
@@ -372,6 +374,10 @@ def upstream_dependence_test(
             qualité du contenu ne peut pas être éliminée.
         minimum_impressions: nombre d'impressions en deçà duquel une cellule est écartée. Une
             cellule qui ne contient qu'une impression n'a pas deux groupes à comparer.
+        outcome: grandeur binaire dont on teste la dépendance à l'amont. Par défaut le **clic**.
+            Passer une mesure d'**examen** — un contenu a-t-il été affiché ? — lève précisément
+            l'ambiguïté que les clics ne lèvent pas : sous cascade l'examen s'arrête après un
+            clic, sous budget il continue. L'amont, lui, reste toujours le clic.
 
     Returns:
         Le verdict, avec de quoi juger sur quoi il repose.
@@ -384,9 +390,14 @@ def upstream_dependence_test(
     if impressions.served == 0:
         return UpstreamDependenceTest(float("nan"), float("nan"), float("nan"), float("nan"), 0)
 
+    measured = impressions.clicks if outcome is None else np.asarray(outcome, dtype=float)
+    if measured.shape != impressions.clicks.shape:
+        raise ValueError("la grandeur mesurée doit porter sur les mêmes lignes servies")
+
     order = np.lexsort((impressions.ranks, impressions.feeds))
     feeds = impressions.feeds[order]
     clicks = impressions.clicks[order]
+    observed_outcome = measured[order]
     items = impressions.items[order]
     ranks = impressions.ranks[order]
 
@@ -400,8 +411,8 @@ def upstream_dependence_test(
     keys, cell = np.unique(np.stack([items, ranks], axis=1), axis=0, return_inverse=True)
     total = np.bincount(cell, minlength=len(keys)).astype(float)
     exposed = np.bincount(cell, weights=preceded.astype(float), minlength=len(keys))
-    successes = np.bincount(cell, weights=clicks, minlength=len(keys))
-    observed = np.bincount(cell, weights=clicks * preceded, minlength=len(keys))
+    successes = np.bincount(cell, weights=observed_outcome, minlength=len(keys))
+    observed = np.bincount(cell, weights=observed_outcome * preceded, minlength=len(keys))
 
     return upstream_dependence_from_counts(total, exposed, successes, observed,
                                            minimum_impressions=minimum_impressions)

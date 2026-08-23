@@ -1075,6 +1075,43 @@ Ce qui était mesuré n'était pas une propriété du journal mais la sélection
 d'affichage, profondeur de défilement, contenu sorti de l'écran. Baidu-ULTR publie ces colonnes ;
 ce travail ne les a pas lues.
 
+
+\subsection{L'exposition mesurée plutôt qu'estimée}
+\label{sec:expositionmesuree}
+
+Baidu-ULTR publie une colonne \texttt{displayed\_time} --- le temps d'affichage de chaque document
+--- que ce travail n'avait pas lue. Elle mesure directement ce qui a été \emph{montré}, là où tout
+ce qui précède n'observait que ce qui avait été \emph{cliqué}.
+
+\paragraph{Elle lève l'ambiguïté de \S\ref{sec:testdeforme}.} Sur les clics, cascade et budget
+sont confondus ; sur l'examen, la séparation est totale : $z = -158$ à $-412$ sous cascade contre
+$z = -1{,}03$ sous budget, quel que soit le budget. Appliquée à Baidu-ULTR, la mesure \textbf{réfute
+la cascade} : l'examen sous un clic y est \emph{plus} fréquent, pas moins --- $0{,}221$ contre
+$0{,}136$ au neuvième rang, $z = +8{,}4$ à $+10{,}9$ selon le seuil. C'est le confondant
+d'hétérogénéité, mesuré directement.
+
+\paragraph{Elle révise le chiffre publié.} La sévérité de l'exposition, mesurée par effets fixes de
+document sur l'affichage, vaut $0{,}882 \pm 0{,}046$ sur \textbf{143} documents, contre
+$1{,}085 \pm 0{,}093$ sur $55$ pour l'estimation par les clics. L'estimation \textbf{surestime la
+décroissance de $23\,\%$}, et l'écart n'est pas une imprécision mais un confondant identifié : un
+clic est le produit de l'examen et de l'attrait, et l'attrait décroît lui aussi avec le rang.
+
+\paragraph{Elle met en cause la forme employée partout.} Ajustées sur la courbe \emph{mesurée},
+les trois formes candidates donnent $R^2 = 0{,}72$ pour la loi de puissance --- avec $42\,\%$
+d'écart maximal ---, $0{,}96$ pour une décroissance géométrique et $0{,}99$ pour un modèle à
+\emph{pli d'écran}. La loi en $R^{-\eta}$ est la pire des trois, et elle se trompe surtout là où la
+norme se joue : au deuxième rang, elle prédit $0{,}47$ quand la mesure donne $0{,}88$.
+
+\paragraph{Conséquence sur \S\ref{sec:demande}.} Les quatre tableaux demandés portent sur les
+clics. Une colonne de plus --- le nombre d'impressions effectivement \emph{affichées} par cellule
+--- retirerait d'un coup le besoin d'estimer $\eta$, l'hypothèse de forme qui l'accompagne, et le
+confondant d'attrait. Elle est en outre moins sensible que les clics : savoir qu'un contenu a été
+affiché en dit moins sur un lecteur que savoir qu'il l'a choisi.
+
+\paragraph{Réserve.} Un temps d'affichage positif atteste que le document a été montré, non qu'il
+ait été regardé. La mesure surestime donc l'exposition, dans une proportion que ce travail ne peut
+pas chiffrer.
+
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}
 

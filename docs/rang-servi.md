@@ -84,6 +84,11 @@ Le taux de clic suit la décroissance attendue : 0,340 au premier rang, 0,088 au
     que l'ordre porte de l'information ; il ne dit pas **sous quelle forme**.
     → [Les deux angles morts](angles-morts.md)
 
+    **Chiffre révisé depuis.** La même quantité, **mesurée** sur l'affichage plutôt qu'estimée à
+    travers les clics, vaut $0{,}882 \pm 0{,}046$ sur 143 documents. L'estimation par les clics
+    surestime la décroissance de **23 %**, parce qu'un clic mélange l'examen et l'attrait.
+    → [Exposition mesurée](exposition-mesuree.md)
+
 Sur MIND, l'écart entre l'ajustement agrégé et les effets fixes venait de la composition des
 longueurs. Ici il vient d'autre chose, et de plus attendu : la plateforme place les **meilleurs
 documents en tête**, donc une partie de la décroissance est de la qualité, pas de l'exposition.

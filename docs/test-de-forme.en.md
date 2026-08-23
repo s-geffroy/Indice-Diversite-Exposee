@@ -159,14 +159,16 @@ data whose answer is known.**
 
 The third exists, works, and does not settle what we wanted settled.
 
-## Open lead
+## Lead — settled, and it decided
 
-Baidu-ULTR publishes `displayed_time`, `serp_height` and `slipoff_count_after_click` — measures of
-**examination** rather than of clicks. This repository has never read those columns. They would
-settle precisely what clicks cannot: was an item below a click displayed long enough to be seen?
+~~Baidu-ULTR publishes `displayed_time`, `serp_height` and `slipoff_count_after_click`.~~ →
+**[done](exposition-mesuree.en.md)**. On the examination measure, cascade and budget separate
+perfectly — $z = -158$ to $-412$ against $-1.03$ — and **cascade is refuted on Baidu-ULTR**:
+examination below a click is there more frequent, not less.
 
-That is the direct sequel, it requires no new data, and it is the only known route to separating
-the two models.
+Better still: exposure stops being estimated. Measured directly, its severity is
+$0.88 \pm 0.05$ over 143 documents, against $1.09$ estimated over 55 from clicks — **23 %
+overstatement**, because a click conflates examination with attractiveness.
 
 ---
 

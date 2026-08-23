@@ -82,6 +82,11 @@ Click rate follows the expected decay: 0.340 at rank one, 0.088 at rank three, 0
     information; it does not say **in what form**.
     → [The two blind spots](angles-morts.en.md)
 
+    **Figure revised since.** The same quantity, **measured** on display rather than estimated
+    through clicks, is $0.882 \pm 0.046$ over 143 documents. The click-based estimate overstates
+    decay by **23 %**, because a click conflates examination with attractiveness.
+    → [Measured exposure](exposition-mesuree.en.md)
+
 On MIND, the gap between the aggregate fit and fixed effects came from the mixture of lengths.
 Here it comes from something else, and more expected: the platform places the **best documents
 on top**, so part of the decay is quality, not exposure. Fixed effects remove it by comparing a

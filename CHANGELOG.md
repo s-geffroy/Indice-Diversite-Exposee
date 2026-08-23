@@ -7,6 +7,50 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — l'exposition mesurée, et non plus estimée
+
+La piste ouverte par le test de forme : lire les colonnes d'**examen** de Baidu-ULTR, jamais
+ouvertes par ce dépôt. Détail : [`docs/exposition-mesuree.md`](docs/exposition-mesuree.md) et le
+[notebook 23](notebooks/23_exposition_mesuree.ipynb).
+
+- **`ide.exposure.load_baidu_part(with_examination=True)`** lit `displayed_time` et rend le masque
+  d'affichage ; **`ide.exposure.examination_counts`** l'expose depuis le condensé, qui porte
+  désormais les comptes d'examen par cellule.
+- **`ide.logs.upstream_dependence_test(outcome=…)`** — le test de forme accepte une grandeur
+  autre que le clic. C'est l'unique modification nécessaire pour lever son impasse.
+- **`notebooks/23_exposition_mesuree.ipynb`**, `paper/figures/fig23_exposition_mesuree.png` et 4
+  tests supplémentaires (599 au total).
+
+### Résultats — la cascade réfutée, le chiffre publié révisé
+
+- **L'impasse du test de forme tombe.** Sur les clics, cascade et budget sont confondus ; sur
+  l'examen, la discrimination est totale : $z = -158$ à $-412$ sous cascade contre $-1{,}03$ sous
+  budget, **quel que soit le budget**.
+- **Sur Baidu-ULTR, la cascade est réfutée** : l'examen sous un clic y est **plus** fréquent, pas
+  moins — 0,221 contre 0,136 au neuvième rang, $z = +8{,}4$ à $+10{,}9$. C'est le confondant
+  d'hétérogénéité, mesuré directement.
+- **La sévérité publiée est révisée** : $\eta = 0{,}882 \pm 0{,}046$ sur **143** documents, contre
+  $1{,}085 \pm 0{,}093$ sur 55 estimé par les clics. L'estimation **surestime la décroissance de
+  23 %**, parce qu'un clic est le produit de l'examen **et** de l'attrait, et que l'attrait décroît
+  lui aussi avec le rang.
+- **La loi de puissance est le pire des trois ajustements** sur la courbe mesurée : $R^2 = 0{,}72$
+  et 42 % d'écart maximal, contre 0,96 pour une décroissance géométrique et 0,99 pour un modèle à
+  **pli d'écran**. Au deuxième rang, elle prédit 0,47 quand la mesure donne 0,88.
+
+### Modifié — une cinquième colonne à la demande d'accès
+
+- [`docs/article-40.md`](docs/article-40.md) — le tableau 3 réclame désormais une colonne
+  **`affichages`**. Elle retire d'un coup le besoin d'estimer $\eta$, l'hypothèse de forme, et le
+  confondant d'attrait — et elle est **moins sensible** que les clics : savoir qu'un contenu a été
+  affiché en dit moins sur un lecteur que savoir qu'il l'a choisi.
+- [`docs/rang-servi.md`](docs/rang-servi.md) et [`docs/test-de-forme.md`](docs/test-de-forme.md)
+  portent la révision et la levée de l'impasse.
+- Vingt-deuxième entrée de l'[audit](docs/limites.md) : *estimer une exposition qu'on pouvait
+  mesurer*. Le dépôt avait construit trois contrôles, une estimation par effets fixes, un
+  étalonnage de puissance et une limite d'identification — pour approcher une grandeur qui était
+  dans une colonne du fichier.
+- Les deux notes LaTeX reçoivent la sous-section correspondante (24 pages chacune).
+
 ### Ajouté — le test de forme, troisième contrôle de la série
 
 La piste ouverte par les angles morts : tester la **forme** de l'examen, pas seulement son

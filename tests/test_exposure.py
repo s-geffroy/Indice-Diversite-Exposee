@@ -9,6 +9,7 @@ from ide.exposure import (
     SOURCES,
     Digest,
     bucket_from_digest,
+    examination_counts,
     load_digest,
     obd_cells,
     obd_click_rates,
@@ -170,3 +171,91 @@ def test_l_estimation_contrefactuelle_est_confrontee_a_une_mesure_directe():
     # l'équivalent de mille cinq cents observations, pour quatre millions d'impressions.
     assert check.effective_size < 3_000
     assert check.effective_share < 0.001
+
+
+def test_la_mesure_d_examen_est_absente_d_un_condense_qui_ne_la_porte_pas():
+    digest = Digest(sources={"x": "sha"}, minimum_impressions=1,
+                    splits={"x": {"cell_items": np.asarray([1])}})
+
+    with pytest.raises(ValueError, match="mesure d'examen"):
+        examination_counts(digest, "x")
+
+
+def test_l_examen_separe_ce_que_le_clic_confond():
+    """Le résultat qui lève l'impasse du test de forme, figé en simulation.
+
+    Sous cascade, l'examen s'arrête après un clic ; sous budget de clics, il continue. Le clic,
+    lui, montre la même chose dans les deux cas — c'est pourquoi il ne peut pas trancher.
+    """
+    from ide.logs import Impressions as Journal
+    from ide.logs import simulate_cascade, upstream_dependence_test
+
+    slots, feeds, catalogue = 10, 12_000, 150
+    generator = np.random.default_rng(3)
+
+    cascade, cascade_seen = simulate_cascade([slots] * feeds, continuation=0.85,
+                                            catalogue=catalogue,
+                                            rng=np.random.default_rng(3),
+                                            return_examination=True)
+
+    # budget de clics : l'examen suit R^-1 et ne dépend pas de l'amont
+    quality = 0.25 * generator.lognormal(0.0, 0.8, size=catalogue)
+    items = generator.integers(0, catalogue, size=feeds * slots).reshape(feeds, slots)
+    ranks = np.tile(np.arange(1, slots + 1), (feeds, 1))
+    seen = generator.random((feeds, slots)) < ranks.astype(float) ** (-1.0)
+    drawn = seen & (generator.random((feeds, slots)) < np.clip(quality[items], 0.0, 1.0))
+    kept = drawn & (np.cumsum(drawn, axis=1) <= 1)
+    budgeted = Journal(items=items.ravel().astype(np.int64),
+                       ranks=ranks.ravel().astype(np.int64),
+                       clicks=kept.ravel().astype(float),
+                       feeds=np.repeat(np.arange(feeds), slots).astype(np.int64),
+                       feed_lengths=np.full(feeds, slots, dtype=np.int64))
+
+    # sur les CLICS, les deux rejettent : indiscernables
+    assert upstream_dependence_test(cascade).deviation < -10.0
+    assert upstream_dependence_test(budgeted).deviation < -10.0
+
+    # sur l'EXAMEN, seule la cascade rejette : la séparation est nette
+    assert upstream_dependence_test(cascade, outcome=cascade_seen).deviation < -50.0
+    assert abs(upstream_dependence_test(budgeted,
+                                        outcome=seen.ravel().astype(float)).deviation) < 3.0
+
+
+def test_l_exposition_mesuree_sur_baidu_est_moins_severe_que_celle_estimee():
+    """Le résultat publié, verrouillé sur le condensé versionné.
+
+    Un clic est le produit de l'examen et de l'attrait. Comme l'attrait décroît lui aussi avec
+    le rang, la sévérité ajustée sur les clics absorbe les deux et surestime la décroissance.
+    """
+    counts = examination_counts(load_digest())
+    shallow = counts["ranks"] <= 9
+
+    items = np.repeat(counts["items"][shallow], counts["exposures"][shallow])
+    ranks = np.repeat(counts["ranks"][shallow], counts["exposures"][shallow])
+    seen = np.concatenate([
+        np.concatenate([np.ones(total), np.zeros(exposures - total)])
+        for exposures, total in zip(counts["exposures"][shallow], counts["seen"][shallow],
+                                    strict=True)
+    ])
+
+    examination = estimate_position_bias(items, ranks, seen, minimum_impressions=5)
+
+    assert examination.severity == pytest.approx(0.882, abs=0.01)
+    assert examination.standard_error < 0.06
+    # et la mesure repose sur bien plus de documents que l'estimation par les clics
+    assert examination.items_with_variation > 2 * 55
+
+
+def test_sur_baidu_l_examen_ne_s_arrete_pas_apres_un_clic():
+    """La cascade réfutée sur données réelles : l'écart est positif, pas négatif."""
+    from ide.logs import upstream_dependence_from_counts
+
+    counts = examination_counts(load_digest())
+
+    for minimum in (5, 10, 20):
+        verdict = upstream_dependence_from_counts(
+            counts["exposures"], counts["upstream_preceded"], counts["seen"],
+            counts["upstream_seen"], minimum_impressions=minimum)
+        assert verdict.deviation > 5.0, "une cascade rendrait cet écart négatif"
+        assert not verdict.position_like
+

@@ -82,6 +82,14 @@ sépare. Sur Baidu-ULTR il ne détecte **aucune cascade**. Et le protocole qui s
 trancher — restreindre aux sessions à plusieurs clics — **fabrique** la signature qu'il cherche :
 un *collider*, rattrapé avant publication. → [Le test de forme](test-de-forme.md)
 
+**Et l'exposition, finalement, se mesure.** Baidu-ULTR publie une colonne d'**affichage** que le
+dépôt n'avait jamais lue. Elle tranche ce que les clics ne pouvaient pas — **la cascade est
+réfutée** —, et elle révise le chiffre publié : la sévérité de l'exposition vaut
+$0{,}88 \pm 0{,}05$ sur 143 documents, non $1{,}09$ sur 55. L'estimation par les clics
+**surestimait de 23 %**, parce qu'un clic mélange l'examen et l'attrait. Et la loi en $R^{-\eta}$
+qu'emploie tout ce dépôt est le **pire** des trois ajustements sur la courbe mesurée.
+→ [Exposition mesurée](exposition-mesuree.md)
+
 **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
 agrégés, sans aucune donnée personnelle, dont il est prouvé qu'ils recalculent les mesures **à
 l'identique** — pour 95 fois moins de lignes que le journal brut.
@@ -150,7 +158,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-deux notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-trois notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -177,6 +185,7 @@ note. Chacun se lit indépendamment.
 | [20 — Contre-expertise](notebooks/20_contre_expertise.ipynb) | cinq contre-épreuves, dont une qui retire une conclusion publiée |
 | [21 — Angles morts](notebooks/21_angles_morts.ipynb) | le test tient sous cascade, la loi de puissance non |
 | [22 — Test de forme](notebooks/22_test_de_forme.ipynb) | le troisième contrôle, et le collider qu'il a failli publier |
+| [23 — Exposition mesurée](notebooks/23_exposition_mesuree.ipynb) | une colonne jamais lue, et six chapitres d'estimation rendus inutiles |
 
 ## Reproduire
 
@@ -186,7 +195,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 595 tests
+docker compose run --rm test          # 599 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

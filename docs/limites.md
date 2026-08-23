@@ -7,7 +7,7 @@ journée, par accumulation d'analogies. Cette méthode produit des intuitions ju
 et des raccourcis qui ne tiennent pas. Publier le fil tel quel exposerait
 l'ensemble à être écarté sur un détail, alors que l'intuition de départ mérite mieux.
 
-Vingt-et-un points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
+Vingt-deux points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
 c'est un problème, et la formulation retenue. Les corrections sont **traçables** :
 chacune est implémentée dans `src/`, vérifiée dans `tests/`, et illustrée dans un
 notebook.
@@ -548,6 +548,37 @@ apparemment raisonnable fabrique son propre résultat, et la troisième fois qu'
 **données simulées** le rattrape avant publication. La règle vaut d'être écrite : *tout protocole
 appliqué à des données réelles doit d'abord être appliqué à des données dont on connaît la
 réponse.*
+
+
+### 22. Estimer une exposition qu'on pouvait mesurer
+
+**Ce que ce dépôt a fait pendant six chapitres.** Estimer la sévérité de l'exposition **à travers
+les clics**, sous le modèle $P(\text{clic} \mid i, R) = g(i)\,R^{-\eta}$, et publier
+$\hat\eta = 1{,}10 \pm 0{,}09$ sur Baidu-ULTR.
+
+**Le problème.** Baidu-ULTR publie une colonne `displayed_time` que le dépôt n'avait jamais lue.
+Elle mesure directement ce qui a été **affiché**, donc l'exposition elle-même. Mesurée ainsi, la
+sévérité vaut $0{,}882 \pm 0{,}046$ sur **143** documents, contre 55 pour l'estimation par les
+clics : l'estimation **surestime la décroissance de 23 %**.
+
+L'écart n'est pas une imprécision mais un **confondant identifié** : un clic est le produit de
+l'examen et de l'attrait, et comme l'attrait décroît lui aussi avec le rang, la sévérité ajustée
+sur les clics absorbe les deux.
+
+**Ce que la mesure a tranché en outre.** L'impasse du [test de forme](test-de-forme.md) —
+impossible de séparer une cascade d'un budget de clics — tombe immédiatement : sur l'examen, la
+discrimination est totale ($z = -158$ à $-412$ contre $-1{,}03$), et la **cascade est réfutée** sur
+Baidu-ULTR. La loi de puissance, elle, se révèle le **pire** des trois ajustements sur la courbe
+mesurée : $R^2 = 0{,}72$ contre $0{,}96$ et $0{,}99$.
+
+**Retenu.** L'exposition se **mesure** quand la donnée existe, et la [demande d'accès](article-40.md)
+réclame désormais une colonne `affichages` — qui retire d'un coup le besoin d'estimer $\eta$,
+l'hypothèse de forme, et le confondant d'attrait.
+
+**Ce que cet épisode enseigne sur la méthode.** Le dépôt a construit trois contrôles successifs,
+une estimation par effets fixes, un étalonnage de puissance et une limite d'identification — tout
+cela pour approcher une grandeur qui était **dans une colonne du fichier**. Avant de raffiner une
+estimation, il faut avoir lu le schéma des données.
 
 ---
 

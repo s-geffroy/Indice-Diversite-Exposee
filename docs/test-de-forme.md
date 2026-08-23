@@ -162,15 +162,16 @@ d'abord être appliqué à des données dont on connaît la réponse.**
 
 Le troisième existe, fonctionne, et ne tranche pas ce qu'on voulait trancher.
 
-## Piste ouverte
+## Piste — réglée, et elle a tranché
 
-Baidu-ULTR publie `displayed_time`, `serp_height` et `slipoff_count_after_click` — des mesures de
-l'**examen** et non du clic. Ce dépôt n'a jamais lu ces colonnes. Elles trancheraient précisément
-ce que les clics ne peuvent pas : un contenu situé sous un clic a-t-il été affiché assez longtemps
-pour être vu ?
+~~Baidu-ULTR publie `displayed_time`, `serp_height` et `slipoff_count_after_click`.~~ →
+**[fait](exposition-mesuree.md)**. Sur la mesure d'examen, cascade et budget se séparent
+parfaitement — $z = -158$ à $-412$ contre $-1{,}03$ — et **la cascade est réfutée sur
+Baidu-ULTR** : l'examen sous un clic y est plus fréquent, pas moins.
 
-C'est la suite directe, elle ne demande aucune donnée nouvelle, et c'est la seule voie connue pour
-séparer les deux modèles.
+Mieux : l'exposition cesse d'être estimée. Mesurée directement, sa sévérité vaut
+$0{,}88 \pm 0{,}05$ sur 143 documents, contre $1{,}09$ estimé sur 55 par les clics —
+**23 % de surestimation**, parce qu'un clic mélange l'examen et l'attrait.
 
 ---
 

@@ -81,6 +81,7 @@ plugins:
             Contre-expertise: Counter-expertise
             Les deux angles morts: The two blind spots
             Le test de forme: The form test
+            Exposition mesurée: Measured exposure
             Bibliographie: Bibliography
             Mémorandum de régulation: Regulatory memorandum
             Réserves: Caveats
@@ -145,6 +146,7 @@ nav:
       - Contre-expertise: contre-expertise.md
       - Les deux angles morts: angles-morts.md
       - Le test de forme: test-de-forme.md
+      - Exposition mesurée: exposition-mesuree.md
       - Mémorandum de régulation: memorandum.md
   - Réserves:
       - Audit critique et limites: limites.md
@@ -175,3 +177,4 @@ nav:
       - 20 — Contre-expertise: notebooks/20_contre_expertise.ipynb
       - 21 — Angles morts: notebooks/21_angles_morts.ipynb
       - 22 — Test de forme: notebooks/22_test_de_forme.ipynb
+      - 23 — Exposition mesurée: notebooks/23_exposition_mesuree.ipynb

@@ -7,7 +7,7 @@ analogies. That method produces sound intuitions alongside shortcuts that do not
 Publishing the thread as-is would expose the whole to being dismissed over a detail,
 when the starting intuition deserves better.
 
-Twenty-one points are documented. Each follows the same structure: what the thread claimed, why it is a
+Twenty-two points are documented. Each follows the same structure: what the thread claimed, why it is a
 problem, and the formulation adopted. Every correction is **traceable** — implemented in
 `src/`, verified in `tests/`, illustrated in a notebook.
 
@@ -478,6 +478,36 @@ where someone will have the idea of doing it again.
 manufactures its own result, and the third time a check on **simulated data** catches it before
 publication. The rule deserves writing down: *any protocol applied to real data must first be
 applied to data whose answer is known.*
+
+
+### 22. Estimating an exposure that could be measured
+
+**What this repository did for six chapters.** Estimate exposure severity **through clicks**,
+under the model $P(\text{click} \mid i, R) = g(i)\,R^{-\eta}$, and publish
+$\hat\eta = 1.10 \pm 0.09$ on Baidu-ULTR.
+
+**The problem.** Baidu-ULTR publishes a `displayed_time` column the repository had never read. It
+measures directly what was **displayed**, hence exposure itself. Measured that way, severity is
+$0.882 \pm 0.046$ over **143** documents, against 55 for the click-based estimate: the estimate
+**overstates decay by 23 %**.
+
+The gap is not imprecision but an **identified confounder**: a click is the product of examination
+and attractiveness, and since attractiveness also declines with rank, the severity fitted on clicks
+absorbs both.
+
+**What the measurement settled besides.** The [form test](test-de-forme.en.md)'s impasse — cascade
+indistinguishable from a click budget — falls immediately: on examination, discrimination is total
+($z = -158$ to $-412$ against $-1.03$), and **cascade is refuted** on Baidu-ULTR. The power law
+turns out to be the **worst** of three fits on the measured curve: $R^2 = 0.72$ against $0.96$ and
+$0.99$.
+
+**Adopted.** Exposure is **measured** when the data exists, and the [access
+request](article-40.en.md) now asks for a `displays` column — which removes at a stroke the need to
+estimate $\eta$, the shape assumption, and the attractiveness confounder.
+
+**What this episode teaches about method.** The repository built three successive checks, a
+fixed-effects estimator, a power calibration and an identification limit — all to approximate a
+quantity that was **in a column of the file**. Before refining an estimate, read the data schema.
 
 ---
 

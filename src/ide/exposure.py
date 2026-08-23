@@ -78,6 +78,7 @@ __all__ = [
     "OffPolicyCheck",
     "bucket_from_digest",
     "build_digest",
+    "examination_counts",
     "load_baidu_part",
     "load_digest",
     "load_obd_bucket",
@@ -213,33 +214,52 @@ def source_path(name: str, directory: Path | None = None) -> Path:
     return base / SOURCES[name][0]
 
 
-def load_baidu_part(path: Path | None = None) -> Impressions:
+def load_baidu_part(
+    path: Path | None = None, with_examination: bool = False
+) -> Impressions | tuple[Impressions, np.ndarray]:
     """Lit une tranche de Baidu-ULTR et la met à plat.
 
     Quatre colonnes suffisent, sur les vingt-neuf que porte le fichier : la session
     (``query_no``), le **rang d'affichage** (``position``), le clic, et l'identité du document
     (``url_md5``). Les embeddings, qui font tout le poids du fichier, ne sont pas lus.
 
+    Args:
+        path: chemin de la tranche.
+        with_examination: si vrai, lit en outre ``displayed_time`` et rend le masque
+            d'**examen** — le document a-t-il été affiché ? C'est la seule mesure directe
+            d'exposition dont ce dépôt dispose, et elle lève l'ambiguïté que les clics laissent
+            entière (voir :func:`ide.logs.upstream_dependence_test`).
+
     Returns:
-        Le journal mis à plat, fils groupés par session.
+        Le journal mis à plat, fils groupés par session, et le masque d'examen si demandé.
     """
     import pyarrow.feather as feather  # dépendance de laboratoire, pas du noyau
 
     source = source_path("baidu") if path is None else path
-    table = feather.read_table(source, columns=["query_no", "position", "click", "url_md5"])
+    columns = ["query_no", "position", "click", "url_md5"]
+    if with_examination:
+        columns.append("displayed_time")
+    table = feather.read_table(source, columns=columns)
 
     sessions = np.asarray(table["query_no"])
     _, feeds = np.unique(sessions, return_inverse=True)
     lengths = np.bincount(feeds)
     documents = np.unique(np.asarray(table["url_md5"].to_pylist()), return_inverse=True)[1]
 
-    return Impressions(
+    journal = Impressions(
         items=documents.astype(np.int64),
         ranks=np.asarray(table["position"]).astype(np.int64),
         clicks=np.asarray(table["click"]).astype(float),
         feeds=feeds.astype(np.int64),
         feed_lengths=lengths.astype(np.int64),
     )
+    if not with_examination:
+        return journal
+
+    # Un temps d'affichage strictement positif atteste que le document a été montré. C'est un
+    # substitut, non l'examen lui-même : un document affiché n'est pas nécessairement regardé.
+    examined = (np.asarray(table["displayed_time"]).astype(float) > 0.0).astype(float)
+    return journal, examined
 
 
 def load_obd_bucket(name: str, directory: Path | None = None) -> dict[str, np.ndarray]:
@@ -333,6 +353,52 @@ def off_policy_check(
     )
 
 
+def _examination_cells(journal: Impressions, examined: np.ndarray) -> dict[str, np.ndarray]:
+    """Réduit la mesure d'examen aux comptes par cellule, et à sa dépendance à l'amont.
+
+    Deux jeux de comptes, tous deux agrégés au niveau de la cellule (document, rang) :
+
+    * ``examination_*`` — impressions et examens, de quoi mesurer la courbe d'exposition
+      **directement**, sans passer par les clics ni supposer une forme ;
+    * ``examination_upstream_*`` — les mêmes, scindés selon qu'un clic a eu lieu plus haut dans
+      la même session. C'est ce qui sépare une cascade d'un simple budget de clics, ce que les
+      clics seuls ne savent pas faire.
+    """
+    keys, cell = np.unique(
+        np.stack([journal.items, journal.ranks], axis=1), axis=0, return_inverse=True
+    )
+    order = np.lexsort((journal.ranks, journal.feeds))
+    cumulative = np.cumsum(journal.clicks[order])
+    starts = np.concatenate([[0], np.flatnonzero(np.diff(journal.feeds[order])) + 1])
+    baseline = np.zeros(cumulative.size)
+    baseline[starts] = cumulative[starts] - journal.clicks[order][starts]
+    preceded = np.zeros(cumulative.size)
+    preceded[order] = (
+        cumulative - journal.clicks[order] - np.maximum.accumulate(baseline)
+    ) > 0
+
+    return {
+        "examination_items": keys[:, 0].astype(np.int32),
+        "examination_ranks": keys[:, 1].astype(np.int32),
+        "examination_exposures": np.bincount(cell, minlength=len(keys)).astype(np.int32),
+        "examination_seen": np.bincount(cell, weights=examined,
+                                        minlength=len(keys)).astype(np.int32),
+        "examination_upstream_preceded": np.bincount(cell, weights=preceded,
+                                                     minlength=len(keys)).astype(np.int32),
+        "examination_upstream_seen": np.bincount(cell, weights=examined * preceded,
+                                                 minlength=len(keys)).astype(np.int32),
+    }
+
+
+def examination_counts(digest: Digest, split: str = "baidu") -> dict[str, np.ndarray]:
+    """Les comptes d'examen du condensé, seule mesure directe d'exposition du dépôt."""
+    arrays = digest.splits[split]
+    if "examination_seen" not in arrays:
+        raise ValueError(f"le condensé de {split!r} ne retient pas la mesure d'examen")
+    return {name[len("examination_"):]: arrays[name]
+            for name in arrays if name.startswith("examination_")}
+
+
 def obd_cells(bucket: dict[str, np.ndarray]) -> dict[str, np.ndarray]:
     """Réduit un seau aux cellules (contenu, position, propension), sans perte pour les mesures.
 
@@ -395,7 +461,10 @@ def build_digest(directory: Path | None = None) -> Digest:
 
     _, _, fingerprint = verify_source("baidu", directory=directory)
     sources["baidu"] = fingerprint
-    tables["baidu"] = digest_split(load_baidu_part(source_path("baidu", directory=directory)))
+    journal, examined = load_baidu_part(source_path("baidu", directory=directory),
+                                        with_examination=True)
+    tables["baidu"] = digest_split(journal)
+    tables["baidu"].update(_examination_cells(journal, examined))
 
     for name in OBD_BUCKETS:
         _, _, fingerprint = verify_source(name, directory=directory)

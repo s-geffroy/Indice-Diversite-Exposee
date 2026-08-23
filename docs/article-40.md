@@ -114,9 +114,25 @@ contraignent rien — ne peuvent pas être écartés du calcul.
 |---|---|---|
 | `contenu` | identifiant pseudonyme, stable sur la période | contenu servi |
 | `rang` | entier | rang servi |
-| `impressions` | entier | nombre d'affichages |
+| `impressions` | entier | nombre de fois où le contenu a été **servi** à ce rang |
 | `clics` | entier | clics observés |
 | `propension` | réel, **facultatif** | probabilité de service, si la plateforme la connaît |
+| `affichages` | entier | **impressions effectivement affichées** au lecteur |
+
+!!! success "La colonne `affichages` retire trois problèmes d'un coup"
+    Elle est la seule addition à cette demande depuis sa rédaction, et elle vient d'une mesure :
+    sur Baidu-ULTR, la même quantité obtenue par affichage plutôt que par clic donne
+    $\hat\eta = 0{,}88 \pm 0{,}05$ sur 143 documents, contre $1{,}09 \pm 0{,}09$ sur 55.
+    → [Exposition mesurée](exposition-mesuree.md)
+
+    Sans elle, l'exposition doit être **estimée** à travers les clics, ce qui impose trois
+    hypothèses dont aucune n'est vérifiable : que l'examen suive une loi de puissance, qu'il ne
+    dépende pas de ce qui a été cliqué plus haut, et que l'attrait d'un contenu ne varie pas avec
+    son rang. La première est fausse sur données mesurées, la deuxième est indécidable sans elle,
+    et la troisième gonfle l'estimation de **23 %**.
+
+    Elle est en outre **moins sensible** que les clics : savoir qu'un contenu a été affiché en dit
+    moins sur un lecteur que savoir qu'il l'a choisi.
 
 **Tableau 4 — exposition par point de vue**
 
@@ -139,7 +155,9 @@ choix.
 | Mesure | Tableaux nécessaires |
 |---|---|
 | test d'échangeabilité — le journal est-il seulement corrigible ? | 1, 1 bis, 2 |
-| sévérité $\eta$ du biais de position | 3 |
+| sévérité $\eta$ de l'exposition, **mesurée** | 3, colonne `affichages` |
+| sévérité $\eta$ du biais de position, estimée à défaut | 3 |
+| forme de l'examen (cascade ou non) | 3, colonne `affichages` |
 | estimation contrefactuelle et taille d'échantillon effective | 3, avec propensions |
 | diversité composée et diversité exposée, écart d'enterrement | 4 |
 

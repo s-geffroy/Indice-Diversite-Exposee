@@ -5,7 +5,7 @@
 [![Licence : MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Documentation : CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE-DOCS)
 [![Champ : sociophysique](https://img.shields.io/badge/champ-sociophysique-8a2be2.svg)](https://s-geffroy.github.io/Indice-Diversite-Exposee/)
-[![Tests : 595](https://img.shields.io/badge/tests-595-brightgreen.svg)](tests/)
+[![Tests : 599](https://img.shields.io/badge/tests-599-brightgreen.svg)](tests/)
 
 📖 **[Documentation complète](https://s-geffroy.github.io/Indice-Diversite-Exposee/)**
 · [English](https://s-geffroy.github.io/Indice-Diversite-Exposee/en/)
@@ -67,6 +67,11 @@ publié comme tel.
   cascade détectée. Et le protocole qui semblait devoir trancher **fabrique** la signature qu'il
   cherche : un collider, rattrapé avant publication.
   → **[Le test de forme](docs/test-de-forme.md)**
+- **Et l'exposition, finalement, se mesure.** Baidu-ULTR publie une colonne d'**affichage** jamais
+  lue par ce dépôt. Elle réfute la cascade, et révise le chiffre publié : la sévérité vaut
+  **0,88 ± 0,05** sur 143 documents, non 1,09 sur 55 — l'estimation par les clics **surestimait de
+  23 %**. La loi en $R^{-\eta}$ employée partout est le **pire** des trois ajustements sur la
+  courbe mesurée. → **[Exposition mesurée](docs/exposition-mesuree.md)**
 - **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
   → **[Article 40](docs/article-40.md)**
@@ -89,7 +94,7 @@ l'étiquetage ; un plancher d'index [se sature à coût nul](docs/gaming.md) ; l
 
 ## À lire d'abord : ce que le travail ne prétend pas
 
-L'**[audit critique](docs/limites.md)** recense **vingt-et-une corrections** apportées au
+L'**[audit critique](docs/limites.md)** recense **vingt-deux corrections** apportées au
 raisonnement d'origine — dont **cinq formules invalides**, et une découverte en tentant de
 mesurer — et énumère les limites qui subsistent, y compris celles qui touchent à l'usage
 réglementaire de l'index : il est manipulable, sa discrétisation en points de vue est un choix
@@ -116,7 +121,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 595 tests, dont les exemples de docstrings
+docker compose run --rm test          # 599 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -154,8 +159,8 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              595 tests — validation physique, numérique et statistique
-notebooks/          01 à 22, un par bloc théorique, exécutables
+tests/              599 tests — validation physique, numérique et statistique
+notebooks/          01 à 23, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné
@@ -194,10 +199,12 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
 | le tirage au sort est **invariant** au bruit de pertinence, les autres non | fige la raison mécanique pour laquelle le hasard rattrape |
 | un **budget de clics** produit la même signature qu'une cascade | fige la limite d'identification que le test de forme ne franchit pas |
 | restreindre aux fils à plusieurs clics **fabrique** un faux rejet | fige le collider, à l'endroit où quelqu'un le refera |
+| sur l'examen, cascade et budget de clics **se séparent** | fige la levée de la limite d'identification |
+| l'exposition mesurée sur Baidu est **moins sévère** que celle estimée | fige les 23 % de surestimation par les clics |
 
 ## Contenu du dépôt
 
-- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-et-une corrections et les
+- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-deux corrections et les
   limites qui subsistent.
 - [`docs/calibration.md`](docs/calibration.md) — **la mesure de $\gamma\alpha/\lambda$** sur
   données publiques, ses trois enseignements et ses réserves.
@@ -228,6 +235,8 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
   éprouvées : modèle de clic à cascade, et pertinence estimée plutôt que connue.
 - [`docs/test-de-forme.md`](docs/test-de-forme.md) — **le troisième contrôle** : il fonctionne, ne
   tranche pas, et a failli publier un collider.
+- [`docs/exposition-mesuree.md`](docs/exposition-mesuree.md) — **l'exposition mesurée** au lieu
+  d'estimée : une colonne jamais lue, et la cascade réfutée.
 - [`docs/bibliographie.md`](docs/bibliographie.md) — **toutes les références**, avec ce que
   chacune sert ici ; page dérivée de `paper/refs.bib` et verrouillée par un test.
 - [`docs/feuille-de-route.md`](docs/feuille-de-route.md) — comment combler ces limites,

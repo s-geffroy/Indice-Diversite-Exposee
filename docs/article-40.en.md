@@ -109,9 +109,25 @@ constrain nothing — cannot be excluded from the computation.
 |---|---|---|
 | `item` | pseudonymous identifier, stable over the period | item served |
 | `rank` | integer | served rank |
-| `impressions` | integer | number of displays |
+| `impressions` | integer | times the item was **served** at that rank |
 | `clicks` | integer | clicks observed |
 | `propensity` | real, **optional** | probability of service, if the platform knows it |
+| `displays` | integer | impressions **actually displayed** to the reader |
+
+!!! success "The `displays` column removes three problems at once"
+    It is the only addition to this request since it was drafted, and it comes from a
+    measurement: on Baidu-ULTR, the same quantity obtained by display rather than by click gives
+    $\hat\eta = 0.88 \pm 0.05$ over 143 documents, against $1.09 \pm 0.09$ over 55.
+    → [Measured exposure](exposition-mesuree.en.md)
+
+    Without it, exposure must be **estimated** through clicks, which imposes three assumptions
+    none of which is verifiable: that examination follows a power law, that it does not depend on
+    what was clicked above, and that an item's attractiveness does not vary with its rank. The
+    first is false on measured data, the second undecidable without it, and the third inflates the
+    estimate by **23 %**.
+
+    It is moreover **less sensitive** than clicks: knowing an item was displayed says less about a
+    reader than knowing they chose it.
 
 **Table 4 — exposure by viewpoint**
 
@@ -134,7 +150,9 @@ not its choice.
 | Measurement | Tables needed |
 |---|---|
 | exchangeability test — is the log even correctable? | 1, 1 bis, 2 |
-| position-bias severity $\eta$ | 3 |
+| exposure severity $\eta$, **measured** | 3, `displays` column |
+| position-bias severity $\eta$, estimated failing that | 3 |
+| form of examination (cascade or not) | 3, `displays` column |
 | counterfactual estimation and effective sample size | 3, with propensities |
 | composed and exposed diversity, burial gap | 4 |
 
