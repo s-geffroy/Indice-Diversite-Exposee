@@ -41,18 +41,28 @@ qu'elle prétend mesurer. Et toute mesure aveugle au rang se laisse satisfaire e
 que $0{,}36$ de diversité réelle, et fermer l'échappatoire double le coût d'engagement.
 
 Vérifier une telle norme sur données réelles exige de connaître l'\emph{exposition} : nous
-donnons un test exact, conditionnel au fil, qui décide si un journal de recommandation
-permet seulement une correction d'exposition, et un estimateur de la sévérité du biais de
-position. Appliqués à trois journaux publics, ils établissent que MIND ne conserve pas
-l'ordre servi --- l'estimateur y produit cinq sévérités incompatibles --- tandis que
-Baidu-ULTR le conserve ($\hat\eta = 1{,}10 \pm 0{,}09$) et que l'Open Bandit Dataset permet
-la seule confrontation de ce travail à une vérité terrain : la valeur d'une politique jamais
-déployée y est retrouvée à $2{,}5\,\%$, contre $31{,}6\,\%$ d'erreur pour l'estimation naïve.
+donnons trois contrôles à passer sur un journal de recommandation --- l'ordre y dit-il quelque
+chose, y a-t-il de quoi estimer, et sous quelle forme --- et les appliquons à trois journaux
+publics. MIND ne conserve pas l'ordre servi, et l'estimateur usuel y produit cinq sévérités
+incompatibles ; Baidu-ULTR le conserve ; l'Open Bandit Dataset permet la seule confrontation de
+ce travail à une vérité terrain, où la valeur d'une politique jamais déployée est retrouvée à
+$2{,}5\,\%$ contre $31{,}6\,\%$ d'erreur pour l'estimation naïve.
+
+La conclusion principale de cette partie est cependant négative pour la méthode que nous venions
+de construire. Baidu-ULTR publie une colonne de temps d'affichage qui permet de \textbf{mesurer}
+l'exposition au lieu de l'estimer à travers les clics : la sévérité y vaut alors
+$0{,}88 \pm 0{,}05$ sur $143$ documents, et non $1{,}09 \pm 0{,}09$ sur $55$ --- l'estimation
+surestime la décroissance de $23\,\%$, parce qu'un clic mélange l'examen et l'attrait. La mesure
+directe réfute en outre le modèle à cascade sur ce journal, par deux voies indépendantes, et
+montre que la loi $R^{-\eta}$ est le pire des trois ajustements sur la courbe observée. Enfin, un
+format d'affichage enrichi placé au-dessus retire $8{,}4$ points d'examen à ce qui suit, à rang et
+à hauteur de page comparables : la pondération de rang n'est donc pas une propriété du rang, ni
+même de la surface, mais de la \textbf{page servie}.
 
 Aucun jeu public ne porte à la fois le rang servi et une étiquette de point de vue
 interprétable. Nous spécifions donc, au titre de l'article~40 du \emph{Digital Services
-Act}, quatre tableaux agrégés sans donnée personnelle, dont il est vérifié qu'ils
-recalculent les mesures à l'identique pour cent fois moins de lignes qu'un journal brut.
+Act}, des tableaux agrégés sans donnée personnelle, dont il est vérifié qu'ils recalculent les
+mesures à l'identique pour cent fois moins de lignes qu'un journal brut.
 
 La partie~\ref{part:modele} expose le modèle thermodynamique d'où l'indice est issu, et
 \S\ref{sec:analogie} rend compte de ce qu'il en reste : l'analogie avec la décohérence

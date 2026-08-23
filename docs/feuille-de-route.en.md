@@ -323,10 +323,18 @@ threshold — connecting the work to an established literature rather than an ad
 
 It is the one lock this repository cannot open on its own, and it commands all the others. The
 [request](article-40.en.md) is written, specified article by article of Delegated Regulation
-(EU) 2025/2050, and **verified**: the four aggregate tables it asks for recompute identically the
-exchangeability test, position-bias severity and both diversity measures, for 95 times fewer rows
-than the raw log and with no personal data at all. All it lacks is an applicant eligible under
-Article 40(8)(a).
+(EU) 2025/2050, and **verified**: the aggregate tables it asks for recompute identically the
+exchangeability test, position-bias severity, the form test and both diversity measures, for 95
+times fewer rows than the raw log and with no personal data at all. All it lacks is an applicant
+eligible under Article 40(8)(a).
+
+It has gained two columns since it was drafted, each for the same reason: a measurement showed
+what was lost without it. **`displays`** removes the need to estimate $\eta$, the shape assumption
+that comes with it, and the attractiveness confounder — on real data, the click-based estimate
+overstates decay by 23 % ([measured exposure](exposition-mesuree.en.md)). **`format`** closes a
+blind spot six chapters had missed: rich content above removes 8.4 points of examination from what
+follows ([format and return](format-et-retour.en.md)). They are also the two least sensitive of
+the six columns requested.
 
 Without it, three things stay out of reach, and will stay there whatever methodological progress
 is made:

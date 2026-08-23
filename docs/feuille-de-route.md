@@ -355,10 +355,18 @@ Ces points n'ont pas d'enjeu scientifique, mais ils conditionnent la relecture.
 
 C'est le seul verrou que ce dépôt ne peut pas lever seul, et c'est celui qui commande tous les
 autres. La [demande](article-40.md) est écrite, spécifiée article par article du règlement
-délégué (UE) 2025/2050, et **vérifiée** : les quatre tableaux agrégés qu'elle réclame
-recalculent à l'identique le test d'échangeabilité, la sévérité du biais de position et les deux
-mesures de diversité, pour 95 fois moins de lignes que le journal brut et sans aucune donnée
+délégué (UE) 2025/2050, et **vérifiée** : les tableaux agrégés qu'elle réclame recalculent à
+l'identique le test d'échangeabilité, la sévérité du biais de position, le test de forme et les
+deux mesures de diversité, pour 95 fois moins de lignes que le journal brut et sans aucune donnée
 personnelle. Il ne lui manque qu'un déposant éligible au sens de l'article 40(8)(a).
+
+Elle a gagné deux colonnes depuis sa rédaction, et chacune pour la même raison : une mesure a
+montré ce qu'on perdait sans elle. **`affichages`** retire le besoin d'estimer $\eta$, l'hypothèse
+de forme qui l'accompagne et le confondant d'attrait — sur données réelles, l'estimation par les
+clics surestime la décroissance de 23 % ([exposition mesurée](exposition-mesuree.md)).
+**`format`** ferme un angle mort que six chapitres n'avaient pas vu : un contenu enrichi au-dessus
+retire 8,4 points d'examen à ce qui suit ([format et retour](format-et-retour.md)). Ce sont aussi
+les deux colonnes les moins sensibles des six demandées.
 
 Sans elle, trois choses restent hors de portée, et le resteront quels que soient les progrès de
 méthode :

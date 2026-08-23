@@ -16,86 +16,83 @@
 
 Ce dépôt construit un **instrument** — une mesure de la diversité qu'un fil d'actualité expose
 réellement à son lecteur, calculable sans accès au code de la plateforme — et la **méthode
-adverse** qui l'a mis à l'épreuve : chaque proposition y est attaquée, et ce qui tombe est
-publié comme tel.
+adverse** qui l'a mis à l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié
+comme tel, y compris quand ce qui tombe vient du dépôt lui-même.
 
 ### Le verdict
 
 | Objet | État |
 |---|---|
 | l'analogie décohérence quantique ↔ effondrement du consensus, dont le projet est parti | **réfutée**, transfert par transfert → [audit](docs/limites.md) |
-| le formalisme classique qu'elle a fait emprunter | **cohérent**, un seul paramètre calibré, et sa seule prédiction propre testée quatre fois **sans effet** |
-| l'index tel qu'il était proposé | **intenable** : saturable à coût nul, puis contournable par l'enterrement |
-| la forme retenue de l'index | **définie et chiffrée**, jamais éprouvée sur un fil réel |
-| l'algorithme (ADE) | **sur la frontière exacte, mais pas premier** : une heuristique de 1998 fait aussi bien |
-| l'écart de persistance entre registres émotionnels | **n'existe pas** |
-| les instruments de mesure construits en chemin | **valides**, dont un confronté à une vérité terrain |
+| le formalisme classique qu'elle a fait emprunter | **cohérent**, un seul paramètre calibré, sa seule prédiction propre testée quatre fois **sans effet** |
+| l'écart de persistance entre registres émotionnels | **n'existe pas** — artefact de sélection |
+| l'indice tel qu'il était proposé | **intenable** : saturable à coût nul, puis contournable par l'enterrement |
+| la forme retenue de l'indice | **définie et chiffrée**, jamais mesurée sur un fil réel — et sa pondération de rang dépend de la **page servie** |
+| l'algorithme (ADE) | **sur la frontière exacte, et superflu** : une heuristique de 1998 fait aussi bien |
+| les instruments de mesure | **valides après correction** : trois restreints, deux conclusions retirées |
+| l'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : 0,88 ± 0,05 — non 1,09 comme estimé |
 
-**La théorie n'a pas tenu, la métrologie oui.**
+**La théorie n'a pas tenu ; la métrologie tient, mais seulement parce qu'elle a été corrigée à
+chaque étape — et ce qui survit le mieux n'est aucun instrument en particulier, c'est la
+méthode.**
+
+### La méthode, qui est le vrai résultat
+
+1. **Mesurer plutôt qu'estimer.** Le dépôt a construit trois contrôles, un estimateur à effets
+   fixes, un étalonnage de puissance et une limite d'identification — pour approcher une grandeur
+   qui était dans une colonne du fichier. → **[Exposition mesurée](docs/exposition-mesuree.md)**
+2. **Tout protocole s'applique d'abord à des données dont on connaît la réponse.** Trois fois un
+   protocole raisonnable a fabriqué son propre résultat ; trois fois un contrôle sur données
+   simulées l'a rattrapé avant publication. → **[Test de forme](docs/test-de-forme.md)**
+3. **Une explication se teste comme un chiffre.** L'écart entre formuler et vérifier est
+   l'endroit exact où une affirmation fausse s'installe.
+   → **[Format et retour](docs/format-et-retour.md)**
 
 ### Ce qui tient
 
-- **Un contrôle qui dit si un journal de recommandation est corrigible.** Le test
-  d'échangeabilité ne détecte rien dans MIND ($z = +0{,}12$, ordre mélangé) et rejette à
-  $z = -206$ sur Baidu-ULTR, du côté que la théorie prescrit.
-  → **[MIND](docs/mind.md)** · **[Journaux qui enregistrent le rang](docs/rang-servi.md)**
-- **Une sévérité de biais de position estimée au lieu d'être posée.** $1{,}10 \pm 0{,}09$ sur une
-  page de résultats, **dix fois moins** sur un bandeau de trois vignettes où l'allocation
-  aléatoire rend la mesure causale : $\eta$ est une propriété de la surface.
-  → **[Rang adverse](docs/rang-adverse.md)**
-- **Des estimateurs contrefactuels vérifiés contre une vérité terrain.** +2,5 % d'écart sur la
-  valeur d'une politique jamais déployée, contre +32 % pour l'estimation naïve — avec une taille
-  d'échantillon **effective** de 1 513 sur 4 millions, qui interdit d'en tirer gloire.
-- **Le filtre jugé contre la frontière exacte.** Sur 150 viviers, il laisse **0,0 à 1,0 %**
-  d'engagement sur la table — mais **MMR, publié en 1998, fait aussi bien**. Et le prix de la
+- **Trois contrôles à passer sur un journal, dans cet ordre** : l'**échangeabilité** — l'ordre
+  dit-il quelque chose ? — qui ne détecte rien dans MIND ($z = +0{,}12$) et rejette à $z = -206$
+  sur Baidu-ULTR ; l'**identifiabilité**, nécessaire et non suffisante ; et la **forme** —
+  l'examen dépend-il de ce qui a été cliqué au-dessus ?
+  → **[MIND](docs/mind.md)** · **[Rang servi](docs/rang-servi.md)** ·
+  **[Test de forme](docs/test-de-forme.md)**
+- **Une exposition mesurée, et non plus supposée** : $\eta = 0{,}88 \pm 0{,}05$ sur 143 documents,
+  par affichage plutôt que par clic. La **cascade est réfutée** sur Baidu-ULTR par deux voies
+  indépendantes, et la loi en $R^{-\eta}$ employée partout est le **pire** des trois ajustements
+  sur la courbe mesurée. → **[Exposition mesurée](docs/exposition-mesuree.md)**
+- **Des estimateurs contrefactuels confrontés à une vérité terrain** : +2,5 % d'écart contre
+  +32 % pour l'estimation naïve — avec une taille d'échantillon **effective** de 1 513 sur 4
+  millions, qui interdit d'en tirer gloire. Aucun estimateur ne remplace l'exploration.
+- **Une frontière exacte contre laquelle juger un réordonnanceur.** Le filtre s'y tient — 0,0 à
+  1,0 % d'engagement laissé sur la table — mais **MMR, publié en 1998, aussi**. Et le prix de la
   norme dépend du lecteur : **3,8 %** quand ses intérêts traversent les points de vue, **17,1 %**
   quand sa préférence *est* un point de vue. → **[Lignes de base](docs/lignes-de-base.md)**
-- **Une contre-expertise de ses propres instruments.** Confronté à la littérature, le dépôt
-  **retire** une conclusion publiée — « la proximité à la cible résiste le mieux » était un
-  artefact d'échelle —, en **restreint** une autre — l'enterrement dépend de la concentration de
-  l'attention et disparaît sur une surface plate — et **élargit** son incertitude sur $\eta$.
-  → **[Contre-expertise](docs/contre-expertise.md)** · **[Bibliographie](docs/bibliographie.md)**
-- **Et l'épreuve de ses deux hypothèses les plus profondes.** Sous un modèle de clic **à
-  cascade**, le test d'échangeabilité **tient** — il rejette plus fortement que sur données
-  réelles — mais la loi de puissance $R^{-\eta}$ s'effondre : au douzième rang elle surestime
-  l'exposition d'un facteur **40 à 4 110**. Et sous pertinence **estimée**, l'avantage des
-  méthodes réglées sur le hasard passe de 16,4 à 5,8 points, puis s'inverse.
-  → **[Les deux angles morts](docs/angles-morts.md)**
-- **Et un troisième contrôle, qui fonctionne sans trancher.** Le **test de forme** sépare
-  parfaitement modèle de position et cascade quand ils sont purs — mais un simple **budget de
-  clics** produit la même signature, et rien dans les clics ne les sépare. Sur Baidu-ULTR, aucune
-  cascade détectée. Et le protocole qui semblait devoir trancher **fabrique** la signature qu'il
-  cherche : un collider, rattrapé avant publication.
-  → **[Le test de forme](docs/test-de-forme.md)**
-- **Et l'exposition, finalement, se mesure.** Baidu-ULTR publie une colonne d'**affichage** jamais
-  lue par ce dépôt. Elle réfute la cascade, et révise le chiffre publié : la sévérité vaut
-  **0,88 ± 0,05** sur 143 documents, non 1,09 sur 55 — l'estimation par les clics **surestimait de
-  23 %**. La loi en $R^{-\eta}$ employée partout est le **pire** des trois ajustements sur la
-  courbe mesurée. → **[Exposition mesurée](docs/exposition-mesuree.md)**
-- **Et les deux dernières colonnes achèvent le tableau.** Un compteur de défilement **réfute la
-  cascade une seconde fois**, par un fait consigné. Un **format enrichi** au-dessus retire
-  **8,4 points** d'examen à ce qui suit, à rang et à hauteur comparables — la remise d'attention
-  est une propriété de la **page servie**, pas du rang. Et l'explication que j'avais donnée de la
-  forme en deux temps est **fausse**. → **[Format et retour](docs/format-et-retour.md)**
-- **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
+- **Une demande d'accès aux données qui se vérifie au lieu de se plaider** : quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
-  → **[Article 40](docs/article-40.md)**
+  Deux colonnes s'y sont ajoutées depuis, `affichages` et `format`, chacune parce qu'une mesure a
+  montré ce qu'on perdait sans elle. → **[Article 40](docs/article-40.md)**
 
 ### Ce qui est tombé
 
-Six résultats négatifs, publiés avec ce qui les établit : le critère $\gamma\alpha > \lambda$
-[ne veut rien dire](docs/calibration.md) ; l'écart de persistance entre registres
-[n'existe pas](docs/corpus-etendu.md) et [n'était pas dilué](docs/annotation.md) par
-l'étiquetage ; un plancher d'index [se sature à coût nul](docs/gaming.md) ; le premier correctif
-[prescrivait la polarisation](docs/gaming.md) ; et le jeu de données de référence
-[ne permet pas l'évaluation annoncée](docs/mind.md).
+**Sur le monde** : le critère $\gamma\alpha > \lambda$ [ne veut rien dire](docs/calibration.md) ;
+l'écart de persistance entre registres [n'existe pas](docs/corpus-etendu.md) et
+[n'était pas dilué](docs/annotation.md) par l'étiquetage ; aucun jeu public ne permet
+[l'évaluation annoncée](docs/mind.md) ; et l'examen n'est ni une cascade ni une loi de puissance
+[sur Baidu-ULTR](docs/exposition-mesuree.md).
+
+**Sur les propositions du dépôt lui-même** : un plancher d'indice
+[se sature à coût nul](docs/gaming.md) ; le premier correctif
+[prescrivait la polarisation](docs/gaming.md) ; « la proximité à la cible résiste le mieux » était
+[un artefact d'échelle](docs/contre-expertise.md) ; le filtre
+[n'apporte rien qu'une heuristique de 1998 n'apporte déjà](docs/lignes-de-base.md) ; et
+l'explication du « pli d'écran » [est fausse](docs/format-et-retour.md).
 
 ### Les deux instruments
 
 | | Objet | État |
 |---|---|---|
-| **IDE** | *Indice de Diversité Exposée* — entropie des contenus servis sur un catalogue déclaré, **pondérée par l'attention de chaque rang**, dans $[0,1]$, mesurable sans accès au code | forme retenue **définie**, non éprouvée sur données réelles |
-| **ADE** | *Algorithme de Diversité Exposée* — filtre de recommandation qui optimise cet indice plutôt que l'engagement brut | **non évalué** : le jeu de données qui le permettrait n'existe pas publiquement |
+| **IDE** | *Indice de Diversité Exposée* — entropie des contenus servis sur un catalogue déclaré, **pondérée par l'attention de chaque rang**, dans $[0,1]$, mesurable sans accès au code | forme **définie**, jamais mesurée sur un fil réel |
+| **ADE** | *Algorithme de Diversité Exposée* — filtre de recommandation qui optimise cet indice plutôt que l'engagement brut | **sur la frontière exacte, et superflu** |
 
 ## À lire d'abord : ce que le travail ne prétend pas
 

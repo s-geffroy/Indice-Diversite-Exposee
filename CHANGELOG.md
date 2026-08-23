@@ -7,6 +7,34 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Modifié — la conclusion générale, remise à l'état des mesures
+
+La page d'accueil avait de nouveau grossi par accrétion : six paragraphes commençant par « Et… »,
+un par chapitre, et un tableau de verdict qui datait d'avant la contre-expertise. Réécriture.
+
+- **Le verdict** est refait : huit lignes, dont trois nouvelles — la forme retenue dont la
+  pondération dépend de la **page servie**, les instruments **valides après correction**, et
+  l'exposition **mesurable et mesurée**.
+- **Une section neuve — « la méthode, qui est le vrai résultat »** : mesurer plutôt qu'estimer ;
+  appliquer tout protocole d'abord à des données dont on connaît la réponse ; tester une
+  explication comme un chiffre. Trois règles acquises chacune en violant la précédente.
+- **La phrase de conclusion est corrigée.** « La théorie n'a pas tenu, la métrologie oui »
+  devient : *la métrologie tient, mais seulement parce qu'elle a été corrigée à chaque étape — et
+  ce qui survit le mieux n'est aucun instrument en particulier, c'est la méthode.*
+- **« Ce qui est tombé » est scindé** en résultats négatifs *sur le monde* (cinq) et *sur les
+  propositions du dépôt lui-même* (cinq). La seconde moitié n'existait pas.
+- **La figure d'ouverture** passe de l'enterrement à l'exposition mesurée : le premier résultat a
+  été restreint depuis, le second illustre la thèse du dépôt.
+- [`docs/limites.md`](docs/limites.md) reçoit une **synthèse des vingt-trois corrections** :
+  les erreurs qui survivent le plus longtemps sont celles qui produisent des chiffres
+  vraisemblables ; ce qui les attrape n'est jamais la relecture mais la confrontation ; et la
+  moitié portent sur les propositions du dépôt, non sur son point de départ.
+- Les **résumés des deux notes LaTeX** intègrent la mesure directe de l'exposition, la réfutation
+  de la cascade et l'effet du format — la conclusion principale de leur partie I étant désormais
+  négative pour la méthode qui venait d'y être construite.
+- [`docs/feuille-de-route.md`](docs/feuille-de-route.md) — la demande a gagné deux colonnes, et
+  chacune parce qu'une mesure a montré ce qu'on perdait sans elle.
+
 ### Ajouté — le format, le retour, et une explication retirée
 
 Les deux dernières colonnes inexploitées de Baidu-ULTR. Détail :

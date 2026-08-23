@@ -38,17 +38,25 @@ prescribe the very polarisation it claims to measure. And any rank-blind measure
 by \emph{burying} the divergent items --- a platform certified at $0.70$ exposes only $0.36$ of
 real diversity, and closing the loophole doubles the engagement cost.
 
-Verifying such a standard on real data requires knowing \emph{exposure}. We give an exact
-within-feed test that decides whether a recommender log permits any exposure correction at
-all, and an estimator of position-bias severity. Applied to three public logs, they establish
-that MIND does not preserve the served order --- the estimator returns five incompatible
-severities there --- while Baidu-ULTR does ($\hat\eta = 1.10 \pm 0.09$), and the Open Bandit
-Dataset permits this work's only confrontation with a ground truth: the value of a
-never-deployed policy is recovered to within $2.5\%$, against $31.6\%$ error for the naive
-estimate.
+Verifying such a standard on real data requires knowing \emph{exposure}. We give three checks to
+run on a recommender log --- does its order say anything, is there enough to estimate, and in what
+form --- and apply them to three public logs. MIND does not preserve the served order, and the
+usual estimator returns five incompatible severities there; Baidu-ULTR does preserve it; the Open
+Bandit Dataset permits this work's only confrontation with a ground truth, where the value of a
+never-deployed policy is recovered to within $2.5\%$ against $31.6\%$ error for the naive estimate.
+
+The principal conclusion of this part is however negative for the method we had just built.
+Baidu-ULTR publishes a display-time column allowing exposure to be \textbf{measured} rather than
+estimated through clicks: severity is then $0.88 \pm 0.05$ over $143$ documents, not
+$1.09 \pm 0.09$ over $55$ --- the estimate overstates decay by $23\%$, because a click conflates
+examination with attractiveness. Direct measurement further refutes the cascade model on that log,
+by two independent routes, and shows the $R^{-\eta}$ law to be the worst of three fits on the
+observed curve. Finally, a rich display format placed above removes $8.4$ points of examination
+from what follows, at equal rank and comparable page height: the rank weighting is therefore not a
+property of rank, nor even of the surface, but of the \textbf{page served}.
 
 No public dataset carries both the served rank and an interpretable viewpoint label. We
-therefore specify, under Article~40 of the \emph{Digital Services Act}, four aggregate tables
+therefore specify, under Article~40 of the \emph{Digital Services Act}, aggregate tables
 containing no personal data, verified to recompute the measurements identically for a hundred
 times fewer rows than a raw log.
 

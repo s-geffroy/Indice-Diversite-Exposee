@@ -625,3 +625,25 @@ study has been carried out, system sizes are modest (24×24 lattices, population
 hundred), and no result is compared against real data. The conclusions are
 **qualitative**: they concern the existence of regimes and the direction of dependencies,
 never transposable numerical values.
+
+
+### What twenty-three corrections teach, taken together
+
+The corrections above were recorded one by one, in the order they occurred. Taken together, they
+trace three regularities worth more than their sum.
+
+**The errors that survive longest are those producing plausible figures.** None ever produced an
+absurd value. The digest that assumed feed structure returned $z = -200$ instead of $-206$; the
+restriction to multi-click feeds returned $-8.2$ instead of nothing; fitting a power law to a
+cascade returned $\hat\eta = 0.5$ with a standard error of $0.04$. A figure of the right order,
+the right sign, with the right conclusion — exactly what no re-reading catches.
+
+**What caught them was never re-reading, it was confrontation.** With data whose answer is known,
+with a ground truth, with another estimation method, or with the field's literature. Five of the
+twenty-three corrections come from the initial reading of the thread; the other eighteen come
+from having measured.
+
+**And half bear on the repository's own proposals, not on its starting point.** An instrument
+built to check other people's claims must be turned against one's own, and here it is turned that
+way more often than it was against the original thread. That is the only defence against the bias
+of testing rigorously what one believes false and superficially what one believes true.

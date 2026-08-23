@@ -708,3 +708,27 @@ modestes (réseaux de 24×24, populations de quelques centaines), et aucun résu
 n'est comparé à un jeu de données réel. Les conclusions sont **qualitatives** :
 elles portent sur l'existence de régimes et le sens des dépendances, jamais sur des
 valeurs numériques transposables.
+
+
+### Ce que vingt-trois corrections enseignent, prises ensemble
+
+Les corrections ci-dessus ont été consignées une à une, dans l'ordre où elles sont survenues.
+Prises ensemble, elles dessinent trois régularités qui valent plus que leur somme.
+
+**Les erreurs qui survivent le plus longtemps sont celles qui produisent des chiffres
+vraisemblables.** Aucune n'a jamais produit une valeur absurde. Le condensé qui supposait la
+structure des fils rendait $z = -200$ au lieu de $-206$ ; la restriction aux fils à plusieurs
+clics rendait $-8{,}2$ au lieu de rien ; l'ajustement d'une loi de puissance sur une cascade
+rendait $\hat\eta = 0{,}5$ avec une erreur type de $0{,}04$. Un chiffre du bon ordre de grandeur,
+du bon signe, avec la bonne conclusion — c'est exactement ce qu'aucune relecture n'attrape.
+
+**Ce qui les a attrapées n'est jamais la relecture, c'est la confrontation.** À des données dont
+on connaît la réponse, à une vérité terrain, à une autre méthode d'estimation, ou à la
+littérature du domaine. Cinq des vingt-trois corrections viennent de la lecture initiale du fil ;
+les dix-huit autres viennent d'avoir mesuré.
+
+**Et la moitié portent sur les propositions du dépôt lui-même, non sur son point de départ.**
+Un instrument construit pour vérifier les affirmations d'autrui doit être retourné contre les
+siennes, et il l'est ici plus souvent qu'il ne l'a été contre le fil d'origine. C'est la seule
+défense contre le biais qui consiste à éprouver rigoureusement ce qu'on croit faux et
+superficiellement ce qu'on croit vrai.
