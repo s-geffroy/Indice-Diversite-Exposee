@@ -11,7 +11,7 @@ lecteur, calculable sans accès au code de la plateforme — et la **méthode ad
 l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel, y compris
 quand ce qui tombe vient du dépôt lui-même.
 
-Il en reste vingt-cinq notebooks exécutables, 610 tests, **vingt-quatre corrections consignées**,
+Il en reste vingt-six notebooks exécutables, 623 tests, **vingt-cinq corrections consignées**,
 et un état des lieux qui ne ressemble ni à ce que le projet annonçait, ni à ce qu'il croyait avoir
 établi six chapitres plus tôt.
 
@@ -33,7 +33,9 @@ la décroissance de 23 %. Figure régénérée par
 | Le formalisme classique qu'elle a fait emprunter | **cohérent**, un seul paramètre calibré, et sa seule prédiction propre — l'effet de la charge émotionnelle — **testée quatre fois sans effet** |
 | L'écart de persistance entre registres émotionnels | **n'existe pas** — artefact de sélection → [corpus étendu](corpus-etendu.md) |
 | L'indice tel qu'il était proposé au régulateur | **intenable** : saturable à coût nul, puis contournable par l'enterrement → [test adverse](gaming.md) · [rang adverse](rang-adverse.md) |
-| La forme retenue de l'indice | **définie et chiffrée**, jamais mesurée sur un fil réel — mais sa pondération de rang est **transportable** : la page servie ne la déplace que de 6 % → [l'effet de page](effet-de-page.md) |
+| La forme retenue de l'indice | **définie et chiffrée**, et sa pondération de rang est **transportable** : la page servie ne la déplace que de 6 % → [l'effet de page](effet-de-page.md) |
+| L'indice **aveugle au rang**, sur des fils réels | **mesuré pour la première fois** : 0,47 par journée-utilisateur, 4,6 rubriques effectives sur 26 → [l'indice mesuré](indice-mesure.md) |
+| L'indice **exposé**, sur ces mêmes fils | **encadré, non mesuré** — la colonne d'ordre du seul jeu qui l'offre ne contient pas le rang ; 6 fils sur 10 restent indécidables → [l'indice mesuré](indice-mesure.md) |
 | L'algorithme (ADE) | **sur la frontière exacte, et superflu** : une heuristique de 1998 fait aussi bien, et l'écart s'efface encore à pertinence bruitée → [lignes de base](lignes-de-base.md) · [angles morts](angles-morts.md) |
 | Les instruments de mesure | **valides après correction** — trois d'entre eux ont dû être restreints, et trois conclusions retirées → [contre-expertise](contre-expertise.md) · [l'effet de page](effet-de-page.md) |
 | L'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : $0{,}88 \pm 0{,}05$ — non $1{,}09$ comme estimé → [exposition mesurée](exposition-mesuree.md) |
@@ -42,11 +44,12 @@ la décroissance de 23 %. Figure régénérée par
 **En une phrase : la théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle
 qui décide de tout le reste, et qu'on peut mesurer au lieu de la supposer : $0{,}88$ et non $1$,
 sans cascade, et à 6 % près indépendante de la page servie. C'est assez pour écrire une norme ;
-il ne manque plus que l'accès aux données.**
+ce qui manque n'est plus une méthode mais un **rang vérifiable** — et le seul journal public qui
+prétend le fournir ne le fournit pas.**
 
 ## Ce qui tient
 
-Cinq objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne. Un test
+Six objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne. Un test
 statistique s'applique à d'autres données et répond seul ; il ne demande pas qu'on croie celui qui
 l'a écrit. C'est le critère qui les distingue des préceptes de méthode que ce dépôt a un temps
 promus au rang de résultat, à tort — cette page le disait, et l'[audit](limites.md) dit pourquoi
@@ -79,6 +82,12 @@ l'exploration : le doublement robuste fait moins bien. → [rang servi](rang-ser
 lecteur : 3,8 % quand ses intérêts traversent les points de vue, 17,1 % quand sa préférence *est*
 un point de vue. → [lignes de base](lignes-de-base.md)
 
+**Et un premier chiffre réel, là où il n'y avait que des simulations.** Sur 232 887 fils
+danois, la diversité **servie** vaut 0,47 par journée-utilisateur — 4,6 rubriques effectives sur
+26. L'indice **exposé**, lui, n'est qu'encadré : la colonne d'ordre du seul jeu qui l'offre ne
+contient pas le rang, et six fils sur dix restent indécidables à un plancher de 0,40.
+→ [l'indice mesuré](indice-mesure.md)
+
 **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
 agrégés, sans donnée personnelle, prouvés suffisants — pour 95 fois moins de lignes que le
 journal. Deux colonnes s'y sont ajoutées depuis, **`affichages`** et **`format`**, chacune parce
@@ -95,8 +104,9 @@ qu'une mesure a montré ce qu'on perdait sans elle.
   440 sujets → [corpus étendu](corpus-etendu.md) ;
 * **il n'était pas dilué par l'étiquetage** — 40 % de bruit mesuré, l'écart disparaît quand même
   → [annotation en aveugle](annotation.md) ;
-* **aucun jeu public ne permet l'évaluation annoncée** — MIND a les catégories sans le rang,
-  Baidu-ULTR le rang sans étiquette → [MIND](mind.md) · [rang servi](rang-servi.md) ;
+* **aucun jeu public ne permet l'évaluation annoncée** — mais pas pour la raison publiée :
+  EB-NeRD porte les deux colonnes, et c'est sa **colonne d'ordre qui ne contient pas l'ordre**
+  → [l'indice mesuré](indice-mesure.md) ;
 * **l'examen n'est pas une cascade** sur Baidu-ULTR, et il ne suit pas une loi de puissance
   → [exposition mesurée](exposition-mesuree.md).
 
@@ -117,12 +127,15 @@ qu'une mesure a montré ce qu'on perdait sans elle.
 
 ## Ce qui n'est pas tranché
 
-* **L'indice n'a jamais été mesuré sur un fil réel.** La lacune est de **donnée**, non de méthode,
-  et [la demande](article-40.md) dit exactement ce qu'il faudrait.
+* **L'indice exposé n'a jamais été mesuré sur un fil réel** — seulement **encadré**, à 0,104
+  près, sur 232 887 fils danois. La lacune est de **donnée**, non de méthode, et
+  [la demande](article-40.md) dit exactement ce qu'il faudrait — un rang **vérifiable**.
+* **Une rubrique n'est pas un point de vue.** Le seul chiffre réel dont le dépôt dispose porte
+  sur la diversité **thématique** exposée. → [l'indice mesuré](indice-mesure.md)
 * **Le niveau du plancher est une décision politique**, comme le catalogue de points de vue. La
   mesure décrit, elle ne prescrit pas.
 * **Les trois codeurs de l'annotation sont des instances du même modèle de langue.**
-* **Rien n'a été validé de l'extérieur.** Les 610 tests vérifient que le code fait ce qui est
+* **Rien n'a été validé de l'extérieur.** Les 623 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 * **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique.**
@@ -161,7 +174,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-cinq notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-six notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -199,7 +212,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 610 tests
+docker compose run --rm test          # 623 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

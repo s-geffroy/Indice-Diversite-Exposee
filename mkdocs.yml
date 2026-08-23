@@ -150,6 +150,7 @@ nav:
       - Exposition mesurée: exposition-mesuree.md
       - Format et retour: format-et-retour.md
       - L'effet de page: effet-de-page.md
+      - L'indice mesuré: indice-mesure.md
       - Mémorandum de régulation: memorandum.md
   - Réserves:
       - Audit critique et limites: limites.md
@@ -183,3 +184,4 @@ nav:
       - 23 — Exposition mesurée: notebooks/23_exposition_mesuree.ipynb
       - 24 — Format et retour: notebooks/24_format_et_retour.ipynb
       - 25 — L'effet de page: notebooks/25_effet_de_page.ipynb
+      - 26 — L'indice mesuré: notebooks/26_indice_mesure.ipynb

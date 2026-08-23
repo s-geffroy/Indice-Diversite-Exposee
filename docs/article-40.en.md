@@ -66,6 +66,14 @@ the engagement cost ([adversarial rank](rang-adverse.en.md)). It also establishe
 correction requires knowing exposure, hence the **served rank**, and that ignoring it makes the
 evaluation vacuous by construction ([MIND](mind.en.md)).
 
+!!! warning "The rank requested must be **verifiable**, not declared"
+    At least one public dataset supplies an order column that is not the served rank, without
+    lying and with nothing signalling it: on EB-NeRD the recorded order fails the exchangeability
+    test ($z = +1.05$) even though the log would have detected a severity a hundred and thirty
+    times smaller. The request therefore bears on a rank **whose informativeness can be tested**,
+    and that test is the first thing to run on the delivered data.
+    → [the index measured](indice-mesure.en.md)
+
 The research requested consists of measuring, on the feeds actually served by [PLATFORM]:
 
 1. the gap between **composed diversity** and **exposed diversity**, by period;

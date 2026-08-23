@@ -75,7 +75,13 @@ elle-même : il est donc directement seuillable. → [rang adverse](rang-adverse
 !!! warning "Cette forme n'a jamais été mesurée sur un fil réel"
     Son coût d'engagement est chiffré **en simulation** — de 8,2 % à 18,9 % selon la mesure,
     par énumération exhaustive de tous les fils possibles — et son niveau de plancher reste à
-    décider politiquement. Aucun jeu de données public ne permet de la calculer : il y faudrait
+    décider politiquement. Un seul jeu public s'en approche, et il manque au dernier moment :
+    EB-NeRD porte la liste servie **et** une rubrique déclarée, mais son ordre enregistré ne
+    contient pas le rang. La **forme aveugle au rang** y est mesurée — 0,47 par
+    journée-utilisateur, 4,6 rubriques effectives sur 26 — et la forme exposée seulement
+    **encadrée**. → [l'indice mesuré](indice-mesure.md)
+
+    Ce qu'il faudrait pour la calculer :
     le rang servi **et** une étiquette de point de vue interprétable, et aucun ne porte les
     deux. → [journaux qui enregistrent le rang](rang-servi.md) ·
     [demande au titre de l'article 40](article-40.md)

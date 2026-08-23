@@ -568,6 +568,37 @@ manufactured its own result, and the first time it happened in a chapter that al
 simulated-control rule — but to a different question. The control had been placed on geometry,
 not on composition. A control protects only against what it controls.
 
+### 25. An absence stated as a fact, without having looked
+
+**What I wrote.** Six chapters repeat the same sentence: "no public dataset carries both the
+served rank and an interpretable viewpoint label". It justifies the
+[access request](article-40.en.md), concludes [MIND](mind.en.md) and
+[served rank](rang-servi.en.md), and stands as a permanent caveat on the [index](ide.en.md).
+
+**The problem.** Three datasets had been examined — MIND, Baidu-ULTR, the Open Bandit Dataset —
+and the sentence was written as though it ranged over **all** of them. It is a claim of absence,
+and a claim of absence cannot be established by measurement: it is established by a search, and
+no search had been made. The fourth dataset looked at carries both columns.
+
+**What the fourth dataset gives.** EB-NeRD (*Ekstra Bladet*, RecSys Challenge 2024) gives the
+served list and a declared section for every article. The repository's first check then says its
+**recorded order does not contain the rank**: $z = +1.05$, $p = 0.29$ over 232,887 feeds, and the
+log would have detected a severity of $0.0066$ — one hundred and thirty-four times smaller than
+the one measured on Baidu-ULTR. This is not a power failure.
+
+**What the correction buys.** The practical conclusion survives — the exposed index is not
+measurable on public data — but its reason changes, and the new reason is more useful: a platform
+can deliver an order column that is not the rank, without lying and with nothing signalling it.
+The Article 40 request now asks for a **verifiable** rank, and the exchangeability test becomes
+an **admissibility clause** rather than a methodological preliminary. In passing, the rank-blind
+index finally gets a real figure: $0.47$ per user-day, $4.6$ effective sections out of $26$.
+
+**What this episode teaches about method.** The repository has a rule — publish nothing you have
+not measured — and it does not cover this case: an absence cannot be measured. Its twin was
+missing: **a claim of absence must publish the extent of the search behind it.** "No public
+dataset" should have read "none of the three datasets examined", and the gap between those two
+phrasings is exactly what let the error live for six chapters.
+
 ---
 
 ## What the model cannot do
@@ -660,7 +691,7 @@ hundred), and no result is compared against real data. The conclusions are
 never transposable numerical values.
 
 
-### What twenty-four corrections teach, taken together
+### What twenty-five corrections teach, taken together
 
 The corrections above were recorded one by one, in the order they occurred. Taken together, they
 trace three regularities worth more than their sum.
@@ -673,8 +704,8 @@ the right sign, with the right conclusion — exactly what no re-reading catches
 
 **What caught them was never re-reading, it was confrontation.** With data whose answer is known,
 with a ground truth, with another estimation method, or with the field's literature. Five of the
-twenty-four corrections come from the initial reading of the thread; the other nineteen come
-from having measured.
+twenty-five corrections come from the initial reading of the thread; the other twenty come from
+having measured — or, for the last one, from having looked.
 
 **And half bear on the repository's own proposals, not on its starting point.** An instrument
 built to check other people's claims must be turned against one's own, and here it is turned that
@@ -689,10 +720,10 @@ withdrawn, for three reasons.
   is known, test an explanation like a figure — are **banal**. Nobody disputes them, they are not
   being stated here for the first time, and no reviewer will receive them as a result.
 * The demonstration is **circular**. The argument was "the method is worth something because it
-  caught twenty-four errors"; but the same work produced those errors. A method assessed on its
+  caught twenty-five errors"; but the same work produced those errors. A method assessed on its
   own faults is compared against a baseline it manufactured. With no error, there is nothing to
   catch and the claimed value drops to zero.
-* Nothing has been **validated from the outside**. The 610 tests check that the code does what is
+* Nothing has been **validated from the outside**. The 623 tests check that the code does what is
   claimed, not that what is claimed is true, and no reviewer has been through it
   ([call for review](relecture.md)).
 

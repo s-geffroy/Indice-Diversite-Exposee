@@ -223,9 +223,11 @@ And it requires no privileged data access.
       three-thumbnail banner than on a results page. It does not transport;
     * **counterfactual estimators hold** against a ground truth, on an effective sample size of
       1,513 out of 4 million impressions — the figure to publish;
-    * **no public dataset carries both the served rank and an interpretable viewpoint label.**
-      MIND has categories without rank, Baidu-ULTR rank without labels, the Open Bandit Dataset
-      rank with anonymised attributes.
+    * **one public dataset carries both columns — and its order column does not contain the
+      order.** EB-NeRD fails the exchangeability test on its recorded order
+      ([the index measured](indice-mesure.en.md)); what must be asked for is therefore not the
+      rank but the **verifiable** rank. MIND has categories without rank, Baidu-ULTR rank
+      without labels, the Open Bandit Dataset rank with anonymised attributes.
 
     What remains feasible, replacing the initial protocol:
 

@@ -63,8 +63,14 @@ Une mesure appariée retire cette conclusion : à \emph{contenu} tenu fixe, il n
 pour la convention $1/R$ : la loi de rang est donc \textbf{transportable}, et ce qui menace la
 mesure n'est pas la page mais de n'avoir pas mesuré.
 
-Aucun jeu public ne porte à la fois le rang servi et une étiquette de point de vue
-interprétable. Nous spécifions donc, au titre de l'article~40 du \emph{Digital Services
+Un quatrième journal, EB-NeRD, porte enfin les deux colonnes attendues --- la liste servie et
+une rubrique déclarée. Le premier contrôle dit que son \textbf{ordre enregistré ne contient pas
+le rang} ($z = +1{,}05$, alors que le journal aurait détecté une sévérité cent trente-quatre fois
+plus faible). L'indice aveugle au rang y est donc mesuré pour la première fois sur des fils réels
+--- $0{,}47$ par journée-utilisateur, soit $4{,}6$ rubriques également servies sur $26$ --- et
+l'indice exposé seulement \emph{encadré}, à $0{,}104$ près : à un plancher de $0{,}40$, un tiers
+des fils y contreviennent quelle que soit leur mise en ordre, et six sur dix restent indécidables.
+Ce qu'un régulateur doit réclamer n'est donc pas le rang, mais le rang \textbf{vérifiable}. Nous spécifions donc, au titre de l'article~40 du \emph{Digital Services
 Act}, des tableaux agrégés sans donnée personnelle, dont il est vérifié qu'ils recalculent les
 mesures à l'identique pour cent fois moins de lignes qu'un journal brut.
 
@@ -1216,6 +1222,49 @@ $404\,478$ : ce sont les documents servis au même rang dans des pages de compos
 différentes, et rien ne garantit qu'ils ressemblent aux autres. L'appariement par requête
 concorde mais n'établit rien seul, son intervalle contenant $1$. Enfin, le regroupement de
 \texttt{media\_type} en « ordinaire » contre « enrichi » reste un choix de ce travail.
+
+\subsection{L'indice, mesuré sur un fil réel}
+\label{sec:indicemesure}
+
+Six sections de cette note répètent la même phrase : \emph{aucun jeu de données public ne porte à
+la fois le rang servi et une étiquette de point de vue interprétable}. Elle est fausse, et sa
+fausseté est instructive.
+
+\paragraph{Un quatrième journal.} EB-NeRD (\emph{Ekstra Bladet}, RecSys Challenge 2024) donne
+pour chaque impression la liste servie \texttt{article\_ids\_inview} et rattache chaque article à
+une rubrique déclarée. Les deux colonnes sont là. Le test d'échangeabilité de
+\S\ref{sec:exposition} rend pourtant $z = +1{,}05$ ($p = 0{,}29$) sur $232\,887$ fils : l'ordre
+enregistré ne porte aucune information de position. Ce n'est pas un défaut de puissance --- la
+sévérité que ce journal aurait détectée vaut $0{,}0066$, soit $134$ fois moins que celle mesurée
+sur Baidu-ULTR. \texttt{article\_ids\_inview} est un \textbf{ensemble servi}, pas un fil ordonné.
+
+\paragraph{Ce qui devient mesurable.} La forme aveugle au rang, jamais calculée jusqu'ici
+ailleurs qu'en simulation. Sur la fenêtre que \S\ref{sec:indice} prescrit --- la
+journée-utilisateur --- l'indice vaut $0{,}466$ en médiane, soit $4{,}56$ rubriques également
+servies sur $26$, avec $18{,}8\,\%$ des journées sous $0{,}40$ et $71{,}2\,\%$ sous $0{,}50$. Ce
+chiffre ne dit pas si c'est peu ou beaucoup ; il donne l'ordre de grandeur qui manquait à toute
+discussion de plancher.
+
+\paragraph{Ce qui reste de l'indice exposé.} La composition étant connue et l'ordre non,
+l'indice exposé n'est pas déterminé mais \textbf{contraint}. L'énumération exacte de toutes les
+mises en ordre distinctes donne un encadrement de largeur médiane $0{,}104$. Trois verdicts
+deviennent possibles, et leur asymétrie est le résultat : à un plancher de $0{,}40$, $32{,}4\,\%$
+des fils y contreviennent \emph{quelle que soit} leur mise en ordre --- constat opposable sans la
+colonne manquante --- $7{,}9\,\%$ sont sûrement conformes, et $59{,}7\,\%$ restent indécidables.
+Sans le rang, on peut condamner ; on n'acquitte presque jamais.
+
+\paragraph{Conséquence sur \S\ref{sec:demande}.} La demande réclamait « le rang servi ». Ce
+n'est pas assez : une plateforme peut fournir une colonne d'ordre qui n'est pas le rang, sans
+mentir et sans que rien ne le signale. Elle doit donc réclamer un rang \textbf{vérifiable}, et le
+test d'échangeabilité devient une clause de recevabilité appliquée aux données livrées, avant
+toute autre mesure.
+
+\paragraph{Réserves.} \texttt{category\_str} est une \emph{rubrique}, non un point de vue : la
+mesure porte sur la diversité thématique exposée, substitut déjà employé sur MIND. La sévérité
+$\eta = 0{,}88$ est transportée de Baidu-ULTR, un moteur de recherche ; \S\ref{sec:effetdepage}
+a établi qu'elle se transporte d'une page à l'autre, non d'une plateforme à l'autre, d'où un test
+de sensibilité qui ne renverse pas la conclusion. L'encadrement exact ne couvre que les fils de
+dix contenus ou moins, soit $64\,\%$ du journal.
 
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}

@@ -640,6 +640,38 @@ raisonnable fabrique son propre résultat, et la première où il l'a fait dans 
 appliquait déjà la règle du contrôle simulé — mais à une autre question. Le contrôle avait été
 posé sur la géométrie, pas sur la composition. Un contrôle ne protège que de ce qu'il contrôle.
 
+### 25. Une absence énoncée comme un fait, sans l'avoir cherchée
+
+**Ce que j'avais écrit.** Six chapitres répètent la même phrase : « aucun jeu de données public
+ne porte à la fois le rang servi et une étiquette de point de vue interprétable ». Elle sert de
+justification à la [demande d'accès](article-40.md), de conclusion à
+[MIND](mind.md) et à [rang servi](rang-servi.md), et de réserve permanente à l'[indice](ide.md).
+
+**Le problème.** Trois jeux avaient été examinés — MIND, Baidu-ULTR, l'Open Bandit Dataset — et
+la phrase a été écrite comme si elle portait sur **tous**. C'est une affirmation d'absence, et
+une affirmation d'absence ne se démontre pas par la mesure : elle se démontre par une recherche,
+qui n'avait pas été faite. Le quatrième jeu regardé porte les deux colonnes.
+
+**Ce que rend le quatrième jeu.** EB-NeRD (*Ekstra Bladet*, RecSys Challenge 2024) donne la liste
+servie et une rubrique déclarée pour chaque article. Le premier contrôle du dépôt dit alors que
+son **ordre enregistré ne contient pas le rang** : $z = +1{,}05$, $p = 0{,}29$ sur 232 887 fils,
+et le journal aurait détecté une sévérité de $0{,}0066$ — cent trente-quatre fois plus faible que
+celle mesurée sur Baidu-ULTR. Ce n'est donc pas un défaut de puissance.
+
+**Ce que la correction rapporte.** La conclusion pratique survit — l'indice exposé n'est pas
+mesurable sur données publiques — mais sa raison change, et la nouvelle raison est plus utile :
+une plateforme peut livrer une colonne d'ordre qui n'est pas le rang, sans mentir et sans que
+rien ne le signale. La demande au titre de l'article 40 réclame désormais un rang
+**vérifiable**, et le test d'échangeabilité devient une **clause de recevabilité** plutôt qu'un
+préalable méthodologique. Au passage, l'indice aveugle au rang reçoit enfin un chiffre réel :
+$0{,}47$ par journée-utilisateur, soit $4{,}6$ rubriques effectives sur $26$.
+
+**Ce que cet épisode enseigne sur la méthode.** Le dépôt a une règle — ne rien publier qu'on
+n'ait mesuré — et elle ne couvre pas ce cas : une absence n'est pas mesurable. Sa règle jumelle
+manquait : **une affirmation d'absence doit publier l'étendue de la recherche qui la fonde.**
+« Aucun jeu public » aurait dû s'écrire « aucun des trois jeux examinés », et l'écart entre les
+deux formulations est exactement ce qui a permis à l'erreur de vivre six chapitres.
+
 ---
 
 ## Ce que le modèle ne peut pas faire
@@ -742,7 +774,7 @@ elles portent sur l'existence de régimes et le sens des dépendances, jamais su
 valeurs numériques transposables.
 
 
-### Ce que vingt-quatre corrections enseignent, prises ensemble
+### Ce que vingt-cinq corrections enseignent, prises ensemble
 
 Les corrections ci-dessus ont été consignées une à une, dans l'ordre où elles sont survenues.
 Prises ensemble, elles dessinent trois régularités qui valent plus que leur somme.
@@ -756,8 +788,8 @@ du bon signe, avec la bonne conclusion — c'est exactement ce qu'aucune relectu
 
 **Ce qui les a attrapées n'est jamais la relecture, c'est la confrontation.** À des données dont
 on connaît la réponse, à une vérité terrain, à une autre méthode d'estimation, ou à la
-littérature du domaine. Cinq des vingt-quatre corrections viennent de la lecture initiale du fil ;
-les dix-neuf autres viennent d'avoir mesuré.
+littérature du domaine. Cinq des vingt-cinq corrections viennent de la lecture initiale du fil ;
+les vingt autres viennent d'avoir mesuré — ou, pour la dernière, d'avoir cherché.
 
 **Et la moitié portent sur les propositions du dépôt lui-même, non sur son point de départ.**
 Un instrument construit pour vérifier les affirmations d'autrui doit être retourné contre les
@@ -774,10 +806,10 @@ trois raisons.
   les conteste, elles ne s'énoncent pas ici pour la première fois, et aucun relecteur ne les
   recevra comme un résultat.
 * La démonstration est **circulaire**. L'argument était « la méthode vaut parce qu'elle a rattrapé
-  vingt-quatre erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
+  vingt-cinq erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
   ses propres fautes se compare à une référence qu'elle a fabriquée. Sans erreur, rien à rattraper
   et la valeur affichée tombe à zéro.
-* Rien n'a été **validé de l'extérieur**. Les 610 tests vérifient que le code fait ce qui est
+* Rien n'a été **validé de l'extérieur**. Les 623 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé
   ([appel à relecture](relecture.md)).
 

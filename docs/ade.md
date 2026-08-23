@@ -9,7 +9,8 @@
     L'ADE est validé **sur son propre modèle** — catalogue de quatre points de vue, pertinence
     synthétique. Son coût réel en pertinence perçue n'a pas été mesuré, et il ne peut pas l'être
     sur données publiques en l'état : l'évaluation exigerait un jeu portant **le rang servi** et
-    **une étiquette de point de vue interprétable**, et aucun jeu public ne porte les deux.
+    **une étiquette de point de vue interprétable**. EB-NeRD porte les deux colonnes, mais son
+    ordre enregistré ne contient pas le rang → [l'indice mesuré](indice-mesure.md).
     → [journaux qui enregistrent le rang](rang-servi.md) ·
     [demande au titre de l'article 40](article-40.md)
 

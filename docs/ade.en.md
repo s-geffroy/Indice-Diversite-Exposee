@@ -10,7 +10,8 @@
     The algorithm is validated **on its own model** — a four-viewpoint catalogue, synthetic
     relevance. Its real cost in perceived relevance has not been measured, and cannot be on
     public data as things stand: evaluation would require a dataset carrying **the served rank**
-    and **an interpretable viewpoint label**, and no public dataset carries both.
+    and **an interpretable viewpoint label**. EB-NeRD carries both columns, but its recorded
+    order does not contain the rank → [the index measured](indice-mesure.en.md).
     → [logs that record the rank](rang-servi.en.md) · [Article 40 request](article-40.en.md)
 
     What *is* established, and bounds the discussion: a **rank-aware** floor costs between

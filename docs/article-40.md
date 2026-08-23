@@ -69,6 +69,14 @@ double le coût d'engagement ([rang adverse](rang-adverse.md)). Il a aussi étab
 correction exige de connaître l'exposition, donc le **rang servi**, et que l'ignorer rend
 l'évaluation vide par construction ([MIND](mind.md)).
 
+!!! warning "Le rang demandé doit être **vérifiable**, non déclaré"
+    Un jeu public au moins fournit une colonne d'ordre qui n'est pas le rang servi, sans mentir
+    et sans que rien ne le signale : sur EB-NeRD, l'ordre enregistré échoue au test
+    d'échangeabilité ($z = +1{,}05$) alors même que le journal aurait détecté une sévérité cent
+    trente fois plus faible. La demande porte donc sur un rang **dont l'informativité se teste**,
+    et ce test est la première chose à faire sur les données livrées.
+    → [l'indice mesuré](indice-mesure.md)
+
 La recherche demandée consiste à mesurer, sur les fils réellement servis par [PLATEFORME] :
 
 1. l'écart entre **diversité composée** et **diversité exposée**, par période ;

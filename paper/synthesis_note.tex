@@ -59,7 +59,14 @@ $[0.916, 0.964]$), two thirds of the published effect being a composition of que
 on the index is $0.0025$, against $0.0350$ for the $1/R$ convention: the rank law is therefore
 \textbf{portable}, and what threatens the measurement is not the page but not having measured.
 
-No public dataset carries both the served rank and an interpretable viewpoint label. We
+A fourth log, EB-NeRD, finally carries both expected columns --- the served list and a declared
+section. The first check says its \textbf{recorded order does not contain the rank} ($z = +1.05$,
+where the log would have detected a severity one hundred and thirty-four times smaller). The
+rank-blind index is therefore measured for the first time on real feeds --- $0.47$ per user-day,
+$4.6$ sections equally served out of $26$ --- and the exposed index only \emph{bounded}, to
+within $0.104$: at a floor of $0.40$, a third of feeds breach it whatever their ordering, and six
+in ten remain undecidable. What a regulator must require is therefore not the rank but the
+\textbf{verifiable} rank. We
 therefore specify, under Article~40 of the \emph{Digital Services Act}, aggregate tables
 containing no personal data, verified to recompute the measurements identically for a hundred
 times fewer rows than a raw log.
@@ -1173,6 +1180,47 @@ $404{,}478$: those are documents served at the same rank in pages of differing c
 nothing guarantees they resemble the others. The query matching agrees but establishes nothing on
 its own, its interval containing $1$. Finally, grouping \texttt{media\_type} into ``ordinary''
 versus ``enriched'' remains a choice of this work.
+
+\subsection{The index, measured on a real feed}
+\label{sec:indexmeasured}
+
+Six sections of this note repeat the same sentence: \emph{no public dataset carries both the
+served rank and an interpretable viewpoint label}. It is false, and its falsity is instructive.
+
+\paragraph{A fourth log.} EB-NeRD (\emph{Ekstra Bladet}, RecSys Challenge 2024) gives for each
+impression the served list \texttt{article\_ids\_inview} and attaches every article to a declared
+section. Both columns are there. Yet the exchangeability test of \S\ref{sec:exposure} returns
+$z = +1.05$ ($p = 0.29$) over $232{,}887$ feeds: the recorded order carries no position
+information. This is not a power failure --- the severity this log would have detected is
+$0.0066$, $134$ times smaller than the one measured on Baidu-ULTR.
+\texttt{article\_ids\_inview} is a \textbf{served set}, not an ordered feed.
+
+\paragraph{What becomes measurable.} The rank-blind form, never computed until now outside a
+simulation. On the window \S\ref{sec:index} prescribes --- the user-day --- the index is $0.466$
+at the median, that is $4.56$ sections equally served out of $26$, with $18.8\%$ of user-days
+below $0.40$ and $71.2\%$ below $0.50$. This figure does not say whether that is little or much;
+it gives the order of magnitude missing from any discussion of a floor.
+
+\paragraph{What remains of the exposed index.} Composition being known and order not, the
+exposed index is not determined but \textbf{constrained}. Exact enumeration of every distinct
+ordering yields bounds of median width $0.104$. Three verdicts become available, and their
+asymmetry is the result: at a floor of $0.40$, $32.4\%$ of feeds breach it \emph{whatever} their
+ordering --- an enforceable finding without the missing column --- $7.9\%$ are certainly
+compliant, and $59.7\%$ remain undecidable. Without the rank one can convict; one almost never
+acquits.
+
+\paragraph{Consequence for \S\ref{sec:request}.} The request asked for ``the served rank''. That
+is not enough: a platform can supply an order column that is not the rank, without lying and with
+nothing signalling it. It must therefore ask for a \textbf{verifiable} rank, and the
+exchangeability test becomes an admissibility clause applied to the delivered data, before any
+other measurement.
+
+\paragraph{Reservations.} \texttt{category\_str} is a \emph{section}, not a viewpoint: the
+measurement bears on topical diversity exposed, the substitute already used on MIND. The severity
+$\eta = 0.88$ is transported from Baidu-ULTR, a search engine; \S\ref{sec:pageeffect}
+established that it transports from page to page, not from platform to platform, hence a
+sensitivity test that does not reverse the conclusion. The exact bounds cover only feeds of ten
+items or fewer, $64\%$ of the log.
 
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}

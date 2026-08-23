@@ -48,3 +48,6 @@ paper/build/*
 
 # macOS
 .DS_Store
+
+# EB-NeRD — licence de recherche, non redistribuable
+data/ebnerd/

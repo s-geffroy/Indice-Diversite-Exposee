@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from itertools import permutations
+
 import numpy as np
 import pytest
 
 from ide.entropy import (
+    exposed_index_bounds,
     label_diversity_index,
     shannon_entropy,
     shannon_entropy_from_counts,
@@ -178,3 +181,57 @@ def test_un_indice_hors_bornes_ou_un_catalogue_degenere_sont_refuses():
     with pytest.raises(ValueError, match=r"\[0, 1\]"):
         effective_viewpoints(1.5, 4)
 
+
+
+class TestEncadrementExpose:
+    """L'IDE d'un fil dont on connaît la composition mais pas l'ordre."""
+
+    def test_a_attention_plate_l_ordre_ne_change_rien(self):
+        """Sans remise de rang, l'indice exposé se confond avec l'indice aveugle."""
+        low, high = exposed_index_bounds((3, 2, 1), catalogue_size=6, severity=0.0)
+        assert low == pytest.approx(high)
+        assert low == pytest.approx(
+            label_diversity_index(["a"] * 3 + ["b"] * 2 + ["c"], catalogue_size=6)
+        )
+
+    def test_un_fil_d_un_seul_point_de_vue_vaut_zero_quel_que_soit_l_ordre(self):
+        assert exposed_index_bounds((5,), catalogue_size=4, severity=1.0) == (0.0, 0.0)
+
+    def test_des_points_de_vue_tous_distincts_ferment_l_encadrement(self):
+        """Un point de vue par rang : permuter ne fait que renommer les parts."""
+        low, high = exposed_index_bounds((1, 1, 1, 1), catalogue_size=4, severity=1.0)
+        assert low == pytest.approx(high)
+
+    def test_l_encadrement_est_exact_et_non_heuristique(self):
+        """Confronté à l'énumération naïve de toutes les permutations du fil."""
+        counts, catalogue, severity = (3, 2, 1), 5, 0.9
+        labels = np.repeat(np.arange(len(counts)), counts)
+        weights = np.arange(1, labels.size + 1, dtype=float) ** -severity
+
+        observed = []
+        for order in permutations(range(labels.size)):
+            shares = np.zeros(len(counts))
+            np.add.at(shares, labels[list(order)], weights)
+            shares = shares / shares.sum()
+            observed.append(float(-(shares * np.log2(shares)).sum() / np.log2(catalogue)))
+
+        low, high = exposed_index_bounds(counts, catalogue, severity)
+        assert low == pytest.approx(min(observed))
+        assert high == pytest.approx(max(observed))
+
+    def test_une_attention_plus_severe_ouvre_l_encadrement(self):
+        """Plus l'attention se concentre, plus l'ordre décide — donc plus le rang manque."""
+        widths = [
+            high - low
+            for severity in (0.2, 0.6, 1.0)
+            for low, high in [exposed_index_bounds((2, 2, 2), 6, severity)]
+        ]
+        assert widths == sorted(widths)
+
+    def test_un_fil_vide_ou_un_catalogue_degenere_sont_refuses(self):
+        with pytest.raises(ValueError):
+            exposed_index_bounds((), catalogue_size=4)
+        with pytest.raises(ValueError):
+            exposed_index_bounds((2, 2), catalogue_size=1)
+        with pytest.raises(ValueError):
+            exposed_index_bounds((2, -1), catalogue_size=4)

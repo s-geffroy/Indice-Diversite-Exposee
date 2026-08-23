@@ -42,12 +42,16 @@ l'erreur que l'audit du projet corrige.
 
 from __future__ import annotations
 
+import math
 from collections.abc import Iterable, Sequence
+from functools import lru_cache
+from itertools import combinations
 
 import numpy as np
 
 __all__ = [
     "effective_viewpoints",
+    "exposed_index_bounds",
     "label_diversity_index",
     "shannon_entropy",
     "shannon_entropy_from_counts",
@@ -290,3 +294,92 @@ def label_diversity_index(
     maximal_entropy = np.log2(reference_modalities)
 
     return float(shannon_entropy_from_counts(labels) / maximal_entropy)
+
+
+def _size_partitions(indices: tuple[int, ...], sizes: tuple[int, ...]):
+    """Partitions de ``indices`` en blocs de tailles ``sizes``, chacune rendue une fois.
+
+    Le bloc contenant le plus petit indice restant est construit en premier, ce qui donne
+    à chaque partition un ordre canonique : deux blocs de même taille ne peuvent donc pas
+    être énumérés deux fois dans l'ordre inverse.
+    """
+    if not sizes:
+        yield ()
+        return
+
+    first, rest = indices[0], indices[1:]
+    for size in sorted(set(sizes)):
+        remaining = list(sizes)
+        remaining.remove(size)
+        for others in combinations(rest, size - 1):
+            chosen = set(others)
+            left = tuple(index for index in rest if index not in chosen)
+            for tail in _size_partitions(left, tuple(remaining)):
+                yield ((first, *others), *tail)
+
+
+@lru_cache(maxsize=4096)
+def exposed_index_bounds(
+    counts: tuple[int, ...], catalogue_size: int, severity: float = 1.0
+) -> tuple[float, float]:
+    """Encadre l'IDE **exposé** d'un fil dont on connaît la composition mais pas l'ordre.
+
+    Un journal qui enregistre *quels* contenus ont été servis, sans dire *dans quel ordre*,
+    ne détermine pas l'indice exposé : celui-ci dépend de la place donnée à chaque point de
+    vue. Il le contraint néanmoins, et cette fonction rend l'encadrement **exact**, obtenu
+    par énumération de toutes les mises en ordre distinctes.
+
+    L'intervalle est le prix exact de la colonne manquante. Il permet aussi de trancher sans
+    elle dans deux cas : lorsque la borne haute reste sous un plancher — le fil y contrevient
+    quelle que soit sa mise en ordre — et lorsque la borne basse le dépasse.
+
+    Args:
+        counts: effectifs par point de vue dans le fil servi, dans n'importe quel ordre.
+            Seule leur répartition compte, jamais l'identité des points de vue.
+        catalogue_size: nombre de points de vue du catalogue déclaré, qui fixe le
+            dénominateur de l'indice.
+        severity: sévérité :math:`\\eta` de la remise d'attention :math:`R^{-\\eta}`. À
+            :math:`\\eta = 0` l'attention est plate et l'intervalle se réduit à un point.
+
+    Returns:
+        Les bornes basse et haute de l'indice exposé.
+
+    Raises:
+        ValueError: si le fil est vide, si un effectif est négatif, ou si le catalogue
+            compte moins de deux points de vue.
+
+    Examples:
+        Un fil de quatre contenus, deux points de vue à parts égales : l'ordre décide, et
+        l'écart est loin d'être négligeable.
+
+        >>> low, high = exposed_index_bounds((2, 2), catalogue_size=2, severity=1.0)
+        >>> round(low, 3), round(high, 3)
+        (0.855, 0.971)
+
+        À attention plate, l'ordre ne change rien et l'encadrement se referme.
+
+        >>> low, high = exposed_index_bounds((2, 2), catalogue_size=2, severity=0.0)
+        >>> round(low, 6) == round(high, 6) == 1.0
+        True
+    """
+    if catalogue_size < 2:
+        raise ValueError("un catalogue doit offrir au moins deux points de vue")
+    if any(count < 0 for count in counts):
+        raise ValueError("un effectif ne peut pas être négatif")
+
+    sizes = tuple(count for count in counts if count > 0)
+    length = sum(sizes)
+    if length == 0:
+        raise ValueError("un fil vide n'a pas d'indice")
+
+    weights = np.arange(1, length + 1, dtype=float) ** -float(severity)
+    scale = math.log2(catalogue_size)
+
+    low, high = 1.0, 0.0
+    for partition in _size_partitions(tuple(range(length)), sizes):
+        shares = np.array([weights[list(block)].sum() for block in partition])
+        shares = shares / shares.sum()
+        value = float(-(shares * np.log2(shares)).sum() / scale)
+        low, high = min(low, value), max(high, value)
+
+    return low, high

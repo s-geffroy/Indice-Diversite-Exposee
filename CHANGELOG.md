@@ -7,6 +7,42 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — l'indice, mesuré pour la première fois sur un fil réel
+
+Six chapitres répétaient qu'« aucun jeu de données public ne porte à la fois le rang servi et une
+étiquette de point de vue interprétable ». C'était une **affirmation d'absence** fondée sur trois
+jeux examinés, écrite comme si elle portait sur tous. Le quatrième jeu regardé porte les deux
+colonnes.
+
+- **EB-NeRD** (*Ekstra Bladet*, RecSys Challenge 2024) donne la liste servie **et** une rubrique
+  déclarée par article. Le premier contrôle du dépôt dit alors que son **ordre enregistré ne
+  contient pas le rang** : $z = +1{,}05$, $p = 0{,}29$ sur 232 887 fils — et ce n'est pas un
+  défaut de puissance, le journal aurait détecté une sévérité de $0{,}0066$, **134 fois plus
+  faible** que celle mesurée sur Baidu-ULTR.
+- **Le chiffre qui manquait depuis le premier jour.** L'indice aveugle au rang vaut **0,47** par
+  journée-utilisateur — la fenêtre que le protocole du dépôt prescrit — soit **4,6 rubriques
+  également servies sur 26**, avec 18,8 % des journées sous 0,40 et 71,2 % sous 0,50. Le dépôt
+  n'avait jamais publié ce nombre autrement qu'en simulation.
+- **L'indice exposé, faute d'ordre, est encadré exactement.** `ide.entropy.exposed_index_bounds`
+  énumère toutes les mises en ordre distinctes : largeur médiane **0,104**. À un plancher de
+  0,40, **32,4 %** des fils y contreviennent quelle que soit leur mise en ordre — constat
+  opposable sans la colonne manquante — 7,9 % sont sûrement conformes, et **59,7 % restent
+  indécidables**. *Sans le rang, on peut condamner ; on n'acquitte presque jamais.*
+- **La demande au titre de l'article 40 change d'objet.** Elle réclamait « le rang servi » ; elle
+  réclame désormais le rang **vérifiable**, parce qu'une plateforme peut livrer une colonne
+  d'ordre qui n'est pas le rang sans mentir et sans que rien ne le signale. Le test
+  d'échangeabilité devient une **clause de recevabilité**.
+- Nouveau module `ide.ebnerd` (empreintes SHA-256, lecture, condensé de **signatures de
+  composition** — effectifs par rubrique, triés et anonymes), `ide.entropy.exposed_index_bounds`,
+  deux scripts, [`docs/indice-mesure.md`](docs/indice-mesure.md) et
+  [notebook 26](notebooks/26_indice_mesure.ipynb), **reproductible depuis le condensé versionné**.
+  Le journal brut, sous licence de recherche non redistribuable, ne l'est pas.
+- [`docs/limites.md`](docs/limites.md) reçoit sa **vingt-cinquième correction**, dont la leçon est
+  neuve : la règle du dépôt — ne rien publier qu'on n'ait mesuré — ne couvre pas les absences.
+  Sa jumelle manquait : **une affirmation d'absence doit publier l'étendue de la recherche qui la
+  fonde.**
+- 623 tests, deux notes recompilées (27 et 26 pages, zéro boîte débordante).
+
 ### Ajouté — l'effet de page, une fois la composition retirée
 
 L'entrée précédente retirait la méthode du rang de résultat sans rien mettre à la place. Ce

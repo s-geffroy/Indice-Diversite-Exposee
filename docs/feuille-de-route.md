@@ -248,9 +248,12 @@ C'est ce qui permettrait de répondre à la seule objection sérieuse d'une plat
       bandeau de trois vignettes que sur une page de résultats. Elle ne se transporte pas ;
     * les **estimateurs contrefactuels tiennent** devant une vérité terrain, avec une taille
       d'échantillon effective de 1 513 pour 4 millions d'impressions — le chiffre à publier ;
-    * **aucun jeu public ne porte à la fois le rang servi et une étiquette de point de vue
-      interprétable.** MIND a les catégories sans le rang, Baidu-ULTR le rang sans étiquette,
-      l'Open Bandit Dataset le rang avec des attributs anonymisés.
+    * **un jeu public porte les deux colonnes — et sa colonne d'ordre ne contient pas
+      l'ordre.** MIND a les catégories sans le rang, Baidu-ULTR le rang sans étiquette,
+      l'Open Bandit Dataset le rang avec des attributs anonymisés, et EB-NeRD les deux à la
+      fois, mais son ordre enregistré échoue au test d'échangeabilité
+      ([l'indice mesuré](indice-mesure.md)). Ce qu'il faut réclamer n'est donc pas le rang, mais
+      le rang **vérifiable**.
 
     Ce qui reste faisable, et qui remplace le protocole initial :
 

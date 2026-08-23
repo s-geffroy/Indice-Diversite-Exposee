@@ -31,16 +31,19 @@ comme tel, y compris quand ce qui tombe vient du dépôt lui-même.
 | l'algorithme (ADE) | **sur la frontière exacte, et superflu** : une heuristique de 1998 fait aussi bien |
 | les instruments de mesure | **valides après correction** : trois restreints, trois conclusions retirées |
 | l'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : 0,88 ± 0,05 — non 1,09 comme estimé |
+| l'indice aveugle au rang, sur des fils réels | **mesuré pour la première fois** : 0,47 par journée-utilisateur, 4,6 rubriques effectives sur 26 |
+| l'indice exposé, sur ces mêmes fils | **encadré, non mesuré** : la colonne d'ordre du seul jeu qui l'offre ne contient pas le rang |
 | sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, trois fois plus petite que publiée** : 6 % d'examen, 0,0025 d'indice |
 
 **La théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle qui décide de tout
 le reste, et qu'on peut mesurer au lieu de la supposer : 0,88 et non 1, sans cascade, et à 6 %
-près indépendante de la page servie. C'est assez pour écrire une norme ; il ne manque plus que
-l'accès aux données.**
+près indépendante de la page servie. C'est assez pour écrire une norme ; ce qui manque n'est plus
+une méthode mais un **rang vérifiable** — et le seul journal public qui prétend le fournir ne le
+fournit pas.**
 
 ### Ce qui tient
 
-Cinq objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
+Six objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
 statistique s'applique à d'autres données et répond seul, sans qu'on ait à croire celui qui l'a
 écrit. Les préceptes de méthode que ce dépôt a un temps promus au rang de résultat n'ont pas cette
 propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
@@ -66,6 +69,10 @@ propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
   1,0 % d'engagement laissé sur la table — mais **MMR, publié en 1998, aussi**. Et le prix de la
   norme dépend du lecteur : **3,8 %** quand ses intérêts traversent les points de vue, **17,1 %**
   quand sa préférence *est* un point de vue. → **[Lignes de base](docs/lignes-de-base.md)**
+- **Un premier chiffre réel, là où il n'y avait que des simulations** : sur 232 887 fils danois,
+  la diversité **servie** vaut 0,47 par journée-utilisateur — 4,6 rubriques effectives sur 26.
+  L'indice **exposé** n'est qu'encadré : la colonne d'ordre du seul jeu qui l'offre ne contient
+  pas le rang. → **[L'indice mesuré](docs/indice-mesure.md)**
 - **Une demande d'accès aux données qui se vérifie au lieu de se plaider** : quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
   Deux colonnes s'y sont ajoutées depuis : `affichages`, sans laquelle l'exposition ne se mesure
@@ -77,7 +84,7 @@ propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
 **Sur le monde** : le critère $\gamma\alpha > \lambda$ [ne veut rien dire](docs/calibration.md) ;
 l'écart de persistance entre registres [n'existe pas](docs/corpus-etendu.md) et
 [n'était pas dilué](docs/annotation.md) par l'étiquetage ; aucun jeu public ne permet
-[l'évaluation annoncée](docs/mind.md) ; et l'examen n'est ni une cascade ni une loi de puissance
+[l'évaluation annoncée](docs/indice-mesure.md) — mais pas pour la raison publiée ; et l'examen n'est ni une cascade ni une loi de puissance
 [sur Baidu-ULTR](docs/exposition-mesuree.md).
 
 **Sur les propositions du dépôt lui-même** : un plancher d'indice
@@ -97,7 +104,7 @@ publié était pour les deux tiers [une composition](docs/effet-de-page.md).
 
 ## À lire d'abord : ce que le travail ne prétend pas
 
-L'**[audit critique](docs/limites.md)** recense **vingt-quatre corrections** apportées au
+L'**[audit critique](docs/limites.md)** recense **vingt-cinq corrections** apportées au
 raisonnement d'origine — dont **cinq formules invalides**, et une découverte en tentant de
 mesurer — et énumère les limites qui subsistent, y compris celles qui touchent à l'usage
 réglementaire de l'index : il est manipulable, sa discrétisation en points de vue est un choix
@@ -124,7 +131,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 610 tests, dont les exemples de docstrings
+docker compose run --rm test          # 623 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -162,8 +169,8 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              610 tests — validation physique, numérique et statistique
-notebooks/          01 à 25, un par bloc théorique, exécutables
+tests/              623 tests — validation physique, numérique et statistique
+notebooks/          01 à 26, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné
@@ -208,7 +215,7 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
 
 ## Contenu du dépôt
 
-- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-quatre corrections et les
+- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-cinq corrections et les
   limites qui subsistent.
 - [`docs/calibration.md`](docs/calibration.md) — **la mesure de $\gamma\alpha/\lambda$** sur
   données publiques, ses trois enseignements et ses réserves.
