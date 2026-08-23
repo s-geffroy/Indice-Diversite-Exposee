@@ -143,9 +143,11 @@ celui du [rang adverse](rang-adverse.md). Rien n'assure que le classement relati
 se transporte à un vivier de mille contenus.
 
 La pertinence y est en outre **connue**, alors qu'une plateforme ne dispose que de son
-estimation. Une erreur d'estimation dégraderait toutes les méthodes, mais pas nécessairement
-dans le même ordre : une règle gourmande sur une grandeur bruitée peut se comporter plus mal
-qu'une règle qui l'ignore.
+estimation. Cette réserve a été mesurée depuis : l'ordre des méthodes **tient** à tous les
+niveaux de bruit, mais leur avantage sur le tirage au sort passe de **16,4 points** à bruit nul à
+**5,8 points** à $\sigma = 0{,}4$, et **s'inverse** au-delà. Le hasard est le seul réordonnanceur
+qui n'utilise pas la pertinence : son manque à gagner est invariant.
+→ [Les deux angles morts](angles-morts.md)
 
 Enfin, le tirage au sort est ici traité généreusement — dix-huit tirages par vivier, dont on
 retient le meilleur conforme. Une plateforme n'aurait pas ce luxe, et sa performance réelle

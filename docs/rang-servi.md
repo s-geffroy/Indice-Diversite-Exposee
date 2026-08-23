@@ -76,6 +76,14 @@ Le taux de clic suit la décroissance attendue : 0,340 au premier rang, 0,088 au
 | à longueur de session fixée (10 documents) | 1,144 |
 | **effets fixes de document** | **1,099 ± 0,089** |
 
+!!! danger "Ce chiffre suppose une forme, et la forme n'est pas testée"
+    $\hat\eta$ n'a de sens que si l'examen suit une **loi de puissance**. Sous un modèle à
+    **cascade** — où le lecteur s'arrête dès qu'il a trouvé, terrain d'élection d'une page de
+    résultats comme celle-ci — la décroissance est **géométrique**, et la loi ajustée surestime
+    l'exposition réelle d'un facteur 40 à 4 110 au douzième rang. Le test d'échangeabilité dit
+    que l'ordre porte de l'information ; il ne dit pas **sous quelle forme**.
+    → [Les deux angles morts](angles-morts.md)
+
 Sur MIND, l'écart entre l'ajustement agrégé et les effets fixes venait de la composition des
 longueurs. Ici il vient d'autre chose, et de plus attendu : la plateforme place les **meilleurs
 documents en tête**, donc une partie de la décroissance est de la qualité, pas de l'exposition.

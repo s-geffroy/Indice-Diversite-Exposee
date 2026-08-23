@@ -7,7 +7,7 @@ analogies. That method produces sound intuitions alongside shortcuts that do not
 Publishing the thread as-is would expose the whole to being dismissed over a detail,
 when the starting intuition deserves better.
 
-Nineteen points are documented. Each follows the same structure: what the thread claimed, why it is a
+Twenty points are documented. Each follows the same structure: what the thread claimed, why it is a
 problem, and the formulation adopted. Every correction is **traceable** — implemented in
 `src/`, verified in `tests/`, illustrated in a notebook.
 
@@ -430,6 +430,29 @@ convention allowed one to say safely.
 — here the reciprocal-rank discount — enters a result as an assumption, even when never stated.
 The repository had measured the quantity that replaces it **before** publishing the result that
 depended on it.
+
+
+### 20. An assumed examination shape, never tested
+
+**What this repository publishes.** A position-bias severity, $\hat\eta = 1.10 \pm 0.09$ on
+Baidu-ULTR, estimated under the model $P(\text{click} \mid i, R) = g(i)\,R^{-\eta}$.
+
+**The problem.** The repository built a test saying whether a log's order carries information —
+the [exchangeability test](mind.en.md) — and never built one saying **in what form**. Yet under a
+**cascade** model, where the reader stops on finding what they wanted, attention decay is
+**geometric** rather than polynomial. The fitted law then overstates real exposure by a factor of
+**40 to 4,110** at rank twelve — and the fit looks excellent, with a standard error of 0.04.
+
+**What is confirmed along the way.** The exchangeability test itself **holds**: it rejects under
+cascade between $z = -208$ and $z = -241$, more strongly than on real data. Precisely because it
+assumes nothing — it tests only independence.
+
+**Adopted.** Severity must be published **with its assumed shape**, and that shape remains to be
+tested. It is the open lead of the [blind spots page](angles-morts.en.md).
+
+**What this episode teaches about method.** An instrument that assumes nothing survives a change
+of model; an instrument that assumes a shape survives only as long as that shape holds. The
+repository had both and had tested only the first.
 
 ---
 

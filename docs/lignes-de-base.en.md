@@ -137,9 +137,11 @@ exists only at that scale — the price of exactness, the same as in [adversaria
 rank](rang-adverse.en.md). Nothing guarantees the relative ranking of methods transfers to a pool
 of a thousand items.
 
-Relevance here is moreover **known**, whereas a platform has only its estimate. Estimation error
-would degrade every method, but not necessarily in the same order: a rule greedy on a noisy
-quantity can behave worse than one that ignores it.
+Relevance here is moreover **known**, whereas a platform has only its estimate. That caveat has
+since been measured: the ranking of methods **holds** at every noise level, but their advantage
+over random selection falls from **16.4 points** at zero noise to **5.8 points** at
+$\sigma = 0.4$, and **inverts** beyond. Random is the only re-ranker that does not use relevance:
+its shortfall is invariant. → [The two blind spots](angles-morts.en.md)
 
 Finally, random selection is treated generously here — eighteen draws per pool, keeping the best
 compliant one. A platform would not have that luxury, and its real performance would be worse

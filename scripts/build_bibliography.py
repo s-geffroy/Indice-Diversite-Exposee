@@ -36,7 +36,8 @@ THEMES: list[tuple[tuple[str, ...], str, str]] = [
     (("pariser2011", "carbonell1998", "rao1982", "ohsaka2023", "steck2018", "vrijenhoek2022"),
      "Recommandation, diversité et normativité",
      "Recommendation, diversity and normativity"),
-    (("joachims2017", "agarwal2019", "swaminathan2015", "vardasbi2020", "hager2024"),
+    (("joachims2017", "craswell2008", "agarwal2019", "swaminathan2015", "vardasbi2020",
+      "hager2024"),
      "Biais de position et évaluation contrefactuelle",
      "Position bias and counterfactual evaluation"),
     (("wu2020", "zou2022", "saito2020", "vandrunen2025"),
@@ -108,6 +109,10 @@ USES: dict[str, tuple[str, str]] = {
                      "propension inverse.",
                      "Position-bias model $e(R) = R^{-\\eta}$ and inverse-propensity "
                      "correction."),
+    "craswell2008": ("Modèle à **cascade** : la contre-épreuve qui montre que le test "
+                     "d'échangeabilité tient et que la loi de puissance ne tient pas.",
+                     "The **cascade** model: the counter-test showing the exchangeability test "
+                     "holds and the power law does not."),
     "agarwal2019": ("Récolte d'interventions : estimer la sévérité sans expérience.",
                     "Intervention harvesting: estimating severity without an experiment."),
     "swaminathan2015": ("Estimateur auto-normalisé, employé dans les comparaisons.",
@@ -147,6 +152,7 @@ LINKS: dict[str, str] = {
     "ohsaka2023": "https://arxiv.org/abs/2305.13801",
     "vrijenhoek2022": "https://arxiv.org/abs/2209.13520",
     "joachims2017": "https://doi.org/10.1145/3018661.3018699",
+    "craswell2008": "https://doi.org/10.1145/1341531.1341545",
     "swaminathan2015": "https://papers.nips.cc/paper/2015/hash/39027dfad5138c9ca0c474d71db915c3-Abstract.html",
     "vardasbi2020": "https://arxiv.org/abs/2008.10242",
     "hager2024": "https://arxiv.org/abs/2404.02543",

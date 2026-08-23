@@ -7,7 +7,7 @@ journée, par accumulation d'analogies. Cette méthode produit des intuitions ju
 et des raccourcis qui ne tiennent pas. Publier le fil tel quel exposerait
 l'ensemble à être écarté sur un détail, alors que l'intuition de départ mérite mieux.
 
-Dix-neuf points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
+Vingt points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
 c'est un problème, et la formulation retenue. Les corrections sont **traçables** :
 chacune est implémentée dans `src/`, vérifiée dans `tests/`, et illustrée dans un
 notebook.
@@ -497,6 +497,30 @@ convention permettait de dire sans risque.
 domaine — ici la remise du rang réciproque — entre dans un résultat comme une hypothèse, même
 quand elle n'est jamais énoncée. Le dépôt avait mesuré la grandeur qui la remplace **avant** de
 publier le résultat qui en dépendait.
+
+
+### 20. Une forme d'examen supposée, jamais testée
+
+**Ce que ce dépôt publie.** Une sévérité de biais de position, $\hat\eta = 1{,}10 \pm 0{,}09$
+sur Baidu-ULTR, estimée sous le modèle $P(\text{clic} \mid i, R) = g(i)\,R^{-\eta}$.
+
+**Le problème.** Le dépôt a construit un test qui dit si l'ordre d'un journal porte de
+l'information — c'est le [test d'échangeabilité](mind.md) — et n'en a jamais construit qui dise
+**sous quelle forme**. Or sous un modèle à **cascade**, où le lecteur s'arrête dès qu'il a trouvé,
+la décroissance de l'attention est **géométrique** et non polynomiale. La loi ajustée surestime
+alors l'exposition réelle d'un facteur **40 à 4 110** au douzième rang — et l'ajustement paraît
+excellent, avec une erreur type de 0,04.
+
+**Ce qui est confirmé au passage.** Le test d'échangeabilité, lui, **tient** : il rejette sous
+cascade entre $z = -208$ et $z = -241$, plus fortement que sur données réelles. C'est parce qu'il
+ne suppose rien — il ne teste que l'indépendance.
+
+**Retenu.** La sévérité doit être publiée **avec la forme supposée**, et cette forme reste à
+tester. C'est la piste ouverte de la [page des angles morts](angles-morts.md).
+
+**Ce que cet épisode enseigne sur la méthode.** Un instrument qui ne suppose rien survit à un
+changement de modèle ; un instrument qui suppose une forme ne survit qu'à ce que cette forme
+tienne. Le dépôt avait les deux et n'avait éprouvé que le premier.
 
 ---
 

@@ -204,3 +204,36 @@ def test_le_tirage_au_sort_laisse_beaucoup_plus_d_engagement_sur_la_table():
             random_losses.append(shortfall(drawn, front))
 
     assert np.median(random_losses) > np.median(entropic_losses) + 0.05
+
+
+def test_le_tirage_au_sort_est_invariant_au_bruit_de_pertinence():
+    """La raison mécanique pour laquelle le hasard rattrape les méthodes réglées.
+
+    Le tirage au sort est le seul réordonnanceur qui n'utilise pas la pertinence : son manque à
+    gagner ne bouge pas quand l'estimation se dégrade, tandis que celui des autres croît. Passé
+    un certain bruit, une règle gourmande sur une grandeur fausse fait pire qu'une règle qui
+    l'ignore.
+    """
+    generator = np.random.default_rng(31)
+    truth = make_pool(300, size=9)
+    front = exact_frontier(truth, SLOTS)
+
+    clean_losses, noisy_losses, drawn_losses = [], [], []
+    for noise in (0.0, 0.5):
+        perceived = Pool(
+            viewpoints=truth.viewpoints,
+            relevance=np.clip(truth.relevance + generator.normal(0, noise, truth.relevance.size),
+                              0.01, None),
+            catalogue_size=truth.catalogue_size,
+        )
+        # les méthodes classent sur la pertinence perçue, mais sont jugées sur la vraie
+        filtered = evaluate(truth, entropic_ranking(perceived, SLOTS, 1.0))
+        drawn = evaluate(truth, random_ranking(perceived, SLOTS, np.random.default_rng(2)))
+        (clean_losses if noise == 0.0 else noisy_losses).append(shortfall(filtered, front))
+        drawn_losses.append(shortfall(drawn, front))
+
+    # le hasard ne dépend pas de la pertinence : son résultat est identique aux deux niveaux
+    assert drawn_losses[0] == pytest.approx(drawn_losses[1])
+    # le filtre, lui, se dégrade
+    assert noisy_losses[0] >= clean_losses[0] - 1e-9
+

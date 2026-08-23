@@ -79,6 +79,7 @@ plugins:
             Demande au titre de l'article 40: Article 40 data request
             Lignes de base: Baselines
             Contre-expertise: Counter-expertise
+            Les deux angles morts: The two blind spots
             Bibliographie: Bibliography
             Mémorandum de régulation: Regulatory memorandum
             Réserves: Caveats
@@ -141,6 +142,7 @@ nav:
       - Demande au titre de l'article 40: article-40.md
       - Lignes de base: lignes-de-base.md
       - Contre-expertise: contre-expertise.md
+      - Les deux angles morts: angles-morts.md
       - Mémorandum de régulation: memorandum.md
   - Réserves:
       - Audit critique et limites: limites.md
@@ -169,3 +171,4 @@ nav:
       - 18 — Demande article 40: notebooks/18_demande_article_40.ipynb
       - 19 — Lignes de base: notebooks/19_lignes_de_base.ipynb
       - 20 — Contre-expertise: notebooks/20_contre_expertise.ipynb
+      - 21 — Angles morts: notebooks/21_angles_morts.ipynb

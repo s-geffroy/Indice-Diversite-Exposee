@@ -74,6 +74,14 @@ Click rate follows the expected decay: 0.340 at rank one, 0.088 at rank three, 0
 | at fixed session length (10 documents) | 1.144 |
 | **document fixed effects** | **1.099 ± 0.089** |
 
+!!! danger "This figure assumes a shape, and the shape is not tested"
+    $\hat\eta$ means something only if examination follows a **power law**. Under a **cascade**
+    model — where the reader stops on finding what they wanted, the home ground of a results page
+    like this one — decay is **geometric**, and the fitted law overstates real exposure by a
+    factor of 40 to 4,110 at rank twelve. The exchangeability test says the order carries
+    information; it does not say **in what form**.
+    → [The two blind spots](angles-morts.en.md)
+
 On MIND, the gap between the aggregate fit and fixed effects came from the mixture of lengths.
 Here it comes from something else, and more expected: the platform places the **best documents
 on top**, so part of the decay is quality, not exposure. Fixed effects remove it by comparing a

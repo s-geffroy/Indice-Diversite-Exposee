@@ -43,6 +43,7 @@ __all__ = [
     "naive_severity_fit",
     "rank_coverage",
     "save_digest",
+    "simulate_cascade",
     "simulate_feeds",
 ]
 
@@ -359,6 +360,82 @@ def simulate_feeds(
         feeds=feeds.astype(np.int64),
         feed_lengths=lengths,
     )
+
+
+def simulate_cascade(
+    feed_lengths: Iterable[int],
+    attractiveness: float = 0.25,
+    continuation: float = 0.85,
+    catalogue: int = 20_000,
+    dispersion: float = 0.8,
+    rng: np.random.Generator | None = None,
+    return_examination: bool = False,
+) -> Impressions | tuple[Impressions, np.ndarray]:
+    """Fabrique un journal sous un modèle **à cascade**, où l'examen dépend de ce qui précède.
+
+    Le modèle de position que ce dépôt emploie ailleurs pose une probabilité d'examen
+    :math:`R^{-\\eta}` qui ne dépend que du rang. Le modèle à cascade (Craswell *et al.*, 2008)
+    en pose une tout autre : le lecteur descend le fil, s'arrête dès qu'il a trouvé son
+    bonheur, et poursuit sinon avec une probabilité :math:`\\gamma`. La décroissance de
+    l'attention n'y est plus une loi de puissance mais une **conséquence** du parcours.
+
+    Ce module en a besoin pour une raison précise : le [test
+    d'échangeabilité](exchangeability_test) ne teste que l'indépendance entre position et clic.
+    Il doit donc rejeter sous cascade aussi — sans quoi son verdict négatif sur un journal
+    mélangé ne dirait rien. En revanche, la **sévérité minimale détectable** que rapporte
+    :func:`detectable_severity` n'y a plus de sens : il n'y a pas de :math:`\\eta` à détecter.
+
+    Args:
+        feed_lengths: longueurs des fils à reproduire.
+        attractiveness: attrait médian d'un contenu — probabilité de clic une fois examiné.
+        continuation: probabilité de poursuivre après un contenu non cliqué.
+        catalogue: taille du catalogue de contenus.
+        dispersion: dispersion log-normale de l'attrait entre contenus.
+        rng: générateur, pour la reproductibilité.
+        return_examination: si vrai, rend aussi le masque d'**examen réel** — les positions que
+            le lecteur a effectivement regardées. C'est la vérité terrain contre laquelle
+            comparer une exposition estimée, et elle n'existe qu'en simulation.
+
+    Returns:
+        Le journal simulé, et le masque d'examen si demandé.
+    """
+    generator = np.random.default_rng() if rng is None else rng
+    lengths = np.asarray(list(feed_lengths), dtype=np.int64)
+    if np.any(lengths < 1):
+        raise ValueError("un fil compte au moins une position")
+    if not 0.0 <= continuation <= 1.0:
+        raise ValueError("une probabilité de poursuite vit dans [0, 1]")
+
+    total = int(lengths.sum())
+    feeds = np.repeat(np.arange(lengths.size), lengths)
+    ranks = np.concatenate([np.arange(1, length + 1) for length in lengths])
+    appeal = np.clip(attractiveness * generator.lognormal(0.0, dispersion, size=catalogue), 0, 1)
+    items = generator.integers(0, catalogue, size=total)
+
+    clicks = np.zeros(total, dtype=float)
+    examined = np.zeros(total, dtype=float)
+    offsets = np.concatenate([[0], np.cumsum(lengths)])
+    draws = generator.random(total)
+    survives = generator.random(total)
+    for feed_index, length in enumerate(lengths):
+        start = offsets[feed_index]
+        for position in range(length):
+            row = start + position
+            examined[row] = 1.0
+            if draws[row] < appeal[items[row]]:
+                clicks[row] = 1.0
+                break                                   # le lecteur a trouvé, il s'arrête
+            if survives[row] > continuation:
+                break                                   # il abandonne sans avoir cliqué
+
+    journal = Impressions(
+        items=items.astype(np.int64),
+        ranks=ranks.astype(np.int64),
+        clicks=clicks,
+        feeds=feeds.astype(np.int64),
+        feed_lengths=lengths,
+    )
+    return (journal, examined) if return_examination else journal
 
 
 def detectable_severity(

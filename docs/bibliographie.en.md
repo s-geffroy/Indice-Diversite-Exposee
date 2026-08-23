@@ -72,6 +72,8 @@ diverge, and a test checks it. Regenerate with
 
 - **Joachims, Thorsten ; Swaminathan, Adith ; Schnabel, Tobias** (2017). *Unbiased Learning-to-Rank with Biased Feedback*, Proceedings of the Tenth ACM International Conference on Web Search and Data Mining, p. 781–789. [→](https://doi.org/10.1145/3018661.3018699)  
   Position-bias model $e(R) = R^{-\eta}$ and inverse-propensity correction.
+- **Craswell, Nick ; Zoeter, Onno ; Taylor, Michael ; Ramsey, Bill** (2008). *An Experimental Comparison of Click Position-Bias Models*, Proceedings of the 2008 International Conference on Web Search and Data Mining, p. 87–94. [→](https://doi.org/10.1145/1341531.1341545)  
+  The **cascade** model: the counter-test showing the exchangeability test holds and the power law does not.
 - **Agarwal, Aman ; Zaitsev, Ivan ; Wang, Xuanhui ; Li, Cheng ; Najork, Marc ; Joachims, Thorsten** (2019). *Estimating Position Bias without Intrusive Interventions*, Proceedings of the Twelfth ACM International Conference on Web Search and Data Mining, p. 474–482.  
   Intervention harvesting: estimating severity without an experiment.
 - **Swaminathan, Adith ; Joachims, Thorsten** (2015). *The Self-Normalized Estimator for Counterfactual Learning*, Advances in Neural Information Processing Systems 28, p. 3231–3239. [→](https://papers.nips.cc/paper/2015/hash/39027dfad5138c9ca0c474d71db915c3-Abstract.html)  

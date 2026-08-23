@@ -984,6 +984,46 @@ aussi bien pour une cible plus éloignée de la politique d'enregistrement --- a
 taille d'échantillon effective y serait plus faible encore.
 
 
+
+\subsection{Les deux hypothèses les plus profondes, éprouvées}
+\label{sec:anglesmorts}
+
+Deux hypothèses traversent toute cette note sans avoir été mises à l'épreuve : que l'examen suit
+une loi de puissance, et que la pertinence est connue. Aucune ne l'est.
+
+\paragraph{Le test d'échangeabilité survit à un changement de modèle de clic.} Sous un modèle
+\emph{à cascade} \citep{craswell2008} --- le lecteur descend le fil, s'arrête dès qu'il a trouvé, et poursuit sinon
+avec une probabilité $\gamma$ --- le test \eqref{eq:echangeabilite} rejette entre $z = -208$ et
+$z = -241$ selon $\gamma$, soit \emph{plus fortement} que sur Baidu-ULTR. C'est le résultat qu'il
+fallait obtenir : le test ne suppose rien de la forme de l'attention, il ne teste que
+l'indépendance, et son verdict négatif sur MIND garde donc son sens sous n'importe quel modèle.
+
+\paragraph{La loi de puissance, elle, ne survit pas.} Sous cascade, la décroissance de l'examen
+est \emph{géométrique} et non polynomiale. La simulation rend ici la vérité terrain que les
+données réelles ne donnent jamais --- les positions effectivement examinées --- et la
+comparaison est sans appel : au douzième rang, la loi $R^{-\hat\eta}$ ajustée surestime
+l'exposition réelle d'un facteur $40$ à $\gamma = 0{,}95$, $129$ à $\gamma = 0{,}85$ et $4\,110$
+à $\gamma = 0{,}60$. L'ajustement paraît pourtant excellent, avec une erreur type de $0{,}04$.
+
+La conséquence porte directement sur \S\ref{sec:journaux} : la sévérité
+$\hat\eta = 1{,}10 \pm 0{,}09$ mesurée sur Baidu-ULTR n'a de sens \emph{que si} l'examen y suit
+une loi de puissance --- et Baidu-ULTR est une page de résultats de recherche, terrain d'élection
+du modèle à cascade. La sévérité doit donc être publiée \textbf{avec la forme supposée}, et cette
+forme reste à tester. Le test d'échangeabilité dit si l'ordre porte de l'information ; il ne dit
+pas sous quelle forme.
+
+\paragraph{Et une pertinence estimée efface l'avantage des méthodes réglées.} La comparaison de
+\S\ref{sec:lignesdebase} suppose la pertinence connue. En faisant classer les méthodes sur une
+pertinence \emph{perçue} et en les jugeant sur la vraie, leur ordre ne change pas --- le filtre et
+MMR restent devant --- mais leur avantage sur le tirage au sort passe de $16{,}4$ points à bruit
+nul à $5{,}8$ points pour une corrélation de rang de $0{,}50$, et \emph{s'inverse} en deçà de
+$0{,}36$. La raison est mécanique : le tirage au sort est le seul réordonnanceur qui n'utilise pas
+la pertinence, donc le seul dont le manque à gagner soit invariant au bruit.
+
+À pertinence réaliste, l'écart entre réordonnanceurs compte donc bien moins que la qualité du
+moteur de pertinence sous-jacent --- ce qui renforce, par une troisième voie, la conclusion que la
+contribution de ce travail n'est pas son algorithme.
+
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}
 

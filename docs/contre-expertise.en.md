@@ -164,14 +164,16 @@ European law is the route to access. We **corroborate**; we do not discover.
 
 → [Full bibliography](bibliographie.en.md)
 
-## What this counter-expertise does not do
+## What this counter-expertise did not do — and which is now done
 
-It does not test the **exchangeability test** itself against cascade click models, where the
-examination of a rank depends on what precedes it. The test should reject there too — it only
-tests independence — but the minimum detectable severity would no longer mean the same thing.
+The two blind spots announced here have since been measured.
+→ **[The two blind spots](angles-morts.en.md)**
 
-Nor does it measure what an **error in estimating relevance** would do to the method
-comparisons: this entire repository assumes relevance known, which no platform has.
+* **Under cascade, the exchangeability test holds**: it rejects between $z = -208$ and
+  $z = -241$, more strongly than on real data. The power law $R^{-\eta}$, by contrast,
+  collapses — at rank twelve it overstates real exposure by a factor of **40 to 4,110**.
+* **Under estimated relevance**, the ranking of methods holds but their advantage over random
+  selection falls from 16.4 to 5.8 points, and inverts beyond.
 
 ---
 

@@ -5,7 +5,7 @@
 [![Licence : MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Documentation : CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE-DOCS)
 [![Champ : sociophysique](https://img.shields.io/badge/champ-sociophysique-8a2be2.svg)](https://s-geffroy.github.io/Indice-Diversite-Exposee/)
-[![Tests : 582](https://img.shields.io/badge/tests-582-brightgreen.svg)](tests/)
+[![Tests : 587](https://img.shields.io/badge/tests-587-brightgreen.svg)](tests/)
 
 📖 **[Documentation complète](https://s-geffroy.github.io/Indice-Diversite-Exposee/)**
 · [English](https://s-geffroy.github.io/Indice-Diversite-Exposee/en/)
@@ -55,6 +55,12 @@ publié comme tel.
   artefact d'échelle —, en **restreint** une autre — l'enterrement dépend de la concentration de
   l'attention et disparaît sur une surface plate — et **élargit** son incertitude sur $\eta$.
   → **[Contre-expertise](docs/contre-expertise.md)** · **[Bibliographie](docs/bibliographie.md)**
+- **Et l'épreuve de ses deux hypothèses les plus profondes.** Sous un modèle de clic **à
+  cascade**, le test d'échangeabilité **tient** — il rejette plus fortement que sur données
+  réelles — mais la loi de puissance $R^{-\eta}$ s'effondre : au douzième rang elle surestime
+  l'exposition d'un facteur **40 à 4 110**. Et sous pertinence **estimée**, l'avantage des
+  méthodes réglées sur le hasard passe de 16,4 à 5,8 points, puis s'inverse.
+  → **[Les deux angles morts](docs/angles-morts.md)**
 - **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
   → **[Article 40](docs/article-40.md)**
@@ -77,7 +83,7 @@ l'étiquetage ; un plancher d'index [se sature à coût nul](docs/gaming.md) ; l
 
 ## À lire d'abord : ce que le travail ne prétend pas
 
-L'**[audit critique](docs/limites.md)** recense **dix-neuf corrections** apportées au
+L'**[audit critique](docs/limites.md)** recense **vingt corrections** apportées au
 raisonnement d'origine — dont **cinq formules invalides**, et une découverte en tentant de
 mesurer — et énumère les limites qui subsistent, y compris celles qui touchent à l'usage
 réglementaire de l'index : il est manipulable, sa discrétisation en points de vue est un choix
@@ -104,7 +110,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 582 tests, dont les exemples de docstrings
+docker compose run --rm test          # 587 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -142,8 +148,8 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              582 tests — validation physique, numérique et statistique
-notebooks/          01 à 20, un par bloc théorique, exécutables
+tests/              587 tests — validation physique, numérique et statistique
+notebooks/          01 à 21, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné
@@ -178,10 +184,12 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
 | l'IPS retrouve à 2,5 % la valeur d'une politique jamais déployée | seule confrontation du dépôt à une vérité terrain mesurée |
 | les mesures se recalculent **à l'identique** depuis les tableaux agrégés | c'est ce qui rend une demande d'accès proportionnée plutôt que plaidée |
 | aucune méthode ne dépasse la frontière exacte, et le tirage au sort en reste loin | fige la borne contre laquelle le filtre est jugé |
+| le test d'échangeabilité **rejette aussi sous un modèle à cascade** | sans quoi son verdict négatif sur MIND ne distinguerait rien |
+| le tirage au sort est **invariant** au bruit de pertinence, les autres non | fige la raison mécanique pour laquelle le hasard rattrape |
 
 ## Contenu du dépôt
 
-- [`docs/limites.md`](docs/limites.md) — **audit critique** : les dix-neuf corrections et les
+- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt corrections et les
   limites qui subsistent.
 - [`docs/calibration.md`](docs/calibration.md) — **la mesure de $\gamma\alpha/\lambda$** sur
   données publiques, ses trois enseignements et ses réserves.
@@ -208,6 +216,8 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
   exacte** et quatre concurrents, dont une heuristique de 1998 qui fait aussi bien.
 - [`docs/contre-expertise.md`](docs/contre-expertise.md) — **ce que la littérature reproche à ce
   travail** : une conclusion retirée, une restreinte, une incertitude élargie.
+- [`docs/angles-morts.md`](docs/angles-morts.md) — **les deux hypothèses les plus profondes**
+  éprouvées : modèle de clic à cascade, et pertinence estimée plutôt que connue.
 - [`docs/bibliographie.md`](docs/bibliographie.md) — **toutes les références**, avec ce que
   chacune sert ici ; page dérivée de `paper/refs.bib` et verrouillée par un test.
 - [`docs/feuille-de-route.md`](docs/feuille-de-route.md) — comment combler ces limites,

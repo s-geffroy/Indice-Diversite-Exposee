@@ -952,6 +952,45 @@ further from the logging policy --- on the contrary, the effective sample size w
 still.
 
 
+
+\subsection{The two deepest assumptions, tested}
+\label{sec:blindspots}
+
+Two assumptions run through this entire note without ever having been tested: that examination
+follows a power law, and that relevance is known. Neither is.
+
+\paragraph{The exchangeability test survives a change of click model.} Under a \emph{cascade}
+model \citep{craswell2008} --- the reader moves down the feed, stops on finding what they wanted, and otherwise
+continues with probability $\gamma$ --- test \eqref{eq:exchangeability} rejects between $z = -208$
+and $z = -241$ depending on $\gamma$, i.e. \emph{more strongly} than on Baidu-ULTR. That is the
+result required: the test assumes nothing about the shape of attention, it tests only
+independence, and its negative verdict on MIND therefore holds under any model.
+
+\paragraph{The power law does not survive.} Under cascade, examination decays \emph{geometrically}
+rather than polynomially. Simulation gives here the ground truth real data never provides --- the
+positions actually examined --- and the comparison is unequivocal: at rank twelve, the fitted
+$R^{-\hat\eta}$ overstates real exposure by a factor of $40$ at $\gamma = 0.95$, $129$ at
+$\gamma = 0.85$ and $4{,}110$ at $\gamma = 0.60$. The fit nonetheless looks excellent, with a
+standard error of $0.04$.
+
+The consequence bears directly on \S\ref{sec:logs}: the severity $\hat\eta = 1.10 \pm 0.09$
+measured on Baidu-ULTR means something \emph{only if} examination there follows a power law ---
+and Baidu-ULTR is a search results page, the cascade model's home ground. Severity must therefore
+be published \textbf{with its assumed shape}, and that shape remains to be tested. The
+exchangeability test says whether the order carries information; it does not say in what form.
+
+\paragraph{And estimated relevance erases the tuned methods' advantage.} The comparison in
+\S\ref{sec:baselines} assumes relevance known. Having the methods rank on \emph{perceived}
+relevance and judging them on the true one leaves their order unchanged --- filter and MMR remain
+ahead --- but their advantage over random selection falls from $16.4$ points at zero noise to
+$5.8$ points at a rank correlation of $0.50$, and \emph{inverts} below $0.36$. The reason is
+mechanical: random selection is the only re-ranker that does not use relevance, hence the only one
+whose shortfall is invariant to noise.
+
+At realistic relevance, the gap between re-rankers therefore matters far less than the quality of
+the underlying relevance engine --- which reinforces, by a third route, the conclusion that this
+work's contribution is not its algorithm.
+
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}
 

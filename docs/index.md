@@ -10,7 +10,7 @@ Un **instrument** — une mesure de la diversité qu'un fil d'actualité expose 
 lecteur, calculable sans accès au code de la plateforme — et la **méthode adverse** qui l'a
 mis à l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel.
 
-Il en reste vingt notebooks exécutables, 582 tests, dix-neuf corrections consignées, et un
+Il en reste vingt-et-un notebooks exécutables, 587 tests, vingt corrections consignées, et un
 état des lieux qui ne ressemble pas à ce que le projet annonçait.
 
 ![Une plateforme certifiée à 0,70 par une mesure aveugle au rang n'expose que 0,36 de
@@ -67,6 +67,13 @@ d'échelle —, en restreint une autre — l'enterrement dépend de la concentra
 et **disparaît** sur une surface plate — et élargit son incertitude sur $\eta$ : le biais de
 confiance la gonfle de **+12,8 %** sans que l'erreur type ne le voie.
 → [Contre-expertise](contre-expertise.md) · [Bibliographie](bibliographie.md)
+
+**Et l'épreuve de ses deux hypothèses les plus profondes.** Sous un modèle de clic **à cascade**,
+le test d'échangeabilité **tient** — il rejette plus fortement que sur données réelles — mais la
+loi de puissance $R^{-\eta}$ s'effondre : au douzième rang, elle surestime l'exposition d'un
+facteur **40 à 4 110**. Et sous pertinence **estimée** plutôt que connue, l'avantage des méthodes
+réglées sur le tirage au sort passe de 16,4 à 5,8 points, puis **s'inverse**.
+→ [Les deux angles morts](angles-morts.md)
 
 **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
 agrégés, sans aucune donnée personnelle, dont il est prouvé qu'ils recalculent les mesures **à
@@ -136,7 +143,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-et-un notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -161,6 +168,7 @@ note. Chacun se lit indépendamment.
 | [18 — Demande article 40](notebooks/18_demande_article_40.ipynb) | quatre tableaux agrégés qui suffisent, et la preuve qu'ils suffisent |
 | [19 — Lignes de base](notebooks/19_lignes_de_base.ipynb) | le filtre jugé contre quatre concurrents et contre la frontière exacte |
 | [20 — Contre-expertise](notebooks/20_contre_expertise.ipynb) | cinq contre-épreuves, dont une qui retire une conclusion publiée |
+| [21 — Angles morts](notebooks/21_angles_morts.ipynb) | le test tient sous cascade, la loi de puissance non |
 
 ## Reproduire
 
@@ -170,7 +178,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 582 tests
+docker compose run --rm test          # 587 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

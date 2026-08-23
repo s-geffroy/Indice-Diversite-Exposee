@@ -171,15 +171,16 @@ recommandation diversifiée et que le droit européen est la voie d'accès à en
 
 → [Bibliographie complète](bibliographie.md)
 
-## Ce que cette contre-expertise ne fait pas
+## Ce que cette contre-expertise ne faisait pas — et qui est fait
 
-Elle n'éprouve pas le **test d'échangeabilité** lui-même contre des modèles de clic à cascade,
-où l'examen d'un rang dépend de ce qui précède. Le test devrait y rejeter également — il ne teste
-que l'indépendance — mais la sévérité minimale détectable, elle, n'aurait plus le même sens.
+Les deux angles morts annoncés ici ont été mesurés depuis.
+→ **[Les deux angles morts](angles-morts.md)**
 
-Elle ne mesure pas non plus ce qu'une **erreur d'estimation de la pertinence** ferait aux
-comparaisons de méthodes : tout ce dépôt suppose la pertinence connue, ce qu'aucune plateforme
-n'a.
+* **Sous cascade, le test d'échangeabilité tient** : il rejette entre $z = -208$ et $z = -241$,
+  plus fortement que sur données réelles. En revanche la loi de puissance $R^{-\eta}$, elle,
+  s'effondre — au douzième rang, elle surestime l'exposition réelle d'un facteur **40 à 4 110**.
+* **Sous pertinence estimée**, l'ordre des méthodes tient mais leur avantage sur le tirage au
+  sort passe de 16,4 à 5,8 points, et s'inverse au-delà.
 
 ---
 

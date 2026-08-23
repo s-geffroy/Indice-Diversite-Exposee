@@ -7,6 +7,54 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — les deux angles morts de la contre-expertise, éprouvés
+
+La contre-expertise s'était terminée en énonçant ce qu'elle n'avait pas fait. Ce sont les deux
+hypothèses les plus profondes du dépôt — l'une sur la **forme de l'attention**, l'autre sur ce
+que la plateforme **sait de son lecteur**. Détail :
+[`docs/angles-morts.md`](docs/angles-morts.md) et le
+[notebook 21](notebooks/21_angles_morts.ipynb).
+
+- **`ide.logs.simulate_cascade`** — journal simulé sous un modèle de clic **à cascade**
+  (Craswell *et al.*, 2008), où l'examen dépend de ce qui précède. Il rend en option le
+  **masque d'examen réel**, vérité terrain que les données réelles ne donnent jamais.
+- **`notebooks/21_angles_morts.ipynb`**, `paper/figures/fig21_angles_morts.png` et 5 tests
+  supplémentaires (587 au total). Une référence nouvelle au fichier BibTeX.
+
+### Résultats — le test tient, la loi de puissance non
+
+- **Le test d'échangeabilité rejette sous cascade** entre $z = -208$ et $z = -241$ selon la
+  probabilité de poursuite — **plus fortement que sur Baidu-ULTR** ($-206$), alors même que la
+  cascade réduit le nombre de fils exploitables. Il ne suppose rien de la forme de l'attention,
+  et son verdict négatif sur MIND garde donc son sens sous n'importe quel modèle.
+- **La loi de puissance $R^{-\eta}$, elle, s'effondre.** Sous cascade la décroissance est
+  **géométrique** : au douzième rang, la loi ajustée surestime l'exposition réelle d'un facteur
+  **40** ($\gamma = 0{,}95$), **129** ($\gamma = 0{,}85$) et **4 110** ($\gamma = 0{,}60$). Et
+  l'ajustement paraît excellent — $\hat\eta \approx 0{,}5$, erreur type $0{,}04$.
+- **Sous pertinence estimée, l'avantage des méthodes réglées s'efface.** Leur ordre tient à tous
+  les niveaux de bruit, mais l'écart au tirage au sort passe de **16,4 points** à bruit nul à
+  **5,8 points** pour une corrélation de rang de 0,50, et **s'inverse** en deçà de 0,36. Le
+  hasard est le seul réordonnanceur qui n'utilise pas la pertinence : son manque à gagner est
+  invariant, celui de tous les autres croît.
+
+### Corrigé — une forme d'examen supposée, jamais testée
+
+- Le dépôt publie $\hat\eta = 1{,}10 \pm 0{,}09$ sur Baidu-ULTR sous un modèle de position. Ce
+  chiffre n'a de sens **que si** l'examen y suit une loi de puissance — et Baidu-ULTR est une
+  page de résultats de recherche, terrain d'élection du modèle à cascade. La sévérité doit être
+  publiée **avec la forme supposée**, et cette forme reste à tester. Vingtième entrée de
+  l'[audit critique](docs/limites.md).
+- Les chiffres des [lignes de base](docs/lignes-de-base.md) — 0,0 à 1,0 % de manque à gagner —
+  valent pour une **pertinence connue** ; sous un bruit $\sigma = 0{,}2$, le même filtre en
+  laisse **5,0 %**.
+
+### Modifié
+
+- [`docs/rang-servi.md`](docs/rang-servi.md), [`docs/lignes-de-base.md`](docs/lignes-de-base.md)
+  et [`docs/contre-expertise.md`](docs/contre-expertise.md) portent les restrictions
+  correspondantes ; les deux notes LaTeX reçoivent la sous-section *les deux hypothèses les plus
+  profondes, éprouvées* et sont recompilées (22 pages chacune).
+
 ### Ajouté — contre-expertise des instruments, et bibliographie publiée
 
 Les chapitres précédents attaquaient l'index, la norme, les jeux de données et l'algorithme.
