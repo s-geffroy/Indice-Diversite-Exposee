@@ -51,9 +51,13 @@ estimated through clicks: severity is then $0.88 \pm 0.05$ over $143$ documents,
 $1.09 \pm 0.09$ over $55$ --- the estimate overstates decay by $23\%$, because a click conflates
 examination with attractiveness. Direct measurement further refutes the cascade model on that log,
 by two independent routes, and shows the $R^{-\eta}$ law to be the worst of three fits on the
-observed curve. Finally, a rich display format placed above removes $8.4$ points of examination
-from what follows, at equal rank and comparable page height: the rank weighting is therefore not a
-property of rank, nor even of the surface, but of the \textbf{page served}.
+observed curve. We had finally concluded that a rich display format placed above removes $8.4$
+points of examination from what follows, and that the rank weighting was therefore a property of
+the \textbf{page served} rather than of rank. A matched measurement withdraws that conclusion:
+with the \emph{item} held fixed only $6\%$ remains (risk ratio $0.940$, $95\%$~CI
+$[0.916, 0.964]$), two thirds of the published effect being a composition of queries. Its bearing
+on the index is $0.0025$, against $0.0350$ for the $1/R$ convention: the rank law is therefore
+\textbf{portable}, and what threatens the measurement is not the page but not having measured.
 
 No public dataset carries both the served rank and an interpretable viewpoint label. We
 therefore specify, under Article~40 of the \emph{Digital Services Act}, aggregate tables
@@ -1112,6 +1116,10 @@ the page as an argument. The attention discount $w_R$ of \eqref{eq:distribution}
 a property of the surface but of the \textbf{page served}: two feeds of identical composition,
 served with different formats, do not expose the same thing.
 
+This conclusion is \textbf{withdrawn} by \S\ref{sec:pageeffect}: the strata above hold rank and
+pixels fixed, but not the \emph{item}. The paragraph is kept as published, its correction coming
+immediately after.
+
 \paragraph{And one explanation in this note is withdrawn.} \S\ref{sec:measuredexposure} attributed
 the two-stage shape of the measured curve to a \emph{screen fold}, invoking the
 \texttt{serp\_height} column. That column allows the hypothesis to be tested, and it refutes it:
@@ -1123,6 +1131,48 @@ holds; the mechanical explanation falls.
 one more is needed, the \textbf{format} of the item served. Without it, two feeds of identical
 composition can expose different diversities with nothing signalling it. It is moreover the least
 sensitive of the requested columns: an item's format says nothing about its reader.
+\S\ref{sec:pageeffect} demotes that column to a means of verification.
+
+\subsection{The page effect, once composition is removed}
+\label{sec:pageeffect}
+
+The previous paragraph compared enriched pages to the others at equal rank and comparable height.
+It lacked one control: the \textbf{item}. An answer box does not appear at random --- it answers a
+factual question, which does not invite the same reading as an exploratory search. The measured
+gap could therefore come from the format, or from what the format appears on.
+
+\paragraph{A check that settles it.} We simulate a log where the format has \emph{no} effect on
+examination, but where enriched pages land on systematically less-consulted items. Stratifying on
+rank alone returns a risk ratio of $0.785$ there --- roughly the figure published above --- when
+the truth is $1$. The same protocol, matched, returns $1.005$ ($95\%$~CI $[0.993, 1.016]$), and
+recovers $0.896$ when an effect of $0.90$ is simulated. Rank stratification therefore manufactures
+the result it was meant to measure; matching does not.
+
+\paragraph{The measurement.} On Baidu-ULTR, at \textbf{same document and same rank}, the risk
+ratio on examination is $0.940$ ($95\%$~CI $[0.916, 0.964]$, $1{,}106$ strata, $31{,}045$
+impressions). A second matching, by \textbf{query} and independent of the first, returns $0.942$
+($95\%$~CI $[0.869, 1.022]$) on seven times fewer impressions. Rank by rank no trend emerges and
+every interval overlaps: the simplest surviving hypothesis is a constant factor.
+
+\paragraph{What it costs in practice.} A constant factor is a rescaling, to which a normalised
+index is insensitive; only rank~$1$, which never carries anything above it, keeps the effect from
+vanishing altogether. Over four thousand simulated feeds of nine ranks and four viewpoints,
+ignoring page composition moves the index by a median $0.0025$, where the $1/R$ convention moves
+it by $0.0350$ --- \textbf{fourteen times more}. Same order on severity: $\eta = 0.876$ ignoring
+the page against $0.854$ on the counterfactual bare page.
+
+\paragraph{Consequence.} The attention discount $w_R$ of \eqref{eq:distribution} becomes
+\textbf{portable} again, which was the real stake: were it page-dependent, no regulatory floor
+could be written without describing every page served. The \texttt{format} column of
+\S\ref{sec:request} is still requested --- it allows this check to be reproduced elsewhere --- but
+it no longer conditions the computation. What a regulator must require first is the displays
+column, without which exposure cannot be measured at all.
+
+\paragraph{Reservations.} The item-matched design retains only $1{,}106$ strata out of
+$404{,}478$: those are documents served at the same rank in pages of differing composition, and
+nothing guarantees they resemble the others. The query matching agrees but establishes nothing on
+its own, its interval containing $1$. Finally, grouping \texttt{media\_type} into ``ordinary''
+versus ``enriched'' remains a choice of this work.
 
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}

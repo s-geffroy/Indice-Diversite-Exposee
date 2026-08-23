@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import math
+
 import numpy as np
 import pytest
 
@@ -9,12 +11,14 @@ from ide.logs import (
     Digest,
     Impressions,
     click_rate_by_rank,
+    count_above,
     digest_split,
     exchangeability_test,
     load_digest,
     save_digest,
     simulate_cascade,
     simulate_feeds,
+    stratified_risk_ratio,
     upstream_dependence_from_counts,
     upstream_dependence_test,
 )
@@ -278,3 +282,95 @@ def test_les_comptes_d_amont_sont_absents_d_un_condense_qui_ne_les_porte_pas():
     with pytest.raises(ValueError, match="comptes d'amont"):
         digest.upstream_counts("x")
 
+
+
+class TestRapportStratifie:
+    """Le contraste entre deux groupes, une fois la composition neutralisée."""
+
+    @staticmethod
+    def deux_strates_sans_effet():
+        """Deux strates de taux très différents, où le groupe exposé est mal réparti.
+
+        Aucun effet propre n'est simulé : dans chaque strate, les deux groupes ont le même
+        taux. Seule l'allocation diffère — le groupe exposé se concentre là où le taux est
+        bas — et c'est ce qui suffit à tromper un contraste brut.
+        """
+        return {
+            "untreated": np.array([900.0, 100.0]),
+            "treated": np.array([100.0, 900.0]),
+            "untreated_seen": np.array([720.0, 20.0]),
+            "treated_seen": np.array([80.0, 180.0]),
+        }
+
+    def test_le_contraste_brut_se_trompe_la_ou_la_stratification_ne_se_trompe_pas(self):
+        counts = self.deux_strates_sans_effet()
+        brut = (counts["treated_seen"].sum() / counts["treated"].sum()) / (
+            counts["untreated_seen"].sum() / counts["untreated"].sum()
+        )
+        assert brut == pytest.approx(0.351, abs=0.01), "le contraste brut voit un effet massif"
+
+        ratio = stratified_risk_ratio(**counts)
+        assert ratio.ratio == pytest.approx(1.0)
+        assert not ratio.established
+
+    def test_un_effet_reel_est_rendu_exactement(self):
+        """Le même plan, mais le groupe exposé voit sa moitié des succès retirée."""
+        counts = self.deux_strates_sans_effet()
+        counts["treated_seen"] = counts["treated_seen"] / 2.0
+
+        ratio = stratified_risk_ratio(**counts)
+        assert ratio.ratio == pytest.approx(0.5)
+        assert ratio.established
+        assert ratio.low < 0.5 < ratio.high
+
+    def test_une_strate_qui_ne_porte_qu_un_groupe_n_informe_rien(self):
+        """C'est le prix de l'appariement : la strate sort du calcul, pas seulement du poids."""
+        counts = self.deux_strates_sans_effet()
+        apparie = stratified_risk_ratio(**counts)
+
+        boiteuse = {name: np.append(values, 5000.0 if "seen" not in name else 4000.0)
+                    for name, values in counts.items()}
+        boiteuse["treated"] = np.append(counts["treated"], 0.0)
+        boiteuse["treated_seen"] = np.append(counts["treated_seen"], 0.0)
+
+        elargi = stratified_risk_ratio(**boiteuse)
+        assert elargi.strata == apparie.strata
+        assert elargi.impressions == apparie.impressions
+        assert elargi.ratio == pytest.approx(apparie.ratio)
+
+    def test_un_plan_sans_strate_informative_ne_rend_pas_de_chiffre(self):
+        vide = stratified_risk_ratio(np.array([10.0]), np.array([0.0]),
+                                     np.array([4.0]), np.array([0.0]))
+        assert vide.strata == 0
+        assert math.isnan(vide.ratio)
+
+
+class TestCompteAmont:
+    """Ce que la page portait au-dessus d'un contenu."""
+
+    @staticmethod
+    def journal_melange(seed=0):
+        """Deux fils de quatre rangs, dont les lignes sont mélangées."""
+        generator = np.random.default_rng(seed)
+        ranks = np.tile(np.arange(1, 5), 2)
+        feeds = np.repeat([0, 1], 4)
+        marker = np.array([1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0])
+        order = generator.permutation(8)
+        journal = Impressions(
+            items=None,
+            ranks=ranks[order],
+            clicks=np.zeros(8),
+            feeds=feeds[order],
+            feed_lengths=np.array([4, 4]),
+        )
+        return journal, marker[order], np.array([0, 1, 1, 1, 0, 0, 1, 2])[order]
+
+    def test_le_compte_suit_les_rangs_servis_et_non_l_ordre_des_lignes(self):
+        journal, marker, attendu = self.journal_melange()
+        assert np.array_equal(count_above(journal, marker), attendu)
+
+    def test_le_compte_ne_traverse_jamais_la_frontiere_entre_deux_fils(self):
+        """Le premier rang de chaque fil ne peut rien porter au-dessus de lui."""
+        for seed in range(5):
+            journal, marker, _ = self.journal_melange(seed)
+            assert np.all(count_above(journal, marker)[journal.ranks == 1] == 0)

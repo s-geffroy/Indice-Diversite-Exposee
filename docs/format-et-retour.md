@@ -5,11 +5,15 @@
     autres. Après un clic, le journal enregistre explicitement que des documents ont défilé : le
     lecteur est revenu. Sous cascade stricte, cette colonne serait toujours nulle.
 
-!!! danger "Le format modifie l'exposition, et pas par la géométrie"
-    Un format enrichi au-dessus retire **8,4 points** d'examen à ce qui suit, à rang **et** à
-    hauteur de page comparables — 21 strates, toutes de même signe. La remise d'attention $w_R$
-    n'est donc pas une propriété du rang, ni même de la surface : c'est une propriété de la
-    **page servie**.
+!!! failure "Corrigé — les deux tiers de cet effet étaient une composition"
+    Ce chapitre a mesuré qu'un format enrichi au-dessus retire **8,4 points** d'examen à ce qui
+    suit, à rang **et** à hauteur de page comparables, et en a conclu que la remise d'attention
+    $w_R$ était une propriété de la **page servie**. Le contrôle qui manquait était le
+    **contenu** : à contenu tenu fixe, il ne reste que **6 %** au lieu de 18 %, et une simulation
+    sans aucun effet reproduit presque exactement le chiffre publié ici.
+
+    Ce qui suit est conservé tel qu'il a été publié. Sa correction est
+    [au chapitre suivant](effet-de-page.md).
 
 !!! failure "Et une hypothèse que j'avais avancée est fausse"
     Le [pli d'écran](exposition-mesuree.md) — « l'exposition serait affaire de pixels, non de
@@ -85,6 +89,13 @@ question, et le lecteur cesse de descendre. C'est la lecture que propose la litt
     Deux fils de composition identique, servis avec des formats différents, n'exposent pas la
     même chose.
 
+!!! failure "Retiré — cette conclusion supposait un contrôle qui manquait"
+    Les strates ci-dessus tiennent le rang et les pixels fixes, mais **pas le contenu**. Un
+    encadré de réponse ne s'affiche pas au hasard : il répond à une question factuelle, qui
+    n'appelle pas la même lecture. Une fois le même document comparé à lui-même au même rang,
+    l'écart tombe à 6 % — et l'incidence sur l'indice à $0{,}0025$, quatorze fois moins que celle
+    de la convention $1/R$ qu'il devait disqualifier. → [l'effet de page](effet-de-page.md)
+
 ## 3. Une hypothèse retirée
 
 Le chapitre précédent avait constaté que la courbe d'examen mesurée n'est pas une loi de
@@ -124,6 +135,11 @@ Sans elle, deux fils de composition identique peuvent exposer des diversités di
 rien ne le signale — et un plancher devient dépendant d'une variable qu'on ne voit pas. C'est
 aussi une variable **peu sensible** : le format d'un contenu ne dit rien de son lecteur.
 
+!!! failure "Révisé — la colonne reste utile, elle n'est plus nécessaire"
+    Une fois l'effet mesuré à contenu fixé, son incidence sur l'indice est de $0{,}0025$. La
+    colonne `format` ne conditionne donc plus le calcul ; elle sert à **vérifier** ce chapitre
+    sur une autre plateforme. → [l'effet de page](effet-de-page.md)
+
 ## Réserves
 
 `slipoff_count_after_click` mesure un défilement **après** un clic, pas un examen : il atteste que
@@ -140,7 +156,7 @@ n'a pas d'équivalent agrégé, et porter ces strates dans le condensé multipli
 C'est le seul chapitre du dépôt dans ce cas.
 
 Il en découle qu'il est **écarté du balayage d'intégration continue**, qui régénère les
-vingt-trois autres. Le reproduire demande de récupérer d'abord le journal
+vingt-quatre autres. Le reproduire demande de récupérer d'abord le journal
 (`scripts/fetch_exposure.py`), puis `docker compose run --rm notebooks-full`. C'est une entorse à
 la règle du dépôt — tout doit se régénérer depuis ce qui est versionné — et elle est signalée ici
 plutôt que laissée à découvrir.

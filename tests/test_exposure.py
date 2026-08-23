@@ -5,6 +5,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
+from ide.entropy import label_diversity_index
 from ide.exposure import (
     SOURCES,
     Digest,
@@ -14,10 +15,12 @@ from ide.exposure import (
     obd_cells,
     obd_click_rates,
     off_policy_check,
+    page_effect_counts,
+    page_examination_curve,
     source_path,
     verify_source,
 )
-from ide.logs import exchangeability_test, naive_severity_fit
+from ide.logs import exchangeability_test, naive_severity_fit, stratified_risk_ratio
 from ide.offpolicy import estimate_position_bias
 
 
@@ -259,3 +262,91 @@ def test_sur_baidu_l_examen_ne_s_arrete_pas_apres_un_clic():
         assert verdict.deviation > 5.0, "une cascade rendrait cet écart négatif"
         assert not verdict.position_like
 
+
+
+def rapport_de_page(digest, stratification, rangs=(2, 9)):
+    """Le rapport de risques apparié, tel que le chapitre le publie."""
+    counts = page_effect_counts(digest, stratification)
+    kept = (counts["ranks"] >= rangs[0]) & (counts["ranks"] <= rangs[1])
+    return stratified_risk_ratio(
+        counts["untreated"][kept], counts["treated"][kept],
+        counts["untreated_seen"][kept], counts["treated_seen"][kept],
+    )
+
+
+def test_les_deux_tiers_de_l_effet_de_format_etaient_de_la_composition():
+    """Le résultat publié, verrouillé sur le condensé versionné.
+
+    Le chapitre précédent comparait les pages enrichies aux autres à rang et à hauteur
+    comparables, et lisait un écart de dix-huit points relatifs. À contenu fixé, il en reste
+    six : le reste tenait à *quelles* requêtes déclenchent un encadré de réponse, non à ce que
+    l'encadré fait au lecteur.
+    """
+    digest = load_digest()
+    curve = page_examination_curve(digest)
+    exposures = curve["exposures"].reshape(-1, 5).astype(float)
+    seen = curve["seen"].reshape(-1, 5).astype(float)
+    ranks = np.arange(1, exposures.shape[0] + 1)
+    kept = (ranks >= 2) & (ranks <= 9)
+
+    par_rang = stratified_risk_ratio(
+        exposures[kept, 0], exposures[kept, 1:].sum(1),
+        seen[kept, 0], seen[kept, 1:].sum(1),
+    )
+    assert par_rang.ratio == pytest.approx(0.817, abs=0.01)
+
+    apparie = rapport_de_page(digest, "document")
+    assert apparie.ratio == pytest.approx(0.940, abs=0.01)
+    # l'effet résiduel reste établi ; il est seulement trois fois plus petit
+    assert apparie.established
+    assert apparie.ratio > par_rang.ratio
+
+
+def test_les_deux_appariements_independants_concordent():
+    """Même contenu / même rang, et même requête / même rang : deux plans, un seul chiffre."""
+    digest = load_digest()
+    par_contenu = rapport_de_page(digest, "document")
+    par_requete = rapport_de_page(digest, "query")
+
+    assert par_requete.ratio == pytest.approx(par_contenu.ratio, abs=0.02)
+    # l'appariement par requête est bien moins peuplé : il concorde sans rien établir seul
+    assert par_requete.impressions < par_contenu.impressions / 5
+    assert not par_requete.established
+
+
+def test_ignorer_la_page_coute_bien_moins_que_la_convention_en_un_sur_R():
+    """Ce qui décide de la remise d'attention est la mesure, non la composition de la page."""
+    digest = load_digest()
+    curve = page_examination_curve(digest)
+    exposures = curve["exposures"].reshape(-1, 5).astype(float)
+    seen = curve["seen"].reshape(-1, 5).astype(float)
+    depth = 9
+
+    marginale = (seen.sum(1) / exposures.sum(1))[:depth]
+    part = (exposures[:, 1:].sum(1) / exposures.sum(1))[:depth]
+    ratio = rapport_de_page(digest, "document").ratio
+    # Le rang 1 ne porte jamais de format enrichi au-dessus de lui : sans cette exemption
+    # l'effet serait une homothétie, à laquelle un indice normalisé est insensible.
+    enrichie = marginale / (1 - part + part * ratio)
+    enrichie[1:] *= ratio
+    convention = np.arange(1, depth + 1, dtype=float) ** -1.0
+
+    generator = np.random.default_rng(20260823)
+    ecart_page, ecart_convention = [], []
+    for _ in range(500):
+        labels = generator.integers(0, 4, size=depth)
+        reference = exposed_index(marginale, labels)
+        ecart_page.append(abs(reference - exposed_index(enrichie, labels)))
+        ecart_convention.append(abs(reference - exposed_index(convention, labels)))
+
+    assert 0.0 < np.median(ecart_page) < 0.005
+    assert np.median(ecart_convention) > 10 * np.median(ecart_page)
+
+
+def exposed_index(weights, labels, catalogue=4):
+    """L'IDE d'un fil, sous une remise d'attention donnée."""
+    served = np.array([weights[labels == viewpoint].sum() for viewpoint in range(catalogue)])
+    return label_diversity_index(
+        np.repeat(np.arange(catalogue), np.round(served / served.sum() * 10_000).astype(int)),
+        catalogue_size=catalogue,
+    )

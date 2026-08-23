@@ -61,6 +61,7 @@ from ide.logs import (
     DIGEST_MINIMUM_IMPRESSIONS,
     Digest,
     Impressions,
+    count_above,
     digest_split,
 )
 from ide.logs import (
@@ -76,6 +77,7 @@ __all__ = [
     "OBD_SOURCE",
     "SOURCES",
     "OffPolicyCheck",
+    "PageComposition",
     "bucket_from_digest",
     "build_digest",
     "examination_counts",
@@ -84,6 +86,8 @@ __all__ = [
     "load_obd_bucket",
     "obd_cells",
     "obd_click_rates",
+    "page_effect_counts",
+    "page_examination_curve",
     "off_policy_check",
     "source_path",
     "verify_source",
@@ -214,9 +218,27 @@ def source_path(name: str, directory: Path | None = None) -> Path:
     return base / SOURCES[name][0]
 
 
+@dataclass(frozen=True)
+class PageComposition:
+    """Ce que portait la page autour de chaque contenu servi.
+
+    Attributes:
+        enriched: le contenu lui-même relève-t-il d'un format enrichi — encadré de réponse,
+            image, tableau — plutôt que du résultat ordinaire (``media_type`` nul).
+        enriched_above: combien de formats enrichis le précèdent dans le même fil.
+        queries: identifiant de la requête, pour stratifier sur elle.
+    """
+
+    enriched: np.ndarray
+    enriched_above: np.ndarray
+    queries: np.ndarray
+
+
 def load_baidu_part(
-    path: Path | None = None, with_examination: bool = False
-) -> Impressions | tuple[Impressions, np.ndarray]:
+    path: Path | None = None,
+    with_examination: bool = False,
+    with_page: bool = False,
+) -> Impressions | tuple[Impressions, ...]:
     """Lit une tranche de Baidu-ULTR et la met à plat.
 
     Quatre colonnes suffisent, sur les vingt-neuf que porte le fichier : la session
@@ -229,6 +251,9 @@ def load_baidu_part(
             d'**examen** — le document a-t-il été affiché ? C'est la seule mesure directe
             d'exposition dont ce dépôt dispose, et elle lève l'ambiguïté que les clics laissent
             entière (voir :func:`ide.logs.upstream_dependence_test`).
+        with_page: si vrai, lit en outre ``media_type`` et ``query_md5``, et rend la
+            **composition de la page** — de quoi demander si l'exposition d'un rang dépend de ce
+            qui l'entoure, et non du rang seul.
 
     Returns:
         Le journal mis à plat, fils groupés par session, et le masque d'examen si demandé.
@@ -239,6 +264,8 @@ def load_baidu_part(
     columns = ["query_no", "position", "click", "url_md5"]
     if with_examination:
         columns.append("displayed_time")
+    if with_page:
+        columns += ["media_type", "query_md5"]
     table = feather.read_table(source, columns=columns)
 
     sessions = np.asarray(table["query_no"])
@@ -259,7 +286,20 @@ def load_baidu_part(
     # Un temps d'affichage strictement positif atteste que le document a été montré. C'est un
     # substitut, non l'examen lui-même : un document affiché n'est pas nécessairement regardé.
     examined = (np.asarray(table["displayed_time"]).astype(float) > 0.0).astype(float)
-    return journal, examined
+    if not with_page:
+        return journal, examined
+
+    # ``media_type`` porte 437 valeurs distinctes et non documentées ; le regroupement en
+    # « ordinaire » (valeur nulle) contre « enrichi » est un choix de ce dépôt, signalé comme
+    # tel dans la documentation.
+    enriched = (np.asarray(table["media_type"]).astype(np.int64) != 0).astype(float)
+    queries = np.unique(np.asarray(table["query_md5"].to_pylist()), return_inverse=True)[1]
+    page = PageComposition(
+        enriched=enriched,
+        enriched_above=count_above(journal, enriched),
+        queries=queries.astype(np.int64),
+    )
+    return journal, examined, page
 
 
 def load_obd_bucket(name: str, directory: Path | None = None) -> dict[str, np.ndarray]:
@@ -390,6 +430,121 @@ def _examination_cells(journal: Impressions, examined: np.ndarray) -> dict[str, 
     }
 
 
+PAGE_STRATIFICATIONS = ("document", "query")
+PAGE_CURVE_RANKS = 12
+PAGE_CURVE_ABOVE = 4
+
+
+def _matched_counts(
+    strata: np.ndarray, treated: np.ndarray, examined: np.ndarray
+) -> tuple[np.ndarray, ...]:
+    """Compte, par strate, les effectifs et les examens des deux groupes.
+
+    Seules les strates portant **les deux** groupes sont conservées : les autres n'apportent
+    rien au contraste et ne feraient qu'alourdir le condensé.
+    """
+    keys, index = np.unique(strata, axis=0, return_inverse=True)
+    slots = index * 2 + treated
+    counts = np.bincount(slots, minlength=2 * len(keys)).reshape(-1, 2)
+    seen = np.bincount(slots, weights=examined, minlength=2 * len(keys)).reshape(-1, 2)
+
+    informative = (counts[:, 0] > 0) & (counts[:, 1] > 0)
+    return (keys[informative], counts[informative, 0], counts[informative, 1],
+            seen[informative, 0], seen[informative, 1])
+
+
+def _page_effect_cells(
+    journal: Impressions, examined: np.ndarray, page: PageComposition
+) -> dict[str, np.ndarray]:
+    """Réduit l'effet de page à des comptes appariés, versionnables.
+
+    Deux objets distincts :
+
+    * ``page_curve_*`` — la courbe d'examen croisée avec le nombre de formats enrichis servis
+      plus haut. C'est la **description**, et elle mélange l'effet cherché à la composition :
+      les requêtes qui déclenchent un encadré de réponse ne sont pas les autres.
+    * ``page_document_*`` et ``page_query_*`` — les comptes **appariés**, à contenu et rang
+      fixés d'une part, à requête et rang fixés d'autre part. C'est ce qui sépare l'effet de la
+      composition, et les deux stratifications se contrôlent l'une l'autre.
+    """
+    ranks = journal.ranks
+    treated = (page.enriched_above > 0).astype(np.int64)
+
+    within = (ranks >= 1) & (ranks <= PAGE_CURVE_RANKS)
+    above = np.minimum(page.enriched_above, PAGE_CURVE_ABOVE)
+    curve = (ranks[within] - 1) * (PAGE_CURVE_ABOVE + 1) + above[within]
+    size = PAGE_CURVE_RANKS * (PAGE_CURVE_ABOVE + 1)
+    grid = np.arange(size)
+
+    cells: dict[str, np.ndarray] = {
+        "page_curve_ranks": (grid // (PAGE_CURVE_ABOVE + 1) + 1).astype(np.int32),
+        "page_curve_above": (grid % (PAGE_CURVE_ABOVE + 1)).astype(np.int32),
+        "page_curve_exposures": np.bincount(curve, minlength=size).astype(np.int32),
+        "page_curve_seen": np.bincount(curve, weights=examined[within],
+                                       minlength=size).astype(np.int32),
+    }
+
+    # Le rang 1 ne porte jamais de format enrichi au-dessus de lui : il n'informe aucun
+    # contraste et sort de l'appariement.
+    keep = ranks >= 2
+    identifiers = {"document": journal.items, "query": page.queries}
+    for name in PAGE_STRATIFICATIONS:
+        keys, untreated, exposed, untreated_seen, exposed_seen = _matched_counts(
+            np.stack([identifiers[name][keep], ranks[keep]], axis=1),
+            treated[keep],
+            examined[keep],
+        )
+        cells[f"page_{name}_ranks"] = keys[:, 1].astype(np.int32)
+        cells[f"page_{name}_untreated"] = untreated.astype(np.int32)
+        cells[f"page_{name}_treated"] = exposed.astype(np.int32)
+        cells[f"page_{name}_untreated_seen"] = untreated_seen.astype(np.int32)
+        cells[f"page_{name}_treated_seen"] = exposed_seen.astype(np.int32)
+
+    return cells
+
+
+def page_effect_counts(
+    digest: Digest, stratification: str = "document", split: str = "baidu"
+) -> dict[str, np.ndarray]:
+    """Les comptes appariés de l'effet de page, prêts pour :func:`ide.logs.stratified_risk_ratio`.
+
+    Args:
+        digest: le condensé versionné.
+        stratification: ``"document"`` — même contenu, même rang — ou ``"query"`` — même
+            requête, même rang. Les deux répondent à la même question par des appariements
+            indépendants.
+        split: le journal concerné.
+
+    Returns:
+        Les rangs des strates et les quatre comptes attendus par le rapport de risques.
+    """
+    if stratification not in PAGE_STRATIFICATIONS:
+        raise ValueError(f"stratification inconnue : {stratification!r}")
+
+    arrays = digest.splits[split]
+    prefix = f"page_{stratification}_"
+    if prefix + "ranks" not in arrays:
+        raise ValueError(f"le condensé de {split!r} ne retient pas l'effet de page")
+
+    return {name[len(prefix):]: arrays[name] for name in arrays if name.startswith(prefix)}
+
+
+def page_examination_curve(digest: Digest, split: str = "baidu") -> dict[str, np.ndarray]:
+    """La courbe d'examen croisée avec le nombre de formats enrichis servis plus haut.
+
+    .. warning::
+        Cette courbe **décrit**, elle n'établit rien : l'écart entre deux colonnes mélange
+        l'effet du format à la composition des requêtes qui le déclenchent. C'est
+        :func:`page_effect_counts` qui sépare les deux.
+    """
+    arrays = digest.splits[split]
+    if "page_curve_seen" not in arrays:
+        raise ValueError(f"le condensé de {split!r} ne retient pas la courbe de page")
+
+    return {name[len("page_curve_"):]: arrays[name]
+            for name in arrays if name.startswith("page_curve_")}
+
+
 def examination_counts(digest: Digest, split: str = "baidu") -> dict[str, np.ndarray]:
     """Les comptes d'examen du condensé, seule mesure directe d'exposition du dépôt."""
     arrays = digest.splits[split]
@@ -461,10 +616,11 @@ def build_digest(directory: Path | None = None) -> Digest:
 
     _, _, fingerprint = verify_source("baidu", directory=directory)
     sources["baidu"] = fingerprint
-    journal, examined = load_baidu_part(source_path("baidu", directory=directory),
-                                        with_examination=True)
+    journal, examined, page = load_baidu_part(source_path("baidu", directory=directory),
+                                              with_examination=True, with_page=True)
     tables["baidu"] = digest_split(journal)
     tables["baidu"].update(_examination_cells(journal, examined))
+    tables["baidu"].update(_page_effect_cells(journal, examined, page))
 
     for name in OBD_BUCKETS:
         _, _, fingerprint = verify_source(name, directory=directory)

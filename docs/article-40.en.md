@@ -130,14 +130,16 @@ constrain nothing — cannot be excluded from the computation.
     It is moreover **less sensitive** than clicks: knowing an item was displayed says less about a
     reader than knowing they chose it.
 
-!!! success "And the `format` column closes a blind spot"
-    On Baidu-ULTR a **rich format** above removes **8.4 points** of examination from what follows,
-    at equal rank **and** comparable page height — so the effect does not run through space
-    occupied. → [Format and return](format-et-retour.en.md)
+!!! tip "The `format` column serves to check, not to compute"
+    It was first requested for a reason that did not hold: on Baidu-ULTR a **rich format** above
+    appeared to remove 8.4 points of examination from what follows. With the **item held fixed**,
+    only 6 % remains, and the bearing on the index falls to $0.0025$ — fourteen times less than
+    that of the $1/R$ convention. → [The page effect](effet-de-page.en.md)
 
-    Without this column, two feeds of **identical composition** can expose different diversities
-    with nothing signalling it, and a floor becomes dependent on a variable nobody sees. It is
-    also the least sensitive of the five: an item's format says nothing about its reader.
+    The column is still requested, for two more modest reasons: it allows this **check to be
+    reproduced** on another platform, where the effect might be stronger; and it is the least
+    sensitive of the six — an item's format says nothing about its reader. It does not condition
+    the computation of the index, and a platform failing to supply it would not prevent it.
 
 **Table 4 — exposure by viewpoint**
 
@@ -163,7 +165,7 @@ not its choice.
 | exposure severity $\eta$, **measured** | 3, `displays` column |
 | position-bias severity $\eta$, estimated failing that | 3 |
 | form of examination (cascade or not) | 3, `displays` column |
-| effect of format on exposure | 3, `format` column |
+| effect of format on exposure, item held fixed | 3, `format` and `item` columns |
 | counterfactual estimation and effective sample size | 3, with propensities |
 | composed and exposed diversity, burial gap | 4 |
 

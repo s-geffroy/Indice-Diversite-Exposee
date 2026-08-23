@@ -331,10 +331,12 @@ eligible under Article 40(8)(a).
 It has gained two columns since it was drafted, each for the same reason: a measurement showed
 what was lost without it. **`displays`** removes the need to estimate $\eta$, the shape assumption
 that comes with it, and the attractiveness confounder — on real data, the click-based estimate
-overstates decay by 23 % ([measured exposure](exposition-mesuree.en.md)). **`format`** closes a
-blind spot six chapters had missed: rich content above removes 8.4 points of examination from what
-follows ([format and return](format-et-retour.en.md)). They are also the two least sensitive of
-the six columns requested.
+overstates decay by 23 % ([measured exposure](exposition-mesuree.en.md)). **`format`** was first
+requested for a reason that did not hold — rich content above appeared to remove 8.4 points of
+examination from what follows — and then kept for a more modest one: with the item held fixed only
+6 % remains, and the column now serves to **check** that result elsewhere rather than to compute
+the index ([the page effect](effet-de-page.en.md)). They are also the two least sensitive of the
+six columns requested.
 
 Without it, three things stay out of reach, and will stay there whatever methodological progress
 is made:

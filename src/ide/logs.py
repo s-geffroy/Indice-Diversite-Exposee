@@ -35,8 +35,10 @@ __all__ = [
     "Digest",
     "ExchangeabilityTest",
     "Impressions",
+    "StratifiedRatio",
     "UpstreamDependenceTest",
     "click_rate_by_rank",
+    "count_above",
     "detectable_severity",
     "digest_split",
     "exchangeability_test",
@@ -46,6 +48,7 @@ __all__ = [
     "save_digest",
     "simulate_cascade",
     "simulate_feeds",
+    "stratified_risk_ratio",
     "upstream_dependence_from_counts",
     "upstream_dependence_test",
 ]
@@ -320,6 +323,161 @@ def exchangeability_test(impressions: Impressions) -> ExchangeabilityTest:
     deviation = (statistic - expectation) / math.sqrt(variance)
     p_value = math.erfc(abs(deviation) / math.sqrt(2.0))
     return ExchangeabilityTest(statistic, expectation, deviation, p_value, int(informative.sum()))
+
+
+@dataclass(frozen=True)
+class StratifiedRatio:
+    """Rapport de risques de Mantel-Haenszel, avec son intervalle de confiance.
+
+    Attributes:
+        ratio: le rapport :math:`\\hat{RR}` entre le taux du groupe exposé et celui du groupe
+            témoin, agrégé sur les strates.
+        log_standard_error: erreur type de :math:`\\log \\hat{RR}`, estimateur de
+            Greenland-Robins (1985), valide même lorsque les strates sont nombreuses et petites.
+        low: borne basse de l'intervalle de confiance à 95 %.
+        high: borne haute.
+        strata: nombre de strates **informatives**, c'est-à-dire portant les deux groupes.
+        impressions: nombre d'impressions retenues, toutes strates informatives confondues.
+    """
+
+    ratio: float
+    log_standard_error: float
+    low: float
+    high: float
+    strata: int
+    impressions: int
+
+    @property
+    def established(self) -> bool:
+        """Vrai si l'intervalle à 95 % exclut 1, c'est-à-dire si un effet est établi."""
+        return self.low > 1.0 or self.high < 1.0
+
+
+def stratified_risk_ratio(
+    untreated: np.ndarray,
+    treated: np.ndarray,
+    untreated_seen: np.ndarray,
+    treated_seen: np.ndarray,
+) -> StratifiedRatio:
+    """Compare deux groupes **à l'intérieur** de chaque strate, puis agrège.
+
+    Le contraste brut entre deux groupes mélange l'effet cherché et la composition : si le
+    groupe exposé n'est pas servi sur les mêmes contenus ni pour les mêmes requêtes, la
+    différence observée mesure surtout cela. Stratifier, c'est ne comparer que le comparable —
+    un même contenu à un même rang, une même requête à un même rang — et laisser la
+    pondération de Mantel-Haenszel recombiner les strates.
+
+    .. math:: \\hat{RR} = \\frac{\\sum_s a_s n_{0s} / T_s}{\\sum_s b_s n_{1s} / T_s}
+
+    où :math:`a_s` et :math:`b_s` comptent les succès des deux groupes dans la strate :math:`s`,
+    :math:`n_{1s}` et :math:`n_{0s}` leurs effectifs, et :math:`T_s = n_{0s} + n_{1s}`.
+
+    Une strate qui ne porte qu'un seul des deux groupes n'apporte **aucune** information sur le
+    contraste et sort du calcul. C'est ce qui fait le prix du procédé : le nombre d'impressions
+    retenues peut être bien plus petit que celui du journal, et c'est cette perte qui décide de
+    la puissance disponible.
+
+    Args:
+        untreated: effectifs du groupe témoin, une entrée par strate.
+        treated: effectifs du groupe exposé.
+        untreated_seen: succès du groupe témoin.
+        treated_seen: succès du groupe exposé.
+
+    Returns:
+        Le rapport agrégé et son intervalle de confiance. Un rapport inférieur à 1 dit que le
+        groupe exposé obtient **moins**.
+
+    Examples:
+        Deux strates de taux très différents, mais sans effet propre : le rapport vaut 1 alors
+        que le contraste brut, lui, serait trompé par la composition.
+
+        >>> import numpy as np
+        >>> ratio = stratified_risk_ratio(
+        ...     untreated=np.array([1000.0, 1000.0]),
+        ...     treated=np.array([1000.0, 1000.0]),
+        ...     untreated_seen=np.array([800.0, 200.0]),
+        ...     treated_seen=np.array([800.0, 200.0]),
+        ... )
+        >>> round(ratio.ratio, 6)
+        1.0
+        >>> ratio.established
+        False
+    """
+    untreated = np.asarray(untreated, dtype=float)
+    treated = np.asarray(treated, dtype=float)
+    untreated_seen = np.asarray(untreated_seen, dtype=float)
+    treated_seen = np.asarray(treated_seen, dtype=float)
+
+    informative = (untreated > 0) & (treated > 0)
+    if not informative.any():
+        return StratifiedRatio(float("nan"), float("nan"), float("nan"), float("nan"), 0, 0)
+
+    n_0, n_1 = untreated[informative], treated[informative]
+    seen_0, seen_1 = untreated_seen[informative], treated_seen[informative]
+    total = n_0 + n_1
+
+    numerator = float((seen_1 * n_0 / total).sum())
+    denominator = float((seen_0 * n_1 / total).sum())
+    impressions = int(total.sum())
+    if numerator <= 0.0 or denominator <= 0.0:
+        return StratifiedRatio(float("nan"), float("nan"), float("nan"), float("nan"),
+                               int(informative.sum()), impressions)
+
+    ratio = numerator / denominator
+    # Variance de Greenland-Robins pour log(RR) : elle reste valide quand les strates sont
+    # nombreuses et peu peuplées, ce qui est exactement le régime d'un appariement fin.
+    covariance = float(
+        ((n_1 * n_0 * (seen_1 + seen_0) - seen_1 * seen_0 * total) / total**2).sum()
+    )
+    log_standard_error = math.sqrt(max(covariance, 0.0) / (numerator * denominator))
+    span = 1.959963984540054 * log_standard_error
+
+    return StratifiedRatio(
+        ratio=ratio,
+        log_standard_error=log_standard_error,
+        low=ratio * math.exp(-span),
+        high=ratio * math.exp(span),
+        strata=int(informative.sum()),
+        impressions=impressions,
+    )
+
+
+def count_above(impressions: Impressions, marker: np.ndarray) -> np.ndarray:
+    """Compte, pour chaque impression, les marques portées **strictement au-dessus** dans son fil.
+
+    Sert à décrire la page autour d'un contenu : combien de formats enrichis le précèdent,
+    combien de clics, combien de contenus d'une catégorie donnée. Le comptage suit l'ordre des
+    rangs servis, non l'ordre des lignes du journal.
+
+    Args:
+        impressions: le journal.
+        marker: une marque par impression, 0 ou 1.
+
+    Returns:
+        Le compte amont, une entrée par impression, dans l'ordre du journal.
+
+    Examples:
+        >>> import numpy as np
+        >>> journal = Impressions(
+        ...     items=None,
+        ...     ranks=np.array([1, 2, 3]),
+        ...     clicks=np.zeros(3),
+        ...     feeds=np.zeros(3, dtype=np.int64),
+        ...     feed_lengths=np.array([3]),
+        ... )
+        >>> count_above(journal, np.array([1.0, 0.0, 1.0]))
+        array([0, 1, 1])
+    """
+    marker = np.asarray(marker, dtype=float)
+    order = np.lexsort((impressions.ranks, impressions.feeds))
+    cumulative = np.cumsum(marker[order])
+    starts = np.concatenate([[0], np.flatnonzero(np.diff(impressions.feeds[order])) + 1])
+    baseline = np.zeros(cumulative.size)
+    baseline[starts] = cumulative[starts] - marker[order][starts]
+
+    above = np.zeros(cumulative.size)
+    above[order] = cumulative - marker[order] - np.maximum.accumulate(baseline)
+    return above.astype(np.int64)
 
 
 def upstream_dependence_test(

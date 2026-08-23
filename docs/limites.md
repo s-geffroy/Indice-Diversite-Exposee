@@ -608,6 +608,38 @@ phrase et se teste en une heure ; l'écart entre les deux est exactement l'endro
 affirmation fausse s'installe. La règle du dépôt — ne rien publier qu'on n'ait mesuré — vaut
 aussi pour les explications, pas seulement pour les chiffres.
 
+### 24. Un effet mesuré sans tenir le contenu fixe
+
+**Ce que j'avais écrit.** Un format enrichi servi plus haut retire 8,4 points d'examen à ce qui
+suit, à rang **et** à hauteur de page comparables — 21 strates, toutes de même signe. J'en avais
+conclu que la remise d'attention $w_R$ « n'est pas une propriété du rang, ni même de la surface :
+c'est une propriété de la **page servie** », et qu'« aucune loi $e(R)$ ne peut la représenter ».
+
+**Le problème.** Les strates tenaient le rang et les pixels fixes, mais **pas le contenu**. Un
+encadré de réponse ne s'affiche pas au hasard : il répond à une question factuelle, qui n'appelle
+pas la même lecture qu'une recherche exploratoire. La comparaison portait donc sur deux
+populations de requêtes, et l'écart pouvait venir du format ou de ce sur quoi le format apparaît.
+
+**Ce que la mesure appariée rend.** À contenu tenu fixe — même document, même rang, servi une fois
+avec un format enrichi au-dessus et une fois sans — le rapport de risques passe de $0{,}82$ à
+$0{,}940$ (IC95 $[0{,}916 ; 0{,}964]$). Un second appariement, par **requête**, indépendant du
+premier, rend $0{,}942$. **Les deux tiers de l'effet publié étaient une composition.**
+
+**Ce qui rend l'épisode net.** Une simulation où le format n'a *aucun* effet, mais où les pages
+enrichies tombent sur des contenus moins consultés, rend $0{,}785$ en stratifiant par le rang —
+c'est-à-dire à peu près le chiffre que ce dépôt avait publié. Le protocole appliqué à des données
+dont on connaît la réponse fabrique le résultat qu'il devait mesurer.
+
+**Ce qui reste vrai.** L'effet résiduel est **établi** par l'appariement le plus peuplé, et son
+incidence sur l'indice se chiffre : $0{,}0025$, contre $0{,}0350$ pour la convention $1/R$ que la
+conclusion d'origine devait disqualifier. **Quatorze fois moins.** La loi de rang tient donc, et
+la colonne `format` de la [demande d'accès](article-40.md) passe de nécessaire à utile.
+
+**Ce que cet épisode enseigne sur la méthode.** C'est la **quatrième** fois qu'un protocole
+raisonnable fabrique son propre résultat, et la première où il l'a fait dans un chapitre qui
+appliquait déjà la règle du contrôle simulé — mais à une autre question. Le contrôle avait été
+posé sur la géométrie, pas sur la composition. Un contrôle ne protège que de ce qu'il contrôle.
+
 ---
 
 ## Ce que le modèle ne peut pas faire
@@ -710,7 +742,7 @@ elles portent sur l'existence de régimes et le sens des dépendances, jamais su
 valeurs numériques transposables.
 
 
-### Ce que vingt-trois corrections enseignent, prises ensemble
+### Ce que vingt-quatre corrections enseignent, prises ensemble
 
 Les corrections ci-dessus ont été consignées une à une, dans l'ordre où elles sont survenues.
 Prises ensemble, elles dessinent trois régularités qui valent plus que leur somme.
@@ -724,8 +756,8 @@ du bon signe, avec la bonne conclusion — c'est exactement ce qu'aucune relectu
 
 **Ce qui les a attrapées n'est jamais la relecture, c'est la confrontation.** À des données dont
 on connaît la réponse, à une vérité terrain, à une autre méthode d'estimation, ou à la
-littérature du domaine. Cinq des vingt-trois corrections viennent de la lecture initiale du fil ;
-les dix-huit autres viennent d'avoir mesuré.
+littérature du domaine. Cinq des vingt-quatre corrections viennent de la lecture initiale du fil ;
+les dix-neuf autres viennent d'avoir mesuré.
 
 **Et la moitié portent sur les propositions du dépôt lui-même, non sur son point de départ.**
 Un instrument construit pour vérifier les affirmations d'autrui doit être retourné contre les
@@ -742,10 +774,10 @@ trois raisons.
   les conteste, elles ne s'énoncent pas ici pour la première fois, et aucun relecteur ne les
   recevra comme un résultat.
 * La démonstration est **circulaire**. L'argument était « la méthode vaut parce qu'elle a rattrapé
-  vingt-trois erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
+  vingt-quatre erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
   ses propres fautes se compare à une référence qu'elle a fabriquée. Sans erreur, rien à rattraper
   et la valeur affichée tombe à zéro.
-* Rien n'a été **validé de l'extérieur**. Les 599 tests vérifient que le code fait ce qui est
+* Rien n'a été **validé de l'extérieur**. Les 610 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé
   ([appel à relecture](relecture.md)).
 

@@ -135,15 +135,17 @@ contraignent rien — ne peuvent pas être écartés du calcul.
     Elle est en outre **moins sensible** que les clics : savoir qu'un contenu a été affiché en dit
     moins sur un lecteur que savoir qu'il l'a choisi.
 
-!!! success "Et la colonne `format` ferme un angle mort"
-    Sur Baidu-ULTR, un **format enrichi** au-dessus retire **8,4 points** d'examen à ce qui suit,
-    à rang **et** à hauteur de page comparables — l'effet ne passe donc pas par la place occupée.
-    → [Format et retour](format-et-retour.md)
+!!! tip "La colonne `format` sert à vérifier, non à calculer"
+    Elle a d'abord été demandée pour une raison qui n'a pas tenu : sur Baidu-ULTR, un **format
+    enrichi** au-dessus semblait retirer 8,4 points d'examen à ce qui suit. À **contenu tenu
+    fixe**, il n'en reste que 6 %, et l'incidence sur l'indice tombe à $0{,}0025$ — quatorze fois
+    moins que celle de la convention $1/R$. → [L'effet de page](effet-de-page.md)
 
-    Sans cette colonne, deux fils de **composition identique** peuvent exposer des diversités
-    différentes sans que rien ne le signale, et un plancher devient dépendant d'une variable
-    qu'on ne voit pas. Elle est par ailleurs la moins sensible des cinq : le format d'un contenu
-    ne dit rien de son lecteur.
+    La colonne reste demandée, pour deux raisons plus modestes : elle permet de **reproduire ce
+    contrôle** sur une autre plateforme, où l'effet pourrait être plus fort ; et elle est la
+    moins sensible des six — le format d'un contenu ne dit rien de son lecteur. Elle ne
+    conditionne pas le calcul de l'indice, et une plateforme qui ne la fournirait pas ne
+    l'empêcherait pas.
 
 **Tableau 4 — exposition par point de vue**
 
@@ -169,7 +171,7 @@ choix.
 | sévérité $\eta$ de l'exposition, **mesurée** | 3, colonne `affichages` |
 | sévérité $\eta$ du biais de position, estimée à défaut | 3 |
 | forme de l'examen (cascade ou non) | 3, colonne `affichages` |
-| effet du format sur l'exposition | 3, colonne `format` |
+| effet du format sur l'exposition, à contenu fixé | 3, colonnes `format` et `contenu` |
 | estimation contrefactuelle et taille d'échantillon effective | 3, avec propensions |
 | diversité composée et diversité exposée, écart d'enterrement | 4 |
 

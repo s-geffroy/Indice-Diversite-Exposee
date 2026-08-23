@@ -364,9 +364,11 @@ Elle a gagné deux colonnes depuis sa rédaction, et chacune pour la même raiso
 montré ce qu'on perdait sans elle. **`affichages`** retire le besoin d'estimer $\eta$, l'hypothèse
 de forme qui l'accompagne et le confondant d'attrait — sur données réelles, l'estimation par les
 clics surestime la décroissance de 23 % ([exposition mesurée](exposition-mesuree.md)).
-**`format`** ferme un angle mort que six chapitres n'avaient pas vu : un contenu enrichi au-dessus
-retire 8,4 points d'examen à ce qui suit ([format et retour](format-et-retour.md)). Ce sont aussi
-les deux colonnes les moins sensibles des six demandées.
+**`format`** a d'abord été demandée pour une raison qui n'a pas tenu — un contenu enrichi
+au-dessus semblait retirer 8,4 points d'examen à ce qui suit — puis conservée pour une raison plus
+modeste : à contenu tenu fixe, il n'en reste que 6 %, et la colonne sert désormais à **vérifier**
+ce résultat ailleurs plutôt qu'à calculer l'indice ([l'effet de page](effet-de-page.md)). Ce sont
+aussi les deux colonnes les moins sensibles des six demandées.
 
 Sans elle, trois choses restent hors de portée, et le resteront quels que soient les progrès de
 méthode :

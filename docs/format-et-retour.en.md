@@ -5,11 +5,15 @@
     rest. After a click, the log explicitly records that documents scrolled past: the reader came
     back. Under a strict cascade, this column would always be zero.
 
-!!! danger "Format alters exposure, and not through geometry"
-    A rich format above removes **8.4 points** of examination from what follows, at equal rank
-    **and** comparable page height — 21 strata, all of the same sign. The attention discount
-    $w_R$ is therefore not a property of rank, nor even of the surface: it is a property of the
-    **page served**.
+!!! failure "Corrected — two thirds of this effect were composition"
+    This chapter measured that a rich format above removes **8.4 points** of examination from
+    what follows, at equal rank **and** comparable page height, and concluded that the attention
+    discount $w_R$ was a property of the **page served**. The missing control was the **item**:
+    with the item held fixed, **6 %** remains instead of 18 %, and a simulation carrying no
+    effect at all reproduces almost exactly the figure published here.
+
+    What follows is kept as it was published. Its correction is in
+    [the next chapter](effet-de-page.en.md).
 
 !!! failure "And a hypothesis I put forward is false"
     The [screen fold](exposition-mesuree.en.md) — "exposure would be a matter of pixels, not
@@ -84,6 +88,13 @@ out here.
     Two feeds of identical composition, served with different formats, do not expose the same
     thing.
 
+!!! failure "Withdrawn — this conclusion assumed a control that was missing"
+    The strata above hold rank and pixels fixed, but **not the item**. An answer box does not
+    appear at random: it answers a factual question, which does not invite the same reading. Once
+    the same document is compared with itself at the same rank, the gap falls to 6 % — and its
+    bearing on the index to $0.0025$, fourteen times less than that of the $1/R$ convention it
+    was meant to disqualify. → [the page effect](effet-de-page.en.md)
+
 ## 3. A hypothesis withdrawn
 
 The previous chapter found the measured examination curve is not a power law, and proposed a
@@ -122,6 +133,11 @@ Without it, two feeds of identical composition can expose different diversities 
 signalling it — and a floor becomes dependent on a variable nobody sees. It is also a **low
 sensitivity** variable: an item's format says nothing about its reader.
 
+!!! failure "Revised — the column stays useful, it is no longer necessary"
+    Once the effect is measured with the item held fixed, its bearing on the index is $0.0025$.
+    The `format` column therefore no longer conditions the computation; it serves to **check**
+    this chapter on another platform. → [the page effect](effet-de-page.en.md)
+
 ## Reservations
 
 `slipoff_count_after_click` measures scrolling **after** a click, not examination: it attests the
@@ -137,7 +153,7 @@ format has no aggregate equivalent, and carrying those strata into the digest wo
 cells. It is the repository's only chapter in that position.
 
 It follows that it is **excluded from the continuous-integration sweep**, which regenerates the
-other twenty-three. Reproducing it requires fetching the log first
+other twenty-four. Reproducing it requires fetching the log first
 (`scripts/fetch_exposure.py`), then `docker compose run --rm notebooks-full`. This departs from
 the repository's rule — everything must regenerate from what is versioned — and it is flagged
 here rather than left to be discovered.

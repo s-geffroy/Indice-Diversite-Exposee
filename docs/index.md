@@ -11,7 +11,7 @@ lecteur, calculable sans accès au code de la plateforme — et la **méthode ad
 l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel, y compris
 quand ce qui tombe vient du dépôt lui-même.
 
-Il en reste vingt-quatre notebooks exécutables, 599 tests, **vingt-trois corrections consignées**,
+Il en reste vingt-cinq notebooks exécutables, 610 tests, **vingt-quatre corrections consignées**,
 et un état des lieux qui ne ressemble ni à ce que le projet annonçait, ni à ce qu'il croyait avoir
 établi six chapitres plus tôt.
 
@@ -33,18 +33,20 @@ la décroissance de 23 %. Figure régénérée par
 | Le formalisme classique qu'elle a fait emprunter | **cohérent**, un seul paramètre calibré, et sa seule prédiction propre — l'effet de la charge émotionnelle — **testée quatre fois sans effet** |
 | L'écart de persistance entre registres émotionnels | **n'existe pas** — artefact de sélection → [corpus étendu](corpus-etendu.md) |
 | L'indice tel qu'il était proposé au régulateur | **intenable** : saturable à coût nul, puis contournable par l'enterrement → [test adverse](gaming.md) · [rang adverse](rang-adverse.md) |
-| La forme retenue de l'indice | **définie et chiffrée**, jamais mesurée sur un fil réel — et sa pondération de rang dépend de la **page servie**, non du rang seul → [format et retour](format-et-retour.md) |
+| La forme retenue de l'indice | **définie et chiffrée**, jamais mesurée sur un fil réel — mais sa pondération de rang est **transportable** : la page servie ne la déplace que de 6 % → [l'effet de page](effet-de-page.md) |
 | L'algorithme (ADE) | **sur la frontière exacte, et superflu** : une heuristique de 1998 fait aussi bien, et l'écart s'efface encore à pertinence bruitée → [lignes de base](lignes-de-base.md) · [angles morts](angles-morts.md) |
-| Les instruments de mesure | **valides après correction** — trois d'entre eux ont dû être restreints, et deux conclusions retirées → [contre-expertise](contre-expertise.md) |
+| Les instruments de mesure | **valides après correction** — trois d'entre eux ont dû être restreints, et trois conclusions retirées → [contre-expertise](contre-expertise.md) · [l'effet de page](effet-de-page.md) |
 | L'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : $0{,}88 \pm 0{,}05$ — non $1{,}09$ comme estimé → [exposition mesurée](exposition-mesuree.md) |
+| Sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, et trois fois plus petite que publiée** : 6 % d'examen, $0{,}0025$ d'indice → [l'effet de page](effet-de-page.md) |
 
-**En une phrase : la théorie n'a pas tenu ; les instruments tiennent, mais seulement après
-correction — et ce qui se transmet d'un dépôt, ce sont ses objets, pas la discipline qui les a
-produits.**
+**En une phrase : la théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle
+qui décide de tout le reste, et qu'on peut mesurer au lieu de la supposer : $0{,}88$ et non $1$,
+sans cascade, et à 6 % près indépendante de la page servie. C'est assez pour écrire une norme ;
+il ne manque plus que l'accès aux données.**
 
 ## Ce qui tient
 
-Quatre objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne. Un test
+Cinq objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne. Un test
 statistique s'applique à d'autres données et répond seul ; il ne demande pas qu'on croie celui qui
 l'a écrit. C'est le critère qui les distingue des préceptes de méthode que ce dépôt a un temps
 promus au rang de résultat, à tort — cette page le disait, et l'[audit](limites.md) dit pourquoi
@@ -60,6 +62,12 @@ suffisante ; la **forme** — l'examen dépend-il de ce qui a été cliqué au-d
 par affichage plutôt que par clic. La **cascade est réfutée** sur Baidu-ULTR, par deux voies
 indépendantes. Et la loi en $R^{-\eta}$ qu'emploie tout le dépôt est le **pire** des trois
 ajustements sur la courbe mesurée. → [exposition mesurée](exposition-mesuree.md)
+
+**Et cette mesure est transportable d'une page à l'autre.** C'était la dernière objection, et
+elle venait de ce dépôt : si la remise d'attention dépendait de la composition de la page, aucune
+norme ne pouvait s'écrire sans décrire chaque page servie. À contenu tenu fixe, la dépendance
+existe mais vaut **6 %**, et déplace l'indice de $0{,}0025$ — **quatorze fois moins** que la
+convention $1/R$ qu'elle devait disqualifier. → [l'effet de page](effet-de-page.md)
 
 **Des estimateurs contrefactuels confrontés à une vérité terrain.** +2,5 % d'écart contre +32 %
 pour l'estimation naïve — avec le diagnostic qui interdit d'en tirer gloire, une taille
@@ -102,19 +110,19 @@ qu'une mesure a montré ce qu'on perdait sans elle.
 * **le filtre n'apporte rien qu'une heuristique de 1998 n'apporte déjà**, sauf aux planchers
   élevés → [lignes de base](lignes-de-base.md) ;
 * **l'explication du « pli d'écran » est fausse** — le rang prédit mieux que les pixels
-  → [format et retour](format-et-retour.md).
+  → [format et retour](format-et-retour.md) ;
+* **et l'effet de format publié était pour les deux tiers une composition** — 18 % à rang fixé,
+  6 % à contenu fixé, et une simulation sans aucun effet reproduit le chiffre publié
+  → [l'effet de page](effet-de-page.md).
 
 ## Ce qui n'est pas tranché
 
 * **L'indice n'a jamais été mesuré sur un fil réel.** La lacune est de **donnée**, non de méthode,
   et [la demande](article-40.md) dit exactement ce qu'il faudrait.
-* **La pondération de rang dépend de la page servie**, pas seulement de la surface : un format
-  enrichi au-dessus retire 8,4 points d'examen à ce qui suit. Aucune loi $e(R)$ ne représente
-  cela, et le dépôt n'en propose pas de remplaçante.
 * **Le niveau du plancher est une décision politique**, comme le catalogue de points de vue. La
   mesure décrit, elle ne prescrit pas.
 * **Les trois codeurs de l'annotation sont des instances du même modèle de langue.**
-* **Rien n'a été validé de l'extérieur.** Les 599 tests vérifient que le code fait ce qui est
+* **Rien n'a été validé de l'extérieur.** Les 610 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 * **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique.**
@@ -153,7 +161,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-quatre notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-cinq notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -191,7 +199,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 599 tests
+docker compose run --rm test          # 610 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

@@ -163,7 +163,8 @@ search results page is not a news feed. The 0.88 holds for that surface.
 ~~`slipoff_count_after_click` and `media_type` were not exploited.~~ →
 **[done](format-et-retour.en.md)**: the first **refutes cascade a second time**, by a recorded
 fact rather than a test; the second establishes that a rich format above removes **8.4 points** of
-examination from what follows, at equal rank and comparable height.
+examination from what follows, at equal rank and comparable height — a figure
+[chapter 25](effet-de-page.en.md) brings down to 6 % once the item is held fixed.
 
 ---
 

@@ -165,7 +165,8 @@ cette surface.
 ~~`slipoff_count_after_click` et `media_type` n'ont pas été exploitées.~~ →
 **[fait](format-et-retour.md)** : la première **réfute la cascade une seconde fois**, par un fait
 consigné plutôt que par un test ; la seconde établit qu'un format enrichi au-dessus retire
-**8,4 points** d'examen à ce qui suit, à rang et à hauteur comparables.
+**8,4 points** d'examen à ce qui suit, à rang et à hauteur comparables — un chiffre que
+[le chapitre 25](effet-de-page.md) ramène à 6 % une fois le contenu tenu fixe.
 
 ---
 

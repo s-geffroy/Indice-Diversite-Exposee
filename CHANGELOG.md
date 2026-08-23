@@ -7,6 +7,39 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — l'effet de page, une fois la composition retirée
+
+L'entrée précédente retirait la méthode du rang de résultat sans rien mettre à la place. Ce
+chapitre met autre chose : une **mesure**, et elle corrige le dépôt d'un facteur trois.
+
+- **Le chapitre 24 avait conclu trop vite.** Il mesurait qu'un format enrichi servi plus haut
+  retire 8,4 points d'examen à ce qui suit, à rang **et** à hauteur de page comparables, et en
+  tirait qu'« aucune loi $e(R)$ ne peut représenter cela ». Il tenait le rang et les pixels fixes,
+  mais **pas le contenu** — or un encadré de réponse ne s'affiche pas au hasard.
+- **À contenu tenu fixe, il reste 6 % au lieu de 18 %.** Rapport de risques de Mantel-Haenszel
+  $0{,}940$, IC95 $[0{,}916 ; 0{,}964]$, sur 1 106 strates et 31 045 impressions. Un **second
+  appariement, par requête**, indépendant du premier, rend $0{,}942$ — deux plans qui ne partagent
+  aucune strate, à deux millièmes près.
+- **Une simulation sans aucun effet reproduit le chiffre publié.** Dans un monde où le format ne
+  fait rien mais où les pages enrichies tombent sur des contenus moins consultés, la
+  stratification par le rang rend $0{,}785$ ; l'appariement rend $1{,}005$, et retrouve $0{,}896$
+  quand un effet de $0{,}90$ est simulé.
+- **La conclusion positive :** ignorer la composition de la page déplace l'indice de $0{,}0025$,
+  là où la convention $1/R$ le déplace de $0{,}0350$ — **quatorze fois plus**. La remise
+  d'attention redevient **transportable**, ce qui était l'enjeu réel : si elle dépendait de la
+  page, aucun plancher réglementaire ne pouvait s'écrire sans décrire chaque page servie.
+- Nouveau chapitre [`docs/effet-de-page.md`](docs/effet-de-page.md) et
+  [notebook 25](notebooks/25_effet_de_page.ipynb), **reproductibles depuis le condensé versionné**
+  — contrairement au chapitre 24, qui exigeait le journal brut.
+- `ide.logs` gagne `stratified_risk_ratio` (Mantel-Haenszel, variance de Greenland-Robins) et
+  `count_above` ; `ide.exposure` gagne `PageComposition`, `page_effect_counts` et
+  `page_examination_curve`. Le condensé porte les comptes appariés des deux stratifications.
+- [`docs/limites.md`](docs/limites.md) reçoit sa **vingt-quatrième correction** ; la demande au
+  titre de l'article 40 ramène la colonne `format` de nécessaire à **utile** ; la conclusion
+  générale devient : *ce qui tient est une grandeur — l'exposition, qu'on peut mesurer au lieu de
+  la supposer : 0,88 et non 1, sans cascade, et à 6 % près indépendante de la page servie.*
+- 610 tests, deux notes recompilées (26 et 25 pages, zéro boîte débordante).
+
 ### Retiré — « la méthode est le vrai résultat »
 
 L'entrée précédente donnait pour conclusion au dépôt trois règles de méthode. C'était un excès,

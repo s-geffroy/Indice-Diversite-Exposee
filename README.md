@@ -27,17 +27,20 @@ comme tel, y compris quand ce qui tombe vient du dépôt lui-même.
 | le formalisme classique qu'elle a fait emprunter | **cohérent**, un seul paramètre calibré, sa seule prédiction propre testée quatre fois **sans effet** |
 | l'écart de persistance entre registres émotionnels | **n'existe pas** — artefact de sélection |
 | l'indice tel qu'il était proposé | **intenable** : saturable à coût nul, puis contournable par l'enterrement |
-| la forme retenue de l'indice | **définie et chiffrée**, jamais mesurée sur un fil réel — et sa pondération de rang dépend de la **page servie** |
+| la forme retenue de l'indice | **définie et chiffrée**, jamais mesurée sur un fil réel — mais sa pondération de rang est **transportable** : la page servie ne la déplace que de 6 % |
 | l'algorithme (ADE) | **sur la frontière exacte, et superflu** : une heuristique de 1998 fait aussi bien |
-| les instruments de mesure | **valides après correction** : trois restreints, deux conclusions retirées |
+| les instruments de mesure | **valides après correction** : trois restreints, trois conclusions retirées |
 | l'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : 0,88 ± 0,05 — non 1,09 comme estimé |
+| sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, trois fois plus petite que publiée** : 6 % d'examen, 0,0025 d'indice |
 
-**La théorie n'a pas tenu ; les instruments tiennent, mais seulement après correction — et ce qui
-se transmet d'un dépôt, ce sont ses objets, pas la discipline qui les a produits.**
+**La théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle qui décide de tout
+le reste, et qu'on peut mesurer au lieu de la supposer : 0,88 et non 1, sans cascade, et à 6 %
+près indépendante de la page servie. C'est assez pour écrire une norme ; il ne manque plus que
+l'accès aux données.**
 
 ### Ce qui tient
 
-Quatre objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
+Cinq objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
 statistique s'applique à d'autres données et répond seul, sans qu'on ait à croire celui qui l'a
 écrit. Les préceptes de méthode que ce dépôt a un temps promus au rang de résultat n'ont pas cette
 propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
@@ -52,6 +55,10 @@ propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
   par affichage plutôt que par clic. La **cascade est réfutée** sur Baidu-ULTR par deux voies
   indépendantes, et la loi en $R^{-\eta}$ employée partout est le **pire** des trois ajustements
   sur la courbe mesurée. → **[Exposition mesurée](docs/exposition-mesuree.md)**
+- **Et cette mesure est transportable d'une page à l'autre.** C'était la dernière objection, et
+  elle venait de ce dépôt. À contenu tenu fixe, la composition de la page ne déplace l'examen que
+  de **6 %** et l'indice que de **0,0025** — quatorze fois moins que la convention $1/R$ qu'elle
+  devait disqualifier. → **[L'effet de page](docs/effet-de-page.md)**
 - **Des estimateurs contrefactuels confrontés à une vérité terrain** : +2,5 % d'écart contre
   +32 % pour l'estimation naïve — avec une taille d'échantillon **effective** de 1 513 sur 4
   millions, qui interdit d'en tirer gloire. Aucun estimateur ne remplace l'exploration.
@@ -61,8 +68,9 @@ propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
   quand sa préférence *est* un point de vue. → **[Lignes de base](docs/lignes-de-base.md)**
 - **Une demande d'accès aux données qui se vérifie au lieu de se plaider** : quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
-  Deux colonnes s'y sont ajoutées depuis, `affichages` et `format`, chacune parce qu'une mesure a
-  montré ce qu'on perdait sans elle. → **[Article 40](docs/article-40.md)**
+  Deux colonnes s'y sont ajoutées depuis : `affichages`, sans laquelle l'exposition ne se mesure
+  pas, et `format`, qui sert désormais à **vérifier** plutôt qu'à calculer.
+  → **[Article 40](docs/article-40.md)**
 
 ### Ce qui est tombé
 
@@ -77,7 +85,8 @@ l'écart de persistance entre registres [n'existe pas](docs/corpus-etendu.md) et
 [prescrivait la polarisation](docs/gaming.md) ; « la proximité à la cible résiste le mieux » était
 [un artefact d'échelle](docs/contre-expertise.md) ; le filtre
 [n'apporte rien qu'une heuristique de 1998 n'apporte déjà](docs/lignes-de-base.md) ; et
-l'explication du « pli d'écran » [est fausse](docs/format-et-retour.md).
+l'explication du « pli d'écran » [est fausse](docs/format-et-retour.md) ; et l'effet de format
+publié était pour les deux tiers [une composition](docs/effet-de-page.md).
 
 ### Les deux instruments
 
@@ -88,7 +97,7 @@ l'explication du « pli d'écran » [est fausse](docs/format-et-retour.md).
 
 ## À lire d'abord : ce que le travail ne prétend pas
 
-L'**[audit critique](docs/limites.md)** recense **vingt-trois corrections** apportées au
+L'**[audit critique](docs/limites.md)** recense **vingt-quatre corrections** apportées au
 raisonnement d'origine — dont **cinq formules invalides**, et une découverte en tentant de
 mesurer — et énumère les limites qui subsistent, y compris celles qui touchent à l'usage
 réglementaire de l'index : il est manipulable, sa discrétisation en points de vue est un choix
@@ -115,7 +124,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 599 tests, dont les exemples de docstrings
+docker compose run --rm test          # 610 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -153,8 +162,8 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              599 tests — validation physique, numérique et statistique
-notebooks/          01 à 24, un par bloc théorique, exécutables
+tests/              610 tests — validation physique, numérique et statistique
+notebooks/          01 à 25, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné
@@ -199,7 +208,7 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
 
 ## Contenu du dépôt
 
-- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-trois corrections et les
+- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-quatre corrections et les
   limites qui subsistent.
 - [`docs/calibration.md`](docs/calibration.md) — **la mesure de $\gamma\alpha/\lambda$** sur
   données publiques, ses trois enseignements et ses réserves.

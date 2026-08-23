@@ -535,6 +535,39 @@ not a geometric one.
 and an hour to test; the gap between the two is exactly where a false claim settles in. The
 repository's rule — publish nothing unmeasured — applies to explanations too, not only to figures.
 
+### 24. An effect measured without holding the item fixed
+
+**What I wrote.** A rich format served higher up removes 8.4 points of examination from what
+follows, at equal rank **and** comparable page height — 21 strata, all of the same sign. From it
+I concluded that the attention discount $w_R$ "is not a property of rank, nor even of the
+surface: it is a property of the **page served**", and that "no law $e(R)$ can represent it".
+
+**The problem.** The strata held rank and pixels fixed, but **not the item**. An answer box does
+not appear at random: it answers a factual question, which does not invite the same reading as an
+exploratory search. The comparison therefore ran across two populations of queries, and the gap
+could come from the format or from what the format appears on.
+
+**What the matched measurement returns.** With the item held fixed — same document, same rank,
+served once with a rich format above and once without — the risk ratio goes from $0.82$ to
+$0.940$ (95 % CI $[0.916, 0.964]$). A second matching, by **query**, independent of the first,
+returns $0.942$. **Two thirds of the published effect were composition.**
+
+**What makes the episode sharp.** A simulation where the format has *no* effect, but where
+enriched pages land on less-consulted items, returns $0.785$ when stratified on rank — roughly
+the figure this repository had published. The protocol, applied to data whose answer is known,
+manufactures the result it was supposed to measure.
+
+**What remains true.** The residual effect is **established** by the most populated matching, and
+its bearing on the index can be quantified: $0.0025$, against $0.0350$ for the $1/R$ convention
+the original conclusion was meant to disqualify. **Fourteen times less.** The rank law therefore
+holds, and the `format` column of the [access request](article-40.en.md) goes from necessary to
+useful.
+
+**What this episode teaches about method.** This is the **fourth** time a reasonable protocol has
+manufactured its own result, and the first time it happened in a chapter that already applied the
+simulated-control rule — but to a different question. The control had been placed on geometry,
+not on composition. A control protects only against what it controls.
+
 ---
 
 ## What the model cannot do
@@ -627,7 +660,7 @@ hundred), and no result is compared against real data. The conclusions are
 never transposable numerical values.
 
 
-### What twenty-three corrections teach, taken together
+### What twenty-four corrections teach, taken together
 
 The corrections above were recorded one by one, in the order they occurred. Taken together, they
 trace three regularities worth more than their sum.
@@ -640,7 +673,7 @@ the right sign, with the right conclusion — exactly what no re-reading catches
 
 **What caught them was never re-reading, it was confrontation.** With data whose answer is known,
 with a ground truth, with another estimation method, or with the field's literature. Five of the
-twenty-three corrections come from the initial reading of the thread; the other eighteen come
+twenty-four corrections come from the initial reading of the thread; the other nineteen come
 from having measured.
 
 **And half bear on the repository's own proposals, not on its starting point.** An instrument
@@ -656,10 +689,10 @@ withdrawn, for three reasons.
   is known, test an explanation like a figure — are **banal**. Nobody disputes them, they are not
   being stated here for the first time, and no reviewer will receive them as a result.
 * The demonstration is **circular**. The argument was "the method is worth something because it
-  caught twenty-three errors"; but the same work produced those errors. A method assessed on its
+  caught twenty-four errors"; but the same work produced those errors. A method assessed on its
   own faults is compared against a baseline it manufactured. With no error, there is nothing to
   catch and the claimed value drops to zero.
-* Nothing has been **validated from the outside**. The 599 tests check that the code does what is
+* Nothing has been **validated from the outside**. The 610 tests check that the code does what is
   claimed, not that what is claimed is true, and no reviewer has been through it
   ([call for review](relecture.md)).
 
