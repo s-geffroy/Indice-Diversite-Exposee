@@ -28,6 +28,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Le notebook 24 est écarté du balayage : il lit le journal brut de Baidu-ULTR, qui n'est
+      # pas versionné. Voir docker-compose.yml et docs/format-et-retour.md.
       - name: Exécuter les notebooks et régénérer les figures
         run: docker compose run --rm --no-deps notebooks
 

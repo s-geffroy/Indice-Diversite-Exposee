@@ -118,6 +118,7 @@ contraignent rien — ne peuvent pas être écartés du calcul.
 | `clics` | entier | clics observés |
 | `propension` | réel, **facultatif** | probabilité de service, si la plateforme la connaît |
 | `affichages` | entier | **impressions effectivement affichées** au lecteur |
+| `format` | libellé | **format d'affichage** du contenu, catégorie déclarée par la plateforme |
 
 !!! success "La colonne `affichages` retire trois problèmes d'un coup"
     Elle est la seule addition à cette demande depuis sa rédaction, et elle vient d'une mesure :
@@ -133,6 +134,16 @@ contraignent rien — ne peuvent pas être écartés du calcul.
 
     Elle est en outre **moins sensible** que les clics : savoir qu'un contenu a été affiché en dit
     moins sur un lecteur que savoir qu'il l'a choisi.
+
+!!! success "Et la colonne `format` ferme un angle mort"
+    Sur Baidu-ULTR, un **format enrichi** au-dessus retire **8,4 points** d'examen à ce qui suit,
+    à rang **et** à hauteur de page comparables — l'effet ne passe donc pas par la place occupée.
+    → [Format et retour](format-et-retour.md)
+
+    Sans cette colonne, deux fils de **composition identique** peuvent exposer des diversités
+    différentes sans que rien ne le signale, et un plancher devient dépendant d'une variable
+    qu'on ne voit pas. Elle est par ailleurs la moins sensible des cinq : le format d'un contenu
+    ne dit rien de son lecteur.
 
 **Tableau 4 — exposition par point de vue**
 
@@ -158,6 +169,7 @@ choix.
 | sévérité $\eta$ de l'exposition, **mesurée** | 3, colonne `affichages` |
 | sévérité $\eta$ du biais de position, estimée à défaut | 3 |
 | forme de l'examen (cascade ou non) | 3, colonne `affichages` |
+| effet du format sur l'exposition | 3, colonne `format` |
 | estimation contrefactuelle et taille d'échantillon effective | 3, avec propensions |
 | diversité composée et diversité exposée, écart d'enterrement | 4 |
 

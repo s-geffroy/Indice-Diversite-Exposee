@@ -117,9 +117,13 @@ measure does not depend on attractiveness at all.
 | screen fold (fold at rank 2, tail $\eta = 1.07$) | 0.9879 | 13 % |
 
 The measured curve does not decay smoothly: it holds through rank two, drops sharply from three to
-five, then flattens. That is the signature of a **screen threshold** — what is visible without
-scrolling against what requires scrolling — not of a smooth law. The `serp_height` column encodes
-exactly the page height, hence the rank at which that threshold falls.
+five, then flattens.
+
+!!! failure "The explanation I gave for it is false"
+    I saw in it the signature of a **screen threshold**, and attributed to `serp_height` the rank
+    at which it falls. [On verification](format-et-retour.en.md), rank explains **better** than
+    cumulative height (McFadden $R^2$ 0.082 against 0.057) and pixels add only 0.0007. The
+    finding — this is not a power law — holds; the mechanical explanation falls.
 
 !!! warning "What this section does not claim"
     Three forms fitted on nine points is not model selection: the screen fold has two free
@@ -156,9 +160,10 @@ an amount this repository cannot quantify.
 The slice used remains a slice: 524,164 documents out of Baidu-ULTR's 1.2 billion sessions, and a
 search results page is not a news feed. The 0.88 holds for that surface.
 
-`slipoff_count_after_click` and `media_type` were not exploited: the first counts documents that
-slipped off screen after a click, which would refine the measure; the second distinguishes
-formats, which the literature indicates alter attention at equal rank.
+~~`slipoff_count_after_click` and `media_type` were not exploited.~~ →
+**[done](format-et-retour.en.md)**: the first **refutes cascade a second time**, by a recorded
+fact rather than a test; the second establishes that a rich format above removes **8.4 points** of
+examination from what follows, at equal rank and comparable height.
 
 ---
 

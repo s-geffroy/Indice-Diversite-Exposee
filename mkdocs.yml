@@ -82,6 +82,7 @@ plugins:
             Les deux angles morts: The two blind spots
             Le test de forme: The form test
             Exposition mesurée: Measured exposure
+            Format et retour: Format and return
             Bibliographie: Bibliography
             Mémorandum de régulation: Regulatory memorandum
             Réserves: Caveats
@@ -147,6 +148,7 @@ nav:
       - Les deux angles morts: angles-morts.md
       - Le test de forme: test-de-forme.md
       - Exposition mesurée: exposition-mesuree.md
+      - Format et retour: format-et-retour.md
       - Mémorandum de régulation: memorandum.md
   - Réserves:
       - Audit critique et limites: limites.md
@@ -178,3 +180,4 @@ nav:
       - 21 — Angles morts: notebooks/21_angles_morts.ipynb
       - 22 — Test de forme: notebooks/22_test_de_forme.ipynb
       - 23 — Exposition mesurée: notebooks/23_exposition_mesuree.ipynb
+      - 24 — Format et retour: notebooks/24_format_et_retour.ipynb

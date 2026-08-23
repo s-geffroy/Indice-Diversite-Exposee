@@ -72,6 +72,11 @@ publié comme tel.
   **0,88 ± 0,05** sur 143 documents, non 1,09 sur 55 — l'estimation par les clics **surestimait de
   23 %**. La loi en $R^{-\eta}$ employée partout est le **pire** des trois ajustements sur la
   courbe mesurée. → **[Exposition mesurée](docs/exposition-mesuree.md)**
+- **Et les deux dernières colonnes achèvent le tableau.** Un compteur de défilement **réfute la
+  cascade une seconde fois**, par un fait consigné. Un **format enrichi** au-dessus retire
+  **8,4 points** d'examen à ce qui suit, à rang et à hauteur comparables — la remise d'attention
+  est une propriété de la **page servie**, pas du rang. Et l'explication que j'avais donnée de la
+  forme en deux temps est **fausse**. → **[Format et retour](docs/format-et-retour.md)**
 - **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
   → **[Article 40](docs/article-40.md)**
@@ -94,7 +99,7 @@ l'étiquetage ; un plancher d'index [se sature à coût nul](docs/gaming.md) ; l
 
 ## À lire d'abord : ce que le travail ne prétend pas
 
-L'**[audit critique](docs/limites.md)** recense **vingt-deux corrections** apportées au
+L'**[audit critique](docs/limites.md)** recense **vingt-trois corrections** apportées au
 raisonnement d'origine — dont **cinq formules invalides**, et une découverte en tentant de
 mesurer — et énumère les limites qui subsistent, y compris celles qui touchent à l'usage
 réglementaire de l'index : il est manipulable, sa discrétisation en points de vue est un choix
@@ -160,7 +165,7 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 └── abm/            modèle à agents « compas politique »
 
 tests/              599 tests — validation physique, numérique et statistique
-notebooks/          01 à 23, un par bloc théorique, exécutables
+notebooks/          01 à 24, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné
@@ -201,10 +206,11 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
 | restreindre aux fils à plusieurs clics **fabrique** un faux rejet | fige le collider, à l'endroit où quelqu'un le refera |
 | sur l'examen, cascade et budget de clics **se séparent** | fige la levée de la limite d'identification |
 | l'exposition mesurée sur Baidu est **moins sévère** que celle estimée | fige les 23 % de surestimation par les clics |
+| le rang prédit l'examen **mieux** que la hauteur cumulée au-dessus | fige la réfutation de l'hypothèse du pli d'écran |
 
 ## Contenu du dépôt
 
-- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-deux corrections et les
+- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-trois corrections et les
   limites qui subsistent.
 - [`docs/calibration.md`](docs/calibration.md) — **la mesure de $\gamma\alpha/\lambda$** sur
   données publiques, ses trois enseignements et ses réserves.
@@ -237,6 +243,8 @@ la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
   tranche pas, et a failli publier un collider.
 - [`docs/exposition-mesuree.md`](docs/exposition-mesuree.md) — **l'exposition mesurée** au lieu
   d'estimée : une colonne jamais lue, et la cascade réfutée.
+- [`docs/format-et-retour.md`](docs/format-et-retour.md) — **le format compte** : 8,4 points
+  d'examen en moins sous un contenu enrichi, et une explication de moi retirée.
 - [`docs/bibliographie.md`](docs/bibliographie.md) — **toutes les références**, avec ce que
   chacune sert ici ; page dérivée de `paper/refs.bib` et verrouillée par un test.
 - [`docs/feuille-de-route.md`](docs/feuille-de-route.md) — comment combler ces limites,

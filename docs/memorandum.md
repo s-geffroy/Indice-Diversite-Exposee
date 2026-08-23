@@ -63,8 +63,13 @@ pas par le contenu pris un à un. Ce sont ces paramètres qu'il faut rendre obse
     la population sous le seuil, pas la moyenne), et le niveau du seuil — qu'aucun calcul de ce
     dépôt ne détermine.
 
-    **Ce que le régulateur doit faire mesurer, et non fixer** : la **remise d'attention** de la
-    surface. Elle vaut environ 1,1 sur une page de résultats et un dixième de cela sur un
+    **Ce que le régulateur doit faire mesurer, et non fixer** : la **remise d'attention**, qui
+    n'est pas même une propriété de la surface mais de la **page servie** — sur données réelles,
+    un format enrichi au-dessus retire 8,4 points d'examen à ce qui suit, à rang et à hauteur
+    comparables ([format et retour](format-et-retour.md)). Deux fils de composition identique
+    n'exposent donc pas la même chose selon les formats employés.
+
+    La remise d'attention de la surface : Elle vaut environ 1,1 sur une page de résultats et un dixième de cela sur un
     bandeau de trois vignettes, et de sa valeur dépend l'existence même de l'échappatoire par
     enterrement. Une remise conventionnelle imposée à toutes les surfaces serait fausse pour
     la plupart. → [contre-expertise](contre-expertise.md)

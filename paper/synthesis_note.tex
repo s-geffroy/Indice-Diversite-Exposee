@@ -1076,6 +1076,46 @@ says less about a reader than knowing they chose it.
 \paragraph{Reservation.} A positive display time attests that the document was shown, not that it
 was looked at. The measure therefore overstates exposure, by an amount this work cannot quantify.
 
+
+\subsection{Format, return, and an explanation withdrawn}
+\label{sec:formatreturn}
+
+Two Baidu-ULTR columns remained unexploited: \texttt{slipoff\_count\_after\_click}, which counts
+documents that slipped off screen after a click, and \texttt{media\_type}, which distinguishes
+display formats.
+
+\paragraph{Cascade refuted a second time.} The first column is non-zero for $43.7\%$ of clicked
+rows and $0.5\%$ of the rest: after a click, the log explicitly records that documents scrolled
+past, hence that the reader came back. Under a strict cascade it would always be zero. The share
+moreover grows with the depth of the click --- $0.37$ at rank one, $0.59$ at rank six. The
+refutation of \S\ref{sec:measuredexposure}, obtained by a statistical test, is thus confirmed by a
+recorded fact, which is an independent route.
+
+\paragraph{Format alters exposure, and not through geometry.} A rich format --- answer box, image,
+table --- is taller: $273$ pixels median against $192$. One would therefore expect a pushing-down
+effect. At equal rank \emph{and} comparable cumulative height, a rich format above nonetheless
+removes $8.4$ points of examination from what follows, median over $21$ strata all of the same
+sign. The effect therefore does not run through space occupied, and the remaining explanation is
+\emph{satisfaction}: an answer box answers the question, and the reader stops descending.
+
+The consequence bears on any rank-only measure, including ours: exposure at rank $R$ depends on
+the \textbf{format of what is above it}, and no law $e(R)$ can represent it since it does not take
+the page as an argument. The attention discount $w_R$ of \eqref{eq:distribution} is therefore not
+a property of the surface but of the \textbf{page served}: two feeds of identical composition,
+served with different formats, do not expose the same thing.
+
+\paragraph{And one explanation in this note is withdrawn.} \S\ref{sec:measuredexposure} attributed
+the two-stage shape of the measured curve to a \emph{screen fold}, invoking the
+\texttt{serp\_height} column. That column allows the hypothesis to be tested, and it refutes it:
+rank explains examination better (McFadden $R^2$ $0.082$) than cumulative height above ($0.057$),
+and pixels add only $0.0007$ once rank is known. The finding --- the curve is not a power law ---
+holds; the mechanical explanation falls.
+
+\paragraph{Consequence for \S\ref{sec:request}.} The cell table already asks for a displays column;
+one more is needed, the \textbf{format} of the item served. Without it, two feeds of identical
+composition can expose different diversities with nothing signalling it. It is moreover the least
+sensitive of the requested columns: an item's format says nothing about its reader.
+
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}
 

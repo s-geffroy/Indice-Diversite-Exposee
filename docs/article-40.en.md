@@ -113,6 +113,7 @@ constrain nothing — cannot be excluded from the computation.
 | `clicks` | integer | clicks observed |
 | `propensity` | real, **optional** | probability of service, if the platform knows it |
 | `displays` | integer | impressions **actually displayed** to the reader |
+| `format` | label | the item's **display format**, a category declared by the platform |
 
 !!! success "The `displays` column removes three problems at once"
     It is the only addition to this request since it was drafted, and it comes from a
@@ -128,6 +129,15 @@ constrain nothing — cannot be excluded from the computation.
 
     It is moreover **less sensitive** than clicks: knowing an item was displayed says less about a
     reader than knowing they chose it.
+
+!!! success "And the `format` column closes a blind spot"
+    On Baidu-ULTR a **rich format** above removes **8.4 points** of examination from what follows,
+    at equal rank **and** comparable page height — so the effect does not run through space
+    occupied. → [Format and return](format-et-retour.en.md)
+
+    Without this column, two feeds of **identical composition** can expose different diversities
+    with nothing signalling it, and a floor becomes dependent on a variable nobody sees. It is
+    also the least sensitive of the five: an item's format says nothing about its reader.
 
 **Table 4 — exposure by viewpoint**
 
@@ -153,6 +163,7 @@ not its choice.
 | exposure severity $\eta$, **measured** | 3, `displays` column |
 | position-bias severity $\eta$, estimated failing that | 3 |
 | form of examination (cascade or not) | 3, `displays` column |
+| effect of format on exposure | 3, `format` column |
 | counterfactual estimation and effective sample size | 3, with propensities |
 | composed and exposed diversity, burial gap | 4 |
 

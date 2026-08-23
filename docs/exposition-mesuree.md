@@ -117,9 +117,13 @@ le **biais de confiance**. La mesure d'examen, elle, ne dépend pas de l'attrait
 | pli d'écran (pli au rang 2, queue $\eta = 1{,}07$) | 0,9879 | 13 % |
 
 La courbe mesurée ne décroît pas régulièrement : elle tient jusqu'au deuxième rang, chute
-brutalement du troisième au cinquième, puis s'aplatit. C'est la signature d'un **seuil d'écran** —
-ce qui est visible sans défiler contre ce qui exige de défiler — et non celle d'une loi lisse. La
-colonne `serp_height` encode précisément la hauteur de page, donc le rang où ce seuil tombe.
+brutalement du troisième au cinquième, puis s'aplatit.
+
+!!! failure "L'explication que j'en avais donnée est fausse"
+    J'y voyais la signature d'un **seuil d'écran**, et j'attribuais à `serp_height` le rang où il
+    tombe. [Vérification faite](format-et-retour.md), le rang explique **mieux** que la hauteur
+    cumulée ($R^2$ de McFadden 0,082 contre 0,057) et les pixels n'ajoutent que 0,0007. Le
+    constat — ce n'est pas une loi de puissance — tient ; l'explication mécanique tombe.
 
 !!! warning "Ce que cette section ne prétend pas"
     Trois formes ajustées sur neuf points, ce n'est pas une sélection de modèle : le pli d'écran a
@@ -158,9 +162,10 @@ La tranche employée reste une tranche : 524 164 documents sur les 1,2 milliard 
 Baidu-ULTR, et une page de résultats de recherche n'est pas un fil d'actualité. Le 0,88 vaut pour
 cette surface.
 
-`slipoff_count_after_click` et `media_type` n'ont pas été exploitées : la première compte les
-documents sortis de l'écran après un clic, ce qui affinerait la mesure ; la seconde distingue les
-formats, dont la littérature indique qu'ils modifient l'attention à rang égal.
+~~`slipoff_count_after_click` et `media_type` n'ont pas été exploitées.~~ →
+**[fait](format-et-retour.md)** : la première **réfute la cascade une seconde fois**, par un fait
+consigné plutôt que par un test ; la seconde établit qu'un format enrichi au-dessus retire
+**8,4 points** d'examen à ce qui suit, à rang et à hauteur comparables.
 
 ---
 

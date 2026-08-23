@@ -7,7 +7,7 @@ journée, par accumulation d'analogies. Cette méthode produit des intuitions ju
 et des raccourcis qui ne tiennent pas. Publier le fil tel quel exposerait
 l'ensemble à être écarté sur un détail, alors que l'intuition de départ mérite mieux.
 
-Vingt-deux points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
+Vingt-trois points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
 c'est un problème, et la formulation retenue. Les corrections sont **traçables** :
 chacune est implémentée dans `src/`, vérifiée dans `tests/`, et illustrée dans un
 notebook.
@@ -579,6 +579,34 @@ l'hypothèse de forme, et le confondant d'attrait.
 une estimation par effets fixes, un étalonnage de puissance et une limite d'identification — tout
 cela pour approcher une grandeur qui était **dans une colonne du fichier**. Avant de raffiner une
 estimation, il faut avoir lu le schéma des données.
+
+
+### 23. Une explication mécanique avancée sans la tester
+
+**Ce que j'avais écrit.** La courbe d'examen mesurée sur Baidu-ULTR ne suit pas une loi de
+puissance : elle tient jusqu'au deuxième rang, chute, puis s'aplatit. J'y ai vu « la signature
+d'un **seuil d'écran** », et j'ai ajouté que la colonne `serp_height` « encode précisément la
+hauteur de page, donc le rang où ce seuil tombe ».
+
+**Le problème.** C'était une hypothèse mécanique, plausible, et **non testée** — alors que la
+colonne invoquée permettait précisément de la tester. Vérification faite, le **rang** explique
+mieux que la hauteur cumulée au-dessus ($R^2$ de McFadden $0{,}082$ contre $0{,}057$), et les
+pixels n'ajoutent que $0{,}0007$ une fois le rang connu. À rang égal, l'effet des pixels ne
+subsiste qu'aux deux premiers rangs puis s'éteint — l'inverse de ce qu'un seuil d'écran
+prédirait.
+
+**Ce qui reste vrai.** Le **constat** tient : la courbe mesurée n'est pas une loi de puissance, et
+un modèle à deux régimes l'ajuste mieux. Seule l'explication tombe.
+
+**Ce que la mesure suggère à la place.** La décroissance viendrait du **contenu** plus que de la
+place : un format enrichi au-dessus retire 8,4 points d'examen à ce qui suit, à rang et à hauteur
+comparables ([format et retour](format-et-retour.md)). C'est un effet de satisfaction, non de
+géométrie.
+
+**Ce que cet épisode enseigne sur la méthode.** Une explication mécanique se formule en une
+phrase et se teste en une heure ; l'écart entre les deux est exactement l'endroit où une
+affirmation fausse s'installe. La règle du dépôt — ne rien publier qu'on n'ait mesuré — vaut
+aussi pour les explications, pas seulement pour les chiffres.
 
 ---
 

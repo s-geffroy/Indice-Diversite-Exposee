@@ -39,11 +39,23 @@ services:
     <<: *lab
     command: ruff check src tests
 
+  # Le notebook 24 est écarté : il est le seul du dépôt à lire le journal brut de Baidu-ULTR,
+  # qui n'est pas versionné (0,9 Go, licence CC BY-NC). Les mesures qu'il emploie croisent rang,
+  # pixels et format, et n'ont pas d'équivalent agrégé — les porter dans le condensé
+  # multiplierait les cellules par le nombre de strates. Il se régénère localement, après
+  # `scripts/fetch_exposure.py`, par `docker compose run --rm notebooks-full`.
   notebooks:
     <<: *lab
     command: >
+      sh -c "jupyter nbconvert --to notebook --execute --inplace
+      --ExecutePreprocessor.timeout=1200
+      $$(ls notebooks/*.ipynb | grep -v 24_format_et_retour)"
+
+  notebooks-full:
+    <<: *lab
+    command: >
       jupyter nbconvert --to notebook --execute --inplace
-      --ExecutePreprocessor.timeout=1200 notebooks/*.ipynb
+      --ExecutePreprocessor.timeout=1800 notebooks/*.ipynb
 
   # Les notebooks et les figures vivent à la racine du dépôt, où ils sont exécutables
   # et versionnés une seule fois ; ils sont recopiés sous docs/ avant chaque build,

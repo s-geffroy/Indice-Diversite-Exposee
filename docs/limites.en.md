@@ -7,7 +7,7 @@ analogies. That method produces sound intuitions alongside shortcuts that do not
 Publishing the thread as-is would expose the whole to being dismissed over a detail,
 when the starting intuition deserves better.
 
-Twenty-two points are documented. Each follows the same structure: what the thread claimed, why it is a
+Twenty-three points are documented. Each follows the same structure: what the thread claimed, why it is a
 problem, and the formulation adopted. Every correction is **traceable** — implemented in
 `src/`, verified in `tests/`, illustrated in a notebook.
 
@@ -508,6 +508,32 @@ estimate $\eta$, the shape assumption, and the attractiveness confounder.
 **What this episode teaches about method.** The repository built three successive checks, a
 fixed-effects estimator, a power calibration and an identification limit — all to approximate a
 quantity that was **in a column of the file**. Before refining an estimate, read the data schema.
+
+
+### 23. A mechanical explanation put forward without testing it
+
+**What I wrote.** The examination curve measured on Baidu-ULTR does not follow a power law: it
+holds through rank two, drops, then flattens. I saw in it "the signature of a **screen
+threshold**", and added that the `serp_height` column "encodes exactly the page height, hence the
+rank at which that threshold falls".
+
+**The problem.** That was a mechanical hypothesis, plausible, and **untested** — when the very
+column invoked allowed it to be tested. On verification, **rank** explains better than cumulative
+height above (McFadden $R^2$ $0.082$ against $0.057$), and pixels add only $0.0007$ once rank is
+known. At equal rank, the pixel effect survives only at the first two ranks then dies out — the
+opposite of what a screen threshold would predict.
+
+**What remains true.** The **finding** holds: the measured curve is not a power law, and a
+two-regime model fits it better. Only the explanation falls.
+
+**What measurement suggests instead.** The decay would come from **content** rather than place: a
+rich format above removes 8.4 points of examination from what follows, at equal rank and
+comparable height ([format and return](format-et-retour.en.md)). That is a satisfaction effect,
+not a geometric one.
+
+**What this episode teaches about method.** A mechanical explanation takes one sentence to state
+and an hour to test; the gap between the two is exactly where a false claim settles in. The
+repository's rule — publish nothing unmeasured — applies to explanations too, not only to figures.
 
 ---
 

@@ -90,6 +90,13 @@ $0{,}88 \pm 0{,}05$ sur 143 documents, non $1{,}09$ sur 55. L'estimation par les
 qu'emploie tout ce dépôt est le **pire** des trois ajustements sur la courbe mesurée.
 → [Exposition mesurée](exposition-mesuree.md)
 
+**Et les deux dernières colonnes achèvent le tableau.** Un compteur de défilement **réfute la
+cascade une seconde fois**, par un fait consigné plutôt que par un test. Un **format enrichi**
+au-dessus retire **8,4 points** d'examen à ce qui suit, à rang et à hauteur comparables : la
+remise d'attention n'est donc pas une propriété du rang, ni de la surface, mais de la **page
+servie**. Et l'explication que j'avais donnée de la forme en deux temps — un pli d'écran — est
+**fausse**. → [Format et retour](format-et-retour.md)
+
 **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
 agrégés, sans aucune donnée personnelle, dont il est prouvé qu'ils recalculent les mesures **à
 l'identique** — pour 95 fois moins de lignes que le journal brut.
@@ -158,7 +165,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-trois notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-quatre notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -186,6 +193,7 @@ note. Chacun se lit indépendamment.
 | [21 — Angles morts](notebooks/21_angles_morts.ipynb) | le test tient sous cascade, la loi de puissance non |
 | [22 — Test de forme](notebooks/22_test_de_forme.ipynb) | le troisième contrôle, et le collider qu'il a failli publier |
 | [23 — Exposition mesurée](notebooks/23_exposition_mesuree.ipynb) | une colonne jamais lue, et six chapitres d'estimation rendus inutiles |
+| [24 — Format et retour](notebooks/24_format_et_retour.ipynb) | la cascade réfutée deux fois, et une de mes explications retirée |
 
 ## Reproduire
 

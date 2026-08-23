@@ -62,8 +62,13 @@ observable.
     the population below the threshold, not the mean), and the level of the threshold — which no
     computation here determines.
 
-    **What the regulator must have measured rather than fix**: the surface's **attention
-    discount**. It is about 1.1 on a results page and a tenth of that on a three-thumbnail
+    **What the regulator must have measured rather than fix**: the **attention discount**, which
+    is not even a property of the surface but of the **page served** — on real data, a rich format
+    above removes 8.4 points of examination from what follows, at equal rank and comparable height
+    ([format and return](format-et-retour.en.md)). Two feeds of identical composition therefore do
+    not expose the same thing depending on the formats used.
+
+    The surface's attention discount: It is about 1.1 on a results page and a tenth of that on a three-thumbnail
     banner, and on its value depends the very existence of the burial loophole. A conventional
     discount imposed on every surface would be wrong for most.
     → [counter-expertise](contre-expertise.en.md)

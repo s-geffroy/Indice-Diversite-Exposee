@@ -7,6 +7,53 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — le format, le retour, et une explication retirée
+
+Les deux dernières colonnes inexploitées de Baidu-ULTR. Détail :
+[`docs/format-et-retour.md`](docs/format-et-retour.md) et le
+[notebook 24](notebooks/24_format_et_retour.ipynb).
+
+### Résultats — la cascade réfutée deux fois, et le format qui manquait
+
+- **`slipoff_count_after_click` réfute la cascade par un fait consigné** : la colonne est non
+  nulle pour **43,7 %** des lignes cliquées et 0,5 % des autres. Après un clic, le journal
+  enregistre que des documents ont défilé, donc que le lecteur est revenu — sous cascade stricte,
+  elle serait toujours nulle. La part croît avec la profondeur du clic, de 0,37 au premier rang à
+  0,59 au sixième. C'est une **voie indépendante** du test statistique du chapitre précédent.
+- **`media_type` établit que le format modifie l'exposition** : un format enrichi au-dessus retire
+  **8,4 points** d'examen à ce qui suit, médiane sur 21 strates toutes de même signe, à rang **et**
+  à hauteur cumulée comparables. L'effet **ne passe donc pas par la géométrie** — un contenu
+  enrichi est pourtant plus haut, 273 pixels contre 192 — et l'explication qui reste est celle de
+  la **satisfaction**.
+- **Conséquence sur la norme** : la remise d'attention $w_R$ n'est pas une propriété du rang, ni
+  même de la surface, mais de la **page servie**. Deux fils de composition identique, servis avec
+  des formats différents, n'exposent pas la même chose. Aucune loi $e(R)$ ne peut le représenter.
+
+### Corrigé — une explication mécanique avancée sans la tester
+
+- Le chapitre précédent attribuait la forme en deux temps de la courbe d'examen à un **pli
+  d'écran**, et invoquait `serp_height`. Cette colonne permettait précisément de tester
+  l'hypothèse, et elle la **réfute** : le rang explique mieux l'examen ($R^2$ de McFadden 0,082)
+  que la hauteur cumulée au-dessus (0,057), et les pixels n'ajoutent que 0,0007 une fois le rang
+  connu. À rang égal, l'effet des pixels ne subsiste qu'aux deux premiers rangs puis s'éteint —
+  l'inverse de ce qu'un seuil d'écran prédirait.
+- **Le constat tient, l'explication tombe** : la courbe mesurée n'est toujours pas une loi de
+  puissance. Vingt-troisième entrée de l'[audit](docs/limites.md), avec sa leçon : *une
+  explication mécanique se formule en une phrase et se teste en une heure ; l'écart entre les deux
+  est exactement l'endroit où une affirmation fausse s'installe.*
+
+### Modifié — une sixième colonne à la demande d'accès
+
+- [`docs/article-40.md`](docs/article-40.md) — le tableau 3 réclame désormais aussi une colonne
+  **`format`**. Sans elle, deux fils de composition identique peuvent exposer des diversités
+  différentes sans que rien ne le signale. C'est la moins sensible des colonnes demandées : le
+  format d'un contenu ne dit rien de son lecteur.
+- [`docs/memorandum.md`](docs/memorandum.md) — la remise d'attention est une propriété de la page
+  servie, non de la surface.
+- [`docs/exposition-mesuree.md`](docs/exposition-mesuree.md) porte l'avertissement sur le pli
+  d'écran, à l'endroit où l'hypothèse avait été avancée.
+- Les deux notes LaTeX reçoivent la sous-section correspondante (25 et 24 pages).
+
 ### Ajouté — l'exposition mesurée, et non plus estimée
 
 La piste ouverte par le test de forme : lire les colonnes d'**examen** de Baidu-ULTR, jamais

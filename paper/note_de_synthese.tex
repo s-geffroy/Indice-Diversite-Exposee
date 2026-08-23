@@ -1112,6 +1112,49 @@ affiché en dit moins sur un lecteur que savoir qu'il l'a choisi.
 ait été regardé. La mesure surestime donc l'exposition, dans une proportion que ce travail ne peut
 pas chiffrer.
 
+
+\subsection{Le format, le retour, et une explication retirée}
+\label{sec:formatretour}
+
+Deux colonnes de Baidu-ULTR restaient inexploitées : \texttt{slipoff\_count\_after\_click}, qui
+compte les documents sortis de l'écran après un clic, et \texttt{media\_type}, qui distingue les
+formats d'affichage.
+
+\paragraph{La cascade réfutée une seconde fois.} La première colonne est non nulle pour
+$43{,}7\,\%$ des lignes cliquées et $0{,}5\,\%$ des autres : après un clic, le journal enregistre
+explicitement que des documents ont défilé, donc que le lecteur est revenu. Sous cascade stricte,
+elle serait toujours nulle. La part croît d'ailleurs avec la profondeur du clic --- $0{,}37$ au
+premier rang, $0{,}59$ au sixième. La réfutation de \S\ref{sec:expositionmesuree}, obtenue par un
+test statistique, est ainsi confirmée par un fait consigné, ce qui est une voie indépendante.
+
+\paragraph{Le format modifie l'exposition, et pas par la géométrie.} Un format enrichi ---
+encadré de réponse, image, tableau --- est plus haut : $273$ pixels en médiane contre $192$. On
+attendrait donc un effet de repoussement. À rang \emph{et} à hauteur cumulée comparables, un
+format enrichi au-dessus retire pourtant $8{,}4$ points d'examen à ce qui suit, médiane sur $21$
+strates toutes de même signe. L'effet ne passe donc pas par la place occupée, et l'explication qui
+reste est celle de la \emph{satisfaction} : un encadré répond à la question, et le lecteur cesse de
+descendre.
+
+La conséquence porte sur toute mesure fondée sur le rang seul, y compris la nôtre : l'exposition
+au rang $R$ dépend du \textbf{format de ce qui est au-dessus}, et aucune loi $e(R)$ ne peut la
+représenter puisqu'elle ne prend pas la page en argument. La remise d'attention $w_R$ de
+\eqref{eq:distribution} n'est donc pas une propriété de la surface mais de la \textbf{page
+servie} : deux fils de composition identique, servis avec des formats différents, n'exposent pas
+la même chose.
+
+\paragraph{Et une explication de cette note est retirée.} \S\ref{sec:expositionmesuree} attribuait
+la forme en deux temps de la courbe mesurée à un \emph{pli d'écran}, et invoquait la colonne
+\texttt{serp\_height}. Cette colonne permet de tester l'hypothèse, et elle la réfute : le rang
+explique mieux l'examen ($R^2$ de McFadden $0{,}082$) que la hauteur cumulée au-dessus
+($0{,}057$), et les pixels n'ajoutent que $0{,}0007$ une fois le rang connu. Le constat --- la
+courbe n'est pas une loi de puissance --- tient ; l'explication mécanique tombe.
+
+\paragraph{Conséquence sur \S\ref{sec:demande}.} Le tableau des cellules réclame déjà une colonne
+d'affichages ; il en faut une de plus, le \textbf{format} du contenu servi. Sans elle, deux fils
+de composition identique peuvent exposer des diversités différentes sans que rien ne le signale.
+C'est en outre la moins sensible des colonnes demandées : le format d'un contenu ne dit rien de
+son lecteur.
+
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}
 
