@@ -48,6 +48,7 @@ __all__ = [
     "catalogue_size",
     "load_digest",
     "load_ebnerd",
+    "load_index_table",
     "signature_counts",
     "verify_source",
 ]
@@ -196,7 +197,19 @@ def _composition_cells(composition: FeedComposition) -> dict[str, np.ndarray]:
     }
 
 
-def _user_day_cells(composition: FeedComposition) -> dict[str, np.ndarray]:
+INDEX_BINS = 50
+
+
+def _blind_index(signatures: np.ndarray, catalogue: int) -> np.ndarray:
+    """IDE aveugle au rang de chaque signature de composition."""
+    counts = signatures.astype(float)
+    totals = counts.sum(axis=1, keepdims=True)
+    shares = np.divide(counts, totals, out=np.zeros_like(counts), where=totals > 0)
+    logs = np.log2(shares, out=np.zeros_like(shares), where=shares > 0)
+    return -(shares * logs).sum(axis=1) / np.log2(catalogue)
+
+
+def _user_day_cells(composition: FeedComposition, catalogue: int) -> dict[str, np.ndarray]:
     """Agrège les fils d'un même utilisateur sur une même journée.
 
     C'est la fenêtre que le protocole du dépôt prescrit — vingt-quatre heures glissantes — et
@@ -210,9 +223,22 @@ def _user_day_cells(composition: FeedComposition) -> dict[str, np.ndarray]:
     # Réordonner : la somme de deux signatures triées ne l'est plus nécessairement.
     totals = -np.sort(-totals, axis=1)
     unique, occurrences = np.unique(totals, axis=0, return_counts=True)
+
+    # Croisement charge x indice, seul tableau qui permette de chiffrer le prix d'une garantie
+    # **par utilisateur** : le plafonnement des contributions retire des journées aux lecteurs
+    # les plus assidus, et ceux-là ne ressemblent pas aux autres.
+    load = np.bincount(keys[:, 0])[keys[:, 0]]
+    values = _blind_index(totals, catalogue)
+    edges = np.linspace(0.0, 1.0, INDEX_BINS + 1)
+    bins = np.clip(np.digitize(values, edges) - 1, 0, INDEX_BINS - 1)
+    crossing = np.zeros((int(load.max()) + 1, INDEX_BINS), dtype=np.int64)
+    np.add.at(crossing, (load, bins), 1)
+
     return {
         "user_day_signatures": unique.astype(np.int32),
         "user_day_occurrences": occurrences.astype(np.int64),
+        "user_day_load_index": crossing,
+        "index_bin_edges": edges,
         "user_days": np.asarray(len(keys), dtype=np.int64),
         "users": np.asarray(len(np.unique(composition.users)), dtype=np.int64),
     }
@@ -228,7 +254,7 @@ def build_digest(directory: Path | None = None) -> Digest:
     journal, composition, catalogue = load_ebnerd(directory=directory)
     tables = {"ebnerd": digest_split(journal)}
     tables["ebnerd"].update(_composition_cells(composition))
-    tables["ebnerd"].update(_user_day_cells(composition))
+    tables["ebnerd"].update(_user_day_cells(composition, catalogue))
     tables["ebnerd"]["catalogue_size"] = np.asarray(catalogue, dtype=np.int64)
 
     return Digest(sources={"ebnerd": "+".join(sorted(fingerprints.values()))},
@@ -241,6 +267,19 @@ def load_digest(path: Path | None = None) -> Digest:
         DIGEST_PATH if path is None else path,
         rebuild_with="docker compose run --rm lab python scripts/build_ebnerd_digest.py",
     )
+
+
+def load_index_table(digest: Digest) -> tuple[np.ndarray, np.ndarray]:
+    """Le croisement charge x indice, et les bornes des classes.
+
+    Une ligne par nombre de journées portées par un même lecteur, une colonne par classe
+    d'indice. C'est ce qu'il faut pour chiffrer le prix d'une garantie de confidentialité
+    **par utilisateur** : voir :func:`ide.privacy.clipped_histogram`.
+    """
+    arrays = digest.splits["ebnerd"]
+    if "user_day_load_index" not in arrays:
+        raise ValueError("le condensé ne retient pas le croisement charge x indice")
+    return arrays["user_day_load_index"], arrays["index_bin_edges"]
 
 
 def catalogue_size(digest: Digest) -> int:

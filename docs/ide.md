@@ -192,7 +192,9 @@ l'[audit critique](limites.md).
   une simple mesure technique serait malhonnête.
 * **Vie privée.** Mesurer l'IDE de fils individuels suppose d'observer ce qui est
   servi à des personnes. Un protocole crédible doit être agrégatif et
-  différentiellement privé — ce dépôt ne le propose pas encore.
+  différentiellement privé. Il l'est désormais, et le prix est mesuré : la part de la
+  population sous le plancher survit à $\varepsilon = 0{,}1$, mais la sévérité dont elle
+  dépend est divisée par deux à $\varepsilon = 1$. → [ce que la vie privée coûte](vie-privee.md)
 
 ---
 

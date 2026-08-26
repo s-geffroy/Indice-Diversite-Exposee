@@ -43,7 +43,7 @@ fournit pas.**
 
 ### Ce qui tient
 
-Six objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
+Sept objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
 statistique s'applique à d'autres données et répond seul, sans qu'on ait à croire celui qui l'a
 écrit. Les préceptes de méthode que ce dépôt a un temps promus au rang de résultat n'ont pas cette
 propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
@@ -73,6 +73,10 @@ propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
   la diversité **servie** vaut 0,47 par journée-utilisateur — 4,6 rubriques effectives sur 26.
   L'indice **exposé** n'est qu'encadré : la colonne d'ordre du seul jeu qui l'offre ne contient
   pas le rang. → **[L'indice mesuré](docs/indice-mesure.md)**
+- **Une demande d'accès qui se protège au lieu de se promettre** : la part de la population
+  sous le plancher survit à $\varepsilon = 0{,}1$ sans bouger d'un millième, mais la sévérité
+  dont elle dépend est **divisée par deux** à $\varepsilon = 1$. Le vrai prix n'est pas le
+  bruit : c'est le plafonnement des contributions. → **[Vie privée](docs/vie-privee.md)**
 - **Une demande d'accès aux données qui se vérifie au lieu de se plaider** : quatre tableaux
   agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
   Deux colonnes s'y sont ajoutées depuis : `affichages`, sans laquelle l'exposition ne se mesure
@@ -131,7 +135,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 623 tests, dont les exemples de docstrings
+docker compose run --rm test          # 638 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -169,8 +173,8 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              623 tests — validation physique, numérique et statistique
-notebooks/          01 à 26, un par bloc théorique, exécutables
+tests/              638 tests — validation physique, numérique et statistique
+notebooks/          01 à 27, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné

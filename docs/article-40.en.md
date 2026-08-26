@@ -149,6 +149,20 @@ constrain nothing — cannot be excluded from the computation.
     sensitive of the six — an item's format says nothing about its reader. It does not condition
     the computation of the index, and a platform failing to supply it would not prevent it.
 
+!!! danger "Table 3 must not be requested in this form"
+    Under differential privacy this table returns a severity **wrong by a factor of two** and
+    confident: 99.7 % of its cells carry fewer than five impressions, and noise attenuates them
+    towards zero without the standard error saying so. Three requests replace it:
+
+    1. the **rank margin** of displays, publishable at $\varepsilon = 0.1$ without damage;
+    2. the **item-fixed-effects estimate computed by the platform itself**, published as a
+       noised scalar — a number has bounded sensitivity, a sparse table does not;
+    3. the **gap between the two**, the only available check of the first by the second.
+
+    The **contribution bound** must be published with the result, as the suppression threshold
+    is: it shifts the share below the floor by 0.6 to 2.5 points, always towards excess
+    severity. → [what privacy costs](vie-privee.en.md)
+
 **Table 4 — exposure by viewpoint**
 
 | Column | Type | Description |

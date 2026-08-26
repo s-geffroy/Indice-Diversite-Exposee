@@ -11,7 +11,7 @@ lecteur, calculable sans accès au code de la plateforme — et la **méthode ad
 l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel, y compris
 quand ce qui tombe vient du dépôt lui-même.
 
-Il en reste vingt-six notebooks exécutables, 623 tests, **vingt-cinq corrections consignées**,
+Il en reste vingt-sept notebooks exécutables, 638 tests, **vingt-cinq corrections consignées**,
 et un état des lieux qui ne ressemble ni à ce que le projet annonçait, ni à ce qu'il croyait avoir
 établi six chapitres plus tôt.
 
@@ -40,6 +40,7 @@ la décroissance de 23 %. Figure régénérée par
 | Les instruments de mesure | **valides après correction** — trois d'entre eux ont dû être restreints, et trois conclusions retirées → [contre-expertise](contre-expertise.md) · [l'effet de page](effet-de-page.md) |
 | L'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : $0{,}88 \pm 0{,}05$ — non $1{,}09$ comme estimé → [exposition mesurée](exposition-mesuree.md) |
 | Sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, et trois fois plus petite que publiée** : 6 % d'examen, $0{,}0025$ d'indice → [l'effet de page](effet-de-page.md) |
+| La **confidentialité** de la demande d'accès, jamais garantie formellement | **garantie et chiffrée** : le plancher survit à $\varepsilon = 0{,}1$, la sévérité est divisée par deux à $\varepsilon = 1$ → [ce que la vie privée coûte](vie-privee.md) |
 
 **En une phrase : la théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle
 qui décide de tout le reste, et qu'on peut mesurer au lieu de la supposer : $0{,}88$ et non $1$,
@@ -49,7 +50,7 @@ prétend le fournir ne le fournit pas.**
 
 ## Ce qui tient
 
-Six objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne. Un test
+Sept objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne. Un test
 statistique s'applique à d'autres données et répond seul ; il ne demande pas qu'on croie celui qui
 l'a écrit. C'est le critère qui les distingue des préceptes de méthode que ce dépôt a un temps
 promus au rang de résultat, à tort — cette page le disait, et l'[audit](limites.md) dit pourquoi
@@ -87,6 +88,11 @@ danois, la diversité **servie** vaut 0,47 par journée-utilisateur — 4,6 rubr
 26. L'indice **exposé**, lui, n'est qu'encadré : la colonne d'ordre du seul jeu qui l'offre ne
 contient pas le rang, et six fils sur dix restent indécidables à un plancher de 0,40.
 → [l'indice mesuré](indice-mesure.md)
+
+**Et une demande d'accès qui se protège au lieu de se promettre.** La grandeur réglementée —
+la part de la population sous le plancher — survit à $\varepsilon = 0{,}1$ sans bouger d'un
+millième. Le vrai prix n'est pas le bruit mais le **plafonnement des contributions**, qui
+surestime la non-conformité de 0,6 à 2,5 points. → [ce que la vie privée coûte](vie-privee.md)
 
 **Une demande d'accès aux données qui se vérifie au lieu de se plaider.** Quatre tableaux
 agrégés, sans donnée personnelle, prouvés suffisants — pour 95 fois moins de lignes que le
@@ -135,7 +141,7 @@ qu'une mesure a montré ce qu'on perdait sans elle.
 * **Le niveau du plancher est une décision politique**, comme le catalogue de points de vue. La
   mesure décrit, elle ne prescrit pas.
 * **Les trois codeurs de l'annotation sont des instances du même modèle de langue.**
-* **Rien n'a été validé de l'extérieur.** Les 623 tests vérifient que le code fait ce qui est
+* **Rien n'a été validé de l'extérieur.** Les 638 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 * **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique** —
@@ -176,7 +182,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-six notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-sept notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -214,7 +220,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 623 tests
+docker compose run --rm test          # 638 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

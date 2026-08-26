@@ -7,6 +7,38 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — ce que la vie privée coûte à l'audit
+
+La demande au titre de l'article 40 prouvait que quatre tableaux agrégés **suffisent**. Elle ne
+disait rien de leur **innocuité** — et l'audit le reconnaissait sans y remédier : « un protocole
+d'audit crédible doit être agrégatif et différentiellement privé, ce dépôt ne le propose pas ».
+Il le propose maintenant, et en publie le prix.
+
+- **La grandeur réglementée est presque gratuite à protéger.** La part de la population sous le
+  plancher ne bouge pas d'un millième entre $\varepsilon = 10$ et $\varepsilon = 0{,}1$ : un
+  histogramme de 50 classes sur 58 549 journées-utilisateur est hors d'atteinte du bruit.
+- **La grandeur dont elle dépend ne l'est pas du tout.** À $\varepsilon = 1$ — valeur de
+  référence usuelle — la sévérité passe de **0,88 à 0,50**, et son erreur type ne bouge pas. Le
+  bruit sur des effectifs agit comme une erreur de mesure : il **atténue** sans que rien ne le
+  signale, et dans le sens qui fait paraître l'enterrement moins grave.
+- **Le vrai prix n'est pas le bruit, c'est le plafonnement des contributions**, sans lequel
+  aucune garantie *par personne* n'existe. Il ajoute **+0,6 à +2,5 points** à une part de 18,8 %,
+  toujours vers l'excès : les lecteurs assidus sont plus divers, et les écarter fait paraître la
+  plateforme moins conforme qu'elle n'est. L'erreur commise en protégeant les lecteurs
+  **n'innocente pas** la plateforme.
+- **Le nœud, qui ne se dénoue pas.** La marge de rang survit à $\varepsilon = 0{,}03$ et tombe à
+  0,7 % de la valeur à contenu fixé — mais on ne le sait que grâce au tableau que nulle garantie
+  ne protège. *La quantité qui se publie sans risque est celle qu'on ne peut pas vérifier.*
+- **La demande change.** Le tableau 3 ne doit plus être demandé tel quel : la marge de rang
+  ($\varepsilon = 0{,}1$), l'estimation à effets fixes **calculée par la plateforme** et publiée
+  comme scalaire bruité, et l'écart entre les deux. Le plafond de contributions se publie avec le
+  résultat, comme le seuil de suppression.
+- Nouveau module `ide.privacy` (mécanisme de Laplace, seuil de publication $(\varepsilon,
+  \delta)$, plafonnement des contributions), croisement charge × indice ajouté au condensé
+  EB-NeRD, [`docs/vie-privee.md`](docs/vie-privee.md) et
+  [notebook 27](notebooks/27_vie_privee.ipynb), reproductible depuis les condensés versionnés.
+- 638 tests, deux notes recompilées (28 et 27 pages, zéro boîte débordante).
+
 ### Ajouté — l'hypothèse de fond, enfin sous une forme qui peut échouer
 
 L'audit se terminait depuis le premier jour sur la même réserve : *rien ne démontre que les

@@ -183,8 +183,10 @@ Developed further in the [critical audit](limites.en.md).
 * **A floor on the index is a constraint on what people see.** Defensible, but an
   intervention in public debate — not a neutral technical measure.
 * **Privacy.** Measuring individual feeds requires observing what is served to people. A
-  credible protocol must be aggregative and differentially private; this repository does
-  not yet propose one. → [roadmap §2.3](feuille-de-route.en.md)
+  credible protocol must be aggregative and differentially private. It now is, and the price
+  is measured: the share of the population below the floor survives $\varepsilon = 0.1$, but
+  the severity it depends on is halved at $\varepsilon = 1$.
+  → [what privacy costs](vie-privee.en.md)
 
 ---
 

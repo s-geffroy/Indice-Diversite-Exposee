@@ -769,7 +769,10 @@ qu'elles portent sur ce que le mémorandum demande à un législateur.
   de thermodynamique.
 * **Vie privée.** Mesurer l'IDE d'un fil individuel suppose d'observer ce qui est
   servi à des individus. Un protocole d'audit crédible doit être agrégatif et
-  différentiellement privé — ce dépôt ne le propose pas.
+  différentiellement privé — ce dépôt le propose désormais, et en publie le prix :
+  le bruit est presque gratuit sur la grandeur réglementée, ruineux sur la sévérité dont elle
+  dépend, et le vrai coût est le **plafonnement des contributions**, qui surestime la
+  non-conformité de 0,6 à 2,5 points. → [ce que la vie privée coûte](vie-privee.md)
 
 ### Ce que les simulations ne montrent pas
 

@@ -687,7 +687,10 @@ bear on what the memorandum asks of a legislator.
   vocabulary.
 * **Privacy.** Measuring the index of individual feeds requires observing what is served
   to individuals. A credible audit protocol must be aggregative and differentially
-  private — this repository does not yet propose one.
+  private — this repository now proposes one, and publishes its price: noise is nearly free on
+  the regulated quantity, ruinous on the severity it depends on, and the real cost is the
+  **contribution bound**, which overstates non-compliance by 0.6 to 2.5 points.
+  → [what privacy costs](vie-privee.en.md)
 
 ### What the simulations do not show
 

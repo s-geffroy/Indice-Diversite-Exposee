@@ -155,6 +155,20 @@ contraignent rien — ne peuvent pas être écartés du calcul.
     conditionne pas le calcul de l'indice, et une plateforme qui ne la fournirait pas ne
     l'empêcherait pas.
 
+!!! danger "Le tableau 3 ne doit pas être demandé sous cette forme"
+    Sous confidentialité différentielle, ce tableau rend une sévérité **fausse d'un facteur
+    deux** et confiante : 99,7 % de ses cellules portent moins de cinq impressions, et le bruit
+    les atténue vers zéro sans que l'erreur type le signale. Trois demandes le remplacent :
+
+    1. la **marge de rang** des affichages, publiable à $\varepsilon = 0{,}1$ sans dommage ;
+    2. l'**estimation à effets fixes de contenu calculée par la plateforme elle-même**, publiée
+       comme un scalaire bruité — un nombre a une sensibilité bornée, un tableau creux non ;
+    3. l'**écart entre les deux**, seul contrôle disponible de la première par la seconde.
+
+    Le **plafond de contributions** doit être publié avec le résultat, comme l'est le seuil de
+    suppression : il déplace la part sous le plancher de 0,6 à 2,5 points, toujours vers l'excès
+    de sévérité. → [ce que la vie privée coûte](vie-privee.md)
+
 **Tableau 4 — exposition par point de vue**
 
 | Colonne | Type | Description |

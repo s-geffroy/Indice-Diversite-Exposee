@@ -1222,6 +1222,52 @@ established that it transports from page to page, not from platform to platform,
 sensitivity test that does not reverse the conclusion. The exact bounds cover only feeds of ten
 items or fewer, $64\%$ of the log.
 
+\subsection{What privacy costs an audit}
+\label{sec:privacy}
+
+\S\ref{sec:request} proves four aggregate tables suffice; it says nothing about their
+harmlessness. An aggregate is not anonymous, and the small-cell suppression threshold used so far
+offers no formal guarantee. We therefore publish the same quantities under differential privacy,
+and measure the price.
+
+\paragraph{Two costs, and the second dominates.} Laplace \textbf{noise} protects against
+inference about one row, and its effect depends on the \emph{density} of the published table: on
+the nine cells of the rank margin it stays invisible down to $\varepsilon = 0.03$; on the
+$451{,}100$ (item, rank) cells, $99.7\%$ of which carry fewer than five impressions, it destroys
+everything. The \textbf{contribution bound} is what makes a \emph{per-person} guarantee
+possible, and it is what shifts the figures.
+
+\paragraph{The regulated quantity holds.} The share of the population below the floor does not
+move by a thousandth between $\varepsilon = 10$ and $\varepsilon = 0.1$. Bounding at one day per
+reader, however, adds $2.5$ points to a share of $18.8\%$, and at five days still $0.6$ point ---
+always in the same direction. Assiduous readers are more diverse than the rest: dropping them
+makes the platform look \emph{less} compliant than it is. The error committed in protecting
+readers therefore does not exonerate the platform.
+
+\paragraph{Severity does not hold.} At $\varepsilon = 1$, the usual reference value, $\eta$ goes
+from $0.882 \pm 0.046$ to $0.505 \pm 0.051$. Noise on counts acts as measurement error: it
+attenuates towards zero, and the standard error does not say so. The consequence is directional
+--- an understated severity makes attention look flatter, hence burial milder. The publication
+threshold corrects the level then overshoots it, trading attenuation for \textbf{selection}:
+$0.881$ over $57$ items at $\varepsilon = 3$, but $1.03$ over $25$ at $\varepsilon = 1$ and
+$1.20$ over nine at $0.3$.
+
+\paragraph{The knot.} The rank margin survives any budget and lands within $0.7\%$ of the
+item-fixed-effects value. But we only know that because we hold the item-level table, the one no
+guarantee protects: \emph{what publishes safely is what cannot be checked}. No privacy budget
+reconciles the two.
+
+\paragraph{Consequence for \S\ref{sec:request}.} The cell table must not be requested in this
+form. Three requests replace it: the rank margin of displays, publishable at $\varepsilon = 0.1$;
+the item-fixed-effects estimate \emph{computed by the platform} and published as a noised scalar,
+whose sensitivity is bounded; and the gap between the two, the only available check. The
+contribution bound must be published with the result, as the suppression threshold is.
+
+\paragraph{Reservations.} The mechanism used is the simplest there is: this chapter bounds the
+cost from above, it does not claim to attain it. The per-user guarantee is measured only on
+EB-NeRD, the only log carrying a reader identifier; on Baidu-ULTR only a per-impression guarantee
+is possible, which is a property of the dataset, not of the method.
+
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}
 

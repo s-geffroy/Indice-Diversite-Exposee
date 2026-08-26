@@ -1266,6 +1266,53 @@ a établi qu'elle se transporte d'une page à l'autre, non d'une plateforme à l
 de sensibilité qui ne renverse pas la conclusion. L'encadrement exact ne couvre que les fils de
 dix contenus ou moins, soit $64\,\%$ du journal.
 
+\subsection{Ce que la vie privée coûte à l'audit}
+\label{sec:vieprivee}
+
+\S\ref{sec:demande} prouve que quatre tableaux agrégés suffisent ; elle ne dit rien de leur
+innocuité. Un agrégat n'est pas anonyme, et le seuil de suppression des faibles effectifs employé
+jusqu'ici n'offre aucune garantie formelle. Nous publions donc les mêmes quantités sous
+confidentialité différentielle, et en mesurons le prix.
+
+\paragraph{Deux coûts, et le second domine.} Le \textbf{bruit} de Laplace protège contre
+l'inférence sur une ligne, et son effet dépend de la \emph{densité} du tableau publié : sur les
+neuf cellules de la marge de rang, il reste invisible jusqu'à $\varepsilon = 0{,}03$ ; sur les
+$451\,100$ cellules (contenu, rang), dont $99{,}7\,\%$ portent moins de cinq impressions, il
+détruit tout. Le \textbf{plafonnement des contributions}, lui, est ce qui rend possible une
+garantie \emph{par personne}, et c'est lui qui déplace les chiffres.
+
+\paragraph{La grandeur réglementée résiste.} La part de la population sous le plancher ne bouge
+pas d'un millième entre $\varepsilon = 10$ et $\varepsilon = 0{,}1$. En revanche, plafonner à une
+journée par lecteur ajoute $2{,}5$ points à une part de $18{,}8\,\%$, et à cinq journées encore
+$0{,}6$ point --- toujours dans le même sens. Les lecteurs assidus sont plus divers que les
+autres : les écarter fait paraître la plateforme \emph{moins} conforme qu'elle n'est. L'erreur
+commise en protégeant les lecteurs n'innocente donc pas la plateforme.
+
+\paragraph{La sévérité ne résiste pas.} À $\varepsilon = 1$, valeur de référence usuelle,
+$\eta$ passe de $0{,}882 \pm 0{,}046$ à $0{,}505 \pm 0{,}051$. Le bruit sur des effectifs agit
+comme une erreur de mesure : il atténue vers zéro, et l'erreur type ne le signale pas. La
+conséquence est directionnelle --- une sévérité sous-estimée fait paraître l'attention plus plate,
+donc l'enterrement moins grave. Le seuil de publication corrige le niveau puis le dépasse, en
+échangeant l'atténuation contre une \textbf{sélection} : $0{,}881$ sur $57$ contenus à
+$\varepsilon = 3$, mais $1{,}03$ sur $25$ à $\varepsilon = 1$ et $1{,}20$ sur neuf à $0{,}3$.
+
+\paragraph{Le nœud.} La marge de rang survit à tout budget et tombe à $0{,}7\,\%$ de la valeur
+estimée à contenu fixé. Mais on ne le sait que parce qu'on dispose du tableau à contenu fixé,
+celui qu'aucune garantie ne protège : \emph{la quantité qui se publie sans risque est celle qu'on
+ne peut pas vérifier}. Aucun budget de confidentialité ne réconcilie les deux.
+
+\paragraph{Conséquence sur \S\ref{sec:demande}.} Le tableau des cellules ne doit pas être
+demandé sous cette forme. Trois demandes le remplacent : la marge de rang des affichages,
+publiable à $\varepsilon = 0{,}1$ ; l'estimation à effets fixes de contenu \emph{calculée par la
+plateforme} et publiée comme un scalaire bruité, dont la sensibilité est bornée ; et l'écart entre
+les deux, seul contrôle disponible. Le plafond de contributions doit être publié avec le
+résultat, comme l'est le seuil de suppression.
+
+\paragraph{Réserves.} Le mécanisme employé est le plus simple qui soit : ce chapitre borne le
+coût par le haut, il ne prétend pas l'atteindre. La garantie par utilisateur n'est mesurée que sur
+EB-NeRD, seul journal portant un identifiant de lecteur ; sur Baidu-ULTR, seule une garantie par
+impression est possible, ce qui tient au jeu de données et non à la méthode.
+
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}
 
