@@ -5,7 +5,7 @@
 [![Licence : MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Documentation : CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE-DOCS)
 [![Champ : mesure de l'exposition](https://img.shields.io/badge/champ-mesure%20de%20l'exposition-8a2be2.svg)](https://s-geffroy.github.io/Indice-Diversite-Exposee/)
-[![Tests : 261](https://img.shields.io/badge/tests-261-brightgreen.svg)](tests/)
+[![Tests : 256](https://img.shields.io/badge/tests-256-brightgreen.svg)](tests/)
 
 📖 **[Documentation complète](https://s-geffroy.github.io/Indice-Diversite-Exposee/)**
 · [English](https://s-geffroy.github.io/Indice-Diversite-Exposee/en/)
@@ -81,7 +81,7 @@ supprime pas.
 Tout passe par Docker, rien n'est installé localement.
 
 ```bash
-docker compose run --rm test          # 261 tests, dont les exemples de docstrings
+docker compose run --rm test          # 256 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # exécute les notebooks, régénère les figures
 docker compose up site                # http://localhost:8000
@@ -91,9 +91,17 @@ Les journaux bruts ne sont pas versionnés — licences propres, plusieurs gigao
 **condensés** le sont, et tout se recalcule à l'identique depuis eux :
 
 ```bash
-docker compose run --rm lab python scripts/fetch_mind.py
+docker compose run --rm lab python scripts/fetch_mind.py        # MIND
 docker compose run --rm lab python scripts/build_mind_digest.py
+docker compose run --rm lab python scripts/fetch_exposure.py    # Baidu-ULTR, Open Bandit
+docker compose run --rm lab python scripts/build_exposure_digest.py
+docker compose run --rm lab python scripts/fetch_ebnerd.py      # EB-NeRD
+docker compose run --rm lab python scripts/build_ebnerd_digest.py
 ```
+
+Chaque récupération vérifie la taille et l'empreinte SHA-256 du fichier obtenu ; chaque condensé
+est reconstruit depuis lui, et les chiffres publiés sont verrouillés par des tests qui lisent le
+condensé versionné — jamais le journal brut.
 
 ## Structure
 
@@ -109,7 +117,7 @@ scripts/            récupération des journaux, condensés, rendu du site
 
 ## Ce qui est vérifié, et comment
 
-- **261 tests** verrouillent chaque chiffre publié, y compris ceux qui ont dû être corrigés.
+- **256 tests** verrouillent chaque chiffre publié, y compris ceux qui ont dû être corrigés.
 - **Le site est vérifié page par page** après construction : une construction qui réussit ne prouve
   rien tant qu'on n'a pas regardé ce qu'elle produit — le dépôt a publié ses notebooks en JSON brut
   pendant des mois sans qu'une seule alerte le signale.

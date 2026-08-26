@@ -1,6 +1,6 @@
 # Test adverse : l'IDE se sature sans coût
 
-!!! failure "L'index, tel qu'il était défini, n'est pas une norme tenable"
+!!! failure "L'indice, tel qu'il était défini, n'est pas une mesure tenable"
     Une plateforme capable de dissocier l'étiquette du contenu obtient un **IDE de 1,000 — la
     note maximale — pour une diversité de contenu strictement nulle**, sans céder un point
     d'engagement. Et il n'est pas besoin d'aller jusque-là : à mi-découplage, la contrainte n'a
@@ -18,23 +18,23 @@
     certifiée à 0,70 n'expose que **0,36**. → [Rang adverse et sévérité](rang-adverse.md)
 
 !!! tip "Ce que cela prescrit, après correction"
-    Le résultat ne détruit pas l'index, il en **déplace la définition** : ce qu'il faut mesurer
+    Le résultat ne détruit pas l'indice, il en **déplace la définition** : ce qu'il faut mesurer
     n'est pas la diversité des **étiquettes** servies, mais celle des **contenus** qu'elles
     portent. La forme retenue est l'**entropie de position** — l'IDE calculé sur les
     contenus et non sur les étiquettes — accompagnée d'un diagnostic de **plus grand vide**.
 
 ---
 
-## La question, et pourquoi elle précède toute norme
+## La question, et pourquoi elle précède toute mesure
 
-L'[audit critique §2.2](limites.md) relevait une objection que le reste du dépôt n'avait pas
+L'[audit critique](limites.md) relevait une objection que le reste du dépôt n'avait pas
 traitée : une plateforme contrainte de maintenir un IDE élevé peut servir des contenus
 **formellement divergents mais substantiellement vides** — un article étiqueté « point de vue
 opposé » dont le propos reste adjacent à celui du lecteur.
 
 C'est un problème d'optimisation sous contrainte, donc **entièrement simulable** : aucune
 donnée réelle n'est nécessaire pour le trancher. Et il valait mieux le trancher avant de
-proposer un seuil réglementaire, car si l'index se sature sans coût, tout ce qui s'appuie
+en proposer un seuil, car si l'indice se sature sans coût, tout ce qui s'appuie
 dessus s'effondre.
 
 ## Le modèle
@@ -63,7 +63,7 @@ maximum d'une forme linéaire à entropie fixée est une distribution de Boltzma
 
 $$q_\ell \propto \exp\big(g(x^*_\ell)/T\big)$$
 
-où $T$ est le multiplicateur qui sature le plancher. **La contrainte réglementaire agit
+où $T$ est le multiplicateur qui sature le plancher. **La contrainte agit
 exactement comme la température sociale du reste du dépôt** : à $T \to 0$ la plateforme sert son
 unique meilleur contenu, à $T \to \infty$ elle sert l'uniforme.
 
@@ -109,7 +109,7 @@ Et ce que contient alors le fil :
 | 0,50 | 0,800 | 0,215 | 0,928 | 6,6 % |
 | **1,00** | **1,000** | **0,000** | **1,000** | **0,0 %** |
 
-**L'index décerne son meilleur score à un fil qui ne contient qu'un seul point de vue.**
+**L'indice décerne son meilleur score à un fil qui ne contient qu'un seul point de vue.**
 
 ### 3. La dégradation est plus rapide que le découplage
 
@@ -223,7 +223,7 @@ inatteignable. Figure régénérée par
 | proximité à la cible | 14,4 % | 8/8 | 0,87 | 0,14 |
 
 Sous plancher de Rao, la plateforme sert quatre points de vue sur huit et laisse un vide de
-**0,71 — les sept dixièmes de l'axe d'opinion**. Le plancher réglementaire produit lui-même
+**0,71 — les sept dixièmes de l'axe d'opinion**. Le plancher produit lui-même
 l'exposition bimodale que le projet cherchait à mesurer.
 
 ### Trois remplaçantes, éprouvées contre les trois adversaires
@@ -242,7 +242,7 @@ chaque bac, le troisième adversaire testé.
 
 **L'entropie de position** est l'IDE à une substitution près : la distribution mesurée n'est
 plus celle des étiquettes déclarées mais celle des **positions effectivement servies**,
-projetées sur les bacs du catalogue de référence. Elle garde l'interprétation de l'index
+projetées sur les bacs du catalogue de référence. Elle garde l'interprétation de l'indice
 d'origine — 0 pour un fil gelé, 1 pour l'uniforme — et coûte **moins cher** que Rao.
 
 **La Gaussian ILD** est la proposition d'Ohsaka et Togashi : un noyau gaussien qui sature, si
@@ -286,7 +286,7 @@ L'erreur n'a pas été trouvée en relisant le code : elle a été trouvée en l
 domaine avait déjà publié sur la mesure employée. Le test adverse était **correct dans ce qu'il
 réfutait, et faux dans ce qu'il proposait**.
 
-> **Une norme ne se valide pas contre l'attaque qu'on a imaginée, mais contre celles qu'on n'a
+> **Une mesure ne se valide pas contre l'attaque qu'on a imaginée, mais contre celles qu'on n'a
 > pas imaginées.** C'est un argument pour aller chercher la littérature avant de prescrire, non
 > après.
 
@@ -331,11 +331,11 @@ faut les nommer :
    réponse et choisir le plancher en conséquence.
 4. **Traiter le choix du catalogue de référence.** Toute la résistance de $Q$ repose sur une
    étendue déclarée. Qui la fixe, et comment, redevient la question politique que
-   l'[audit §2.1](limites.md) posait déjà pour $k$.
+   l'[audit](limites.md) pose déjà pour $k$.
 
 ---
 
 *Implémentation : `ide.gaming` · Notebook :
 [13 — Test adverse](notebooks/13_test_adverse_index.md) ·
-[IDE — l'index](ide.md) ·
+[IDE — l'indice](ide.md) ·
 [audit critique](limites.md)*

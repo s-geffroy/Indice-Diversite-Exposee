@@ -73,7 +73,9 @@ measured where the index is computed. → [counter-expertise](contre-expertise.e
 !!! success "The rank-blind form is measured on real feeds"
     $0.50$ per user-day over 232,887 feeds of the Danish daily *Ekstra Bladet*, that is **5.1
     effective sections out of 26**. It is the repository's first figure that does not come from a
-    simulation. → [the index measured](indice-mesure.en.md)
+    simulation — and it is the figure of the form **the adversarial test disqualifies**, for want
+    of better on a log recording neither rank nor content. It reads as an **upper bound**.
+    → [the index measured](indice-mesure.en.md)
 
 !!! warning "The exposed form is only **bounded**"
     No public log carries both a verifiable rank and an interpretable label. Composition being

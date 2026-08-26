@@ -74,7 +74,9 @@ plateforme à l'autre, et doit donc être mesurée là où l'indice est calculé
 !!! success "La forme aveugle au rang est mesurée sur des fils réels"
     $0{,}50$ par journée-utilisateur sur 232 887 fils du quotidien *Ekstra Bladet*, soit **5,1
     rubriques effectives sur 26**. C'est le premier chiffre du dépôt qui ne vient pas d'une
-    simulation. → [l'indice mesuré](indice-mesure.md)
+    simulation — et c'est celui de la forme **que le test adverse disqualifie**, faute de mieux
+    sur un journal qui n'enregistre ni le rang ni le contenu. Il se lit comme une **borne
+    supérieure**. → [l'indice mesuré](indice-mesure.md)
 
 !!! warning "La forme exposée n'est qu'**encadrée**"
     Aucun journal public ne porte à la fois un rang vérifiable et une étiquette interprétable. La

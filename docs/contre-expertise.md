@@ -27,7 +27,7 @@
 
 ## Pourquoi cette page
 
-Les chapitres précédents ont attaqué l'index, la norme, les jeux de données et l'algorithme. Ils
+Les chapitres précédents ont attaqué l'indice, sa forme et les jeux de données. Ils
 n'avaient jamais attaqué **les instruments de mesure eux-mêmes**, ni confronté les choix du dépôt
 à ce que la littérature du domaine sait déjà.
 
@@ -136,7 +136,7 @@ Une entropie normalisée n'est pas une diversité : elle n'est pas linéaire en 
 | Indice | Points de vue effectifs (sur 4) | Lecture |
 |---|---|---|
 | 0,774 | 2,92 | affiché par le fil enterrant |
-| 0,700 | **2,64** | plancher réglementaire proposé |
+| 0,700 | **2,64** | le niveau alors proposé |
 | 0,443 | **1,85** | réellement exposé à $\eta = 1$ |
 | 0,157 | 1,24 | réellement exposé à $\eta = 2$ |
 
@@ -152,7 +152,7 @@ classement jugée par des annotateurs experts. Ils confirment la présence du bi
 méthodes concordantes, ce qui corrobore notre chiffre ; mais l'étape suivante ne suit pas
 mécaniquement.
 
-**Une norme de diversité est une norme éditoriale.** Les métriques normatives de Vrijenhoek
+**Mesurer la diversité est un choix éditorial.** Les métriques normatives de Vrijenhoek
 *et al.* (2022) découpent la diversité en cinq dimensions dérivées de théories démocratiques
 explicites. L'indice de ce dépôt en occupe **une seule**, et une plateforme peut la satisfaire en
 servant des contenus divergents et vides. Aucune mesure automatique ne distingue la pluralité de

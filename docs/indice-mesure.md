@@ -65,6 +65,17 @@ pas un manque de puissance, c'est une réponse.
 dépôt — n'y est donc pas mesurable. L'indice **aveugle au rang** l'est, et il ne l'avait
 jamais été sur données réelles.
 
+!!! danger "Le chiffre mesuré emploie la forme que ce dépôt a lui-même disqualifiée"
+    Ce qui est mesuré ici est l'IDE **aveugle au rang**, calculé sur les **étiquettes** que la
+    rédaction déclare — la forme que le [test adverse](gaming.md) sature à 1,000 pour une
+    diversité de contenu nulle, et que le [rang adverse](rang-adverse.md) contourne par
+    l'enterrement.
+
+    Ce n'est pas une négligence : sur un journal qui n'enregistre ni le rang ni le contenu, c'est
+    la seule forme calculable. Mais cela change la lecture du chiffre. **0,50 est une borne
+    supérieure**, pas une mesure de la diversité exposée : rien ici ne vérifie que deux articles
+    de rubriques différentes disent des choses différentes, ni que celui du bas ait été lu.
+
 ## 2. La diversité servie, enfin chiffrée
 
 | Fenêtre | Médiane | Quartiles | Points de vue effectifs | Sous 0,40 | Sous 0,50 |

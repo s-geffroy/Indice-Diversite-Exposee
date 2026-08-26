@@ -22,7 +22,7 @@ lui, l'indice exposé restera encadré et jamais mesuré.
 
 ## 2. Une validation extérieure
 
-Vingt-sept corrections, 261 tests, et **personne d'extérieur n'a lu ce travail**. Les tests
+Vingt-sept corrections, 256 tests, et **personne d'extérieur n'a lu ce travail**. Les tests
 vérifient que le code fait ce qui est annoncé, non que ce qui est annoncé soit vrai. C'est le seul
 verrou que le dépôt ne peut pas lever seul, et il ne se lèvera pas en écrivant un chapitre de plus.
 → [appel à relecture](relecture.md)

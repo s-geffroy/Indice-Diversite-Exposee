@@ -51,8 +51,8 @@ Mesure                       Distribution servie               Référence
 **Le sens souhaitable de l'écart dépend de la mesure, et n'est pas donné par les
 mathématiques.** Une calibration nulle signifie un fil parfaitement conforme à l'historique du
 lecteur — ce qui est l'objectif d'un recommandeur libéral et la définition d'une bulle pour un
-recommandeur délibératif. La divergence mesure ; elle ne tranche pas. C'est la question que le
-[mémorandum](../../docs/memorandum.md) doit poser au régulateur, et non lui cacher.
+recommandeur délibératif. La divergence mesure ; elle ne tranche pas. C'est une question
+qu'il faut poser explicitement plutôt que l'enfouir dans le choix d'une formule.
 
 Ce que ce module implémente, et ce qu'il ne peut pas
 ----------------------------------------------------

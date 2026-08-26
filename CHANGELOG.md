@@ -7,6 +7,30 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Corrigé — relecture complète après la coupe
+
+Une relecture systématique du dépôt restreint, après coup. Sept défauts, dont un de fond.
+
+- **Le chiffre mesuré emploie la forme que le dépôt a lui-même disqualifiée.** Les 0,50 par
+  journée-utilisateur sont calculés sur les **étiquettes**, sans regarder le rang — c'est-à-dire
+  la forme que le test adverse sature à 1,000 et que le rang adverse contourne par l'enterrement.
+  Ce n'est pas une négligence — sur un journal qui n'enregistre ni le rang ni le contenu, c'est
+  la seule forme calculable — mais rien ne le disait. **0,50 se lit désormais comme une borne
+  supérieure**, et la réserve figure sur les quatre pages qui citent le chiffre.
+- **`substitutions_to_floor` est retirée** : elle ne servait qu'à tarifer une norme.
+  `attainable_index` reste — le plafond de l'indice selon le volume servi est une propriété de la
+  grandeur, pas de la régulation.
+- **`data/pageviews/`** — 461 fichiers, 2,8 Mo de cache Wikipédia versionné pour un corpus
+  supprimé — disparaît.
+- Deux renvois morts dans les docstrings (`docs/memorandum.md`, `ide.privacy`), deux ancres
+  d'audit inexistantes (`§2.1`, `§2.2`), un compte de tests périmé (623) et une dérive de
+  vocabulaire (« index » pour « indice », cadrage normatif resté en français mais corrigé en
+  anglais) : corrigés.
+- **Le README documente enfin les trois chaînes de récupération** — MIND, Baidu-ULTR et Open
+  Bandit, EB-NeRD. Les deux scripts EB-NeRD, qui produisent le condensé derrière la seule mesure
+  réelle du dépôt, n'étaient cités nulle part.
+- 256 tests.
+
 ### Nettoyé — les traces des moitiés retirées
 
 Supprimer des fichiers ne suffit pas à changer un périmètre. Un décompte après coup a trouvé

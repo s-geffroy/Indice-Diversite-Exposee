@@ -22,7 +22,7 @@
 Depuis le premier jour, l'[indice](ide.md) porte la même réserve :
 
 > La discrétisation en points de vue est un **choix politique**. Qui définit les modalités
-> définit l'index. Découper l'espace des opinions en 4, 40 ou 400 catégories change la valeur
+> définit l'indice. Découper l'espace des opinions en 4, 40 ou 400 catégories change la valeur
 > mesurée, et ce découpage n'est pas un acte technique neutre.
 
 C'est vrai, et cela ne dit rien : *de combien* ? Assez pour rendre un plancher arbitraire, ou

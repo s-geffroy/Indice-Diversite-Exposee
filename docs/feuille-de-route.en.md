@@ -22,7 +22,7 @@ the exposed index will stay bounded and never measured.
 
 ## 2. External validation
 
-Twenty-seven corrections, 261 tests, and **nobody outside has read this work**. The tests check
+Twenty-seven corrections, 256 tests, and **nobody outside has read this work**. The tests check
 that the code does what is claimed, not that what is claimed is true. This is the one lock the
 repository cannot open by itself, and it will not open by writing one more chapter.
 → [call for review](relecture.md)

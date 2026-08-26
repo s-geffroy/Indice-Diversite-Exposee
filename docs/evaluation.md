@@ -22,7 +22,7 @@
 
 ## Pourquoi ces deux corrections viennent maintenant
 
-Le [test adverse](gaming.md) a corrigé deux fois la définition de l'index : mesurer les
+Le [test adverse](gaming.md) a corrigé deux fois la définition de l'indice : mesurer les
 **contenus** et non les étiquettes, puis ne pas mesurer par l'entropie de Rao, qui prescrivait
 la polarisation. Le mouvement suivant était de mesurer l'indice sur un jeu de données public de
 recommandation.

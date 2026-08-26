@@ -11,7 +11,7 @@ Un **instrument**, et rien d'autre : une mesure de la diversité qu'un fil d'act
 réellement à son lecteur, calculable sans accès au code de la plateforme — avec tout ce qu'il
 faut pour l'établir, l'attaquer, et le mesurer sur des journaux réels.
 
-Douze notebooks exécutables, 261 tests, **vingt-sept corrections consignées**, et un état des
+Douze notebooks exécutables, 256 tests, **vingt-sept corrections consignées**, et un état des
 lieux qui ne ressemble ni à ce que le projet annonçait, ni à ce qu'il croyait avoir établi.
 
 ![L'indice mesuré sur des fils réels](figures/fig26_indice_mesure.png)
@@ -29,7 +29,7 @@ l'ordre inconnu laisse indéterminé. Figure régénérée par
 | L'indice tel qu'il était d'abord proposé | **intenable** : saturable à coût nul, puis contournable par l'enterrement → [test adverse](gaming.md) · [rang adverse](rang-adverse.md) |
 | La forme retenue | **définie et attaquée** : entropie des contenus servis sur un catalogue déclaré, pondérée par l'attention de chaque rang → [IDE](ide.md) |
 | L'exposition, dont dépend cette pondération | **mesurée** : $0{,}88 \pm 0{,}05$ et non $1$ par convention, sans cascade, transportable d'une page à l'autre à 6 % près → [exposition mesurée](exposition-mesuree.md) · [l'effet de page](effet-de-page.md) |
-| L'indice **aveugle au rang**, sur des fils réels | **mesuré pour la première fois** : 0,50 par journée-utilisateur, 5,1 rubriques effectives sur 26 → [l'indice mesuré](indice-mesure.md) |
+| L'indice **aveugle au rang**, sur des fils réels | **mesuré pour la première fois** : 0,50 par journée-utilisateur, 5,1 rubriques effectives sur 26 — mais c'est la forme que le test adverse disqualifie, donc une **borne supérieure** → [l'indice mesuré](indice-mesure.md) |
 | L'indice **exposé**, sur ces mêmes fils | **encadré, non mesuré** — la colonne d'ordre du seul jeu qui l'offre ne contient pas le rang → [l'indice mesuré](indice-mesure.md) |
 | Le **catalogue** de points de vue | il décide du niveau — 0,50 sur 26 rubriques, 0,92 sur 3 — mais l'ordre entre lecteurs tient jusqu'à six → [le catalogue](catalogue.md) |
 | Les instruments de mesure | **valides après correction** : trois d'entre eux ont dû être restreints, et trois conclusions retirées → [contre-expertise](contre-expertise.md) |
@@ -68,7 +68,10 @@ fils réels. → [l'indice mesuré](indice-mesure.md)
 
 **Et un premier chiffre réel, là où il n'y avait que des simulations.** La diversité **servie**
 vaut 0,50 par journée-utilisateur — 5,1 rubriques effectives sur 26 — et le catalogue déplace ce
-niveau bien plus que le fil lui-même. → [le catalogue](catalogue.md)
+niveau bien plus que le fil lui-même. Avec une réserve qui doit l'accompagner partout : ce chiffre
+emploie la forme **aveugle au rang et fondée sur les étiquettes**, celle que le test adverse
+sature. C'est une **borne supérieure**, pas la diversité exposée.
+→ [l'indice mesuré](indice-mesure.md) · [le catalogue](catalogue.md)
 
 ## Ce qui est tombé
 
@@ -102,7 +105,7 @@ niveau bien plus que le fil lui-même. → [le catalogue](catalogue.md)
 * **Une rubrique n'est pas un point de vue.** Le seul chiffre réel dont le dépôt dispose porte sur
   la diversité **thématique** exposée. Deux axes d'étiquetage du même corpus ne concordent qu'à
   $\rho = 0{,}16$. → [le catalogue](catalogue.md)
-* **Rien n'a été validé de l'extérieur.** Les 261 tests vérifient que le code fait ce qui est
+* **Rien n'a été validé de l'extérieur.** Les 256 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 
@@ -128,7 +131,7 @@ c'est le registre de ce que ce travail a eu faux, et c'est la partie qu'on ne su
 Tout passe par Docker, rien n'est installé localement.
 
 ```bash
-docker compose run --rm test          # 261 tests
+docker compose run --rm test          # 256 tests
 docker compose run --rm notebooks     # exécute les notebooks, régénère les figures
 docker compose up site                # http://localhost:8000
 ```

@@ -329,7 +329,7 @@ def load_index_table(digest: Digest) -> tuple[np.ndarray, np.ndarray]:
 
     Une ligne par nombre de journées portées par un même lecteur, une colonne par classe
     d'indice. C'est ce qu'il faut pour chiffrer le prix d'une garantie de confidentialité
-    **par utilisateur** : voir :func:`ide.privacy.clipped_histogram`.
+    **par utilisateur**.
     """
     arrays = digest.splits["ebnerd"]
     if "user_day_load_index" not in arrays:

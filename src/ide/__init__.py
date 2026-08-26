@@ -37,7 +37,6 @@ from ide.entropy import (
     label_diversity_index,
     shannon_entropy,
     shannon_entropy_from_counts,
-    substitutions_to_floor,
     von_neumann_entropy,
 )
 from ide.logs import (
@@ -94,7 +93,6 @@ __all__ = [
     "shannon_entropy_from_counts",
     "snips",
     "stratified_risk_ratio",
-    "substitutions_to_floor",
     "upstream_dependence_test",
     "von_neumann_entropy",
     "__version__",

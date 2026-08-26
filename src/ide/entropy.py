@@ -57,7 +57,6 @@ __all__ = [
     "label_diversity_index",
     "shannon_entropy",
     "shannon_entropy_from_counts",
-    "substitutions_to_floor",
     "von_neumann_entropy",
 ]
 
@@ -459,62 +458,3 @@ def attainable_index(served: int, catalogue_size: int) -> float:
         raise ValueError("un catalogue doit offrir au moins deux points de vue")
 
     return math.log2(min(served, catalogue_size)) / math.log2(catalogue_size)
-
-
-def substitutions_to_floor(
-    counts: Sequence[int], catalogue_size: int, floor: float, limit: int = 400
-) -> int | None:
-    """Nombre minimal de contenus à remplacer pour franchir un plancher.
-
-    Mesure le **prix** d'une norme, dans l'unité la moins discutable qui soit : combien de
-    contenus servis la plateforme doit-elle échanger. Chaque substitution retire un contenu au
-    point de vue le plus servi et en ajoute un au moins servi — le rééquilibrage qui augmente
-    l'entropie le plus vite.
-
-    Le procédé est glouton, donc en principe seulement approché. Le
-    [notebook 29](../../notebooks/29_prix_du_plancher.ipynb) le confronte à l'énumération
-    exhaustive de toutes les redistributions sur deux cents compositions courtes : les deux
-    coïncident à chaque fois.
-
-    Args:
-        counts: effectifs par point de vue du fil servi.
-        catalogue_size: taille du catalogue déclaré.
-        floor: plancher à franchir.
-        limit: nombre maximal de substitutions essayées.
-
-    Returns:
-        Le nombre de substitutions, ``0`` si le fil est déjà conforme, et ``None`` si le
-        plancher est **hors d'atteinte** — ce qui arrive dès qu'il dépasse
-        :func:`attainable_index`.
-
-    Examples:
-        Un fil de huit contenus tous du même point de vue, sur un catalogue de quatre.
-
-        >>> substitutions_to_floor([8, 0, 0, 0], catalogue_size=4, floor=0.5)
-        2
-        >>> substitutions_to_floor([4, 4], catalogue_size=4, floor=0.9)  # hors d'atteinte
-    """
-    tally = np.asarray(counts, dtype=np.int64).copy()
-    if tally.sum() < 1:
-        raise ValueError("un fil doit porter au moins un contenu")
-    if tally.size < 2:
-        # Un fil d'un seul point de vue n'a nulle part où déplacer un contenu ; le catalogue,
-        # lui, en offre toujours un autre. On rend cette place explicite.
-        tally = np.append(tally, 0)
-    if attainable_index(int(tally.sum()), catalogue_size) < floor:
-        return None
-
-    scale = math.log2(catalogue_size)
-    for moves in range(limit + 1):
-        shares = tally[tally > 0].astype(float)
-        shares = shares / shares.sum()
-        if float(-(shares * np.log2(shares)).sum() / scale) >= floor:
-            return moves
-
-        source = int(np.argmax(tally))
-        if tally[source] <= 1:
-            return None
-        tally[source] -= 1
-        tally[int(np.argmin(tally))] += 1
-
-    return None

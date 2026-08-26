@@ -64,6 +64,16 @@ not lack of power, it is an answer.
 a regulator — is therefore not measurable here. The **rank-blind** index is, and it never had
 been on real data.
 
+!!! danger "The measured figure uses the very form this repository disqualified"
+    What is measured here is the **rank-blind** index, computed on the **labels** the newsroom
+    declares — the form the [adversarial test](gaming.en.md) saturates at 1.000 for zero content
+    diversity, and the [adversarial rank](rang-adverse.en.md) evades by burial.
+
+    This is not an oversight: on a log recording neither rank nor content, it is the only
+    computable form. But it changes how the figure reads. **0.50 is an upper bound**, not a
+    measure of exposed diversity: nothing here verifies that two articles from different sections
+    say different things, nor that the one at the bottom was ever read.
+
 ## 2. Served diversity, finally quantified
 
 | Window | Median | Quartiles | Effective viewpoints | Below 0.40 | Below 0.50 |

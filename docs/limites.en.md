@@ -796,7 +796,7 @@ withdrawn, for three reasons.
   caught twenty-seven errors"; but the same work produced those errors. A method assessed on its
   own faults is compared against a baseline it manufactured. With no error, there is nothing to
   catch and the claimed value drops to zero.
-* Nothing has been **validated from the outside**. The 623 tests check that the code does what is
+* Nothing has been **validated from the outside**. The 256 tests check that the code does what is
   claimed, not that what is claimed is true, and no reviewer has been through it
   ([call for review](relecture.md)).
 

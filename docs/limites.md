@@ -888,7 +888,7 @@ trois raisons.
   vingt-sept erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
   ses propres fautes se compare à une référence qu'elle a fabriquée. Sans erreur, rien à rattraper
   et la valeur affichée tombe à zéro.
-* Rien n'a été **validé de l'extérieur**. Les 623 tests vérifient que le code fait ce qui est
+* Rien n'a été **validé de l'extérieur**. Les 256 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé
   ([appel à relecture](relecture.md)).
 

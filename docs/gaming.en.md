@@ -27,7 +27,7 @@
 
 ## The question, and why it precedes any standard
 
-[Critical audit §2.2](limites.en.md) raised an objection the rest of the repository had not
+[Critical audit](limites.en.md) raised an objection the rest of the repository had not
 addressed: a platform required to maintain a high index can serve content that is **formally
 divergent but substantively empty** — an item tagged "opposing view" whose argument stays
 adjacent to the reader's.
@@ -321,7 +321,7 @@ must be named:
    and choose the floor accordingly.
 4. **Address the choice of reference catalogue.** All of $Q$'s resistance rests on a span fixed
    by the declarer. Who fixes it, and how, returns the political question that
-   [audit §2.1](limites.en.md) already posed for $k$.
+   [audit](limites.en.md) already posed for $k$.
 
 ---
 

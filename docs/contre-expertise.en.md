@@ -25,7 +25,7 @@
 
 ## Why this page
 
-Earlier chapters attacked the index, the standard, the datasets and the algorithm. They had never
+Earlier chapters attacked the index, its form and the datasets. They had never
 attacked **the measuring instruments themselves**, nor confronted the repository's choices with
 what the field already knows.
 
