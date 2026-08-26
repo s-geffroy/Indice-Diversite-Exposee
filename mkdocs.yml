@@ -148,6 +148,7 @@ nav:
       - L'effet de page: effet-de-page.md
       - L'indice mesuré: indice-mesure.md
       - Ce que la vie privée coûte: vie-privee.md
+      - Le catalogue: catalogue.md
       - Mémorandum de régulation: memorandum.md
   - Réserves:
       - Audit critique et limites: limites.md
@@ -184,3 +185,4 @@ nav:
       - 25 — L'effet de page: notebooks/25_effet_de_page.md
       - 26 — L'indice mesuré: notebooks/26_indice_mesure.md
       - 27 — Vie privée: notebooks/27_vie_privee.md
+      - 28 — Le catalogue: notebooks/28_catalogue.md

@@ -22,7 +22,6 @@ from __future__ import annotations
 import argparse
 import re
 import shutil
-import sys
 from pathlib import Path
 
 SOURCE_LINK = re.compile(r"\(([^)]*?)\.ipynb\)")

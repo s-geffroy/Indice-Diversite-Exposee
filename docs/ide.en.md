@@ -77,7 +77,7 @@ directly thresholdable. → [adversarial rank](rang-adverse.en.md)
     measure, by exhaustive enumeration of every possible feed — and its floor level remains a
     political decision. One public dataset comes close and fails at the last step: EB-NeRD
     carries the served list **and** a declared section, but its recorded order does not contain
-    the rank. The **rank-blind** form is measured there — 0.47 per user-day, 4.6 effective
+    the rank. The **rank-blind** form is measured there — 0.50 per user-day, 4.6 effective
     sections out of 26 — and the exposed form only **bounded**.
     → [the index measured](indice-mesure.en.md)
 

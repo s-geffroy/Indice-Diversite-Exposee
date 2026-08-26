@@ -50,6 +50,7 @@ from itertools import combinations
 import numpy as np
 
 __all__ = [
+    "coarsen_catalogue",
     "effective_viewpoints",
     "exposed_index_bounds",
     "label_diversity_index",
@@ -383,3 +384,49 @@ def exposed_index_bounds(
         low, high = min(low, value), max(high, value)
 
     return low, high
+
+
+def coarsen_catalogue(counts: np.ndarray, keep: int) -> np.ndarray:
+    """Regroupe les points de vue les moins servis en une seule modalité résiduelle.
+
+    Le dénominateur de l'indice est fixé par le catalogue déclaré, et **qui déclare le
+    catalogue déclare l'indice**. Cette fonction fabrique les catalogues plus grossiers dont
+    on veut mesurer l'effet : elle garde les ``keep - 1`` modalités les plus servies sur
+    l'ensemble du corpus et agrège toutes les autres en une modalité « reste ».
+
+    Le regroupement se décide sur le **total du corpus**, jamais fil par fil : un découpage
+    qui dépendrait de chaque observation ne serait pas un catalogue, ce serait une mesure.
+
+    Args:
+        counts: effectifs par modalité, une ligne par observation.
+        keep: taille du catalogue résultant, modalité résiduelle comprise.
+
+    Returns:
+        Les effectifs regroupés, ``keep`` colonnes.
+
+    Raises:
+        ValueError: si ``keep`` est inférieur à 2 ou dépasse le catalogue de départ.
+
+    Examples:
+        >>> import numpy as np
+        >>> counts = np.array([[5, 3, 1, 1], [0, 4, 2, 0]])
+        >>> coarsen_catalogue(counts, keep=3)
+        array([[5, 3, 2],
+               [0, 4, 2]])
+    """
+    counts = np.asarray(counts)
+    if counts.ndim != 2:
+        raise ValueError("les effectifs doivent former un tableau à deux dimensions")
+    width = counts.shape[1]
+    if keep < 2:
+        raise ValueError("un catalogue doit offrir au moins deux points de vue")
+    if keep > width:
+        raise ValueError(f"le catalogue de départ n'offre que {width} points de vue")
+    if keep == width:
+        return counts.copy()
+
+    served = counts.sum(axis=0)
+    kept = np.sort(np.argsort(-served, kind="stable")[: keep - 1])
+    residual = np.setdiff1d(np.arange(width), kept)
+
+    return np.column_stack([counts[:, kept], counts[:, residual].sum(axis=1)])

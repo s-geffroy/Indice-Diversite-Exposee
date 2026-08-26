@@ -78,7 +78,7 @@ elle-même : il est donc directement seuillable. → [rang adverse](rang-adverse
     décider politiquement. Un seul jeu public s'en approche, et il manque au dernier moment :
     EB-NeRD porte la liste servie **et** une rubrique déclarée, mais son ordre enregistré ne
     contient pas le rang. La **forme aveugle au rang** y est mesurée — 0,47 par
-    journée-utilisateur, 4,6 rubriques effectives sur 26 — et la forme exposée seulement
+    journée-utilisateur, 5,1 rubriques effectives sur 26 — et la forme exposée seulement
     **encadrée**. → [l'indice mesuré](indice-mesure.md)
 
     Ce qu'il faudrait pour la calculer :

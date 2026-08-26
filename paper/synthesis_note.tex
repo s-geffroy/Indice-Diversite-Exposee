@@ -62,8 +62,8 @@ on the index is $0.0025$, against $0.0350$ for the $1/R$ convention: the rank la
 A fourth log, EB-NeRD, finally carries both expected columns --- the served list and a declared
 section. The first check says its \textbf{recorded order does not contain the rank} ($z = +1.05$,
 where the log would have detected a severity one hundred and thirty-four times smaller). The
-rank-blind index is therefore measured for the first time on real feeds --- $0.47$ per user-day,
-$4.6$ sections equally served out of $26$ --- and the exposed index only \emph{bounded}, to
+rank-blind index is therefore measured for the first time on real feeds --- $0.50$ per user-day,
+$5.1$ sections equally served out of $26$ --- and the exposed index only \emph{bounded}, to
 within $0.104$: at a floor of $0.40$, a third of feeds breach it whatever their ordering, and six
 in ten remain undecidable. What a regulator must require is therefore not the rank but the
 \textbf{verifiable} rank. We
@@ -1196,9 +1196,9 @@ $0.0066$, $134$ times smaller than the one measured on Baidu-ULTR.
 \texttt{article\_ids\_inview} is a \textbf{served set}, not an ordered feed.
 
 \paragraph{What becomes measurable.} The rank-blind form, never computed until now outside a
-simulation. On the window \S\ref{sec:index} prescribes --- the user-day --- the index is $0.466$
-at the median, that is $4.56$ sections equally served out of $26$, with $18.8\%$ of user-days
-below $0.40$ and $71.2\%$ below $0.50$. This figure does not say whether that is little or much;
+simulation. On the window \S\ref{sec:index} prescribes --- the user-day --- the index is $0.498$
+at the median, that is $5.07$ sections equally served out of $26$, with $13.7\%$ of user-days
+below $0.40$ and $50.7\%$ below $0.50$. This figure does not say whether that is little or much;
 it gives the order of magnitude missing from any discussion of a floor.
 
 \paragraph{What remains of the exposed index.} Composition being known and order not, the
@@ -1239,7 +1239,7 @@ possible, and it is what shifts the figures.
 
 \paragraph{The regulated quantity holds.} The share of the population below the floor does not
 move by a thousandth between $\varepsilon = 10$ and $\varepsilon = 0.1$. Bounding at one day per
-reader, however, adds $2.5$ points to a share of $18.8\%$, and at five days still $0.6$ point ---
+reader, however, adds $2.8$ points to a share of $13.7\%$, and at five days still $0.7$ point ---
 always in the same direction. Assiduous readers are more diverse than the rest: dropping them
 makes the platform look \emph{less} compliant than it is. The error committed in protecting
 readers therefore does not exonerate the platform.
@@ -1267,6 +1267,38 @@ contribution bound must be published with the result, as the suppression thresho
 cost from above, it does not claim to attain it. The per-user guarantee is measured only on
 EB-NeRD, the only log carrying a reader identifier; on Baidu-ULTR only a per-impression guarantee
 is possible, which is a property of the dataset, not of the method.
+
+\subsection{Whoever chooses the catalogue chooses the index}
+\label{sec:catalogue}
+
+\S\ref{sec:index} has carried an unquantified caveat from the start: discretising into viewpoints
+is a political choice, and whoever defines the modalities defines the index. The user-days of
+\S\ref{sec:indexmeasured} finally allow us to say \emph{by how much}.
+
+\paragraph{Three quantities, three behaviours.} The \textbf{level} has no absolute meaning: the
+same corpus scores $0.498$ over twenty-six sections and $0.924$ over three. The \textbf{share
+below the floor} follows: at $0.40$ it goes from $13.7\%$ to $1.5\%$ --- the same threshold
+becomes decorative without a single impression changing. The \textbf{ordering} between readers
+does not move: rank concordance with the full catalogue is $1.000$ at twelve modalities, $0.911$
+at six, then $-0.09$ at three. It does not degrade, it collapses.
+
+\paragraph{Why.} Rare sections serve almost nothing: the top eleven cover $99.8\%$ of the corpus.
+Merging the other fifteen merges anything at all for only one user-day in a thousand, hence an
+unchanged ordering. Dropping to six forces a merge on $64.5\%$ of user-days, to three on $94.8\%$.
+
+\paragraph{Size does not specify the catalogue.} Twenty random groupings into six classes return
+a median of $0.682 \pm 0.093$ and a concordance of $0.769 \pm 0.098$, against $0.860$ and $0.911$
+for the frequency grouping. It is the \emph{list} that must appear in a standard, not the number.
+
+\paragraph{And exposed diversity does not exist in the singular.} The corpus carries two labelling
+axes --- thematic section and declared tone. Their concordance is $\rho = +0.155$: among the
+quarter most diverse in sections, $23.8\%$ are also in the quarter most diverse in tone, where
+independence would give $25\%$. A regulator must therefore say \textbf{which axis} it regulates,
+and that choice weighs at least as much as the threshold.
+
+\paragraph{Reservations.} The coarse catalogues are obtained by grouping an existing catalogue,
+which is not a catalogue designed as such. The corpus is that of a single newspaper, and it is the
+shape of its distribution tail that explains the stability observed up to twelve modalities.
 
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}

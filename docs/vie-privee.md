@@ -12,7 +12,7 @@
 
 !!! warning "Et le vrai prix n'est pas le bruit"
     C'est le **plafonnement des contributions**, sans lequel aucune garantie *par personne* n'est
-    possible. Il déplace la part sous le plancher de **+0,6 à +2,5 points**, toujours vers
+    possible. Il déplace la part sous le plancher de **+0,7 à +2,8 points**, toujours vers
     l'excès : les lecteurs assidus sont plus divers que les autres, et les écarter fait paraître
     la plateforme moins conforme qu'elle n'est.
 
@@ -60,15 +60,15 @@ artefact, et c'est lui qui déplace les chiffres.
 
 | Plafond | Journées gardées | Biais du plafond | $\varepsilon = 1$ | $\varepsilon = 0{,}1$ |
 |---|---|---|---|---|
-| 1 | 26 % | **+0,025** | 0,213 | 0,213 |
-| 3 | 63 % | +0,014 | 0,201 | 0,201 |
-| 5 | 86 % | +0,006 | 0,194 | 0,194 |
-| 8 (aucun) | 100 % | 0,000 | 0,188 | 0,188 |
+| 1 | 26 % | **+0,028** | 0,165 | 0,165 |
+| 3 | 63 % | +0,015 | 0,152 | 0,153 |
+| 5 | 86 % | +0,007 | 0,144 | 0,145 |
+| 8 (aucun) | 100 % | 0,000 | 0,137 | 0,139 |
 
-*Vraie part sous 0,40 : 0,188.*
+*Vraie part sous 0,40 : 0,137.*
 
-Le bruit est invisible sur toute la plage. Le plafonnement, lui, ajoute jusqu'à 2,5 points à une
-part de 18,8 % — un excès relatif de 13 %, **toujours dans le même sens**.
+Le bruit est invisible sur toute la plage. Le plafonnement, lui, ajoute jusqu'à 2,8 points à une
+part de 13,7 % — un excès relatif de 21 %, **toujours dans le même sens**.
 
 C'est un résultat inattendu, et il est du bon côté pour le régulateur : sous garantie par
 utilisateur, on **surestime** la non-conformité. L'erreur qu'on commet en protégeant les lecteurs

@@ -11,7 +11,7 @@ lecteur, calculable sans accès au code de la plateforme — et la **méthode ad
 l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel, y compris
 quand ce qui tombe vient du dépôt lui-même.
 
-Il en reste vingt-sept notebooks exécutables, 646 tests, **vingt-six corrections consignées**,
+Il en reste vingt-huit notebooks exécutables, 650 tests, **vingt-sept corrections consignées**,
 et un état des lieux qui ne ressemble ni à ce que le projet annonçait, ni à ce qu'il croyait avoir
 établi six chapitres plus tôt.
 
@@ -34,13 +34,14 @@ la décroissance de 23 %. Figure régénérée par
 | L'écart de persistance entre registres émotionnels | **n'existe pas** — artefact de sélection → [corpus étendu](corpus-etendu.md) |
 | L'indice tel qu'il était proposé au régulateur | **intenable** : saturable à coût nul, puis contournable par l'enterrement → [test adverse](gaming.md) · [rang adverse](rang-adverse.md) |
 | La forme retenue de l'indice | **définie et chiffrée**, et sa pondération de rang est **transportable** : la page servie ne la déplace que de 6 % → [l'effet de page](effet-de-page.md) |
-| L'indice **aveugle au rang**, sur des fils réels | **mesuré pour la première fois** : 0,47 par journée-utilisateur, 4,6 rubriques effectives sur 26 → [l'indice mesuré](indice-mesure.md) |
+| L'indice **aveugle au rang**, sur des fils réels | **mesuré pour la première fois** : 0,50 par journée-utilisateur, 5,1 rubriques effectives sur 26 → [l'indice mesuré](indice-mesure.md) |
 | L'indice **exposé**, sur ces mêmes fils | **encadré, non mesuré** — la colonne d'ordre du seul jeu qui l'offre ne contient pas le rang ; 6 fils sur 10 restent indécidables → [l'indice mesuré](indice-mesure.md) |
 | L'algorithme (ADE) | **sur la frontière exacte, et superflu** : une heuristique de 1998 fait aussi bien, et l'écart s'efface encore à pertinence bruitée → [lignes de base](lignes-de-base.md) · [angles morts](angles-morts.md) |
 | Les instruments de mesure | **valides après correction** — trois d'entre eux ont dû être restreints, et trois conclusions retirées → [contre-expertise](contre-expertise.md) · [l'effet de page](effet-de-page.md) |
 | L'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : $0{,}88 \pm 0{,}05$ — non $1{,}09$ comme estimé → [exposition mesurée](exposition-mesuree.md) |
 | Sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, et trois fois plus petite que publiée** : 6 % d'examen, $0{,}0025$ d'indice → [l'effet de page](effet-de-page.md) |
 | La **confidentialité** de la demande d'accès, jamais garantie formellement | **garantie et chiffrée** : le plancher survit à $\varepsilon = 0{,}1$, la sévérité est divisée par deux à $\varepsilon = 1$ → [ce que la vie privée coûte](vie-privee.md) |
+| Le **catalogue de points de vue**, « choix politique » jamais chiffré | **mesuré** : le même corpus vaut 0,50 sur 26 rubriques et 0,92 sur 3 — mais l'ordre entre lecteurs tient jusqu'à six → [le catalogue](catalogue.md) |
 
 **En une phrase : la théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle
 qui décide de tout le reste, et qu'on peut mesurer au lieu de la supposer : $0{,}88$ et non $1$,
@@ -84,7 +85,7 @@ lecteur : 3,8 % quand ses intérêts traversent les points de vue, 17,1 % quand 
 un point de vue. → [lignes de base](lignes-de-base.md)
 
 **Et un premier chiffre réel, là où il n'y avait que des simulations.** Sur 232 887 fils
-danois, la diversité **servie** vaut 0,47 par journée-utilisateur — 4,6 rubriques effectives sur
+danois, la diversité **servie** vaut 0,50 par journée-utilisateur — 4,6 rubriques effectives sur
 26. L'indice **exposé**, lui, n'est qu'encadré : la colonne d'ordre du seul jeu qui l'offre ne
 contient pas le rang, et six fils sur dix restent indécidables à un plancher de 0,40.
 → [l'indice mesuré](indice-mesure.md)
@@ -138,10 +139,11 @@ qu'une mesure a montré ce qu'on perdait sans elle.
   [la demande](article-40.md) dit exactement ce qu'il faudrait — un rang **vérifiable**.
 * **Une rubrique n'est pas un point de vue.** Le seul chiffre réel dont le dépôt dispose porte
   sur la diversité **thématique** exposée. → [l'indice mesuré](indice-mesure.md)
-* **Le niveau du plancher est une décision politique**, comme le catalogue de points de vue. La
-  mesure décrit, elle ne prescrit pas.
+* **Le niveau du plancher est une décision politique.** La mesure décrit, elle ne prescrit pas —
+  et le **catalogue** pèse autant que le seuil : le même corpus passe de 0,50 à 0,92 selon le
+  découpage. → [le catalogue](catalogue.md)
 * **Les trois codeurs de l'annotation sont des instances du même modèle de langue.**
-* **Rien n'a été validé de l'extérieur.** Les 646 tests vérifient que le code fait ce qui est
+* **Rien n'a été validé de l'extérieur.** Les 650 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 * **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique** —
@@ -182,7 +184,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-sept notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-huit notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -220,7 +222,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 646 tests
+docker compose run --rm test          # 650 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

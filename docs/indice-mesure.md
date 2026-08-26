@@ -2,7 +2,7 @@
 
 !!! success "Le chiffre qui manquait depuis le premier jour"
     Sur **232 887 fils réels** du quotidien danois *Ekstra Bladet*, la diversité servie vaut
-    **0,47** par journée-utilisateur — soit **4,6 rubriques également servies sur 26**. Le dépôt
+    **0,50** par journée-utilisateur — soit **5,1 rubriques également servies sur 26**. Le dépôt
     n'avait jamais publié ce nombre autrement qu'en simulation.
 
 !!! danger "Mais la colonne de rang ne contient pas le rang"
@@ -19,6 +19,13 @@
     le prix exact de ce que la plateforme possède et ne publie pas.
 
 ---
+
+!!! failure "Corrigé — les chiffres par journée-utilisateur étaient faux"
+    L'agrégation d'un lecteur sur une journée additionnait des effectifs **triés**, ce qui revient
+    à confondre deux rubriques différentes au motif qu'elles occupent le même rang. Les chiffres
+    par **fil servi** étaient justes ; ceux par **journée-utilisateur** ne l'étaient pas. Ils sont
+    corrigés ci-dessous : 0,466 devient **0,498**, et la part sous 0,50 passe de 71,2 % à
+    **50,7 %**. → [audit, point 27](limites.md)
 
 ## Une lacune mal énoncée
 
@@ -63,15 +70,15 @@ jamais été sur données réelles.
 | Fenêtre | Médiane | Quartiles | Points de vue effectifs | Sous 0,40 | Sous 0,50 |
 |---|---|---|---|---|---|
 | fil servi | 0,417 | [0,372 ; 0,489] | 3,89 sur 26 | 35,0 % | 78,8 % |
-| **journée-utilisateur** | **0,466** | [0,411 ; 0,507] | **4,56 sur 26** | **18,8 %** | **71,2 %** |
+| **journée-utilisateur** | **0,498** | [0,446 ; 0,548] | **5,07 sur 26** | **13,7 %** | **50,7 %** |
 
 La seconde ligne est celle qui compte : c'est la fenêtre que le [protocole](ide.md) prescrit, et
 la grandeur réglementaire y est la **part de la population sous le plancher**, non la moyenne.
 
 Ce chiffre ne dit pas si c'est peu ou beaucoup — le niveau d'un plancher est une décision
 politique, et le dépôt ne la tranche pas. Il donne l'**ordre de grandeur** qui manquait à toute
-discussion : un lecteur reçoit en une journée l'équivalent de quatre à cinq rubriques également
-servies, sur vingt-six disponibles.
+discussion : un lecteur reçoit en une journée l'équivalent de cinq rubriques également servies,
+sur vingt-six disponibles.
 
 ## 3. Ce que l'ordre inconnu laisse indéterminé
 

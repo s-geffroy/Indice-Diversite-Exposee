@@ -702,6 +702,37 @@ ne prouve rien tant qu'on n'a pas regardé ce qu'elle vérifie**. Le mode strict
 liens et les fichiers manquants — pas le contenu des pages. Un test vert sur la mauvaise grandeur
 est plus dangereux qu'une absence de test, parce qu'il dispense de regarder.
 
+### 27. Une agrégation qui additionnait des effectifs triés
+
+**Ce que le dépôt avait publié.** Que la diversité servie vaut $0{,}466$ par journée-utilisateur,
+soit $4{,}56$ rubriques effectives sur $26$, avec $18{,}8\,\%$ des journées sous $0{,}40$ et
+$71{,}2\,\%$ sous $0{,}50$ ([l'indice mesuré](indice-mesure.md)).
+
+**Le problème.** Le condensé retenait, pour chaque fil, les effectifs par rubrique **triés par
+ordre décroissant** — l'identité des rubriques était jetée, à raison : à fil donné, elle ne change
+pas l'indice. Mais l'agrégation d'un lecteur sur une journée **additionnait ces vecteurs triés**.
+Cela revient à traiter « la rubrique la plus servie de ce fil-ci » et « la rubrique la plus servie
+de ce fil-là » comme une seule et même rubrique, alors qu'il s'agit le plus souvent de deux
+rubriques différentes.
+
+**Ce que rendent les chiffres corrigés.** $0{,}498$ au lieu de $0{,}466$, $5{,}07$ rubriques
+effectives au lieu de $4{,}56$, $13{,}7\,\%$ des journées sous $0{,}40$ au lieu de $18{,}8\,\%$
+— et surtout $50{,}7\,\%$ sous $0{,}50$ au lieu de $71{,}2\,\%$. L'agrégation fautive
+**concentrait** artificiellement la composition, donc sous-estimait la diversité : elle faisait
+paraître la plateforme moins conforme qu'elle n'est.
+
+**Ce qui l'a rattrapée.** Rien dans le chapitre concerné. C'est le chapitre suivant — qui avait
+besoin de l'identité des rubriques pour en regrouper — qui a produit un chiffre différent, et
+l'écart a dû être expliqué. Les chiffres par **fil servi**, eux, étaient justes : le tri ne change
+rien tant qu'on n'agrège pas.
+
+**Ce que cet épisode enseigne sur la méthode.** Une optimisation de stockage est une hypothèse
+déguisée, et c'est la **deuxième fois** que ce dépôt s'y laisse prendre — la première portait sur
+la structure des fils du condensé (point 17). Jeter une information au motif qu'« elle ne change
+pas le résultat » n'est vrai que du résultat qu'on calculait ce jour-là. Le condensé retient
+désormais les compositions **identifiées**, et un test vérifie que les deux tables rendent le même
+indice.
+
 ---
 
 ## Ce que le modèle ne peut pas faire
@@ -814,7 +845,7 @@ elles portent sur l'existence de régimes et le sens des dépendances, jamais su
 valeurs numériques transposables.
 
 
-### Ce que vingt-six corrections enseignent, prises ensemble
+### Ce que vingt-sept corrections enseignent, prises ensemble
 
 Les corrections ci-dessus ont été consignées une à une, dans l'ordre où elles sont survenues.
 Prises ensemble, elles dessinent trois régularités qui valent plus que leur somme.
@@ -828,7 +859,7 @@ du bon signe, avec la bonne conclusion — c'est exactement ce qu'aucune relectu
 
 **Ce qui les a attrapées n'est jamais la relecture, c'est la confrontation.** À des données dont
 on connaît la réponse, à une vérité terrain, à une autre méthode d'estimation, ou à la
-littérature du domaine. Cinq des vingt-six corrections viennent de la lecture initiale du fil ;
+littérature du domaine. Cinq des vingt-sept corrections viennent de la lecture initiale du fil ;
 les vingt et une autres viennent d'avoir mesuré, d'avoir cherché — ou, pour la
 dernière, d'avoir simplement ouvert la page publiée.
 
@@ -847,7 +878,7 @@ trois raisons.
   les conteste, elles ne s'énoncent pas ici pour la première fois, et aucun relecteur ne les
   recevra comme un résultat.
 * La démonstration est **circulaire**. L'argument était « la méthode vaut parce qu'elle a rattrapé
-  vingt-six erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
+  vingt-sept erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
   ses propres fautes se compare à une référence qu'elle a fabriquée. Sans erreur, rien à rattraper
   et la valeur affichée tombe à zéro.
 * Rien n'a été **validé de l'extérieur**. Les 623 tests vérifient que le code fait ce qui est

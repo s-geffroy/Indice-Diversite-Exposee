@@ -152,7 +152,7 @@ def test_la_grandeur_reglementee_ne_craint_pas_le_bruit_mais_craint_le_plafond()
         return float(histogram[centres < 0.40].sum() / histogram.sum())
 
     truth = below(clipped_histogram(table, cap=table.shape[0]))
-    assert truth == pytest.approx(0.188, abs=0.005)
+    assert truth == pytest.approx(0.137, abs=0.005)
 
     # le bruit, même à ε = 0,1, ne déplace la part que de quelques millièmes
     unbounded = clipped_histogram(table, cap=table.shape[0])
@@ -164,4 +164,4 @@ def test_la_grandeur_reglementee_ne_craint_pas_le_bruit_mais_craint_le_plafond()
     biases = [below(clipped_histogram(table, cap)) - truth for cap in (1, 2, 3, 5)]
     assert all(bias > 0.0 for bias in biases)
     assert biases == sorted(biases, reverse=True)
-    assert biases[0] == pytest.approx(0.025, abs=0.005)
+    assert biases[0] == pytest.approx(0.028, abs=0.005)

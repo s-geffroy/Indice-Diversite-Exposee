@@ -12,7 +12,7 @@
 
 !!! warning "And the real price is not the noise"
     It is the **contribution bound**, without which no *per-person* guarantee is possible. It
-    shifts the share below the floor by **+0.6 to +2.5 points**, always upward: assiduous readers
+    shifts the share below the floor by **+0.7 to +2.8 points**, always upward: assiduous readers
     are more diverse than the rest, and dropping them makes the platform look less compliant than
     it is.
 
@@ -60,15 +60,15 @@ the figures.
 
 | Cap | Days kept | Bound's bias | $\varepsilon = 1$ | $\varepsilon = 0.1$ |
 |---|---|---|---|---|
-| 1 | 26 % | **+0.025** | 0.213 | 0.213 |
-| 3 | 63 % | +0.014 | 0.201 | 0.201 |
-| 5 | 86 % | +0.006 | 0.194 | 0.194 |
-| 8 (none) | 100 % | 0.000 | 0.188 | 0.188 |
+| 1 | 26 % | **+0.028** | 0.165 | 0.165 |
+| 3 | 63 % | +0.015 | 0.152 | 0.153 |
+| 5 | 86 % | +0.007 | 0.144 | 0.145 |
+| 8 (none) | 100 % | 0.000 | 0.137 | 0.139 |
 
-*True share below 0.40: 0.188.*
+*True share below 0.40: 0.137.*
 
-Noise is invisible across the whole range. Bounding adds up to 2.5 points to a share of 18.8 % —
-a 13 % relative excess, **always in the same direction**.
+Noise is invisible across the whole range. Bounding adds up to 2.8 points to a share of 13.7 % —
+a 21 % relative excess, **always in the same direction**.
 
 That is unexpected, and it falls on the regulator's side: under a per-user guarantee, one
 **overstates** non-compliance. The error committed in protecting readers does not exonerate the

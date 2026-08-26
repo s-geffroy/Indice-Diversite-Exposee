@@ -49,6 +49,7 @@ __all__ = [
     "load_digest",
     "load_ebnerd",
     "load_index_table",
+    "section_counts",
     "signature_counts",
     "verify_source",
 ]
@@ -79,14 +80,21 @@ class FeedComposition:
     """Ce qu'un fil servi contenait, et à qui.
 
     Attributes:
-        signatures: effectifs par rubrique, **triés par ordre décroissant** et complétés de
-            zéros. Seule la répartition compte : l'identité des rubriques ne change pas
-            l'indice, et ne pas la retenir rend le condensé insensible au contenu servi.
+        signatures: effectifs par rubrique d'un fil, **triés par ordre décroissant** et
+            complétés de zéros. À fil donné, l'ordre ne change pas l'indice.
+        sections: les mêmes effectifs, **à leur place dans le catalogue**. L'identité est
+            nécessaire dès qu'on agrège plusieurs fils — deux fils triés ne s'additionnent pas —
+            et dès qu'on veut regrouper des rubriques.
+        tones: effectifs par **tonalité** déclarée — négative, neutre, positive. C'est un
+            second axe d'étiquetage, plus proche d'un point de vue qu'une rubrique, et il
+            permet de mesurer ce que le choix de l'axe change.
         users: identifiant d'utilisateur, réindexé.
         days: jour de service, en jours depuis la première impression du journal.
     """
 
     signatures: np.ndarray
+    sections: np.ndarray
+    tones: np.ndarray
     users: np.ndarray
     days: np.ndarray
 
@@ -138,9 +146,12 @@ def load_ebnerd(directory: Path | None = None) -> tuple[Impressions, FeedComposi
     import pyarrow.parquet as parquet  # dépendance de laboratoire, pas du noyau
 
     articles = parquet.read_table(source_path("articles", directory),
-                                  columns=["article_id", "category_str"])
+                                  columns=["article_id", "category_str", "sentiment_label"])
     section_of = dict(zip(articles["article_id"].to_pylist(),
                           articles["category_str"].to_pylist(), strict=True))
+    tone_of = dict(zip(articles["article_id"].to_pylist(),
+                       articles["sentiment_label"].to_pylist(), strict=True))
+    tones_order = {"Negative": 0, "Neutral": 1, "Positive": 2}
     catalogue = sorted(set(section_of.values()))
     section_index = {label: position for position, label in enumerate(catalogue)}
 
@@ -170,8 +181,14 @@ def load_ebnerd(directory: Path | None = None) -> tuple[Impressions, FeedComposi
 
     width = len(catalogue)
     signatures = np.zeros((lengths.size, width), dtype=np.int32)
+    sections = np.zeros((lengths.size, width), dtype=np.int32)
+    tones = np.zeros((lengths.size, len(tones_order)), dtype=np.int32)
     for row, feed in enumerate(served):
         tally = Counter(section_index[section_of[article]] for article in feed)
+        for position, count in tally.items():
+            sections[row, position] = count
+        for label, count in Counter(tone_of[article] for article in feed).items():
+            tones[row, tones_order[label]] = count
         ordered = sorted(tally.values(), reverse=True)
         signatures[row, :len(ordered)] = ordered
 
@@ -179,7 +196,9 @@ def load_ebnerd(directory: Path | None = None) -> tuple[Impressions, FeedComposi
     stamps = np.asarray(behaviours["impression_time"]).astype("datetime64[D]")
     days = (stamps - stamps.min()).astype(np.int64)
 
-    return journal, FeedComposition(signatures, users.astype(np.int64), days), width
+    return (journal,
+            FeedComposition(signatures, sections, tones, users.astype(np.int64), days),
+            width)
 
 
 def _composition_cells(composition: FeedComposition) -> dict[str, np.ndarray]:
@@ -217,18 +236,28 @@ def _user_day_cells(composition: FeedComposition, catalogue: int) -> dict[str, n
     """
     keys, index = np.unique(np.stack([composition.users, composition.days], axis=1), axis=0,
                             return_inverse=True)
-    totals = np.zeros((len(keys), composition.signatures.shape[1]), dtype=np.int64)
-    np.add.at(totals, index, composition.signatures)
 
-    # Réordonner : la somme de deux signatures triées ne l'est plus nécessairement.
-    totals = -np.sort(-totals, axis=1)
+    # L'agrégation se fait **à leur place dans le catalogue**, jamais sur les signatures
+    # triées : additionner deux vecteurs triés revient à confondre des rubriques différentes
+    # au motif qu'elles occupent le même rang, ce qui n'a aucun sens.
+    identified = np.zeros((len(keys), composition.sections.shape[1]), dtype=np.int64)
+    np.add.at(identified, index, composition.sections)
+    voiced = np.zeros((len(keys), composition.tones.shape[1]), dtype=np.int64)
+    np.add.at(voiced, index, composition.tones)
+    totals = -np.sort(-identified, axis=1)
     unique, occurrences = np.unique(totals, axis=0, return_counts=True)
+    # Les compositions **identifiées**, de quoi refaire l'indice sur un autre catalogue.
+    # Rubriques et tonalités sont dédupliquées **ensemble** : comparer les deux axes exige
+    # que chaque ligne reste la même journée-utilisateur des deux côtés.
+    joint = np.concatenate([identified, voiced], axis=1)
+    named, named_counts = np.unique(joint, axis=0, return_counts=True)
+    width = identified.shape[1]
 
     # Croisement charge x indice, seul tableau qui permette de chiffrer le prix d'une garantie
     # **par utilisateur** : le plafonnement des contributions retire des journées aux lecteurs
     # les plus assidus, et ceux-là ne ressemblent pas aux autres.
     load = np.bincount(keys[:, 0])[keys[:, 0]]
-    values = _blind_index(totals, catalogue)
+    values = _blind_index(identified, catalogue)
     edges = np.linspace(0.0, 1.0, INDEX_BINS + 1)
     bins = np.clip(np.digitize(values, edges) - 1, 0, INDEX_BINS - 1)
     crossing = np.zeros((int(load.max()) + 1, INDEX_BINS), dtype=np.int64)
@@ -237,6 +266,9 @@ def _user_day_cells(composition: FeedComposition, catalogue: int) -> dict[str, n
     return {
         "user_day_signatures": unique.astype(np.int32),
         "user_day_occurrences": occurrences.astype(np.int64),
+        "user_day_sections": named[:, :width].astype(np.int32),
+        "user_day_tones": named[:, width:].astype(np.int32),
+        "user_day_section_occurrences": named_counts.astype(np.int64),
         "user_day_load_index": crossing,
         "index_bin_edges": edges,
         "user_days": np.asarray(len(keys), dtype=np.int64),
@@ -267,6 +299,29 @@ def load_digest(path: Path | None = None) -> Digest:
         DIGEST_PATH if path is None else path,
         rebuild_with="docker compose run --rm lab python scripts/build_ebnerd_digest.py",
     )
+
+
+def section_counts(digest: Digest, axis: str = "section") -> tuple[np.ndarray, np.ndarray]:
+    """Les compositions **identifiées** par journée-utilisateur, et leur fréquence.
+
+    Une ligne par composition distincte, une colonne par modalité du catalogue. C'est ce
+    qu'il faut pour refaire l'indice sur un **autre** catalogue — regrouper des rubriques
+    exige de savoir lesquelles.
+
+    Args:
+        digest: le condensé versionné.
+        axis: ``"section"`` pour les rubriques déclarées, ``"tone"`` pour la tonalité. Les
+            deux tables partagent l'ordre de leurs lignes : une même journée-utilisateur
+            occupe la même ligne des deux côtés, ce qui rend les deux axes comparables.
+    """
+    if axis not in ("section", "tone"):
+        raise ValueError(f"axe d'étiquetage inconnu : {axis!r}")
+
+    arrays = digest.splits["ebnerd"]
+    if "user_day_sections" not in arrays:
+        raise ValueError("le condensé ne retient pas les compositions identifiées")
+    name = "user_day_sections" if axis == "section" else "user_day_tones"
+    return arrays[name], arrays["user_day_section_occurrences"]
 
 
 def load_index_table(digest: Digest) -> tuple[np.ndarray, np.ndarray]:

@@ -7,6 +7,45 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — qui choisit le catalogue choisit l'indice
+
+Le dépôt répétait depuis le premier jour que « la discrétisation en points de vue est un choix
+politique » sans jamais le chiffrer. C'est fait, sur 58 549 journées-utilisateur réelles.
+
+- **Le niveau n'a aucun sens absolu.** Le même corpus vaut **0,498** sur vingt-six rubriques et
+  **0,924** sur trois. À un plancher de 0,40, la part de la population sous le seuil passe de
+  **13,7 % à 1,5 %** : le même plancher devient décoratif sans qu'une impression ait changé.
+- **L'ordre, lui, tient — puis s'effondre.** Concordance de rang avec le catalogue complet :
+  **1,000** à douze modalités, **0,911** à six, **−0,09** à trois. La raison est banale : les
+  onze rubriques les plus servies couvrent **99,8 %** du corpus, et regrouper les quinze autres
+  ne fusionne quoi que ce soit que pour une journée sur mille.
+- **La taille ne spécifie pas le catalogue.** Vingt regroupements aléatoires en six classes
+  rendent 0,682 ± 0,093 contre 0,860 par fréquence, et une concordance de 0,769 contre 0,911.
+  C'est la **liste** qui doit figurer dans une norme, pas le nombre.
+- **Et « la diversité exposée » n'existe pas au singulier.** Rubriques et tonalité ne concordent
+  qu'à **ρ = +0,155** ; parmi le quart le plus divers en rubriques, 23,8 % sont aussi dans le
+  quart le plus divers en tonalité, là où l'indépendance donnerait 25 %.
+- `ide.entropy.coarsen_catalogue`, le second axe d'étiquetage dans le condensé EB-NeRD,
+  [`docs/catalogue.md`](docs/catalogue.md) et [notebook 28](notebooks/28_catalogue.ipynb).
+
+### Corrigé — les chiffres par journée-utilisateur du chapitre 26 étaient faux
+
+Trouvés en écrivant le chapitre ci-dessus, qui avait besoin de l'identité des rubriques.
+
+- **La cause.** Le condensé retenait les effectifs par rubrique **triés**, et l'agrégation d'un
+  lecteur sur une journée additionnait ces vecteurs triés — ce qui revient à traiter « la rubrique
+  la plus servie de ce fil-ci » et « celle de ce fil-là » comme la même.
+- **Les chiffres corrigés.** 0,466 → **0,498** ; 4,56 → **5,07** rubriques effectives ; 18,8 % →
+  **13,7 %** sous 0,40 ; et surtout 71,2 % → **50,7 %** sous 0,50. L'erreur **concentrait** la
+  composition, donc sous-estimait la diversité : elle faisait paraître la plateforme moins
+  conforme qu'elle n'est. Les chiffres par **fil servi** étaient justes.
+- [`docs/limites.md`](docs/limites.md) reçoit sa **vingt-septième correction** : une optimisation
+  de stockage est une hypothèse déguisée, et c'est la **deuxième fois** que ce dépôt s'y laisse
+  prendre. Le condensé retient désormais les compositions **identifiées**, et un test vérifie que
+  les deux tables rendent le même indice.
+- Le chapitre sur la vie privée est mis à jour en conséquence ; ses conclusions ne bougent pas.
+- 650 tests, deux notes recompilées (29 et 27 pages).
+
 ### Corrigé — le site publiait les notebooks en JSON brut
 
 Signalé par un lecteur : ouvrir n'importe quel notebook du site rendait

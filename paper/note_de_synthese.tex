@@ -67,7 +67,7 @@ Un quatrième journal, EB-NeRD, porte enfin les deux colonnes attendues --- la l
 une rubrique déclarée. Le premier contrôle dit que son \textbf{ordre enregistré ne contient pas
 le rang} ($z = +1{,}05$, alors que le journal aurait détecté une sévérité cent trente-quatre fois
 plus faible). L'indice aveugle au rang y est donc mesuré pour la première fois sur des fils réels
---- $0{,}47$ par journée-utilisateur, soit $4{,}6$ rubriques également servies sur $26$ --- et
+--- $0{,}50$ par journée-utilisateur, soit $5{,}1$ rubriques également servies sur $26$ --- et
 l'indice exposé seulement \emph{encadré}, à $0{,}104$ près : à un plancher de $0{,}40$, un tiers
 des fils y contreviennent quelle que soit leur mise en ordre, et six sur dix restent indécidables.
 Ce qu'un régulateur doit réclamer n'est donc pas le rang, mais le rang \textbf{vérifiable}. Nous spécifions donc, au titre de l'article~40 du \emph{Digital Services
@@ -1240,8 +1240,8 @@ sur Baidu-ULTR. \texttt{article\_ids\_inview} est un \textbf{ensemble servi}, pa
 
 \paragraph{Ce qui devient mesurable.} La forme aveugle au rang, jamais calculée jusqu'ici
 ailleurs qu'en simulation. Sur la fenêtre que \S\ref{sec:indice} prescrit --- la
-journée-utilisateur --- l'indice vaut $0{,}466$ en médiane, soit $4{,}56$ rubriques également
-servies sur $26$, avec $18{,}8\,\%$ des journées sous $0{,}40$ et $71{,}2\,\%$ sous $0{,}50$. Ce
+journée-utilisateur --- l'indice vaut $0{,}498$ en médiane, soit $5{,}07$ rubriques également
+servies sur $26$, avec $13{,}7\,\%$ des journées sous $0{,}40$ et $50{,}7\,\%$ sous $0{,}50$. Ce
 chiffre ne dit pas si c'est peu ou beaucoup ; il donne l'ordre de grandeur qui manquait à toute
 discussion de plancher.
 
@@ -1283,8 +1283,8 @@ garantie \emph{par personne}, et c'est lui qui déplace les chiffres.
 
 \paragraph{La grandeur réglementée résiste.} La part de la population sous le plancher ne bouge
 pas d'un millième entre $\varepsilon = 10$ et $\varepsilon = 0{,}1$. En revanche, plafonner à une
-journée par lecteur ajoute $2{,}5$ points à une part de $18{,}8\,\%$, et à cinq journées encore
-$0{,}6$ point --- toujours dans le même sens. Les lecteurs assidus sont plus divers que les
+journée par lecteur ajoute $2{,}8$ points à une part de $13{,}7\,\%$, et à cinq journées encore
+$0{,}7$ point --- toujours dans le même sens. Les lecteurs assidus sont plus divers que les
 autres : les écarter fait paraître la plateforme \emph{moins} conforme qu'elle n'est. L'erreur
 commise en protégeant les lecteurs n'innocente donc pas la plateforme.
 
@@ -1312,6 +1312,41 @@ résultat, comme l'est le seuil de suppression.
 coût par le haut, il ne prétend pas l'atteindre. La garantie par utilisateur n'est mesurée que sur
 EB-NeRD, seul journal portant un identifiant de lecteur ; sur Baidu-ULTR, seule une garantie par
 impression est possible, ce qui tient au jeu de données et non à la méthode.
+
+\subsection{Qui choisit le catalogue choisit l'indice}
+\label{sec:catalogue}
+
+\S\ref{sec:indice} porte depuis l'origine une réserve jamais chiffrée : la discrétisation en
+points de vue est un choix politique, et qui définit les modalités définit l'indice. Les
+journées-utilisateur de \S\ref{sec:indicemesure} permettent enfin de dire \emph{de combien}.
+
+\paragraph{Trois grandeurs, trois comportements.} Le \textbf{niveau} n'a aucun sens absolu : le
+même corpus vaut $0{,}498$ sur vingt-six rubriques et $0{,}924$ sur trois. La \textbf{part sous
+le plancher} suit : à $0{,}40$, elle passe de $13{,}7\,\%$ à $1{,}5\,\%$ --- le même seuil
+devient décoratif sans qu'une seule impression ait changé. L'\textbf{ordre} entre lecteurs, lui,
+ne bouge pas : la concordance de rang avec le catalogue complet vaut $1{,}000$ à douze modalités,
+$0{,}911$ à six, puis $-0{,}09$ à trois. Il ne se dégrade pas, il s'effondre.
+
+\paragraph{Pourquoi.} Les rubriques rares ne servent presque rien : les onze premières couvrent
+$99{,}8\,\%$ du corpus. Regrouper les quinze autres ne fusionne quoi que ce soit que pour une
+journée sur mille, d'où un ordre inchangé. Descendre à six force la fusion sur $64{,}5\,\%$ des
+journées, à trois sur $94{,}8\,\%$.
+
+\paragraph{La taille ne spécifie pas le catalogue.} Vingt regroupements aléatoires en six classes
+rendent une médiane de $0{,}682 \pm 0{,}093$ et une concordance de $0{,}769 \pm 0{,}098$, contre
+$0{,}860$ et $0{,}911$ pour le regroupement par fréquence. C'est la \emph{liste} qui doit figurer
+dans une norme, non le nombre.
+
+\paragraph{Et la diversité exposée n'existe pas au singulier.} Le corpus porte deux axes
+d'étiquetage --- la rubrique thématique et la tonalité déclarée. Leur concordance vaut
+$\rho = +0{,}155$ : parmi le quart le plus divers en rubriques, $23{,}8\,\%$ sont aussi dans le
+quart le plus divers en tonalité, là où l'indépendance donnerait $25\,\%$. Un régulateur doit donc
+dire \textbf{sur quel axe} il régule, et ce choix pèse au moins autant que le seuil.
+
+\paragraph{Réserves.} Les catalogues grossiers sont obtenus par regroupement d'un catalogue
+existant, ce qui n'est pas un catalogue conçu comme tel. Le corpus est celui d'un seul journal, et
+c'est la forme de sa queue de distribution qui explique la stabilité observée jusqu'à douze
+modalités.
 
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}

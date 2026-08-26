@@ -1,8 +1,8 @@
 # The index, measured on a real feed
 
 !!! success "The figure missing since day one"
-    Over **232,887 real feeds** of the Danish daily *Ekstra Bladet*, served diversity is **0.47**
-    per user-day — **4.6 sections equally served out of 26**. The repository had never published
+    Over **232,887 real feeds** of the Danish daily *Ekstra Bladet*, served diversity is **0.50**
+    per user-day — **5.1 sections equally served out of 26**. The repository had never published
     this number outside a simulation.
 
 !!! danger "But the rank column does not contain the rank"
@@ -18,6 +18,13 @@
     what the platform holds and does not publish.
 
 ---
+
+!!! failure "Corrected — the per-user-day figures were wrong"
+    Aggregating one reader over one day summed **sorted** counts, which amounts to conflating two
+    different sections because they occupy the same position. The per-**feed** figures were
+    right; the per-**user-day** ones were not. They are corrected below: 0.466 becomes
+    **0.498**, and the share below 0.50 goes from 71.2 % to **50.7 %**.
+    → [audit, point 27](limites.en.md)
 
 ## A gap wrongly stated
 
@@ -62,15 +69,15 @@ been on real data.
 | Window | Median | Quartiles | Effective viewpoints | Below 0.40 | Below 0.50 |
 |---|---|---|---|---|---|
 | served feed | 0.417 | [0.372, 0.489] | 3.89 of 26 | 35.0 % | 78.8 % |
-| **user-day** | **0.466** | [0.411, 0.507] | **4.56 of 26** | **18.8 %** | **71.2 %** |
+| **user-day** | **0.498** | [0.446, 0.548] | **5.07 of 26** | **13.7 %** | **50.7 %** |
 
 The second row is the one that counts: it is the window the [protocol](ide.en.md) prescribes, and
 the regulated quantity there is the **share of the population below the floor**, not the mean.
 
 This figure does not say whether that is little or much — the level of a floor is a political
 decision, and the repository does not settle it. It gives the **order of magnitude** missing from
-any discussion of a floor: a reader receives, in one day, the equivalent of four to five sections
-equally served out of twenty-six available.
+any discussion of a floor: a reader receives, in one day, the equivalent of five sections equally
+served out of twenty-six available.
 
 ## 3. What the unknown order leaves undetermined
 

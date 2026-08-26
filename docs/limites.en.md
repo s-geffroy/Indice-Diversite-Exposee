@@ -628,6 +628,34 @@ proves nothing until you have looked at what it checks**. Strict mode verified l
 files — not page content. A green test on the wrong quantity is more dangerous than no test at
 all, because it excuses you from looking.
 
+### 27. An aggregation that summed sorted counts
+
+**What the repository published.** That served diversity is $0.466$ per user-day, that is $4.56$
+effective sections out of $26$, with $18.8\%$ of user-days below $0.40$ and $71.2\%$ below
+$0.50$ ([the index measured](indice-mesure.en.md)).
+
+**The problem.** The digest kept, for each feed, the per-section counts **sorted in decreasing
+order** — section identity was discarded, rightly: for a given feed it does not change the index.
+But aggregating one reader over one day **summed those sorted vectors**. That amounts to treating
+"the most-served section of this feed" and "the most-served section of that feed" as one and the
+same section, when they are usually two different ones.
+
+**What the corrected figures give.** $0.498$ instead of $0.466$, $5.07$ effective sections instead
+of $4.56$, $13.7\%$ of user-days below $0.40$ instead of $18.8\%$ — and above all $50.7\%$
+below $0.50$ instead of $71.2\%$. The faulty aggregation artificially **concentrated** the
+composition, hence understated diversity: it made the platform look less compliant than it is.
+
+**What caught it.** Nothing in the chapter concerned. It was the next chapter — which needed
+section identity in order to group sections — that produced a different figure, and the gap had to
+be explained. The per-**feed** figures were right: sorting changes nothing as long as one does not
+aggregate.
+
+**What this episode teaches about method.** A storage optimisation is a disguised assumption, and
+this is the **second time** this repository has been caught by one — the first concerned the feed
+structure of the digest (point 17). Discarding information because "it does not change the result"
+is true only of the result being computed that day. The digest now keeps **identified**
+compositions, and a test checks that both tables return the same index.
+
 ---
 
 ## What the model cannot do
@@ -730,7 +758,7 @@ hundred), and no result is compared against real data. The conclusions are
 never transposable numerical values.
 
 
-### What twenty-six corrections teach, taken together
+### What twenty-seven corrections teach, taken together
 
 The corrections above were recorded one by one, in the order they occurred. Taken together, they
 trace three regularities worth more than their sum.
@@ -743,7 +771,7 @@ the right sign, with the right conclusion — exactly what no re-reading catches
 
 **What caught them was never re-reading, it was confrontation.** With data whose answer is known,
 with a ground truth, with another estimation method, or with the field's literature. Five of the
-twenty-six corrections come from the initial reading of the thread; the other twenty-one come from
+twenty-seven corrections come from the initial reading of the thread; the other twenty-one come from
 having measured, from having searched — or, for the last one, from simply opening the
 published page.
 
@@ -760,7 +788,7 @@ withdrawn, for three reasons.
   is known, test an explanation like a figure — are **banal**. Nobody disputes them, they are not
   being stated here for the first time, and no reviewer will receive them as a result.
 * The demonstration is **circular**. The argument was "the method is worth something because it
-  caught twenty-six errors"; but the same work produced those errors. A method assessed on its
+  caught twenty-seven errors"; but the same work produced those errors. A method assessed on its
   own faults is compared against a baseline it manufactured. With no error, there is nothing to
   catch and the claimed value drops to zero.
 * Nothing has been **validated from the outside**. The 623 tests check that the code does what is
