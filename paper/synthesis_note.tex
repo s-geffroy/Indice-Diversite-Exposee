@@ -24,7 +24,7 @@
 
 \begin{abstract}
 \noindent
-A regulator seeking to constrain a recommender algorithm needs a quantity it can observe
+Knowing what a recommender algorithm actually exposes requires a quantity one can observe
 without access to the platform's code. This note proposes one --- the \textbf{Exposed
 Diversity Index} (EDI), the entropy of the items served, projected onto a declared catalogue
 of viewpoints and weighted by the attention each rank commands --- and then subjects it to the
@@ -65,14 +65,14 @@ where the log would have detected a severity one hundred and thirty-four times s
 rank-blind index is therefore measured for the first time on real feeds --- $0.50$ per user-day,
 $5.1$ sections equally served out of $26$ --- and the exposed index only \emph{bounded}, to
 within $0.104$: at a floor of $0.40$, a third of feeds breach it whatever their ordering, and six
-in ten remain undecidable. What a regulator must require is therefore not the rank but the
-\textbf{verifiable} rank. We
-therefore specify, under Article~40 of the \emph{Digital Services Act}, aggregate tables
-containing no personal data, verified to recompute the measurements identically for a hundred
-times fewer rows than a raw log.
+in ten remain undecidable. What must be required of a log is therefore not the rank but the
+\textbf{verifiable} rank --- and the exchangeability test is what verifies it. The catalogue,
+finally, decides the level far more than the feed does: the same corpus scores $0.50$ over
+twenty-six sections and $0.92$ over three, while the ordering between readers holds down to six
+modalities and then collapses.
 
-Part~\ref{part:model} presents the thermodynamic model the index came from, and
-\S\ref{sec:analogy} reports what remains of it: the quantum decoherence analogy that started
+The index came from a thermodynamic model whose every own claim the audit refuted, and which no
+longer appears here: the quantum decoherence analogy that started
 this work survives none of its transfers. All code, tests and figures are reproducible in
 containers.
 \end{abstract}
@@ -115,7 +115,7 @@ definition.
 \label{sec:index}
 
 Given a feed of $n$ positions, a reference catalogue of $k$ viewpoints declared by the
-regulator, and an attention discount $w_R$ attached to rank $R$, the \emph{exposed}
+declarer, and an attention discount $w_R$ attached to rank $R$, the \emph{exposed}
 distribution is
 \begin{equation}
 q_i = \frac{\sum_{R=1}^{n} w_R \, \mathbb{1}\!\left[\text{the item served at rank } R
@@ -148,7 +148,7 @@ flatters \\
 \end{center}
 
 \paragraph{Attention discount.} The results below use $w_R = 1/R$, the reciprocal-rank
-discount standard in ranking evaluation. The choice of $w$ belongs to the regulator, as does
+discount standard in ranking evaluation. The choice of $w$ belongs to the declarer, as does
 the catalogue; what matters here is that it be \emph{declared}, since it is what makes the
 standard non-circumventable by order.
 
@@ -166,7 +166,7 @@ $1.9$.
 
 \paragraph{Protocol.} The unit is the item \emph{served}, not the item consulted: the platform
 is audited, not the reader. The index is computed per reader over a sliding window and then
-aggregated; the regulatory quantity is the \emph{share of the population below the threshold},
+aggregated; the quantity of interest is the \emph{share of the population below a threshold},
 not the mean, since a satisfactory mean can hide an entirely enclosed minority.
 
 \section{The adversarial test}
@@ -414,511 +414,6 @@ computed over hashes says nothing, the reference catalogue being a political dec
 The index of \S\ref{sec:index} has therefore never been measured on a real feed. This is not a
 gap in method: it is a gap in data.
 
-\section{What to ask for}
-\label{sec:request}
-
-Article~40 of the \emph{Digital Services Act} \citep{dsa2022}, made operational by Delegated
-Regulation (EU) 2025/2050 \citep{delegue2025}, opens platform data to vetted researchers. A
-request is admissible only if it is \emph{necessary and proportionate}. "Give us your logs" is
-neither: it demands personal data the analysis has no need of, and it hands over the easiest
-ground for refusal --- service security and trade secrets.
-
-We therefore specify the request as \textbf{four aggregate tables}:
-
-\begin{enumerate}
-\item \textbf{feed profiles} --- for each served feed shape (the list of ranks it occupies) and
-      each click count, the number of feeds;
-\item \textbf{clicks by rank} --- for each profile, each feed click count and each rank, the
-      number of clicks;
-\item \textbf{(item, rank) cells} --- impressions and clicks, and the service propensity if the
-      platform knows it;
-\item \textbf{exposure by (rank, viewpoint)} --- impressions and clicks, over the catalogue
-      declared by the regulator.
-\end{enumerate}
-
-No row designates a reader: a feed appears only by its shape and by the number of clicks it
-received.
-
-\paragraph{Sufficiency verified, not asserted.} Test \eqref{eq:exchangeability} is recomputed
-from tables 1 and 2 alone to within $3 \times 10^{-12}$ on MIND as on Baidu-ULTR; severity
-\eqref{eq:fixedeffects} is recomputed \emph{exactly} from table 3; both diversity measures from
-table 4, which therefore suffices to observe burial --- at identical composition, a feed
-compliant with the rank-blind floor exposes only $0.160$ of attention to minority viewpoints,
-against $0.375$ in composition.
-
-\paragraph{Proportionality quantified.} What is asked weighs $5{,}543$ rows for the $524{,}164$
-documents served in the Baidu-ULTR slice (ratio $95$) and $57{,}906$ rows for MIND's
-$5{,}843{,}444$ served items (ratio $101$).
-
-\paragraph{The confidentiality threshold is not neutral.} Suppressing low-count cells protects
-readers and moves the estimates: going from $5$ to $20$ impressions per cell moves the estimated
-severity from $1.10$ to $1.40$, i.e. $+27\%$, because rare cells are those of deep ranks. The
-threshold must be fixed in the request and published with the result.
-
-\paragraph{Two simpler aggregation keys were discarded} because they were wrong without being
-visible: indexing feeds by length rather than by rank profile --- wrong as soon as a surface skips
-ranks --- and omitting the feed click count, which prevents excluding fully clicked feeds and
-shifts the standardised deviation from $-205.7$ to $-203.9$. Both produced figures of the right
-order of magnitude.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig18_demande_article_40.png}
-\caption{What the request weighs against the log; the gap between direct and aggregate
-measurement; the effect of the confidentiality threshold on estimated severity; burial observed
-from the exposure table alone.}
-\label{fig:request}
-\end{figure}
-
-\section{A filter that optimises the index}
-\label{sec:filter}
-
-A classical recommender orders items by estimated relevance. The filter proposed here adds a
-term:
-\begin{equation}
-S(i, c) = \text{Relevance}(i, c) + \mu \, \Delta H(i, c), \qquad \mu \geq 0,
-\label{eq:score}
-\end{equation}
-where $\Delta H$ is the change in index item $i$ would bring to feed $c$. At $\mu = 0$ the
-ranking is \emph{identical} to an engagement filter's: the transformation is a parameterised
-addition, not a redesign. The parameter $\mu$ follows an annealing schedule --- rising when the
-index falls below the threshold, falling once it is restored --- so that intervention is
-intermittent.
-
-\paragraph{Status.} This filter is validated against its own model, with synthetic relevance and
-four viewpoints. Its real cost in perceived relevance is not measured, and cannot be on public
-data as things stand (\S\ref{sec:logs}). What bounds the discussion is the figure of
-\S\ref{sec:adversarial}: a rank-aware floor costs $10.6$ to $20.9\%$ of engagement depending on
-the measure, on eight-slot feeds enumerated exhaustively.
-
-\subsection{What it is worth, compared with baselines}
-\label{sec:baselines}
-
-A filter is not judged against relevance ranking, from which it differs by construction, but
-against what a practitioner would do without theory. We therefore compare it with four baselines
---- serving viewpoints in turn, \emph{maximal marginal relevance} \citep{carbonell1998}, a
-Boltzmann draw on relevance, and random selection --- and above all with the \textbf{exact
-frontier} of the (exposed diversity, engagement) plane, obtained by enumerating the $151{,}200$
-ordered arrangements of six items drawn from a pool of ten.
-
-Across $150$ pools, at a fixed floor, the median shortfall is as follows.
-
-\begin{center}
-\begin{tabular}{@{}lrrrrr@{}}
-\toprule
-\textbf{Method} & $0.50$ & $0.60$ & $0.70$ & $0.80$ & $0.90$ \\
-\midrule
-Round robin & $0.0\%$ & $0.0\%$ & $0.0\%$ & $3.8\%$ & $4.8\%$ \\
-MMR & $0.0\%$ & $0.0\%$ & $0.0\%$ & $\mathbf{0.0\%}$ & $\mathbf{0.2\%}$ \\
-Boltzmann & $0.0\%$ & $0.0\%$ & $0.1\%$ & $1.2\%$ & $3.7\%$ \\
-Filter \eqref{eq:score} & $0.0\%$ & $0.0\%$ & $0.0\%$ & $\mathbf{0.0\%}$ & $\mathbf{1.0\%}$ \\
-Random & $9.3\%$ & $9.8\%$ & $11.0\%$ & $12.9\%$ & $19.1\%$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The filter therefore holds the frontier --- which was not a given, random selection reaching the
-same diversities while leaving a fifth of the engagement on the table --- but \textbf{it is not
-alone there}. A heuristic published in 1998 holds it too, and beats the filter head to head at
-floor $0.80$. The filter only stands out at the high requirement: at floor $0.90$, MMR finds no
-compliant setting in $47\%$ of pools, against $12\%$ for the filter, because the latter optimises
-the constrained quantity where MMR optimises a proxy that saturates.
-
-\paragraph{The price of the standard depends on the reader.} The comparison above draws relevance
-independently of viewpoint. Varying that \emph{alignment}, the cost of the $0.90$ floor moves from
-$3.8\%$ of engagement --- a reader whose interests cut across viewpoints --- to $17.1\%$ --- a
-reader whose preference \emph{is} a viewpoint. The standard therefore costs most exactly where it
-serves most, which predicts where the objection will fall. This dependence reconciles the figures
-of \S\ref{sec:adversarial}, where relevance was attached to the viewpoint, with those of this
-paragraph.
-
-
-\part{The background model}
-\label{part:model}
-
-What precedes stands without what follows. The index, its attacks, the exchangeability test and
-the counterfactual estimators depend on no hypothesis about opinion dynamics: they are
-measurements on served feeds and observed clicks.
-
-This part presents the model the index \emph{came from}. It has two functions, and only one is
-scientific. The first is to account for provenance: the quantity adopted in \S\ref{sec:index}
-was not picked at random among possible diversity measures, it comes from a formalism that
-describes opinion as a system with a temperature. The second is to state what that formalism is
-worth once measured --- and \S\ref{sec:analogy} concludes that the analogy which suggested it
-survives none of its transfers.
-
-No result in Part~\ref{part:measure} rests on this part.
-
-\section{Entropic formalism}
-
-\subsection{Two entropies, one quantity}
-
-The von Neumann entropy \citep{vonneumann1932}
-\begin{equation}
-S(\rho) = -\operatorname{Tr}(\rho \ln \rho)
-\end{equation}
-vanishes for a pure state. It is computed by diagonalisation: the eigenvalues of $\rho$
-form a classical distribution to which the Shannon entropy \citep{shannon1948} applies,
-\begin{equation}
-H(X) = -\sum_i p_i \log_2 p_i .
-\end{equation}
-This is precisely what licenses the bridge between the two disciplines: von Neumann entropy
-\emph{is} the Shannon entropy of the mixture revealed in the eigenbasis.
-
-\subsection{A necessary clarification}
-
-One common and incorrect formulation must be set aside at once. The evolution of a
-\emph{closed} quantum system is unitary, so its von Neumann entropy is constant. What grows
-under decoherence is the entropy of the \emph{reduced subsystem}, obtained by tracing over
-environmental degrees of freedom.
-
-A clarification follows that strengthens the analogy rather than weakening it: a coherent
-superposition is a \emph{pure} state of zero entropy. It is therefore not the multiplicity
-of possibilities that produces disorder, but the loss of coherence between them. The social
-counterpart is more accurate this way: a population where everyone keeps several opinions
-open is not disordered --- disorder arises from contact with an environment that fixes
-positions.
-
-\section{Thermodynamic dynamics}
-
-\subsection{The Ising model and social temperature}
-
-Each individual carries a binary opinion $s_i \in \{-1,+1\}$ and the population follows the
-Gibbs-Boltzmann distribution \citep{ising1925}:
-\begin{equation}
-P(\sigma) = \frac{1}{Z}
-\exp\!\left(\frac{J \sum_{\langle i,j\rangle} s_i s_j + H \sum_i s_i}{k_B T}\right),
-\end{equation}
-where $J$ measures local conformity, $T$ is the \emph{social temperature} (agitation,
-irrationality, openness to fluctuation) and $H$ the external media field.
-
-The model's value lies not in the analogy but in a verifiable property: the existence of a
-critical temperature. In two dimensions its exact value is known \citep{onsager1944}:
-\begin{equation}
-\frac{T_c}{J} = \frac{2}{\ln(1+\sqrt{2})} \approx 2.269 .
-\label{eq:onsager}
-\end{equation}
-
-This is the only point in this work where an exact theoretical prediction, independent of
-our sociological assumptions, can validate the implementation.
-Figure~\ref{fig:transition} recovers it numerically; the residual gap is a finite-size
-effect on a $24\times24$ lattice.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig02_transition.png}
-\caption{Consensus and susceptibility as functions of social temperature (Monte Carlo,
-$24\times 24$ lattice). The susceptibility peak locates the transition. Its upward shift
-relative to Onsager's value~\eqref{eq:onsager} is a finite-size effect, not an
-implementation error. Figure captions are in English; notebook prose is in French.}
-\label{fig:transition}
-\end{figure}
-
-\subsection{Free energy}
-
-The system minimises its Helmholtz free energy $F = E - TS$, where $E$ represents the
-tension of disagreement and $TS$ the dispersive force. As $N$ grows, configurational
-entropy grows with it and the $TS$ term eventually dominates $E$.
-
-\subsection{Social hysteresis}
-
-This is the most directly actionable result. Below $T_c$, switching off the media field
-($H \to 0$) does not return magnetisation to zero: the interaction term $-J\sum s_i s_j$
-takes over and the group sustains the belief through internal cohesion.
-
-The cycle reads in three stages, which are those of a media crisis: injection of a massive
-field, official retraction, then the need for a counter-field $-H$ exceeding the group's
-coercive field. Figure~\ref{fig:hysteresis} shows the cycle area decreasing with social
-temperature and vanishing above $T_c$.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig05_hysteresis.png}
-\caption{Left: hysteresis cycles below and above $T_c$; in the former, opinion remains
-magnetised while the field is zero. Right: decay of belief memory with social temperature
---- the basis for the thermal-noise recommendation.}
-\label{fig:hysteresis}
-\end{figure}
-
-\emph{Practical consequence:} passive debunking does not work. Restoring informational
-neutrality leaves the belief in place; only active counter-information, or a rise in social
-temperature, dissipates it.
-
-\section{Size effects: consensus time}
-
-The voter model \citep{clifford1973,holley1975} isolates pure social contagion, without
-temperature: at each interaction an individual adopts a randomly chosen neighbour's
-opinion. It yields exact scaling laws for consensus time, measured in sweeps ($N$
-elementary interactions).
-
-Measurements (figure~\ref{fig:consensus}) give an exponent $\approx 1$ in mean field and
-$\approx 2$ on a ring. \textbf{A densely connected network therefore converges faster than
-a geographic neighbourhood.}
-
-This invalidates a frequent argument, that the small-world structure of social networks
-\citep{watts1998} prevents consensus. Connectivity does not fragment: it accelerates and
-amplifies, in whatever direction the field gives it. The causes of fragmentation are the
-\emph{directional bias} of algorithmic micro-fields and the \emph{homophily} that
-compartments the graph \citep{pariser2011}. The regulatory consequence is clear: the useful
-lever acts on the field, not on the number of links.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig03_consensus.png}
-\caption{Left: consensus time versus population size, log-log, for two topologies. Right:
-trajectories of the field-favouring fraction for three bias intensities --- it is bias, not
-connectivity, that decides the outcome.}
-\label{fig:consensus}
-\end{figure}
-
-\section{The landscape of public opinion}
-
-\subsection{The equation and its drift}
-
-At macroscopic scale, collective opinion $x \in [-1,1]$ obeys a Fokker-Planck equation
-\citep{risken1989}:
-\begin{equation}
-\frac{\partial P(x,t)}{\partial t}
-= -\frac{\partial}{\partial x}\big[A(x)P(x,t)\big]
-+ \frac{\partial^2}{\partial x^2}\big[B(x)P(x,t)\big].
-\end{equation}
-
-The quadratic potential $V(x) = -\frac{J}{2}x^2 - Hx$, which comes naturally to mind, can
-produce \emph{no} phase transition: the corresponding exponential is convex, hence maximal
-at the extremes at any temperature. The missing term is the entropy of mixing --- the number
-of individual configurations compatible with a mean opinion $x$. Adding it recovers the
-Helmholtz free energy:
-\begin{equation}
-f(x) = \underbrace{-\frac{J}{2}x^2 - Hx}_{E}
-+ T\underbrace{\left[\frac{1+x}{2}\ln\frac{1+x}{2}
-+ \frac{1-x}{2}\ln\frac{1-x}{2}\right]}_{-S},
-\label{eq:free}
-\end{equation}
-giving the drift
-\begin{equation}
-A(x) = -f'(x) = Jx + H - T\operatorname{artanh}(x).
-\label{eq:drift}
-\end{equation}
-The entropic restoring term bounds the dynamics within $(-1,1)$ and yields a mean-field
-critical temperature $T_c = J$. The form $A(x) = Jx + H$ is its linearisation near $x = 0$.
-
-\subsection{Diffusion and the effect of $N$}
-
-The diffusion term reads
-\begin{equation}
-B(x) = \frac{k_B T (1-x^2)}{N},
-\label{eq:diffusion}
-\end{equation}
-the factor $(1-x^2)$ switching off noise at unanimity.
-
-The $1/N$ factor requires careful reading, since it appears to contradict the initial
-hypothesis: the larger the population, the \emph{less} noisy its macroscopic variable.
-There is no contradiction, but two distinct scales. Total configurational entropy is
-extensive and grows as $N$; fluctuations of the mean $x$ decay as $1/N$. The defensible
-thesis is therefore:
-
-\begin{quote}
-A large population does not become noisy, it becomes \emph{rigid}. Its size does not
-agitate it; it deprives it of stochastic plasticity --- and it is that rigidity which makes
-polarisation irreversible, since a system without noise can no longer leave the potential
-well it has fallen into.
-\end{quote}
-
-This reformulation is stronger than the initial hypothesis: it explains irreversibility,
-which the "entropy pump" metaphor did not.
-
-\subsection{Three regimes}
-
-The equilibrium distribution takes the large-deviation form
-$P_{\mathrm{stat}}(x) \propto \exp(-N f(x)/T)$, where the factor $N$ makes the penalty more
-severe the larger the population. Three regimes follow, obtained by varying two parameters
-(figure~\ref{fig:landscape}): a fluid society ($T > T_c$), a polarised one ($T < T_c$,
-$H = 0$) and a manipulated one ($T < T_c$, $H > 0$). In the last case the peak on the
-field's side overwhelms the other: the "false consensus" is not an added assumption, it is
-the tilted well.
-
-The density of moderates decays exponentially with $N$. In a large population below $T_c$,
-moderation is not a minority position: it is statistically inaccessible.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig04_paysage.png}
-\caption{Free-energy landscape~\eqref{eq:free}, the associated stationary distributions, and
-the temporal splitting of an initially moderate society. The solver uses finite volumes with
-zero flux at the boundaries: probability mass is conserved to $10^{-15}$, which distinguishes
-a genuine collapse of moderation from numerical leakage.}
-\label{fig:landscape}
-\end{figure}
-
-\subsection{Barrier crossing}
-
-Moving from one bloc to the other without passing through moderation is thermally activated
-barrier crossing, with rate $\propto e^{-\Delta V / k_B T}$ \citep{kramers1940}, and not
-tunnelling --- which has no classical counterpart. The distinction is not cosmetic:
-Kramers' law supplies a temperature dependence, hence a testable prediction.
-
-\section{Algorithmic resonance kinetics}
-
-A piece of false information and a recommender algorithm form a positive feedback loop
-analogous to the Larsen effect. Visibility $V(t)$ obeys
-\begin{equation}
-\ddot V + \big(\lambda - \gamma\alpha\,\sigma(V)\big)\dot V + \omega_0^2 V = \xi(t),
-\label{eq:resonance}
-\end{equation}
-where $\lambda$ is natural damping (forgetting), $\gamma$ the algorithmic gain, $\alpha$ the
-content's emotional charge, and $\sigma(V) = 1/(1+(V/V_{\mathrm{sat}})^2)$ a saturation
-factor expressing the finiteness of available attention.
-
-The instability criterion is
-\begin{equation}
-\boxed{\;\gamma\alpha > \lambda\;}
-\label{eq:criterion}
-\end{equation}
-Beyond it, effective damping becomes negative: the system accumulates energy instead of
-dissipating it. Figure~\ref{fig:resonance} confirms that the measured threshold coincides
-with $\gamma^\star = \lambda/\alpha$.
-
-Without saturation the unstable solution diverges as $e^{(\gamma\alpha-\lambda)t}$, which is
-exact but unusable: infinite visibility does not exist and no threshold is calibratable on a
-divergent model. With saturation the system settles into a limit cycle --- a self-sustaining
-media oscillation of finite amplitude, matching the observed behaviour of established
-disinformation.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig06_resonance.png}
-\caption{Left: three fates for the same content --- damped, bounded resonant, unbounded
-resonant. Right: limit-cycle amplitude versus algorithmic gain; the measured threshold
-coincides with $\gamma^\star = \lambda/\alpha$.}
-\label{fig:resonance}
-\end{figure}
-
-One point deserves emphasis for regulation. At \emph{uniform} gain, a more emotional item
-crosses the threshold where a factual one does not. A platform therefore need not favour
-disinformation in order to amplify it selectively: the bias is mechanical. This is what
-makes measuring $\gamma$ more relevant, and more enforceable, than auditing editorial
-intent.
-
-
-\section{Empirical calibration of the amplification ratio}
-\label{sec:calibration}
-
-Criterion \eqref{eq:criterion} long remained a formal inequality: nothing indicated where
-real systems sit. We estimate it here on public attention series.
-
-\subsection{Identification}
-
-For an isolated, non-oscillatory attention spike, \eqref{eq:resonance} reduces to its
-first-order form $\dot V = \gamma\alpha\,\sigma(V)V - \lambda V$, which separates into two
-measurable regimes: during the \emph{rise}, saturation is inactive and
-$V \propto e^{(\gamma\alpha-\lambda)t}$; during the \emph{decay}, amplification is switched
-off and $V \propto e^{-\lambda t}$. Two log-linear regressions therefore give
-\begin{equation}
-\lambda = r_{\mathrm{down}}, \qquad \gamma\alpha = r_{\mathrm{up}} + r_{\mathrm{down}},
-\qquad \frac{\gamma\alpha}{\lambda} = 1 + \frac{r_{\mathrm{up}}}{r_{\mathrm{down}}}.
-\label{eq:identification}
-\end{equation}
-
-\subsection{Data}
-
-The series come from the Wikimedia pageviews API, filtered to the \texttt{user} agent to
-exclude robots, over a \emph{pre-registered} corpus of 24 subjects split into two emotional
-registers — accusation or scandal on one side, unscheduled discovery on the other. Since
-Wikipedia has no recommender algorithm, the estimated $\gamma$ is an \emph{ecosystem} gain
-rather than a platform's ranking function.
-
-\subsection{Results}
-
-Nineteen episodes are exploitable. The ratio lies between $1.5$ and $12$, with a median of
-$2.5$ to $4.2$ depending on the estimator (figure~\ref{fig:calibration}). Three findings,
-two of them negative.
-
-\paragraph{The sign criterion is empty.} The ratio exceeds $1$ in every episode and under
-every estimator. This is not a property of the ecosystem but a \emph{tautology of the
-procedure}: an observable episode necessarily went through a growth phase, so
-$r_{\mathrm{up}} > 0$. The recommendation to "prohibit configurations where
-$\gamma\alpha > \lambda$" is consequently inapplicable and must be replaced by a
-\textbf{ceiling} $\gamma\alpha/\lambda \leq \rho_{\max}$. This error was not detectable by
-re-reading: only the attempt to measure revealed it.
-
-\paragraph{The value is method-dependent.} With windows bounded by the return to baseline,
-their length ranges from 6 to 46 days; since attention decays more slowly than an
-exponential, a fit over a long window yields a smaller $\lambda$. The rank correlation
-reaches $-0.94$. A second, fixed-horizon estimator makes $\lambda$ comparable across
-episodes; the median nonetheless varies by a factor of $1.7$ across estimators, which forbids
-anchoring a regulatory threshold to a single value.
-
-\paragraph{The emotional-charge mechanism is not supported.} No detectable difference between
-the two registers ($p \geq 0.13$), and the point estimate goes the opposite way to the
-prediction. Sample sizes are small and the selection bias described below excludes the most
-charged cases, so it would be excessive to call this a refutation — but the mechanism cannot
-be presented as data-supported.
-
-\paragraph{The method is blind to installed regimes.} Eleven of twenty-four subjects yield no
-exploitable episode, and these are the archetypal cases: QAnon, health disinformation, vaccine
-hesitancy. Their attention does not form a spike but a \emph{durable plateau}, which the
-rolling baseline absorbs — prominence-based detection does not see them. The procedure
-therefore selects against the very phenomenon the theory describes, which is the heaviest
-limitation of this calibration.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig09_calibration.png}
-\caption{An attention episode and its two exponential regimes; the ratio distribution by
-emotional register; sensitivity of the median to the estimator; and the window artefact that
-forced the fixed-horizon estimator.}
-\label{fig:calibration}
-\end{figure}
-
-
-
-\section{The founding analogy, and its verdict}
-\label{sec:analogy}
-
-This work started from an analogy: the larger a quantum system, the faster it decoheres; the
-larger a population, the harder agreement becomes. It produced measurable quantities --- a
-diversity index, an amplification threshold, a critical temperature --- and that is its merit.
-Its own claims were checked one by one, and none held.
-
-\begin{center}
-\begin{tabular}{@{}p{0.46\linewidth}p{0.48\linewidth}@{}}
-\toprule
-\textbf{What the analogy claimed} & \textbf{Verdict} \\
-\midrule
-The larger the system, the more disordered & \textbf{false, and backwards}: the retained
-diffusion term, $B(x) = k_B T (1-x^2)/N$, makes the macroscopic variable \emph{more}
-deterministic at large $N$. Two objects were conflated --- configuration entropy, extensive, and
-the noise of the macroscopic variable, in $1/N$ \\[2mm]
-Decoherence increases entropy & \textbf{false}: a closed system evolves unitarily. It is the
-\emph{reduced} subsystem's entropy that grows \\[2mm]
-$\tau_D \propto \tau_R / N$ & a \textbf{heuristic} scaling law, not Zurek's result, which
-involves spatial separation and the thermal wavelength \\[2mm]
-"Social tunnelling" & \textbf{metaphor}: the correct analogue is activated barrier crossing
-\citep{kramers1940}, which is classical \\[2mm]
-$1/k^N$ measures the improbability of consensus & describes a randomly drawn \textbf{initial
-state}, not a dynamics \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-To which is added an error that is not physical: the original account attributed fragmentation
-to the connectivity of "small-world" networks \citep{watts1998}. In mean field the Voter Model
-converges in $O(N)$: connectivity \emph{accelerates} consensus. Fragmentation comes from the
-bias $H_i$ and from homophily, not from topology alone.
-
-What survives --- free-energy landscape, phase transition, hysteresis, barrier crossing ---
-belongs to classical statistical mechanics, in the Ising and sociophysics lineage
-\citep{galam2004,castellano2009}. Nothing specifically quantum came through.
-
-The analogy therefore worked as \textbf{scaffolding}: it suggested measurable quantities that
-outlive it. That is a real role, and it is not the same as being true. Calling it "fruitful
-hence sound" would be dishonest: it suggested measurements, and none of its claims survived
-verification. The index was renamed accordingly --- it was the \emph{Entropic Dissipation
-Index}, after decoherence, and is now the \emph{Exposed Diversity Index}, after what it
-measures.
-
-\part{Caveats}
-
 \section{Limitations}
 \label{sec:limits}
 
@@ -928,7 +423,7 @@ These are stated here rather than left to reviewers.
 
 \paragraph{The retained form has never been measured on a real feed.} It is defined
 \eqref{eq:edi}, its cost is quantified by exhaustive enumeration, and that is all. The gap is
-one of \emph{data}, not of method (\S\ref{sec:logs}), and \S\ref{sec:request} states what would
+one of \emph{data}, not of method (\S\ref{sec:logs}): it would take a log that
 close it.
 
 \paragraph{The floor level cannot be deduced from the measurement.} This work establishes the
@@ -946,7 +441,7 @@ becomes a target.
 
 \paragraph{A floor is a constraint on what citizens see.} Defensible, but an intervention in
 public debate, and presenting it as a neutral technical measure would be dishonest. Measuring
-individual feeds also raises a privacy question that \S\ref{sec:request} answers only in part,
+individual feeds also raises a privacy question that this note does not answer,
 by aggregation.
 
 \subsection{On the exposure measurements}
@@ -999,7 +494,7 @@ be published \textbf{with its assumed shape}, and that shape remains to be teste
 exchangeability test says whether the order carries information; it does not say in what form.
 
 \paragraph{And estimated relevance erases the tuned methods' advantage.} The comparison in
-\S\ref{sec:baselines} assumes relevance known. Having the methods rank on \emph{perceived}
+The re-ranker comparison, removed from this note, assumed relevance known. Having the methods rank on \emph{perceived}
 relevance and judging them on the true one leaves their order unchanged --- filter and MMR remain
 ahead --- but their advantage over random selection falls from $16.4$ points at zero noise to
 $5.8$ points at a rank correlation of $0.50$, and \emph{inverts} below $0.36$. The reason is
@@ -1086,12 +581,6 @@ $0.96$ for geometric decay and $0.99$ for a \emph{screen fold} model. The $R^{-\
 worst of the three, and it errs most where the standard is decided: at rank two it predicts $0.47$
 where measurement gives $0.88$.
 
-\paragraph{Consequence for \S\ref{sec:request}.} The four tables requested bear on clicks. One more
-column --- the number of impressions actually \emph{displayed} per cell --- would remove at a
-stroke the need to estimate $\eta$, the shape assumption that accompanies it, and the
-attractiveness confounder. It is moreover less sensitive than clicks: knowing an item was displayed
-says less about a reader than knowing they chose it.
-
 \paragraph{Reservation.} A positive display time attests that the document was shown, not that it
 was looked at. The measure therefore overstates exposure, by an amount this work cannot quantify.
 
@@ -1134,12 +623,6 @@ rank explains examination better (McFadden $R^2$ $0.082$) than cumulative height
 and pixels add only $0.0007$ once rank is known. The finding --- the curve is not a power law ---
 holds; the mechanical explanation falls.
 
-\paragraph{Consequence for \S\ref{sec:request}.} The cell table already asks for a displays column;
-one more is needed, the \textbf{format} of the item served. Without it, two feeds of identical
-composition can expose different diversities with nothing signalling it. It is moreover the least
-sensitive of the requested columns: an item's format says nothing about its reader.
-\S\ref{sec:pageeffect} demotes that column to a means of verification.
-
 \subsection{The page effect, once composition is removed}
 \label{sec:pageeffect}
 
@@ -1169,10 +652,10 @@ it by $0.0350$ --- \textbf{fourteen times more}. Same order on severity: $\eta =
 the page against $0.854$ on the counterfactual bare page.
 
 \paragraph{Consequence.} The attention discount $w_R$ of \eqref{eq:distribution} becomes
-\textbf{portable} again, which was the real stake: were it page-dependent, no regulatory floor
+\textbf{portable} again, which was the real stake: were it page-dependent, no measurement
 could be written without describing every page served. The \texttt{format} column of
-\S\ref{sec:request} is still requested --- it allows this check to be reproduced elsewhere --- but
-it no longer conditions the computation. What a regulator must require first is the displays
+for format remains useful --- it allows this check to be reproduced elsewhere --- but
+it no longer conditions the computation. What must be required of a log is first the displays
 column, without which exposure cannot be measured at all.
 
 \paragraph{Reservations.} The item-matched design retains only $1{,}106$ strata out of
@@ -1209,64 +692,12 @@ ordering --- an enforceable finding without the missing column --- $7.9\%$ are c
 compliant, and $59.7\%$ remain undecidable. Without the rank one can convict; one almost never
 acquits.
 
-\paragraph{Consequence for \S\ref{sec:request}.} The request asked for ``the served rank''. That
-is not enough: a platform can supply an order column that is not the rank, without lying and with
-nothing signalling it. It must therefore ask for a \textbf{verifiable} rank, and the
-exchangeability test becomes an admissibility clause applied to the delivered data, before any
-other measurement.
-
 \paragraph{Reservations.} \texttt{category\_str} is a \emph{section}, not a viewpoint: the
 measurement bears on topical diversity exposed, the substitute already used on MIND. The severity
 $\eta = 0.88$ is transported from Baidu-ULTR, a search engine; \S\ref{sec:pageeffect}
 established that it transports from page to page, not from platform to platform, hence a
 sensitivity test that does not reverse the conclusion. The exact bounds cover only feeds of ten
 items or fewer, $64\%$ of the log.
-
-\subsection{What privacy costs an audit}
-\label{sec:privacy}
-
-\S\ref{sec:request} proves four aggregate tables suffice; it says nothing about their
-harmlessness. An aggregate is not anonymous, and the small-cell suppression threshold used so far
-offers no formal guarantee. We therefore publish the same quantities under differential privacy,
-and measure the price.
-
-\paragraph{Two costs, and the second dominates.} Laplace \textbf{noise} protects against
-inference about one row, and its effect depends on the \emph{density} of the published table: on
-the nine cells of the rank margin it stays invisible down to $\varepsilon = 0.03$; on the
-$451{,}100$ (item, rank) cells, $99.7\%$ of which carry fewer than five impressions, it destroys
-everything. The \textbf{contribution bound} is what makes a \emph{per-person} guarantee
-possible, and it is what shifts the figures.
-
-\paragraph{The regulated quantity holds.} The share of the population below the floor does not
-move by a thousandth between $\varepsilon = 10$ and $\varepsilon = 0.1$. Bounding at one day per
-reader, however, adds $2.8$ points to a share of $13.7\%$, and at five days still $0.7$ point ---
-always in the same direction. Assiduous readers are more diverse than the rest: dropping them
-makes the platform look \emph{less} compliant than it is. The error committed in protecting
-readers therefore does not exonerate the platform.
-
-\paragraph{Severity does not hold.} At $\varepsilon = 1$, the usual reference value, $\eta$ goes
-from $0.882 \pm 0.046$ to $0.505 \pm 0.051$. Noise on counts acts as measurement error: it
-attenuates towards zero, and the standard error does not say so. The consequence is directional
---- an understated severity makes attention look flatter, hence burial milder. The publication
-threshold corrects the level then overshoots it, trading attenuation for \textbf{selection}:
-$0.881$ over $57$ items at $\varepsilon = 3$, but $1.03$ over $25$ at $\varepsilon = 1$ and
-$1.20$ over nine at $0.3$.
-
-\paragraph{The knot.} The rank margin survives any budget and lands within $0.7\%$ of the
-item-fixed-effects value. But we only know that because we hold the item-level table, the one no
-guarantee protects: \emph{what publishes safely is what cannot be checked}. No privacy budget
-reconciles the two.
-
-\paragraph{Consequence for \S\ref{sec:request}.} The cell table must not be requested in this
-form. Three requests replace it: the rank margin of displays, publishable at $\varepsilon = 0.1$;
-the item-fixed-effects estimate \emph{computed by the platform} and published as a noised scalar,
-whose sensitivity is bounded; and the gap between the two, the only available check. The
-contribution bound must be published with the result, as the suppression threshold is.
-
-\paragraph{Reservations.} The mechanism used is the simplest there is: this chapter bounds the
-cost from above, it does not claim to attain it. The per-user guarantee is measured only on
-EB-NeRD, the only log carrying a reader identifier; on Baidu-ULTR only a per-impression guarantee
-is possible, which is a property of the dataset, not of the method.
 
 \subsection{Whoever chooses the catalogue chooses the index}
 \label{sec:catalogue}
@@ -1293,49 +724,12 @@ for the frequency grouping. It is the \emph{list} that must appear in a standard
 \paragraph{And exposed diversity does not exist in the singular.} The corpus carries two labelling
 axes --- thematic section and declared tone. Their concordance is $\rho = +0.155$: among the
 quarter most diverse in sections, $23.8\%$ are also in the quarter most diverse in tone, where
-independence would give $25\%$. A regulator must therefore say \textbf{which axis} it regulates,
+independence would give $25\%$. One must therefore say \textbf{which axis} is measured,
 and that choice weighs at least as much as the threshold.
 
 \paragraph{Reservations.} The coarse catalogues are obtained by grouping an existing catalogue,
 which is not a catalogue designed as such. The corpus is that of a single newspaper, and it is the
 shape of its distribution tail that explains the stability observed up to twelve modalities.
-
-\subsection{What a floor costs, on real feeds}
-\label{sec:floorprice}
-
-\S\ref{sec:baselines} prices a diversity standard between $8.2$ and $18.9\%$ of engagement, but
-assumes relevance known and bears on simulated feeds. The user-days of
-\S\ref{sec:indexmeasured} allow the question to be asked without assuming anything: how many
-served items would have to be \textbf{replaced}?
-
-\paragraph{The check first.} The cost is computed greedily --- each substitution removes an item
-from the most-served section and adds one to the least-served. Confronted with exhaustive
-enumeration of every redistribution over two hundred short compositions, it coincides $200$ times
-out of $200$. The price that follows is therefore not a cautious bound.
-
-\paragraph{The proposed floor constrains almost nothing.} Lifting the whole population above
-$0.40$ requires replacing \textbf{one served item in $177$} --- $0.57\%$ of the log --- and the
-median user-day needing treatment requires a \emph{single} substitution. The price is convex:
-$0.21\%$ at a floor of $0.30$, $2.27\%$ at $0.50$, $8.24\%$ at $0.60$, $17.11\%$ at $0.70$. The
-level used so far sits at the painless end of the curve.
-
-\paragraph{And the shape of the regulated quantity is at fault.} \S\ref{sec:index} prescribes the
-\emph{share of the population below the threshold}, precisely so a satisfactory mean cannot hide
-an enclosed minority. But a share is a threshold, and a threshold is met at the margin: the
-platform fixes readers \emph{just} below and leaves the most enclosed where they are. The quantity
-chosen against masking by the mean invites treating the margin.
-
-\paragraph{A ceiling nothing lifts.} An entropy cannot exceed the logarithm of the number of items
-\emph{served}: a reader receiving five caps out at $0.49$. At a floor of $0.60$, $10.9\%$ of
-user-days are therefore out of reach whatever the platform does; at $0.80$, $22.9\%$. These are
-not enclosed readers but \emph{light} ones, and the only possible compliance is to serve them more
---- which a diversity standard has no reason to encourage. Two ways out, and one must be chosen:
-exempt short sessions, or normalise the index by the attainable maximum rather than by
-$\log_2 k$.
-
-\paragraph{Reservations.} The cost is measured in items exchanged, not in engagement: EB-NeRD
-provides no relevance model. The computation further assumes any section can be served to anyone,
-which overstates ease.
 
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}
@@ -1377,7 +771,7 @@ does not follow mechanically.
 \subsection{On the model}
 
 \paragraph{Calibration barely begun.} A single composite parameter is estimated
-(\S\ref{sec:calibration}); $J$, $T$, $\gamma$ and $\alpha$ taken separately have no estimation
+$J$, $T$, $\gamma$ and $\alpha$ taken separately have no estimation
 procedure. The most promising route would be inference of Kramers-Moyal coefficients on long
 opinion series, which would allow the drift to be \emph{tested} rather than fitted.
 
@@ -1390,17 +784,17 @@ selection artefact.
 \paragraph{An analogy is not an explanation.} Nothing here demonstrates that opinions
 \emph{obey} statistical mechanics; the work establishes that a formalism borrowed from physics
 \emph{reproduces} some of its behaviours. On the founding analogy itself, the verdict is
-sharper still (\S\ref{sec:analogy}).
+sharper still.
 
 \paragraph{Individuals are not spins.} Intentionality, irony and strategic anticonformism have
 no equivalent in a spin model; opinions are multidimensional \citep{deffuant2000}. Above all,
 the environment is not passive: an algorithm optimises a cost function, which makes it a
 strategic actor rather than a thermal bath. That is the analogy's weakest point --- and it is
-also what makes the filter of \S\ref{sec:filter} conceivable: a cost function can be changed.
+also what makes a filter optimising the index conceivable: a cost function can be changed.
 
 \paragraph{Scope of the simulations.} The regimes explored were chosen for legibility. No
 systematic sensitivity study was carried out, system sizes are modest, and the conclusions of
-Part~\ref{part:model} are qualitative: they concern the existence of regimes and the direction
+the removed model were qualitative: they concerned the existence of regimes and the direction
 of dependencies, never transferable numerical values.
 
 \subsection{On the annotation}
@@ -1413,12 +807,9 @@ methodological reservation that no computation lifts.
 \section{Reproducibility}
 
 The entire work is openly available and runs in containers, with $556$ automated tests. The
-structural checks cover Onsager's critical temperature \eqref{eq:onsager}, exact conservation of
-probability mass, the scaling exponents of consensus time, the strict positivity of the
-hysteresis loop area below $T_c$, the equivalence of filter \eqref{eq:score} with an engagement
-filter at $\mu = 0$, the sign of the exchangeability test's rejection on a genuinely ordered
-log, and the exactness of the measurements recomputed from the aggregate tables of
-\S\ref{sec:request}.
+structural checks cover the entropy of a degenerate feed, severity estimated on simulated
+data of known severity, the exactness of the index bounds, and every figure published in
+this note, recomputed from the versioned digests.
 
 The impression logs used are not redistributed --- they weigh $135$ MB to $2.2$ GB and each
 carries its own licence --- but the repository keeps verified digests of them, which reproduce

@@ -1,38 +1,19 @@
 # EDI — Exposed Diversity Index
 
-!!! info "Two distinct objects"
-    The **index** (IDE in French, EDI in English) is a *metric*, for the regulator. The
-    **[algorithm](ade.en.md)** is a *mechanism*, for the platform. The original thread
-    used both acronyms interchangeably; the distinction here is deliberate.
-    → [audit, point 1](limites.en.md)
-
-!!! success "Renamed — the name now says what is measured"
-    The index was first called the "**Entropic Dissipation Index**", after the quantum
-    decoherence analogy that started this work. The [audit](limites.en.md) dismantled that
-    analogy transfer by transfer: nothing specifically quantum survived it, and what holds —
-    free-energy landscape, hysteresis, barrier crossing — belongs to classical statistical
-    mechanics. A name pointing at a false analogy is not neutral: it announces something other
+!!! success "Renamed — the name says what is measured"
+    The index was first called the "**Entropic Dissipation Index**", after an analogy with quantum
+    decoherence. The [audit](limites.en.md) dismantled that analogy transfer by transfer: nothing
+    specifically quantum survived. A name pointing to a false analogy announces something other
     than what the instrument measures.
 
-    The acronym stays **EDI / IDE**. It now reads **Exposed Diversity Index** — the spread of
-    the attention **actually served** across the viewpoints of the declared catalogue.
-    "Exposed" is not decoration: it is the correction imposed by [adversarial
-    rank](rang-adverse.en.md), where a platform certified at 0.70 by a rank-blind measure
-    exposes only 0.36.
+    The French acronym remains **IDE**; in English, **EDI** — *Exposed Diversity Index*: the
+    distribution of the attention **actually served** across the viewpoints of a declared
+    catalogue.
 
-The historical function is now called `label_diversity_index`, because that is what it
-    computes: the diversity of **labels**, looking at neither the items nor the rank.
+## Definition
 
-    **The repository and the site address followed**, in a second step: they were called
-    `Index-Dissipation-Entropique`. GitHub redirects `git` operations from the old name to the
-    new one, but **not** published page addresses: old
-    `s-geffroy.github.io/Index-Dissipation-Entropique/…` links no longer work. That was the
-    price of a coherent name, and it was paid knowingly.
-
-## Definition — the retained form
-
-The index is the Shannon entropy of the distribution of **exposed viewpoints**, normalised by
-its theoretical maximum:
+The index is the Shannon entropy of the distribution of **exposed viewpoints**, normalised by its
+theoretical maximum:
 
 $$\mathrm{EDI} = \frac{H(q)}{\log_2 k}, \qquad
 q_i = \frac{\sum_R w_R \, \mathbb{1}[\text{the item served at rank } R \text{ falls in bin } i]}
@@ -43,152 +24,113 @@ Three choices distinguish it from the entropy one would write spontaneously, and
 
 | Choice | Why | What happens without it |
 |---|---|---|
-| $q$ bears on the **items served**, projected onto the bins of the reference catalogue — not on the labels announcing them | a label is chosen, an item is observed | the index reaches **1.000 for zero content diversity**, at zero engagement cost → [adversarial test](gaming.en.md) |
-| each rank is weighted by the **attention** it receives, $w_R$ (default $1/R$) | a reader consults the first item far more often than the last | the standard is satisfied by **burying** divergent items: certified at 0.70, a platform exposes only **0.36** → [adversarial rank](rang-adverse.en.md) |
-| the denominator $\log_2 k$ is fixed by the **declared catalogue**, not by what the platform serves | comparing two platforms requires the same unit | a perfectly closed feed shows one modality: the denominator degenerates and the index flatters |
+| $q$ bears on the **items served**, projected onto the reference catalogue's bins — not on the labels announcing them | a label is chosen, an item is observed | the index reaches **1.000 for zero content diversity**, at zero engagement cost → [adversarial test](gaming.en.md) |
+| each rank is weighted by the **attention** it receives, $w_R$ | a reader consults the first item far more often than the last | the measure is satisfied by **burying** divergent items: measured at 0.70 without looking at rank, a platform exposes only **0.36** → [adversarial rank](rang-adverse.en.md) |
+| the denominator $\log_2 k$ is fixed by a **declared catalogue**, not by what the platform serves | comparing two feeds requires the same unit | a perfectly closed feed shows one modality: the denominator degenerates and the index flatters |
 
 | Value | Reading |
 |---|---|
-| $\mathrm{EDI} = 1$ | served attention is spread evenly across the catalogue's $k$ viewpoints |
-| $\mathrm{EDI} \to 0$ | frozen filter bubble: served attention goes to a single viewpoint |
+| $\mathrm{EDI} = 1$ | served attention is spread equally over the catalogue's $k$ viewpoints |
+| $\mathrm{EDI} \to 0$ | served attention goes to a single viewpoint |
 
-!!! tip "Publish the index as an **effective number of viewpoints**"
-    A normalised entropy is not linear in what we mean by "twice as diverse". Its conversion
-    $k^{\mathrm{EDI}}$ is: the number of **equally served** viewpoints that would produce the
-    same entropy (Jost, 2006). On a catalogue of four, a floor of 0.70 is **2.6 effective
-    viewpoints**, and the 0.44 actually exposed by the burying feed is **1.9**. The first is
-    understandable without training; the second is not.
+!!! tip "Read as an **effective number of viewpoints**"
+    A normalised entropy is not linear in what "twice as diverse" means. Its conversion
+    $k^{\mathrm{EDI}}$ is: the number of **equally served** viewpoints producing the same entropy
+    (Jost, 2006). On the real feeds measured, $0.50$ over twenty-six sections is **5.1 effective
+    sections**. The first figure means nothing without training; the second does.
     → `ide.entropy.effective_viewpoints`
 
-!!! warning "The discount $w_R$ must be **measured**, not conventional"
-    Using $1/R$ amounts to positing $\eta = 1$. But attention severity is a property of the
-    **surface**: about 1.1 on a results page, 0.04 to 0.11 on a three-thumbnail banner. With
-    flat attention burial disappears; with very concentrated attention it becomes nearly free.
-    The discount is therefore part of what a regulator must require to be measured.
-    → [counter-expertise](contre-expertise.en.md)
+## The attention discount is measured
 
-**Associated control quantity.** The gap between the **rank-blind** and the **rank-aware**
-measure of the *same* feed is zero for a platform that does not relegate, and grows with burial.
-Unlike the repository's other diagnostics, it compares a measure with itself: it is therefore
-directly thresholdable. → [adversarial rank](rang-adverse.en.md)
+Using $1/R$ amounts to setting $\eta = 1$ by convention. This repository measured it:
 
-!!! warning "This form has never been measured on a real feed"
-    Its engagement cost is quantified **in simulation** — 8.2 % to 18.9 % depending on the
-    measure, by exhaustive enumeration of every possible feed — and its floor level remains a
-    political decision. One public dataset comes close and fails at the last step: EB-NeRD
-    carries the served list **and** a declared section, but its recorded order does not contain
-    the rank. The **rank-blind** form is measured there — 0.50 per user-day, 4.6 effective
-    sections out of 26 — and the exposed form only **bounded**.
-    → [the index measured](indice-mesure.en.md)
+| What was believed | What is measured |
+|---|---|
+| $\eta = 1$, by convention | $\eta = 0.88 \pm 0.05$ over 143 documents, **by display** rather than by click |
+| examination follows a cascade | **refuted** twice on Baidu-ULTR, by a test and by a counter |
+| the $R^{-\eta}$ law fits the curve | it is the **worst** of the three fits tried |
+| the discount depends on the page served | it does, by **6 %**, which moves the index by $0.0025$ |
 
-    What computing it would require:
-    served rank **and** an interpretable viewpoint label, and none carries both.
-    → [logs that record the rank](rang-servi.en.md) · [Article 40 request](article-40.en.md)
+→ [measured exposure](exposition-mesuree.en.md) · [the page effect](effet-de-page.en.md)
+
+Severity remains a property of the **surface**, however: about 1.1 on a results page, 0.04 to 0.11
+on a three-tile banner. It does not transport from one platform to another, and must therefore be
+measured where the index is computed. → [counter-expertise](contre-expertise.en.md)
+
+## What computing it requires
+
+1. **A log that passes the three checks** — does the recorded order carry position information? is
+   there enough to estimate severity? does examination depend on what was clicked above?
+   → [MIND](mind.en.md) · [served rank](rang-servi.en.md) · [form test](test-de-forme.en.md)
+2. **A verifiable rank**, not a declared one. At least one public log supplies an order column that
+   is not the served rank, without lying and with nothing signalling it: the exchangeability test
+   is what detects it. → [the index measured](indice-mesure.en.md)
+3. **A declared viewpoint catalogue**, published in full — it fixes the denominator, and it moves
+   the level far more than the feed itself does. → [the catalogue](catalogue.en.md)
+
+## What has been measured, and what has not
+
+!!! success "The rank-blind form is measured on real feeds"
+    $0.50$ per user-day over 232,887 feeds of the Danish daily *Ekstra Bladet*, that is **5.1
+    effective sections out of 26**. It is the repository's first figure that does not come from a
+    simulation. → [the index measured](indice-mesure.en.md)
+
+!!! warning "The exposed form is only **bounded**"
+    No public log carries both a verifiable rank and an interpretable label. Composition being
+    known and order not, the exposed index is not determined but **constrained**: median width
+    $0.104$. One can therefore sometimes decide without the rank — never measure.
 
 ## The original form, and what it measured
 
-The working thread defined the index on a feed's **labels**, without looking at rank:
+The working thread defined the index over a feed's **labels**, without looking at rank:
 
 $$H_{\text{norm}} = \frac{H(X)}{\log_2 k}$$
 
-That is what `ide.entropy.label_diversity_index` computes, and its name now states its scope.
-The form remains useful where rank does not exist — the [agent model](notebooks/08_abm_compas_politique.md)
-describes an individual's exposure this way — but it **cannot serve as a standard**: it is the
-one the adversarial test defeats.
+That is what `ide.entropy.label_diversity_index` computes, and its name now states its scope. The
+form remains useful where rank does not exist — it is what one measures on a log recording only
+the served set — but **it does not measure exposure**: it is the form the adversarial test defeats.
 
 ## Why normalisation is the essential point
 
-Raw entropy is measured in bits, and its value depends on the number of available
-modalities. Two platforms with different catalogues would produce incomparable figures.
+Raw entropy is measured in bits, and its value depends on the number of available modalities. Two
+feeds with different catalogues would produce incomparable figures. Normalising by $\log_2 k$ makes
+the index **dimensionless and bounded** — which is what allows comparison.
 
-Normalising by $\log_2 k$ makes the index **dimensionless and bounded**. That is what
-makes it usable as a legal instrument: a threshold expressed as a percentage transposes
-across platforms; a threshold in bits transposes to nothing.
-
-## The denominator must be imposed
-
-A platform free to choose $k$ would choose the number of modalities it *actually* serves.
-Since a perfectly closed feed presents only one modality, the denominator would degenerate
-and the index would flatter.
+The implementation makes the dependence explicit:
 
 ```python
 from ide.entropy import label_diversity_index
 
 feed = ["conspiracy"] * 10 + ["factual"] * 10
 
-label_diversity_index(feed)                    # 1.0  — two modalities observed
-label_diversity_index(feed, catalogue_size=4)  # 0.5  — four viewpoints available
+label_diversity_index(feed)                    # 1.0  — two observed modalities
+label_diversity_index(feed, catalogue_size=4)  # 0.5  — four available viewpoints
 ```
-
-**A regulator must therefore impose a reference $k$.** It is the first parameter a
-technical standard has to settle, and also the point where the index becomes a political
-object — see [limitations](#limitations).
-
-## What the index detects
-
-The link to the theory is direct: a collapsed index is the signature of a zero local
-social temperature, i.e. a frozen state in the Ising sense.
-[Notebook 01](notebooks/01_entropie_et_purete.md) shows that the index crosses the
-critical threshold **well before** the feed closes completely: a regulator can therefore
-observe a freeze *in progress*, not merely once established.
-
-[Notebook 08](notebooks/08_abm_compas_politique.md) measures its response to the
-parameter the algorithm actually controls — the bubble threshold:
-
-| Bubble threshold | Mean index | Population in a frozen bubble |
-|---|---|---|
-| narrow (0.10) | ≈ 0.27 | ≈ 60 % |
-| wide (0.80) | ≈ 0.93 | ≈ 0 % |
-
-## Proposed measurement protocol
-
-1. **Window** — a rolling 24 hours of served content.
-2. **Unit** — content *served*, not content consulted: the platform is being audited, not
-   the user.
-3. **Reference catalogue** — $k$ set by the regulator, identical across platforms in the
-   same service category.
-4. **Aggregation** — computed per user, then aggregated; the regulatory quantity is the
-   **share of the population below the critical threshold**, not the mean. A satisfactory
-   mean can conceal a wholly enclosed minority.
-5. **Threshold** — $H_{\text{critical}}$, to be calibrated empirically. The value of
-   $0.4$ used throughout this repository is an **illustrative value**, not a numerical
-   recommendation.
-
-## Two metrics not to be confused
-
-The agent model tracks both **polarisation** — mean distance from moderation — and the
-**index**. Their divergence is instructive:
-
-* a society can be strongly polarised with a high index: four blocs confronting each
-  other while seeing each other;
-* it can be weakly polarised with a collapsed index: everyone in agreement.
-
-A regulator should measure the second, because it describes actual cognitive autonomy —
-and it is the one the algorithm determines.
 
 ## Limitations
 
-Developed further in the [critical audit](limites.en.md).
+These caveats matter as much as the definition, and the [critical audit](limites.en.md) develops
+them.
 
-* **Discretisation into viewpoints is a political choice.** Whoever defines the modalities
-  defines the index.
-* **The index is gameable, and that was measured.** On the original form the attack is total:
-  1.000 for zero content diversity, without giving up a point of engagement. The retained form
-  closes that route and burial with it, but **any mandated metric remains a target**: a platform
-  can still serve formally divergent, substantively empty items — bin diversity without argument
-  diversity. No automatic measure separates the two. → [adversarial test](gaming.en.md)
-* **The floor level cannot be deduced from the measurement.** The repository establishes the
-  *form* of the standard and its *price*, not its value. Setting 0.60 rather than 0.40 is a
-  political decision no computation here settles.
-* **A floor on the index is a constraint on what people see.** Defensible, but an
-  intervention in public debate — not a neutral technical measure.
-* **Privacy.** Measuring individual feeds requires observing what is served to people. A
-  credible protocol must be aggregative and differentially private. It now is, and the price
-  is measured: the share of the population below the floor survives $\varepsilon = 0.1$, but
-  the severity it depends on is halved at $\varepsilon = 1$.
-  → [what privacy costs](vie-privee.en.md)
+* **The catalogue decides the level, and this is measured.** The same corpus scores $0.50$ over
+  twenty-six sections and $0.92$ over three. The **ordering** between readers holds down to six
+  modalities, then collapses. An index level without its catalogue means nothing.
+  → [the catalogue](catalogue.en.md)
+* **A section is not a viewpoint.** The two labelling axes of the only corpus measured — topical
+  and tonal — agree only at $\rho = 0.16$. Exposed diversity is a quantity **per declared axis**.
+* **The index remains gameable, and this has been measured.** The original form gives way
+  entirely: 1.000 for zero content diversity, without conceding a point of engagement. The
+  retained form closes that route and burial with it, but a platform can still serve formally
+  divergent, substantially empty items — bin diversity without argument diversity. No automatic
+  measure separates the two. → [adversarial test](gaming.en.md)
+* **The ceiling depends on volume served.** An entropy cannot exceed the logarithm of the number
+  of items served: a reader receiving five caps out at $0.49$ over a twenty-six-viewpoint
+  catalogue. The index therefore measures short readings poorly, and that is a property of the
+  quantity, not of its measurement.
+* **Measuring the index of individual feeds means observing what is served to people.** A measure
+  aggregated over a population assumes far less; the repository provides no privacy protocol, and
+  no longer proposes one.
 
 ---
 
-*Implementation: `ide.entropy.label_diversity_index` ·
-[Regulatory memorandum](memorandum.en.md)*
+*Implementation: `ide.entropy` · `ide.radio.rank_weights`*

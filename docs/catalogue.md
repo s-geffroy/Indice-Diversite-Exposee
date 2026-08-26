@@ -100,8 +100,7 @@ plateformes deviennent incomparables même relativement.
 
 **Et le régulateur doit dire sur quel axe il régule.** Thématique, tonalité, orientation
 politique : ces axes ne se déduisent pas l'un de l'autre, et ce choix pèse au moins autant que le
-seuil chiffré. → [demande au titre de l'article 40](article-40.md)
-
+seuil chiffré.
 ## Réserves
 
 Les catalogues grossiers sont obtenus ici par **regroupement** d'un catalogue existant, ce qui
@@ -118,5 +117,4 @@ concordance faible avec les rubriques pourrait tenir en partie à son bruit prop
 ---
 
 *Notebook : [28 — Le catalogue](notebooks/28_catalogue.md) ·
-[l'indice mesuré](indice-mesure.md) · [IDE](ide.md) ·
-[demande au titre de l'article 40](article-40.md)*
+[l'indice mesuré](indice-mesure.md) · [IDE](ide.md)*

@@ -151,7 +151,7 @@ With $\eta$ estimated from the data — $1.013 \pm 0.019$ — the cost sits betw
 
 ## What this changes for the programme
 
-[Memorandum recommendation 1](memorandum.en.md) already required a rank-aware measure. This work
+Memorandum recommendation 1 already required a rank-aware measure. This work
 gives its **price** — the engagement cost doubles — and a **control quantity**: the gap between
 the blind and the rank-aware measure of the same feed, which is zero for a platform that does
 not relegate.
@@ -196,5 +196,4 @@ so would require an optimisation whose exactness would no longer be guaranteed.
 
 *Implementation: `ide.ranking`, `ide.offpolicy` · Notebook:
 [15 — Adversarial rank and severity](notebooks/15_rang_adverse_et_severite.md) ·
-[adversarial test](gaming.en.md) · [rank and counterfactual](evaluation.en.md) ·
-[memorandum](memorandum.en.md)*
+[adversarial test](gaming.en.md) · [rank and counterfactual](evaluation.en.md)*

@@ -92,7 +92,7 @@ contrefactuelle nue. **Deux centièmes.**
 
 **L'ordre des priorités s'inverse.** Ce qu'un régulateur doit exiger d'abord n'est pas le format
 servi, mais la **mesure de l'exposition elle-même** — la colonne `affichages`. La colonne
-`format` de la [demande d'accès](article-40.md) reste utile, parce qu'elle permet de vérifier ce
+`format` de la demande d'accès reste utile, parce qu'elle permet de vérifier ce
 chapitre ailleurs, mais elle **cesse d'être nécessaire** au calcul de l'indice.
 
 **Et la remise d'attention redevient transportable.** C'était l'enjeu réel : si $w_R$ dépendait
@@ -119,5 +119,4 @@ remplace.
 ---
 
 *Notebook : [25 — L'effet de page](notebooks/25_effet_de_page.md) ·
-[format et retour](format-et-retour.md) · [exposition mesurée](exposition-mesuree.md) ·
-[demande au titre de l'article 40](article-40.md)*
+[format et retour](format-et-retour.md) · [exposition mesurée](exposition-mesuree.md)*

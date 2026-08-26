@@ -4,8 +4,8 @@
 
 [![Licence : MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Documentation : CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE-DOCS)
-[![Champ : sociophysique](https://img.shields.io/badge/champ-sociophysique-8a2be2.svg)](https://s-geffroy.github.io/Indice-Diversite-Exposee/)
-[![Tests : 599](https://img.shields.io/badge/tests-599-brightgreen.svg)](tests/)
+[![Champ : mesure de l'exposition](https://img.shields.io/badge/champ-mesure%20de%20l'exposition-8a2be2.svg)](https://s-geffroy.github.io/Indice-Diversite-Exposee/)
+[![Tests : 261](https://img.shields.io/badge/tests-261-brightgreen.svg)](tests/)
 
 📖 **[Documentation complète](https://s-geffroy.github.io/Indice-Diversite-Exposee/)**
 · [English](https://s-geffroy.github.io/Indice-Diversite-Exposee/en/)
@@ -14,276 +14,112 @@
 
 ## Résumé
 
-Ce dépôt construit un **instrument** — une mesure de la diversité qu'un fil d'actualité expose
-réellement à son lecteur, calculable sans accès au code de la plateforme — et la **méthode
-adverse** qui l'a mis à l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié
-comme tel, y compris quand ce qui tombe vient du dépôt lui-même.
+Un **instrument**, et rien d'autre : une mesure de la diversité qu'un fil d'actualité expose
+réellement à son lecteur, calculable sans accès au code de la plateforme — avec tout ce qu'il faut
+pour l'établir, l'attaquer, et le mesurer sur des journaux réels.
 
 ### Le verdict
 
 | Objet | État |
 |---|---|
-| l'analogie décohérence quantique ↔ effondrement du consensus, dont le projet est parti | **réfutée**, transfert par transfert → [audit](docs/limites.md) |
-| le formalisme classique qu'elle a fait emprunter | **cohérent**, un seul paramètre calibré, sa seule prédiction propre testée quatre fois **sans effet** |
-| l'écart de persistance entre registres émotionnels | **n'existe pas** — artefact de sélection |
-| l'indice tel qu'il était proposé | **intenable** : saturable à coût nul, puis contournable par l'enterrement |
-| la forme retenue de l'indice | **définie et chiffrée**, jamais mesurée sur un fil réel — mais sa pondération de rang est **transportable** : la page servie ne la déplace que de 6 % |
-| l'algorithme (ADE) | **sur la frontière exacte, et superflu** : une heuristique de 1998 fait aussi bien |
+| l'indice tel qu'il était d'abord proposé | **intenable** : saturable à coût nul, puis contournable par l'enterrement |
+| la forme retenue | **définie et attaquée** : entropie des contenus servis sur un catalogue déclaré, pondérée par l'attention de chaque rang |
+| l'exposition, dont dépend cette pondération | **mesurée** : 0,88 ± 0,05 et non 1 par convention, sans cascade, transportable à 6 % près |
+| l'indice **aveugle au rang**, sur des fils réels | **mesuré** : 0,50 par journée-utilisateur, 5,1 rubriques effectives sur 26 |
+| l'indice **exposé**, sur ces mêmes fils | **encadré, non mesuré** : la colonne d'ordre du seul jeu qui l'offre ne contient pas le rang |
+| le **catalogue** de points de vue | il décide du niveau — 0,50 sur 26 rubriques, 0,92 sur 3 — mais l'ordre entre lecteurs tient jusqu'à six |
 | les instruments de mesure | **valides après correction** : trois restreints, trois conclusions retirées |
-| l'exposition, grandeur centrale de tout l'édifice | **mesurable**, et mesurée : 0,88 ± 0,05 — non 1,09 comme estimé |
-| l'indice aveugle au rang, sur des fils réels | **mesuré pour la première fois** : 0,50 par journée-utilisateur, 5,1 rubriques effectives sur 26 |
-| l'indice exposé, sur ces mêmes fils | **encadré, non mesuré** : la colonne d'ordre du seul jeu qui l'offre ne contient pas le rang |
-| sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, trois fois plus petite que publiée** : 6 % d'examen, 0,0025 d'indice |
-| le **catalogue de points de vue**, « choix politique » jamais chiffré | **mesuré** : 0,50 sur 26 rubriques, 0,92 sur 3 — l'ordre entre lecteurs tient jusqu'à six |
-| le **plancher** proposé, au niveau retenu | **décoratif** : un contenu servi sur 177 suffit à y amener toute la population |
 
-**La théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle qui décide de tout
-le reste, et qu'on peut mesurer au lieu de la supposer : 0,88 et non 1, sans cascade, et à 6 %
-près indépendante de la page servie. C'est assez pour écrire une norme ; ce qui manque n'est plus
-une méthode mais un **rang vérifiable** — et le seul journal public qui prétend le fournir ne le
-fournit pas.**
+**L'indice tient comme mesure, pas comme norme.** Ce qu'il faut pour le calculer se mesure —
+l'attention, sa forme, sa portabilité. Ce qu'il faudrait pour l'imposer — un niveau, un catalogue,
+une grandeur agrégée — ne se déduit d'aucune mesure.
 
 ### Ce qui tient
 
-Sept objets, et ils sont la seule chose que ce travail demande qu'on lui reprenne : un test
-statistique s'applique à d'autres données et répond seul, sans qu'on ait à croire celui qui l'a
-écrit. Les préceptes de méthode que ce dépôt a un temps promus au rang de résultat n'ont pas cette
-propriété ; l'[audit](docs/limites.md) dit pourquoi c'était un excès.
-
 - **Trois contrôles à passer sur un journal, dans cet ordre** : l'**échangeabilité** — l'ordre
   dit-il quelque chose ? — qui ne détecte rien dans MIND ($z = +0{,}12$) et rejette à $z = -206$
-  sur Baidu-ULTR ; l'**identifiabilité**, nécessaire et non suffisante ; et la **forme** —
-  l'examen dépend-il de ce qui a été cliqué au-dessus ?
-  → **[MIND](docs/mind.md)** · **[Rang servi](docs/rang-servi.md)** ·
-  **[Test de forme](docs/test-de-forme.md)**
+  sur Baidu-ULTR ; l'**identifiabilité**, nécessaire et non suffisante ; et la **forme** — l'examen
+  dépend-il de ce qui a été cliqué au-dessus ?
 - **Une exposition mesurée, et non plus supposée** : $\eta = 0{,}88 \pm 0{,}05$ sur 143 documents,
-  par affichage plutôt que par clic. La **cascade est réfutée** sur Baidu-ULTR par deux voies
-  indépendantes, et la loi en $R^{-\eta}$ employée partout est le **pire** des trois ajustements
-  sur la courbe mesurée. → **[Exposition mesurée](docs/exposition-mesuree.md)**
-- **Et cette mesure est transportable d'une page à l'autre.** C'était la dernière objection, et
-  elle venait de ce dépôt. À contenu tenu fixe, la composition de la page ne déplace l'examen que
-  de **6 %** et l'indice que de **0,0025** — quatorze fois moins que la convention $1/R$ qu'elle
-  devait disqualifier. → **[L'effet de page](docs/effet-de-page.md)**
-- **Des estimateurs contrefactuels confrontés à une vérité terrain** : +2,5 % d'écart contre
-  +32 % pour l'estimation naïve — avec une taille d'échantillon **effective** de 1 513 sur 4
-  millions, qui interdit d'en tirer gloire. Aucun estimateur ne remplace l'exploration.
-- **Une frontière exacte contre laquelle juger un réordonnanceur.** Le filtre s'y tient — 0,0 à
-  1,0 % d'engagement laissé sur la table — mais **MMR, publié en 1998, aussi**. Et le prix de la
-  norme dépend du lecteur : **3,8 %** quand ses intérêts traversent les points de vue, **17,1 %**
-  quand sa préférence *est* un point de vue. → **[Lignes de base](docs/lignes-de-base.md)**
-- **Un premier chiffre réel, là où il n'y avait que des simulations** : sur 232 887 fils danois,
-  la diversité **servie** vaut 0,50 par journée-utilisateur — 5,1 rubriques effectives sur 26.
-  L'indice **exposé** n'est qu'encadré : la colonne d'ordre du seul jeu qui l'offre ne contient
-  pas le rang. → **[L'indice mesuré](docs/indice-mesure.md)**
-- **Une demande d'accès qui se protège au lieu de se promettre** : la part de la population
-  sous le plancher survit à $\varepsilon = 0{,}1$ sans bouger d'un millième, mais la sévérité
-  dont elle dépend est **divisée par deux** à $\varepsilon = 1$. Le vrai prix n'est pas le
-  bruit : c'est le plafonnement des contributions. → **[Vie privée](docs/vie-privee.md)**
-- **Une demande d'accès aux données qui se vérifie au lieu de se plaider** : quatre tableaux
-  agrégés, sans donnée personnelle, prouvés suffisants — 95 fois moins de lignes que le journal.
-  Deux colonnes s'y sont ajoutées depuis : `affichages`, sans laquelle l'exposition ne se mesure
-  pas, et `format`, qui sert désormais à **vérifier** plutôt qu'à calculer.
-  → **[Article 40](docs/article-40.md)**
+  par affichage plutôt que par clic. La **cascade est réfutée** par deux voies indépendantes, et la
+  loi en $R^{-\eta}$ est le **pire** des trois ajustements sur la courbe mesurée.
+- **Cette mesure est transportable d'une page à l'autre** : à contenu tenu fixe, la composition de
+  la page ne déplace l'examen que de **6 %** et l'indice que de **0,0025** — quatorze fois moins
+  que la convention $1/R$.
+- **Un encadrement exact quand l'ordre manque** : largeur médiane **0,104** sur 232 887 fils réels.
+- **Un premier chiffre réel** : la diversité **servie** vaut 0,50 par journée-utilisateur, et le
+  catalogue déplace ce niveau bien plus que le fil lui-même.
 
 ### Ce qui est tombé
 
-**Sur le monde** : le critère $\gamma\alpha > \lambda$ [ne veut rien dire](docs/calibration.md) ;
-l'écart de persistance entre registres [n'existe pas](docs/corpus-etendu.md) et
-[n'était pas dilué](docs/annotation.md) par l'étiquetage ; aucun jeu public ne permet
-[l'évaluation annoncée](docs/indice-mesure.md) — mais pas pour la raison publiée ; et l'examen n'est ni une cascade ni une loi de puissance
-[sur Baidu-ULTR](docs/exposition-mesuree.md).
+**Sur le monde** : aucun jeu public ne permet la mesure annoncée — mais pas pour la raison publiée,
+c'est la **colonne d'ordre qui ne contient pas l'ordre** ; l'examen n'est ni une cascade ni une loi
+de puissance ; la sévérité ne se transporte pas d'une surface à l'autre ; aucun estimateur
+contrefactuel ne remplace l'exploration.
 
-**Sur les propositions du dépôt lui-même** : un plancher d'indice
-[se sature à coût nul](docs/gaming.md) ; le premier correctif
-[prescrivait la polarisation](docs/gaming.md) ; « la proximité à la cible résiste le mieux » était
-[un artefact d'échelle](docs/contre-expertise.md) ; le filtre
-[n'apporte rien qu'une heuristique de 1998 n'apporte déjà](docs/lignes-de-base.md) ; et
-l'explication du « pli d'écran » [est fausse](docs/format-et-retour.md) ; et l'effet de format
-publié était pour les deux tiers [une composition](docs/effet-de-page.md).
-
-### Les deux instruments
-
-| | Objet | État |
-|---|---|---|
-| **IDE** | *Indice de Diversité Exposée* — entropie des contenus servis sur un catalogue déclaré, **pondérée par l'attention de chaque rang**, dans $[0,1]$, mesurable sans accès au code | forme **définie**, jamais mesurée sur un fil réel |
-| **ADE** | *Algorithme de Diversité Exposée* — filtre de recommandation qui optimise cet indice plutôt que l'engagement brut | **sur la frontière exacte, et superflu** |
+**Sur les propositions du dépôt lui-même** : un plancher d'indice se sature à coût nul ; le premier
+correctif prescrivait la polarisation ; « la proximité à la cible résiste le mieux » était un
+artefact d'échelle ; l'explication du « pli d'écran » est fausse ; et l'effet de format publié
+était pour les deux tiers une **composition**.
 
 ## À lire d'abord : ce que le travail ne prétend pas
 
 L'**[audit critique](docs/limites.md)** recense **vingt-sept corrections** apportées au
-raisonnement d'origine — dont **cinq formules invalides**, et une découverte en tentant de
-mesurer — et énumère les limites qui subsistent, y compris celles qui touchent à l'usage
-réglementaire de l'index : il est manipulable, sa discrétisation en points de vue est un choix
-politique, et un seuil imposé sur sa valeur est une intervention sur le débat public, non une
-simple mesure technique.
+raisonnement, dont cinq formules invalides et une moitié qui porte sur les propositions du dépôt
+lui-même. Neuf résultats négatifs y sont publiés comme tels.
 
-Rien ici ne démontre que les opinions humaines *obéissent* à une mécanique statistique. Le
-travail établit qu'un formalisme emprunté à la physique **reproduit** certains comportements
-observés et en tire des quantités mesurables. **Un seul de ses paramètres est calibré sur
-données réelles** — et cette calibration a montré qu'une de ses recommandations réglementaires
-ne voulait rien dire.
-
-L'ancrage empirique reste la faiblesse principale, mais son obstacle a changé de nature : ce
-n'est plus une méthode qui manque, c'est une **donnée**. Mesurer l'indice sur un fil réel exige
-un journal portant à la fois le rang servi et une étiquette de point de vue, et aucun jeu public
-n'en porte les deux. La [feuille de route](docs/feuille-de-route.md) dit ce qui reste faisable
-sans, et la [demande d'accès](docs/article-40.md) ce qu'il faudrait pour le reste.
+**Trois moitiés ont été retirées.** Le projet est parti d'une analogie entre décohérence quantique
+et effondrement du consensus, en a tiré un formalisme emprunté à la physique statistique, un
+algorithme de recommandation et un cadre de régulation. L'analogie a été réfutée transfert par
+transfert ; la seule prédiction testable du formalisme a été mesurée quatre fois sans effet ;
+l'appareil de régulation a été vidé de sa substance par ses propres mesures. L'audit en garde le
+registre entier — c'est le registre de ce que ce travail a eu faux, et c'est la partie qu'on ne
+supprime pas.
 
 ## Démarrer
 
-Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
+Tout passe par Docker, rien n'est installé localement.
 
 ```bash
-git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
-cd Indice-Diversite-Exposee
-
-docker compose run --rm test          # 659 tests, dont les exemples de docstrings
+docker compose run --rm test          # 261 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
-docker compose run --rm notebooks     # régénère les 11 figures de la note
-docker compose up lab                 # JupyterLab      → http://localhost:8888
-docker compose up site                # documentation   → http://localhost:8000
-docker compose run --rm latex         # compile paper/*.tex en PDF
+docker compose run --rm notebooks     # exécute les notebooks, régénère les figures
+docker compose up site                # http://localhost:8000
 ```
 
-Pour exclure les simulations Monte-Carlo longues :
-`docker compose run --rm test pytest -m "not slow"`.
+Les journaux bruts ne sont pas versionnés — licences propres, plusieurs gigaoctets — mais leurs
+**condensés** le sont, et tout se recalcule à l'identique depuis eux :
+
+```bash
+docker compose run --rm lab python scripts/fetch_mind.py
+docker compose run --rm lab python scripts/build_mind_digest.py
+```
 
 ## Structure
 
 ```
-src/ide/            noyau scientifique — modules purs, graines explicites
-├── entropy.py      entropies de Shannon et von Neumann, calcul de l'IDE
-├── ising.py        Metropolis 2D, cycle d'hystérésis, température critique
-├── voter.py        Voter Model, dérive de désinformation, lois d'échelle
-├── fokker_planck.py  énergie libre de champ moyen, solveur en volumes finis
-├── resonance.py    oscillateur à amortissement négatif saturé
-├── ade.py          score de recommandation entropique, recuit
-├── calibration.py  identification de γα et λ sur des pics d'attention
-├── regime.py       détection de changement de régime et identification associée
-├── pageviews.py    accès à l'API Wikimedia, cache versionné et compressé
-├── catalogue.py    corpus étendu dérivé de catégories Wikipédia
-├── corpus.py       corpus pré-enregistré de calibration
-├── annotation.py   grille d'annotation en aveugle, accords inter-codeurs
-├── gaming.py       test adverse de l'index et mesures de diversité concurrentes
-├── radio.py        divergences conscientes du rang (RADio) et métriques DART
-├── offpolicy.py    estimateurs contrefactuels et sévérité du biais de position
-├── ranking.py      test adverse sur fils ordonnés, énumération exhaustive
-├── logs.py         journaux d'impressions : test d'échangeabilité, condensés versionnables
-├── mind.py         lecture de MIND et son condensé
-├── exposure.py     Baidu-ULTR et Open Bandit Dataset : le rang servi, et sa confrontation
-├── aggregates.py   les quatre tableaux à demander au titre de l'article 40 du DSA
-├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
-└── abm/            modèle à agents « compas politique »
-
-tests/              659 tests — validation physique, numérique et statistique
-notebooks/          01 à 29, un par bloc théorique, exécutables
-data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
-data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
-data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné
-data/exposure_digest.npz  condensé de Baidu-ULTR et de l'Open Bandit Dataset (0,7 Mo)
-scripts/            collecte des données (seul point d'accès réseau du dépôt)
-paper/              note de synthèse LaTeX (FR + EN) et figures générées
-docs/               documentation du site, bilingue
-legacy/             prototype pygame du fil d'origine, conservé tel quel
+src/ide/            l'indice, les journaux, l'exposition — onze modules purs
+notebooks/          les douze chapitres exécutables ; les numéros ont des trous,
+                    ce sont ceux des chapitres retirés
+docs/               le site bilingue, audit compris
+data/               les condensés versionnés ; les journaux bruts sont ignorés
+paper/              les deux notes LaTeX et leurs figures
+scripts/            récupération des journaux, condensés, rendu du site
 ```
 
 ## Ce qui est vérifié, et comment
 
-L'analogie physique-social n'est pas falsifiable en tant que telle. L'implémentation qui
-la porte, elle, l'est — et c'est là que se joue la crédibilité du travail :
-
-| Vérification | Pourquoi elle compte |
-|---|---|
-| température critique d'Onsager $T_c/J \approx 2{,}269$ retrouvée | seule prédiction théorique **exacte** du dépôt, indépendante de nos hypothèses sociologiques |
-| masse de probabilité conservée à $10^{-15}$ | distingue un effondrement réel de la modération d'une fuite numérique |
-| exposants du temps de consensus : $\approx 1$ en champ moyen, $\approx 2$ sur un anneau | contredit l'argument d'origine sur les réseaux « petit monde » |
-| aire du cycle d'hystérésis strictement positive sous $T_c$, nulle au-dessus | validation numérique de la persistance des croyances |
-| à $\mu = 0$, l'ADE est identique à un filtre d'engagement | garantit que la proposition est un ajout paramétré, pas une refonte |
-| taux d'une exponentielle de synthèse retrouvés à $10^{-9}$ | condition minimale pour que la calibration empirique signifie quelque chose |
-| un changement de régime synthétique n'est **pas** détecté par la méthode par pic | fige dans un test la limite qui a motivé la seconde méthode |
-| deux jeux de paramètres de rapports 5,0 et 1,7 donnent la **même** trajectoire | démontre une non-identifiabilité structurelle, et non un défaut numérique |
-| les deux registres du corpus étendu ont des effectifs **exactement** égaux | l'équilibre vient d'une troncature, il doit donc être exact |
-| un temps d'oubli plus long que la fenêtre d'ajustement est **refusé** | sans quoi un ajustement excellent produit un rapport de 5431 |
-| reproductibilité à la graine du modèle à agents | condition minimale pour qu'un chiffre du dépôt soit citable |
-| le condensé de MIND rend **exactement** les chiffres du journal brut | sans quoi le dépôt publierait des mesures que personne ne pourrait refaire |
-| un ordre mélangé passe le contrôle d'identifiabilité et donne cinq sévérités | fige l'erreur que ce contrôle laissait passer |
-| le test d'échangeabilité **rejette** sur Baidu-ULTR, et du côté négatif | un test qui ne rejette jamais rien ne dirait rien de MIND |
-| l'IPS retrouve à 2,5 % la valeur d'une politique jamais déployée | seule confrontation du dépôt à une vérité terrain mesurée |
-| les mesures se recalculent **à l'identique** depuis les tableaux agrégés | c'est ce qui rend une demande d'accès proportionnée plutôt que plaidée |
-| aucune méthode ne dépasse la frontière exacte, et le tirage au sort en reste loin | fige la borne contre laquelle le filtre est jugé |
-| le test d'échangeabilité **rejette aussi sous un modèle à cascade** | sans quoi son verdict négatif sur MIND ne distinguerait rien |
-| le tirage au sort est **invariant** au bruit de pertinence, les autres non | fige la raison mécanique pour laquelle le hasard rattrape |
-| un **budget de clics** produit la même signature qu'une cascade | fige la limite d'identification que le test de forme ne franchit pas |
-| restreindre aux fils à plusieurs clics **fabrique** un faux rejet | fige le collider, à l'endroit où quelqu'un le refera |
-| sur l'examen, cascade et budget de clics **se séparent** | fige la levée de la limite d'identification |
-| l'exposition mesurée sur Baidu est **moins sévère** que celle estimée | fige les 23 % de surestimation par les clics |
-| le rang prédit l'examen **mieux** que la hauteur cumulée au-dessus | fige la réfutation de l'hypothèse du pli d'écran |
-
-## Contenu du dépôt
-
-- [`docs/limites.md`](docs/limites.md) — **audit critique** : les vingt-sept corrections et les
-  limites qui subsistent.
-- [`docs/calibration.md`](docs/calibration.md) — **la mesure de $\gamma\alpha/\lambda$** sur
-  données publiques, ses trois enseignements et ses réserves.
-- [`docs/regimes.md`](docs/regimes.md) — **les désinformations qui s'installent** : 14
-  basculements datés, et pourquoi le rapport n'y est pas identifiable.
-- [`docs/corpus-etendu.md`](docs/corpus-etendu.md) — **la réplication sur 440 sujets** :
-  comment un corpus dérivé de catégories a infirmé le résultat du corpus pilote.
-- [`docs/annotation.md`](docs/annotation.md) — **l'annotation en aveugle** : la grille
-  pré-enregistrée, les 40 % de bruit d'étiquetage mesurés, la disparition du dernier écart, et
-  le double recodage ($\kappa$ de Fleiss = 0,921).
-- [`docs/gaming.md`](docs/gaming.md) — **le test adverse de l'index** : un plancher d'IDE se
-  sature à coût nul, et le premier correctif proposé prescrivait la polarisation.
-- [`docs/evaluation.md`](docs/evaluation.md) — **rang et contrefactuel** : l'enterrement de la
-  diversité, et pourquoi une évaluation hors ligne naïve se trompe de 201 %.
-- [`docs/rang-adverse.md`](docs/rang-adverse.md) — **rang adverse et sévérité** : les quatre
-  mesures contournées par l'ordre, et l'estimation du biais de position.
-- [`docs/mind.md`](docs/mind.md) — **l'exploration réelle de MIND** : un ordre indiscernable
-  d'un mélange, et cinq sévérités incompatibles tirées du même jeu.
-- [`docs/rang-servi.md`](docs/rang-servi.md) — **deux journaux qui enregistrent le rang** :
-  la sévérité mesurée, et l'estimateur contrefactuel jugé contre une vérité terrain.
-- [`docs/article-40.md`](docs/article-40.md) — **la demande d'accès aux données**, rédigée comme
-  une spécification : quatre tableaux agrégés, et la preuve qu'ils suffisent.
-- [`docs/lignes-de-base.md`](docs/lignes-de-base.md) — **le filtre jugé contre la frontière
-  exacte** et quatre concurrents, dont une heuristique de 1998 qui fait aussi bien.
-- [`docs/contre-expertise.md`](docs/contre-expertise.md) — **ce que la littérature reproche à ce
-  travail** : une conclusion retirée, une restreinte, une incertitude élargie.
-- [`docs/angles-morts.md`](docs/angles-morts.md) — **les deux hypothèses les plus profondes**
-  éprouvées : modèle de clic à cascade, et pertinence estimée plutôt que connue.
-- [`docs/test-de-forme.md`](docs/test-de-forme.md) — **le troisième contrôle** : il fonctionne, ne
-  tranche pas, et a failli publier un collider.
-- [`docs/exposition-mesuree.md`](docs/exposition-mesuree.md) — **l'exposition mesurée** au lieu
-  d'estimée : une colonne jamais lue, et la cascade réfutée.
-- [`docs/format-et-retour.md`](docs/format-et-retour.md) — **le format compte** : 8,4 points
-  d'examen en moins sous un contenu enrichi, et une explication de moi retirée.
-- [`docs/bibliographie.md`](docs/bibliographie.md) — **toutes les références**, avec ce que
-  chacune sert ici ; page dérivée de `paper/refs.bib` et verrouillée par un test.
-- [`docs/feuille-de-route.md`](docs/feuille-de-route.md) — comment combler ces limites,
-  classé par rapport valeur/effort.
-- [`docs/memorandum.md`](docs/memorandum.md) — recommandations techniques et éthiques pour
-  les régulateurs, dans l'esprit du *Digital Services Act*.
-- [`docs/errata.md`](docs/errata.md) — table de correspondance avec le fil de travail
-  d'origine.
-- [`paper/note_de_synthese.tex`](paper/) — note académique, versions française et anglaise.
+- **261 tests** verrouillent chaque chiffre publié, y compris ceux qui ont dû être corrigés.
+- **Le site est vérifié page par page** après construction : une construction qui réussit ne prouve
+  rien tant qu'on n'a pas regardé ce qu'elle produit — le dépôt a publié ses notebooks en JSON brut
+  pendant des mois sans qu'une seule alerte le signale.
+- **Les notebooks sont rejoués** en intégration continue, depuis les seuls condensés versionnés.
 
 ## Relecture
 
-Ce travail est **ouvert à la relecture critique**, et il en a besoin : il croise deux
-disciplines dont son auteur n'est spécialiste ni de l'une ni de l'autre.
-
-Les retours les plus utiles portent sur la **calibration empirique** des paramètres, sur
-la **viabilité de l'IDE** comme instrument réglementaire, et sur les analogies restantes
-qui ne tiendraient pas. → [Appel à relecture](docs/relecture.md) ·
-[CONTRIBUTING](CONTRIBUTING.md)
-
-## Fondements théoriques
-
-Zeh (1970) et Zurek (2003) pour la décohérence · von Neumann (1932) et Shannon (1948)
-pour les entropies · Ising (1925), transposé par Galam à partir des années 1980, pour la
-dynamique d'opinion · Clifford & Sudbury (1973) et Holley & Liggett (1975) pour le Voter
-Model · Risken (1989) pour Fokker-Planck · Watts & Strogatz (1998) pour les réseaux
-« petit monde » · Pariser (2011) pour les bulles de filtres · Reynolds (1987) pour les
-*Boids*, dont le modèle à agents transpose les trois règles.
+Ce travail est **ouvert à la relecture critique** et n'a été relu par personne. Les retours sur la
+forme retenue de l'indice, sur les instruments de mesure, et sur la discrétisation en points de vue
+sont les plus utiles. → **[Appel à relecture](docs/relecture.md)**
 
 ## Licences
 

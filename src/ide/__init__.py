@@ -1,104 +1,101 @@
-"""Indice de Diversité Exposée — noyau scientifique.
+"""Indice de Diversité Exposée — mesurer la diversité qu'un fil expose réellement.
 
-Deux objets distincts structurent ce paquet, et la distinction est délibérée
-(voir ``docs/limites.md``, point 1) :
+Ce paquet ne contient qu'une chose : l'**IDE**, l'entropie des contenus servis sur un catalogue
+de points de vue déclaré, **pondérée par l'attention que reçoit chaque rang** — et tout ce qu'il
+faut pour l'établir, l'attaquer et le mesurer sur des journaux réels.
 
-* **IDE** — *Indice de Diversité Exposée* : une métrique auditable de la
-  diversité informationnelle d'un fil d'actualité, destinée au régulateur.
-  Implémentée dans :mod:`ide.entropy`.
-* **ADE** — *Algorithme de Diversité Exposée* : un filtre de recommandation
-  qui optimise cet index au lieu de l'engagement brut. Implémenté dans
-  :mod:`ide.ade`.
+Trois familles de modules, et rien d'autre :
 
-Les autres modules fournissent les modèles de physique statistique qui fondent
-l'index : :mod:`ide.ising`, :mod:`ide.voter`, :mod:`ide.fokker_planck`,
-:mod:`ide.resonance`, et le modèle à agents :mod:`ide.abm`.
+* **l'indice** — :mod:`ide.entropy` en porte la définition, ses bornes lorsque l'ordre servi est
+  inconnu, et le regroupement de catalogue ; :mod:`ide.radio` la remise d'attention ;
+  :mod:`ide.gaming` et :mod:`ide.ranking` les attaques auxquelles il a dû survivre ;
+* **les journaux** — :mod:`ide.logs` fournit la représentation commune, les trois contrôles de
+  recevabilité (échangeabilité, identifiabilité, forme) et le condensé versionnable ;
+  :mod:`ide.mind`, :mod:`ide.exposure` et :mod:`ide.ebnerd` lisent les quatre journaux publics
+  examinés ;
+* **l'exposition** — :mod:`ide.offpolicy` estime la sévérité de l'attention et confronte les
+  estimateurs contrefactuels à une vérité terrain.
 
-Tous les modules réexportés ici sont purs (aucune entrée-sortie) et prennent une
-graine explicite lorsqu'ils sont stochastiques, afin de rester testables.
+Les modules réexportés ici sont purs — aucune entrée-sortie — et prennent une graine explicite
+lorsqu'ils sont stochastiques. Les modules qui touchent au disque ou au réseau
+(:mod:`ide.mind`, :mod:`ide.exposure`, :mod:`ide.ebnerd`) et :mod:`ide.plotting`, qui dépend de
+``matplotlib``, ne le sont pas : les importer ici mêlerait les entrées-sorties au noyau.
 
-Trois modules ne sont **pas** réexportés, et c'est délibéré :
-
-* :mod:`ide.pageviews` et :mod:`ide.corpus` accèdent au disque et, sur demande
-  explicite, au réseau — les importer ici mêlerait les entrées-sorties au noyau ;
-* :mod:`ide.plotting` dépend de ``matplotlib``, dépendance facultative que le
-  noyau doit pouvoir ignorer.
+.. note::
+    Le dépôt a longtemps porté deux autres moitiés : une **théorie** empruntée à la physique
+    statistique, dont l'audit a réfuté toutes les affirmations propres, et un appareil de
+    **régulation** — algorithme, plancher, demande d'accès — que ses propres mesures ont vidé de
+    sa substance. Les deux ont été retirées. Ce qui reste est ce qui a survécu à ses contrôles.
+    L'[audit](../../docs/limites.md) en garde le registre entier.
 """
 
-from ide.ade import EntropicScorer, annealing_coefficient, entropic_score
-from ide.calibration import (
-    AttentionEpisode,
-    DetectionReport,
-    EpisodeCriteria,
-    ExponentialFit,
-    detect_episodes,
-    fit_exponential_rate,
-    scan_series,
-)
-from ide.catalogue import CategorySource, load_catalogue
 from ide.entropy import (
+    attainable_index,
+    coarsen_catalogue,
+    effective_viewpoints,
+    exposed_index_bounds,
     label_diversity_index,
     shannon_entropy,
     shannon_entropy_from_counts,
+    substitutions_to_floor,
     von_neumann_entropy,
 )
-from ide.fokker_planck import (
-    FokkerPlanckSolver,
-    diffusion_term,
-    drift_term,
-    stationary_distribution,
+from ide.logs import (
+    Coverage,
+    Digest,
+    ExchangeabilityTest,
+    Impressions,
+    StratifiedRatio,
+    UpstreamDependenceTest,
+    count_above,
+    detectable_severity,
+    exchangeability_test,
+    rank_coverage,
+    stratified_risk_ratio,
+    upstream_dependence_test,
 )
-from ide.ising import IsingModel, hysteresis_loop, onsager_critical_temperature
-from ide.regime import (
-    RegimeCriteria,
-    RegimeReport,
-    RegimeShift,
-    SaturatedFit,
-    detect_change_points,
-    fit_saturated_growth,
-    scan_regime_shifts,
-    weekly_adjust,
+from ide.offpolicy import (
+    PositionBiasEstimate,
+    clipped_ips,
+    doubly_robust,
+    effective_sample_size,
+    estimate_position_bias,
+    ips,
+    snips,
 )
-from ide.resonance import ResonanceParameters, simulate_resonance
-from ide.voter import VoterModel, consensus_time_scaling
+from ide.radio import rank_weights
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
-    "AttentionEpisode",
-    "DetectionReport",
-    "EntropicScorer",
-    "EpisodeCriteria",
-    "ExponentialFit",
-    "FokkerPlanckSolver",
-    "IsingModel",
-    "CategorySource",
-    "RegimeCriteria",
-    "RegimeReport",
-    "RegimeShift",
-    "ResonanceParameters",
-    "SaturatedFit",
-    "VoterModel",
-    "annealing_coefficient",
-    "consensus_time_scaling",
-    "detect_change_points",
-    "detect_episodes",
-    "diffusion_term",
-    "drift_term",
+    "Coverage",
+    "Digest",
+    "ExchangeabilityTest",
+    "Impressions",
+    "PositionBiasEstimate",
+    "StratifiedRatio",
+    "UpstreamDependenceTest",
+    "attainable_index",
+    "clipped_ips",
+    "coarsen_catalogue",
+    "count_above",
+    "detectable_severity",
+    "doubly_robust",
+    "effective_sample_size",
+    "effective_viewpoints",
+    "estimate_position_bias",
+    "exchangeability_test",
+    "exposed_index_bounds",
+    "ips",
     "label_diversity_index",
-    "entropic_score",
-    "fit_exponential_rate",
-    "fit_saturated_growth",
-    "hysteresis_loop",
-    "load_catalogue",
-    "onsager_critical_temperature",
-    "scan_regime_shifts",
-    "scan_series",
+    "rank_coverage",
+    "rank_weights",
     "shannon_entropy",
     "shannon_entropy_from_counts",
-    "simulate_resonance",
-    "stationary_distribution",
+    "snips",
+    "stratified_risk_ratio",
+    "substitutions_to_floor",
+    "upstream_dependence_test",
     "von_neumann_entropy",
-    "weekly_adjust",
     "__version__",
 ]

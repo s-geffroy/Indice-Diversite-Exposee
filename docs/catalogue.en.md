@@ -98,8 +98,7 @@ incomparable even relatively.
 
 **And the regulator must say which axis it regulates.** Topic, tone, political leaning: these
 axes do not follow from one another, and that choice weighs at least as much as the numeric
-threshold. → [Article 40 request](article-40.en.md)
-
+threshold.
 ## Reservations
 
 The coarse catalogues here are obtained by **grouping** an existing catalogue, which is not the
@@ -116,5 +115,4 @@ with sections may owe something to its own noise.
 ---
 
 *Notebook: [28 — The catalogue](notebooks/28_catalogue.md) ·
-[the index measured](indice-mesure.en.md) · [Index](ide.en.md) ·
-[Article 40 request](article-40.en.md)*
+[the index measured](indice-mesure.en.md) · [Index](ide.en.md)*

@@ -104,7 +104,7 @@ décidable — **par condamnation**.
 
 ## 4. Ce que cela change pour la demande d'accès
 
-La [demande au titre de l'article 40](article-40.md) réclamait « le rang servi ». Ce chapitre
+La demande au titre de l'article 40 réclamait « le rang servi ». Ce chapitre
 montre que ce n'est pas assez : une plateforme peut fournir une colonne d'ordre qui n'est pas le
 rang, sans mentir et sans qu'on le voie. Il faut donc réclamer le rang **vérifiable**, et le test
 d'échangeabilité est ce qui le vérifie — sur les données livrées, avant toute autre mesure.
@@ -136,5 +136,4 @@ triés et anonymes — dont quatre tests vérifient qu'il rend les mêmes chiffr
 ---
 
 *Notebook : [26 — L'indice mesuré](notebooks/26_indice_mesure.md) ·
-[MIND](mind.md) · [rang servi](rang-servi.md) · [l'effet de page](effet-de-page.md) ·
-[demande au titre de l'article 40](article-40.md)*
+[MIND](mind.md) · [rang servi](rang-servi.md) · [l'effet de page](effet-de-page.md)*

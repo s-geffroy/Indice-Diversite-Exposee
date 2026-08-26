@@ -133,7 +133,7 @@ five, then flattens.
 
 ## 5. What this changes for the data access request
 
-The four tables of [Article 40](article-40.en.md) all bear on clicks. **One more column** — the
+The four tables of Article 40 all bear on clicks. **One more column** — the
 number of impressions actually **displayed**, per (item, rank) cell — would stop exposure being
 estimated at all.
 
@@ -170,5 +170,4 @@ examination from what follows, at equal rank and comparable height — a figure
 
 *Implementation: `ide.exposure.examination_counts`, `ide.logs.upstream_dependence_test` ·
 Notebook: [23 — Measured exposure](notebooks/23_exposition_mesuree.md) ·
-[the form test](test-de-forme.en.md) · [logs that record the rank](rang-servi.en.md) ·
-[Article 40 request](article-40.en.md)*
+[the form test](test-de-forme.en.md) · [logs that record the rank](rang-servi.en.md)*

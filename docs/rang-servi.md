@@ -20,7 +20,7 @@
     Il y faudrait le rang servi **et** une étiquette de point de vue interprétable. MIND a les
     catégories sans le rang ; Baidu-ULTR a le rang sans étiquette ; l'Open Bandit Dataset a le
     rang, la propension et trois attributs catégoriels — **anonymisés**. Le jeu de données qui
-    permettrait d'évaluer l'[ADE](ade.md) de bout en bout n'existe pas publiquement.
+    permettrait d'évaluer l'ADE de bout en bout n'existe pas publiquement.
 
 ---
 
@@ -82,8 +82,6 @@ Le taux de clic suit la décroissance attendue : 0,340 au premier rang, 0,088 au
     résultats comme celle-ci — la décroissance est **géométrique**, et la loi ajustée surestime
     l'exposition réelle d'un facteur 40 à 4 110 au douzième rang. Le test d'échangeabilité dit
     que l'ordre porte de l'information ; il ne dit pas **sous quelle forme**.
-    → [Les deux angles morts](angles-morts.md)
-
     **Chiffre révisé depuis.** La même quantité, **mesurée** sur l'affichage plutôt qu'estimée à
     travers les clics, vaut $0{,}882 \pm 0{,}046$ sur 143 documents. L'estimation par les clics
     surestime la décroissance de **23 %**, parce qu'un clic mélange l'examen et l'attrait.
@@ -179,8 +177,7 @@ publiquement.** Ce qui reste possible tient en trois lignes, et la
 1. mesurer sur MIND ce qui ne dépend pas de l'exposition, en le disant ;
 2. mesurer sur Baidu-ULTR et l'Open Bandit Dataset ce qui ne dépend pas des points de vue ;
 3. pour le reste, **demander la donnée** — ce qui, sous l'article 40 du DSA, est une démarche
-   prévue et non un vœu. → **[la demande, rédigée](article-40.md)** ·
-   [mémorandum](memorandum.md)
+   prévue et non un vœu. → **la demande, rédigée**
 
 ## Provenance des données
 

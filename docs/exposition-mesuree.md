@@ -133,7 +133,7 @@ brutalement du troisième au cinquième, puis s'aplatit.
 
 ## 5. Ce que cela change à la demande d'accès aux données
 
-Les quatre tableaux de [l'article 40](article-40.md) portent tous sur les clics. Il suffirait
+Les quatre tableaux de l'article 40 portent tous sur les clics. Il suffirait
 d'**une colonne de plus** — le nombre d'impressions effectivement **affichées**, par cellule
 (contenu, rang) — pour que l'exposition cesse d'être estimée.
 
@@ -172,5 +172,4 @@ consigné plutôt que par un test ; la seconde établit qu'un format enrichi au-
 
 *Implémentation : `ide.exposure.examination_counts`, `ide.logs.upstream_dependence_test` ·
 Notebook : [23 — L'exposition mesurée](notebooks/23_exposition_mesuree.md) ·
-[le test de forme](test-de-forme.md) · [journaux qui enregistrent le rang](rang-servi.md) ·
-[demande au titre de l'article 40](article-40.md)*
+[le test de forme](test-de-forme.md) · [journaux qui enregistrent le rang](rang-servi.md)*

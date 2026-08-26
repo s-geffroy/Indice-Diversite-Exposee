@@ -25,11 +25,11 @@
 
 \begin{abstract}
 \noindent
-Un régulateur qui veut contraindre un algorithme de recommandation a besoin d'une grandeur
-qu'il puisse constater sans accéder au code de la plateforme. Cette note propose une telle
-grandeur --- l'\textbf{Indice de Diversité Exposée} (IDE), l'entropie des contenus servis
-projetés sur un catalogue de points de vue déclaré, pondérée par l'attention qu'appelle
-chaque rang --- puis la soumet aux attaques qu'elle doit supporter pour valoir comme norme.
+Savoir ce qu'un algorithme de recommandation expose réellement suppose une grandeur qu'on
+puisse constater sans accéder au code de la plateforme. Cette note en propose une ---
+l'\textbf{Indice de Diversité Exposée} (IDE), l'entropie des contenus servis projetés sur un
+catalogue de points de vue déclaré, pondérée par l'attention qu'appelle chaque rang --- puis la
+soumet aux attaques qu'elle doit supporter pour valoir comme mesure.
 
 Trois de ces attaques réussissent contre les formulations naïves, et chacune impose une
 correction. Un plancher portant sur les \emph{étiquettes} d'un fil est saturé à coût nul :
@@ -70,12 +70,13 @@ plus faible). L'indice aveugle au rang y est donc mesuré pour la première fois
 --- $0{,}50$ par journée-utilisateur, soit $5{,}1$ rubriques également servies sur $26$ --- et
 l'indice exposé seulement \emph{encadré}, à $0{,}104$ près : à un plancher de $0{,}40$, un tiers
 des fils y contreviennent quelle que soit leur mise en ordre, et six sur dix restent indécidables.
-Ce qu'un régulateur doit réclamer n'est donc pas le rang, mais le rang \textbf{vérifiable}. Nous spécifions donc, au titre de l'article~40 du \emph{Digital Services
-Act}, des tableaux agrégés sans donnée personnelle, dont il est vérifié qu'ils recalculent les
-mesures à l'identique pour cent fois moins de lignes qu'un journal brut.
+Ce qu'il faut réclamer d'un journal n'est donc pas le rang, mais le rang \textbf{vérifiable} ---
+et le test d'échangeabilité est ce qui le vérifie. Le catalogue, enfin, décide du niveau bien plus
+que le fil lui-même : le même corpus vaut $0{,}50$ sur vingt-six rubriques et $0{,}92$ sur trois,
+tandis que l'ordre entre lecteurs tient jusqu'à six modalités puis s'effondre.
 
-La partie~\ref{part:modele} expose le modèle thermodynamique d'où l'indice est issu, et
-\S\ref{sec:analogie} rend compte de ce qu'il en reste : l'analogie avec la décohérence
+L'indice est issu d'un modèle thermodynamique dont l'audit a réfuté chaque affirmation
+propre, et qui ne figure plus ici : l'analogie avec la décohérence
 quantique qui a lancé ce travail ne survit à aucun de ses transferts. L'ensemble du code,
 des tests et des figures est reproductible en conteneur.
 \end{abstract}
@@ -118,7 +119,7 @@ est la définition retenue.
 \label{sec:indice}
 
 Soit un fil de $n$ positions, un catalogue de référence de $k$ points de vue déclaré par le
-régulateur, et une remise d'attention $w_R$ associée au rang $R$. La distribution
+déclarant, et une remise d'attention $w_R$ associée au rang $R$. La distribution
 \emph{exposée} est
 \begin{equation}
 q_i = \frac{\sum_{R=1}^{n} w_R \, \mathbb{1}\!\left[\text{le contenu servi au rang } R
@@ -153,7 +154,7 @@ flatte \\
 
 \paragraph{Remise d'attention.} Les résultats de cette note emploient $w_R = 1/R$, la remise
 du rang réciproque, usuelle en évaluation de classement. Le choix de $w$ appartient au
-régulateur au même titre que le catalogue ; ce qui compte ici est qu'il soit \emph{déclaré},
+déclarant au même titre que le catalogue ; ce qui compte ici est qu'il soit \emph{déclaré},
 car c'est lui qui rend la norme non contournable par l'ordre.
 
 \paragraph{Grandeur de contrôle associée.} L'écart entre la valeur de \eqref{eq:ide} calculée
@@ -433,524 +434,6 @@ référence étant une déclaration politique.
 L'indice de la \S\ref{sec:indice} n'a donc jamais été mesuré sur un fil réel. Ce n'est pas
 une lacune de méthode : c'est une lacune de donnée.
 
-\section{Ce qu'il faut demander}
-\label{sec:demande}
-
-L'article~40 du \emph{Digital Services Act} \citep{dsa2022}, rendu opérationnel par le
-règlement délégué (UE) 2025/2050 \citep{delegue2025}, ouvre aux chercheurs agréés un accès
-aux données des très grandes plateformes. Une demande n'y est recevable que si elle est
-\emph{nécessaire et proportionnée}. « Donnez-nous vos journaux » ne l'est pas : cela réclame
-des données personnelles dont l'analyse n'a aucun besoin, et cela offre le motif de refus le
-plus facile --- sécurité du service et secret des affaires.
-
-Nous spécifions donc la demande sous forme de \textbf{quatre tableaux agrégés} :
-
-\begin{enumerate}
-\item \textbf{profils de fils} --- pour chaque forme de fil servie (la liste des rangs
-      qu'elle occupe) et chaque nombre de clics, le nombre de fils ;
-\item \textbf{clics par rang} --- pour chaque profil, chaque nombre de clics du fil et chaque
-      rang, le nombre de clics ;
-\item \textbf{cellules (contenu, rang)} --- impressions et clics, et la propension de service
-      si la plateforme la connaît ;
-\item \textbf{exposition par (rang, point de vue)} --- impressions et clics, sur le catalogue
-      déclaré par le régulateur.
-\end{enumerate}
-
-Aucune ligne ne désigne un lecteur : un fil n'y figure que par sa forme et par le nombre de
-clics reçus.
-
-\paragraph{Suffisance vérifiée, non affirmée.} Le test \eqref{eq:echangeabilite} se recalcule
-depuis les seuls tableaux 1 et 2 à $3 \times 10^{-12}$ près sur MIND comme sur Baidu-ULTR ;
-la sévérité \eqref{eq:effetsfixes} se recalcule \emph{exactement} depuis le tableau 3 ; les
-deux mesures de diversité depuis le tableau 4, qui suffit donc à constater l'enterrement --- à
-composition identique, un fil conforme au plancher aveugle n'expose que $0{,}160$ d'attention
-aux points de vue minoritaires, contre $0{,}375$ en composition.
-
-\paragraph{Proportionnalité chiffrée.} Ce qui est demandé pèse $5\,543$ lignes pour les
-$524\,164$ documents servis de la tranche Baidu-ULTR (rapport $95$) et $57\,906$ lignes pour
-les $5\,843\,444$ contenus servis de MIND (rapport $101$).
-
-\paragraph{Le seuil de confidentialité n'est pas neutre.} Supprimer les cellules de faible
-effectif protège les lecteurs et déplace les estimations : passer de $5$ à $20$ impressions
-par cellule fait passer la sévérité estimée de $1{,}10$ à $1{,}40$, soit $+27\,\%$, parce que
-les cellules rares sont celles des rangs profonds. Le seuil doit être fixé dans la demande et
-publié avec le résultat.
-
-\paragraph{Deux clés d'agrégation plus simples ont été écartées} parce qu'elles étaient
-fausses sans être visibles : indexer les fils par leur longueur plutôt que par leur profil de
-rangs --- faux dès qu'une surface saute des rangs --- et omettre le nombre de clics du fil,
-qui empêche d'écarter les fils entièrement cliqués et décale l'écart réduit de $-205{,}7$ à
-$-203{,}9$. Les deux produisaient des chiffres du bon ordre de grandeur.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig18_demande_article_40.png}
-\caption{Ce que la demande pèse face au journal ; l'écart entre mesure directe et mesure
-agrégée ; l'effet du seuil de confidentialité sur la sévérité estimée ; l'enterrement
-constaté sur le seul tableau d'exposition.}
-\label{fig:demande}
-\end{figure}
-
-\section{Un filtre qui optimise l'indice}
-\label{sec:filtre}
-
-Un algorithme de recommandation classique ordonne les contenus par pertinence estimée. Le
-filtre proposé ici ajoute un terme :
-\begin{equation}
-S(i, c) = \text{Pertinence}(i, c) + \mu \, \Delta H(i, c), \qquad \mu \geq 0,
-\label{eq:score}
-\end{equation}
-où $\Delta H$ est la variation d'indice qu'apporterait le contenu $i$ au fil $c$. À
-$\mu = 0$, le classement est \emph{identique} à celui d'un filtre d'engagement : la
-transformation est un ajout paramétré, non une refonte. Le paramètre $\mu$ suit un recuit ---
-il monte lorsque l'indice passe sous le seuil, redescend une fois l'indice rétabli --- de
-sorte que l'intervention soit intermittente.
-
-\paragraph{État.} Ce filtre est validé sur son propre modèle, avec une pertinence synthétique
-et quatre points de vue. Son coût réel en pertinence perçue n'est pas mesuré, et ne peut pas
-l'être sur données publiques en l'état (\S\ref{sec:journaux}). Ce qui borne la discussion est
-le chiffre de la \S\ref{sec:adverse} : un plancher conscient du rang coûte $10{,}6$ à
-$20{,}9\,\%$ d'engagement selon la mesure retenue, sur des fils de huit positions énumérés
-exhaustivement.
-
-\subsection{Ce qu'il vaut, comparé à des lignes de base}
-\label{sec:lignesdebase}
-
-Un filtre ne se juge pas contre le classement par pertinence, dont il diffère par construction,
-mais contre ce qu'un praticien ferait sans théorie. Nous le comparons donc à quatre lignes de
-base --- servir les points de vue à tour de rôle, la diversification \emph{maximal marginal
-relevance} \citep{carbonell1998}, un tirage de Boltzmann sur la pertinence, et le tirage au sort
---- et surtout à la \textbf{frontière exacte} du plan (diversité exposée, engagement), obtenue
-en énumérant les $151\,200$ arrangements ordonnés de six contenus tirés d'un vivier de dix.
-
-Sur $150$ viviers, à plancher fixé, le manque à gagner médian est le suivant.
-
-\begin{center}
-\begin{tabular}{@{}lrrrrr@{}}
-\toprule
-\textbf{Méthode} & $0{,}50$ & $0{,}60$ & $0{,}70$ & $0{,}80$ & $0{,}90$ \\
-\midrule
-Tour de rôle & $0{,}0\,\%$ & $0{,}0\,\%$ & $0{,}0\,\%$ & $3{,}8\,\%$ & $4{,}8\,\%$ \\
-MMR & $0{,}0\,\%$ & $0{,}0\,\%$ & $0{,}0\,\%$ & $\mathbf{0{,}0\,\%}$ & $\mathbf{0{,}2\,\%}$ \\
-Boltzmann & $0{,}0\,\%$ & $0{,}0\,\%$ & $0{,}1\,\%$ & $1{,}2\,\%$ & $3{,}7\,\%$ \\
-Filtre \eqref{eq:score} & $0{,}0\,\%$ & $0{,}0\,\%$ & $0{,}0\,\%$ & $\mathbf{0{,}0\,\%}$ & $\mathbf{1{,}0\,\%}$ \\
-Tirage au sort & $9{,}3\,\%$ & $9{,}8\,\%$ & $11{,}0\,\%$ & $12{,}9\,\%$ & $19{,}1\,\%$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Le filtre se tient donc sur la frontière --- ce qui n'était pas acquis, le tirage au sort
-atteignant les mêmes diversités en laissant un cinquième de l'engagement sur la table --- mais
-\textbf{il n'y est pas seul}. Une heuristique publiée en 1998 y est aussi, et le devance en duel
-direct au plancher $0{,}80$. Le filtre ne s'en détache qu'à l'exigence haute : au plancher
-$0{,}90$, MMR ne trouve aucun réglage conforme dans $47\,\%$ des viviers, contre $12\,\%$ pour
-lui, parce qu'il optimise la grandeur contrainte là où MMR optimise un substitut qui sature.
-
-\paragraph{Le prix de la norme dépend du lecteur.} La comparaison ci-dessus tire la pertinence
-indépendamment du point de vue. En faisant varier cet \emph{alignement}, le coût du plancher
-$0{,}90$ passe de $3{,}8\,\%$ d'engagement --- lecteur dont les intérêts traversent les points de
-vue --- à $17{,}1\,\%$ --- lecteur dont la préférence \emph{est} un point de vue. La norme coûte
-donc le plus cher exactement là où elle sert le plus, ce qui prédit où portera l'objection. Cette
-dépendance réconcilie les chiffres de \S\ref{sec:adverse}, où la pertinence était attachée au
-point de vue, avec ceux de ce paragraphe.
-
-
-\part{Le modèle d'arrière-plan}
-\label{part:modele}
-
-Ce qui précède se tient sans ce qui suit. L'indice, ses attaques, le test d'échangeabilité et
-les estimateurs contrefactuels ne dépendent d'aucune hypothèse sur la dynamique de l'opinion :
-ce sont des mesures sur des fils servis et des clics observés.
-
-Cette partie expose le modèle d'où l'indice est \emph{issu}. Elle a deux fonctions, et une
-seule est scientifique. La première est de rendre compte de la provenance : la grandeur
-retenue en \S\ref{sec:indice} n'a pas été choisie au hasard parmi les mesures de diversité
-possibles, elle vient d'un formalisme qui décrit l'opinion comme un système à température.
-La seconde est de dire ce que ce formalisme vaut, mesure faite --- et
-\S\ref{sec:analogie} conclut que l'analogie qui l'a suggéré ne survit à aucun de ses
-transferts.
-
-Aucun résultat de la partie~\ref{part:mesure} ne repose sur cette partie-ci.
-
-\section{Formalisme entropique}
-
-\subsection{Deux entropies, une même grandeur}
-
-L'entropie de von Neumann \citep{vonneumann1932}
-\begin{equation}
-S(\rho) = -\operatorname{Tr}(\rho \ln \rho)
-\end{equation}
-est nulle pour un état pur. Son calcul passe par diagonalisation : les valeurs propres de
-$\rho$ forment une distribution classique à laquelle on applique l'entropie de Shannon
-\citep{shannon1948}
-\begin{equation}
-H(X) = -\sum_i p_i \log_2 p_i .
-\end{equation}
-C'est précisément ce qui autorise le pont entre les deux disciplines : l'entropie de von
-Neumann \emph{est} l'entropie de Shannon du mélange révélé par la base propre.
-
-\subsection{Une précision nécessaire}
-
-Il faut écarter d'emblée une formulation courante et fausse. L'évolution d'un système
-quantique \emph{fermé} est unitaire, donc son entropie de von Neumann est constante. Ce
-qui croît sous l'effet de la décohérence est l'entropie du \emph{sous-système réduit},
-obtenue en traçant sur les degrés de liberté de l'environnement.
-
-Il en découle une clarification --- qui limite l'analogie plus qu'elle ne l'étend, voir
-\S\ref{sec:analogie} : une superposition cohérente est un état \emph{pur}, d'entropie nulle. Ce n'est donc pas la
-multiplicité des possibilités qui produit du désordre, mais la perte de cohérence entre
-elles. Le pendant social est plus juste ainsi : une population où chacun garde plusieurs
-opinions ouvertes n'est pas désordonnée --- le désordre naît du contact avec un
-environnement qui fixe les positions.
-
-\section{Dynamique thermodynamique}
-
-\subsection{Modèle d'Ising et température sociale}
-
-Chaque individu porte une opinion binaire $s_i \in \{-1,+1\}$ et la population suit la
-distribution de Gibbs-Boltzmann \citep{ising1925} :
-\begin{equation}
-P(\sigma) = \frac{1}{Z}
-\exp\!\left(\frac{J \sum_{\langle i,j\rangle} s_i s_j + H \sum_i s_i}{k_B T}\right),
-\end{equation}
-où $J$ mesure la force de conformisme local, $T$ la \emph{température sociale} (agitation,
-irrationalité, ouverture aux fluctuations) et $H$ le champ médiatique externe.
-
-L'intérêt du modèle ne réside pas dans l'analogie mais dans une propriété vérifiable :
-l'existence d'une température critique. En dimension deux, sa valeur exacte est connue
-\citep{onsager1944} :
-\begin{equation}
-\frac{T_c}{J} = \frac{2}{\ln(1+\sqrt{2})} \approx 2{,}269 .
-\label{eq:onsager}
-\end{equation}
-
-C'est le seul point de ce travail où une prédiction théorique exacte, indépendante de nos
-hypothèses sociologiques, peut valider l'implémentation. La figure~\ref{fig:transition} la
-retrouve numériquement ; l'écart résiduel s'explique par les effets de taille finie sur un
-réseau de $24\times24$.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig02_transition.png}
-\caption{Consensus et susceptibilité en fonction de la température sociale (Monte-Carlo,
-réseau $24\times 24$). Le pic de susceptibilité localise la transition. Le décalage vers
-le haut par rapport à la valeur d'Onsager~\eqref{eq:onsager} est un effet de taille finie,
-non une erreur d'implémentation.}
-\label{fig:transition}
-\end{figure}
-
-\subsection{Énergie libre}
-
-Le système minimise son énergie libre de Helmholtz $F = E - TS$, où $E$ représente la
-tension du désaccord et $TS$ la force de dispersion. Quand $N$ croît, l'entropie de
-configuration croît avec elle et le terme $TS$ finit par dominer $E$.
-
-\subsection{Hystérésis sociale}
-
-C'est le résultat le plus directement actionnable. Sous $T_c$, couper le champ médiatique
-($H \to 0$) ne ramène pas l'aimantation à zéro : le terme d'interaction
-$-J\sum s_i s_j$ prend le relais et le groupe maintient la croyance par cohésion interne.
-
-Le cycle se lit en trois temps, qui sont ceux d'une crise médiatique : injection d'un champ
-massif, démenti officiel, puis nécessité d'un contre-champ $-H$ dépassant le champ
-coercitif du groupe. La figure~\ref{fig:hysteresis} montre que l'aire du cycle décroît
-avec la température sociale et s'annule au-dessus de $T_c$.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig05_hysteresis.png}
-\caption{À gauche, cycles d'hystérésis sous et au-dessus de $T_c$ : dans le premier cas
-l'opinion reste aimantée alors que le champ est nul. À droite, décroissance de la mémoire
-avec la température sociale --- fondement de la recommandation d'injection de bruit.}
-\label{fig:hysteresis}
-\end{figure}
-
-\emph{Conséquence pratique :} le \emph{debunking} passif ne fonctionne pas. Rétablir la
-neutralité informationnelle laisse la croyance en place ; seule une contre-information
-active, ou une hausse de la température sociale, la dissipe.
-
-\section{Effet de taille : temps de consensus}
-
-Le Voter Model \citep{clifford1973,holley1975} isole la contagion sociale pure, sans
-température : à chaque interaction un individu adopte l'opinion d'un voisin tiré au hasard.
-Il fournit des lois d'échelle exactes pour le temps de consensus, mesuré en balayages
-($N$ interactions élémentaires).
-
-Les mesures (figure~\ref{fig:consensus}) donnent un exposant $\approx 1$ en champ moyen et
-$\approx 2$ sur un anneau. \textbf{Un réseau densément connecté converge donc plus vite
-qu'un voisinage géographique.}
-
-Cette observation infirme un argument fréquent, selon lequel la structure « petit monde »
-des réseaux sociaux \citep{watts1998} empêcherait le consensus. La connectivité ne
-fragmente pas : elle accélère et amplifie, dans la direction que le champ lui donne. Les
-causes de la fragmentation sont le \emph{biais directionnel} des micro-champs
-algorithmiques et l'\emph{homophilie} qui compartimente le graphe \citep{pariser2011}. La
-conséquence pour la régulation est nette : le levier utile porte sur le champ, non sur le
-nombre de liens.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig03_consensus.png}
-\caption{À gauche, temps de consensus en fonction de la taille de la population, en échelle
-log-log, pour deux topologies. À droite, trajectoires de la fraction favorable au champ
-pour trois intensités de biais : c'est le biais, non la connectivité, qui décide de
-l'issue.}
-\label{fig:consensus}
-\end{figure}
-
-\section{Paysage de l'opinion publique}
-
-\subsection{L'équation et sa dérive}
-
-À l'échelle macroscopique, l'opinion collective $x \in [-1,1]$ obéit à une équation de
-Fokker-Planck \citep{risken1989} :
-\begin{equation}
-\frac{\partial P(x,t)}{\partial t}
-= -\frac{\partial}{\partial x}\big[A(x)P(x,t)\big]
-+ \frac{\partial^2}{\partial x^2}\big[B(x)P(x,t)\big].
-\end{equation}
-
-Le potentiel quadratique $V(x) = -\frac{J}{2}x^2 - Hx$, qui vient naturellement à l'esprit,
-ne peut produire \emph{aucune} transition de phase : l'exponentielle correspondante est
-convexe, donc maximale aux extrêmes à toute température. Le terme manquant est l'entropie
-de mélange, c'est-à-dire le nombre de configurations individuelles compatibles avec une
-opinion moyenne $x$. En l'ajoutant, on retrouve l'énergie libre de Helmholtz :
-\begin{equation}
-f(x) = \underbrace{-\frac{J}{2}x^2 - Hx}_{E}
-+ T\underbrace{\left[\frac{1+x}{2}\ln\frac{1+x}{2}
-+ \frac{1-x}{2}\ln\frac{1-x}{2}\right]}_{-S},
-\label{eq:libre}
-\end{equation}
-d'où la dérive
-\begin{equation}
-A(x) = -f'(x) = Jx + H - T\operatorname{artanh}(x).
-\label{eq:derive}
-\end{equation}
-Le rappel entropique $-T\operatorname{artanh}(x)$ borne la dynamique dans $(-1,1)$ et fait
-apparaître une température critique de champ moyen $T_c = J$. La forme $A(x) = Jx + H$ en
-est la linéarisation au voisinage de $x = 0$.
-
-\subsection{La diffusion et l'effet de $N$}
-
-Le terme de diffusion s'écrit
-\begin{equation}
-B(x) = \frac{k_B T (1-x^2)}{N},
-\label{eq:diffusion}
-\end{equation}
-le facteur $(1-x^2)$ éteignant le bruit à l'unanimité.
-
-Le facteur $1/N$ demande une lecture attentive, car il paraît contredire l'hypothèse de
-départ : plus la population est grande, \emph{moins} sa variable macroscopique est bruitée.
-Il n'y a pas de contradiction, mais deux échelles distinctes. L'entropie de configuration
-totale est extensive et croît comme $N$ ; les fluctuations de la moyenne $x$ décroissent en
-$1/N$. La thèse défendable est donc :
-
-\begin{quote}
-Une grande population ne devient pas bruyante, elle devient \emph{rigide}. Sa taille ne
-l'agite pas, elle la prive de plasticité stochastique --- et c'est cette rigidité qui rend
-la polarisation irréversible, un système sans bruit ne pouvant plus quitter le puits de
-potentiel où il est tombé.
-\end{quote}
-
-Cette reformulation est plus forte que l'hypothèse initiale : elle explique
-l'irréversibilité, ce que la métaphore de la « pompe à entropie » ne faisait pas.
-
-\subsection{Trois régimes}
-
-La distribution d'équilibre prend la forme de grandes déviations
-$P_{\mathrm{stat}}(x) \propto \exp(-N f(x)/T)$, où le facteur $N$ rend la pénalité
-d'autant plus sévère que la population est grande. Trois régimes en découlent, obtenus en
-faisant varier deux paramètres (figure~\ref{fig:paysage}) : société fluide ($T > T_c$),
-polarisée ($T < T_c$, $H = 0$) et manipulée ($T < T_c$, $H > 0$). Dans le dernier cas, le
-pic situé du côté du champ écrase l'autre : le « faux consensus » n'est pas une hypothèse
-ajoutée, c'est le puits incliné.
-
-La densité de modérés décroît exponentiellement avec $N$. Dans une grande population sous
-$T_c$, la modération n'est pas minoritaire : elle est statistiquement inaccessible.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig04_paysage.png}
-\caption{Paysage d'énergie libre~\eqref{eq:libre}, distributions stationnaires associées et
-scission temporelle d'une société initialement modérée. Le solveur est en volumes finis à
-flux nul aux bords : la masse de probabilité est conservée à $10^{-15}$, ce qui distingue un
-effondrement réel de la modération d'une fuite numérique.}
-\label{fig:paysage}
-\end{figure}
-
-\subsection{Franchissement de barrière}
-
-Le passage d'un bloc à l'autre sans traverser la modération relève du franchissement de
-barrière par activation thermique, de taux $\propto e^{-\Delta V / k_B T}$
-\citep{kramers1940}, et non d'un effet tunnel --- lequel n'a pas d'équivalent classique. La
-distinction n'est pas cosmétique : la loi de Kramers fournit une dépendance en température
-donc une prédiction testable.
-
-\section{Cinétique de résonance algorithmique}
-
-Une fausse information et un algorithme de recommandation forment une boucle de rétroaction
-positive analogue à l'effet Larsen. La visibilité $V(t)$ obéit à
-\begin{equation}
-\ddot V + \big(\lambda - \gamma\alpha\,\sigma(V)\big)\dot V + \omega_0^2 V = \xi(t),
-\label{eq:resonance}
-\end{equation}
-où $\lambda$ est l'amortissement naturel (l'oubli), $\gamma$ le gain algorithmique,
-$\alpha$ la charge émotionnelle du contenu, et $\sigma(V) = 1/(1+(V/V_{\mathrm{sat}})^2)$
-un facteur de saturation traduisant la finitude de l'attention disponible.
-
-Le critère d'instabilité est
-\begin{equation}
-\boxed{\;\gamma\alpha > \lambda\;}
-\label{eq:critere}
-\end{equation}
-Au-delà, l'amortissement effectif devient négatif : le système accumule l'énergie au lieu
-de la dissiper. La figure~\ref{fig:resonance} vérifie que le seuil mesuré coïncide avec
-$\gamma^\star = \lambda/\alpha$.
-
-Sans saturation, la solution instable diverge comme $e^{(\gamma\alpha-\lambda)t}$, ce qui
-est exact mais inexploitable : une visibilité infinie n'existe pas et aucun seuil n'est
-calibrable sur un modèle divergent. Avec saturation, le système s'installe dans un cycle
-limite --- une oscillation médiatique auto-entretenue d'amplitude finie, ce qui correspond
-au comportement observé d'une fausse information installée.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig06_resonance.png}
-\caption{À gauche, trois destins pour un même contenu : amorti, résonant borné, résonant
-non borné. À droite, amplitude du cycle limite en fonction du gain algorithmique ; le seuil
-mesuré coïncide avec $\gamma^\star = \lambda/\alpha$.}
-\label{fig:resonance}
-\end{figure}
-
-Un point mérite d'être souligné pour la régulation. À gain \emph{uniforme}, un contenu plus
-émotionnel franchit le seuil qu'un contenu factuel ne franchit pas. Une plateforme n'a donc
-pas besoin de favoriser la désinformation pour l'amplifier sélectivement : le biais est
-mécanique. C'est ce qui rend la mesure de $\gamma$ plus pertinente, et plus opposable,
-qu'un audit d'intentions éditoriales.
-
-
-\section{Calibration empirique du rapport d'amplification}
-\label{sec:calibration}
-
-Le critère \eqref{eq:critere} est resté longtemps une inégalité formelle : rien n'indiquait
-où se situent les systèmes réels. Nous l'estimons ici sur des séries d'attention publiques.
-
-\subsection{Identification}
-
-Pour un pic d'attention isolé, non oscillatoire, \eqref{eq:resonance} se réduit à sa forme
-du premier ordre $\dot V = \gamma\alpha\,\sigma(V)V - \lambda V$, qui se sépare en deux
-régimes mesurables : pendant la \emph{montée}, la saturation est inactive et
-$V \propto e^{(\gamma\alpha-\lambda)t}$ ; pendant la \emph{décroissance}, l'amplification est
-éteinte et $V \propto e^{-\lambda t}$. Deux régressions log-linéaires donnent donc
-\begin{equation}
-\lambda = r_{\mathrm{down}}, \qquad \gamma\alpha = r_{\mathrm{up}} + r_{\mathrm{down}},
-\qquad \frac{\gamma\alpha}{\lambda} = 1 + \frac{r_{\mathrm{up}}}{r_{\mathrm{down}}}.
-\label{eq:identification}
-\end{equation}
-
-\subsection{Données}
-
-Les séries proviennent de l'API de consultations de Wikimedia, filtrées sur l'agent
-\texttt{user} pour exclure les robots, sur un corpus de 24 sujets \emph{pré-enregistré} et
-réparti en deux registres émotionnels — accusation ou scandale d'une part, découverte non
-programmée d'autre part. Wikipédia étant dépourvue d'algorithme de recommandation, le
-$\gamma$ ainsi estimé est un gain d'\emph{écosystème} et non la fonction de classement d'une
-plateforme.
-
-\subsection{Résultats}
-
-Dix-neuf épisodes sont exploitables. Le rapport vaut entre $1{,}5$ et $12$, de médiane
-$2{,}5$ à $4{,}2$ selon l'estimateur (figure~\ref{fig:calibration}). Trois enseignements,
-dont deux négatifs.
-
-\paragraph{Le critère de signe est vide.} Le rapport dépasse $1$ dans tous les épisodes et
-sous tous les estimateurs. Ce n'est pas une propriété de l'écosystème mais une
-\emph{tautologie de la procédure} : un épisode observable a nécessairement connu une phase de
-croissance, donc $r_{\mathrm{up}} > 0$. La recommandation « interdire les configurations où
-$\gamma\alpha > \lambda$ » est par conséquent inapplicable, et doit être remplacée par un
-\textbf{plafond} $\gamma\alpha/\lambda \leq \rho_{\max}$. Cette erreur n'était pas
-détectable par relecture : seule la tentative de mesure l'a révélée.
-
-\paragraph{La valeur dépend de la méthode.} Avec des fenêtres délimitées par le retour au
-niveau de fond, leur durée varie de 6 à 46 jours ; l'attention décroissant plus lentement
-qu'une exponentielle, un ajustement sur une fenêtre longue produit un $\lambda$ plus faible.
-La corrélation de rang atteint $-0{,}94$. Un second estimateur, à horizon fixe, rend
-$\lambda$ comparable entre épisodes ; la médiane varie néanmoins d'un facteur $1{,}7$ selon
-l'estimateur retenu, ce qui interdit d'adosser un seuil réglementaire à une valeur unique.
-
-\paragraph{Le mécanisme de la charge émotionnelle n'est pas étayé.} Aucun écart détectable
-entre les deux registres ($p \geq 0{,}13$), et l'estimation ponctuelle va dans le sens
-contraire à la prédiction. Les effectifs sont faibles et le biais de sélection décrit
-ci-dessous écarte les cas les plus chargés ; il serait donc excessif d'y voir une
-réfutation — mais le mécanisme ne peut pas être présenté comme soutenu par les données.
-
-\paragraph{La méthode est aveugle aux régimes installés.} Onze sujets sur vingt-quatre ne
-livrent aucun épisode exploitable, et ce sont les cas archétypaux : QAnon, désinformation
-sanitaire, hésitation vaccinale. Leur attention ne forme pas un pic mais un \emph{palier
-durable}, que le niveau de fond glissant absorbe — la détection par proéminence ne les voit
-pas. La procédure sélectionne donc contre le phénomène même que la théorie décrit, ce qui
-constitue la limite la plus lourde de cette calibration.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{fig09_calibration.png}
-\caption{Un épisode d'attention et ses deux régimes exponentiels ; la distribution du rapport
-par registre émotionnel ; la sensibilité de la médiane au choix d'estimateur ; et l'artefact
-de fenêtre qui a imposé l'estimateur à horizon fixe.}
-\label{fig:calibration}
-\end{figure}
-
-
-
-\section{L'analogie de départ, et son verdict}
-\label{sec:analogie}
-
-Ce travail est parti d'une analogie : plus un système quantique est grand, plus vite il
-décohère ; plus une population est grande, plus l'accord y est difficile. Elle a produit des
-quantités mesurables --- un indice de diversité, un seuil d'amplification, une température
-critique --- et c'est son mérite. Ses affirmations propres ont été vérifiées une à une, et
-aucune n'a tenu.
-
-\begin{center}
-\begin{tabular}{@{}p{0.46\linewidth}p{0.48\linewidth}@{}}
-\toprule
-\textbf{Ce que l'analogie affirmait} & \textbf{Verdict} \\
-\midrule
-Plus le système est grand, plus il se désordonne & \textbf{faux, et à l'envers} : le terme de
-diffusion retenu, $B(x) = k_B T (1-x^2)/N$, rend la variable macroscopique \emph{plus}
-déterministe à grand $N$. Deux objets étaient confondus --- l'entropie de configuration,
-extensive, et le bruit de la variable macroscopique, en $1/N$ \\[2mm]
-La décohérence augmente l'entropie & \textbf{faux} : l'évolution d'un système fermé est
-unitaire. C'est l'entropie du sous-système \emph{réduit} qui croît \\[2mm]
-$\tau_D \propto \tau_R / N$ & loi d'échelle \textbf{heuristique}, non le résultat de Zurek,
-qui fait intervenir la séparation spatiale et la longueur d'onde thermique \\[2mm]
-« Effet tunnel social » & \textbf{métaphore} : l'analogue correct est le franchissement de
-barrière par activation \citep{kramers1940}, qui est classique \\[2mm]
-$1/k^N$ mesure l'improbabilité du consensus & décrit un \textbf{état initial} tiré au hasard,
-non une dynamique \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-S'y ajoute une erreur de raisonnement qui n'est pas physique : le récit d'origine attribuait
-la fragmentation à la connectivité des réseaux « petit monde » \citep{watts1998}. En champ
-moyen, le Voter Model converge en $O(N)$ : la connectivité \emph{accélère} le consensus. La
-fragmentation vient du biais $H_i$ et de l'homophilie, non de la topologie seule.
-
-Ce qui subsiste --- paysage d'énergie libre, transition de phase, hystérésis, franchissement
-de barrière --- relève de la mécanique statistique classique, dans la lignée d'Ising et de la
-sociophysique \citep{galam2004,castellano2009}. Rien de spécifiquement quantique n'a survécu
-au passage.
-
-L'analogie a donc fonctionné comme \textbf{échafaudage} : elle a suggéré des quantités
-mesurables qui lui survivent. C'est un rôle réel, et il ne se confond pas avec la vérité. Il
-serait malhonnête de la qualifier de « féconde donc juste » : elle a suggéré des mesures, et
-aucune de ses affirmations n'a résisté à la vérification. L'indice a d'ailleurs été renommé en
-conséquence --- il s'appelait \emph{Index de Dissipation Entropique}, d'après la décohérence,
-et s'appelle désormais \emph{Indice de Diversité Exposée}, d'après ce qu'il mesure.
-
-\part{Réserves}
-
 \section{Limites}
 \label{sec:limites}
 
@@ -960,7 +443,7 @@ Ces limites sont énoncées ici plutôt que laissées aux relecteurs.
 
 \paragraph{La forme retenue n'a jamais été mesurée sur un fil réel.} Elle est définie
 \eqref{eq:ide}, son coût est chiffré par énumération exhaustive, et c'est tout. La lacune est
-de \emph{donnée}, non de méthode (\S\ref{sec:journaux}), et \S\ref{sec:demande} dit ce qu'il
+de \emph{donnée}, non de méthode (\S\ref{sec:journaux}) : il y faudrait un journal qui
 faudrait pour la combler.
 
 \paragraph{Le niveau du plancher n'est pas déductible de la mesure.} Ce travail établit la
@@ -979,7 +462,7 @@ diversité d'argument. Toute métrique imposée devient une cible.
 \paragraph{Un plancher est une contrainte sur ce que les citoyens voient.} C'est défendable,
 mais c'est une intervention sur le débat public, et la présenter comme une simple mesure
 technique serait malhonnête. La mesure sur des fils individuels soulève en outre une question
-de vie privée à laquelle \S\ref{sec:demande} ne répond qu'en partie, par l'agrégation.
+de vie privée à laquelle cette note ne répond pas.
 
 \subsection{Sur les mesures d'exposition}
 
@@ -1033,7 +516,7 @@ forme reste à tester. Le test d'échangeabilité dit si l'ordre porte de l'info
 pas sous quelle forme.
 
 \paragraph{Et une pertinence estimée efface l'avantage des méthodes réglées.} La comparaison de
-\S\ref{sec:lignesdebase} suppose la pertinence connue. En faisant classer les méthodes sur une
+La comparaison de réordonnanceurs, retirée de cette note, supposait la pertinence connue. En faisant classer les méthodes sur une
 pertinence \emph{perçue} et en les jugeant sur la vraie, leur ordre ne change pas --- le filtre et
 MMR restent devant --- mais leur avantage sur le tirage au sort passe de $16{,}4$ points à bruit
 nul à $5{,}8$ points pour une corrélation de rang de $0{,}50$, et \emph{s'inverse} en deçà de
@@ -1122,12 +605,6 @@ d'écart maximal ---, $0{,}96$ pour une décroissance géométrique et $0{,}99$ 
 \emph{pli d'écran}. La loi en $R^{-\eta}$ est la pire des trois, et elle se trompe surtout là où la
 norme se joue : au deuxième rang, elle prédit $0{,}47$ quand la mesure donne $0{,}88$.
 
-\paragraph{Conséquence sur \S\ref{sec:demande}.} Les quatre tableaux demandés portent sur les
-clics. Une colonne de plus --- le nombre d'impressions effectivement \emph{affichées} par cellule
---- retirerait d'un coup le besoin d'estimer $\eta$, l'hypothèse de forme qui l'accompagne, et le
-confondant d'attrait. Elle est en outre moins sensible que les clics : savoir qu'un contenu a été
-affiché en dit moins sur un lecteur que savoir qu'il l'a choisi.
-
 \paragraph{Réserve.} Un temps d'affichage positif atteste que le document a été montré, non qu'il
 ait été regardé. La mesure surestime donc l'exposition, dans une proportion que ce travail ne peut
 pas chiffrer.
@@ -1173,12 +650,6 @@ explique mieux l'examen ($R^2$ de McFadden $0{,}082$) que la hauteur cumulée au
 ($0{,}057$), et les pixels n'ajoutent que $0{,}0007$ une fois le rang connu. Le constat --- la
 courbe n'est pas une loi de puissance --- tient ; l'explication mécanique tombe.
 
-\paragraph{Conséquence sur \S\ref{sec:demande}.} Le tableau des cellules réclame déjà une colonne
-d'affichages ; il en faut une de plus, le \textbf{format} du contenu servi. Sans elle, deux fils
-de composition identique peuvent exposer des diversités différentes sans que rien ne le signale.
-C'est en outre la moins sensible des colonnes demandées : le format d'un contenu ne dit rien de
-son lecteur. \S\ref{sec:effetdepage} ramène cette colonne au rang de vérification.
-
 \subsection{L'effet de page, une fois la composition retirée}
 \label{sec:effetdepage}
 
@@ -1213,8 +684,8 @@ nue.
 \paragraph{Conséquence.} La remise d'attention $w_R$ de \eqref{eq:distribution} redevient
 \textbf{transportable}, ce qui était l'enjeu réel : si elle dépendait de la page, aucun plancher
 réglementaire ne pourrait s'écrire sans décrire chaque page servie. La colonne \texttt{format}
-de \S\ref{sec:demande} reste demandée --- elle permet de reproduire ce contrôle ailleurs --- mais
-elle ne conditionne plus le calcul. Ce que le régulateur doit exiger d'abord est la colonne
+du format reste utile --- elle permet de reproduire ce contrôle ailleurs --- mais
+elle ne conditionne plus le calcul. Ce qu'il faut exiger d'un journal est d'abord la colonne
 d'affichages, sans laquelle l'exposition ne se mesure pas du tout.
 
 \paragraph{Réserves.} L'appariement à contenu fixé ne retient que $1\,106$ strates sur
@@ -1253,65 +724,12 @@ des fils y contreviennent \emph{quelle que soit} leur mise en ordre --- constat 
 colonne manquante --- $7{,}9\,\%$ sont sûrement conformes, et $59{,}7\,\%$ restent indécidables.
 Sans le rang, on peut condamner ; on n'acquitte presque jamais.
 
-\paragraph{Conséquence sur \S\ref{sec:demande}.} La demande réclamait « le rang servi ». Ce
-n'est pas assez : une plateforme peut fournir une colonne d'ordre qui n'est pas le rang, sans
-mentir et sans que rien ne le signale. Elle doit donc réclamer un rang \textbf{vérifiable}, et le
-test d'échangeabilité devient une clause de recevabilité appliquée aux données livrées, avant
-toute autre mesure.
-
 \paragraph{Réserves.} \texttt{category\_str} est une \emph{rubrique}, non un point de vue : la
 mesure porte sur la diversité thématique exposée, substitut déjà employé sur MIND. La sévérité
 $\eta = 0{,}88$ est transportée de Baidu-ULTR, un moteur de recherche ; \S\ref{sec:effetdepage}
 a établi qu'elle se transporte d'une page à l'autre, non d'une plateforme à l'autre, d'où un test
 de sensibilité qui ne renverse pas la conclusion. L'encadrement exact ne couvre que les fils de
 dix contenus ou moins, soit $64\,\%$ du journal.
-
-\subsection{Ce que la vie privée coûte à l'audit}
-\label{sec:vieprivee}
-
-\S\ref{sec:demande} prouve que quatre tableaux agrégés suffisent ; elle ne dit rien de leur
-innocuité. Un agrégat n'est pas anonyme, et le seuil de suppression des faibles effectifs employé
-jusqu'ici n'offre aucune garantie formelle. Nous publions donc les mêmes quantités sous
-confidentialité différentielle, et en mesurons le prix.
-
-\paragraph{Deux coûts, et le second domine.} Le \textbf{bruit} de Laplace protège contre
-l'inférence sur une ligne, et son effet dépend de la \emph{densité} du tableau publié : sur les
-neuf cellules de la marge de rang, il reste invisible jusqu'à $\varepsilon = 0{,}03$ ; sur les
-$451\,100$ cellules (contenu, rang), dont $99{,}7\,\%$ portent moins de cinq impressions, il
-détruit tout. Le \textbf{plafonnement des contributions}, lui, est ce qui rend possible une
-garantie \emph{par personne}, et c'est lui qui déplace les chiffres.
-
-\paragraph{La grandeur réglementée résiste.} La part de la population sous le plancher ne bouge
-pas d'un millième entre $\varepsilon = 10$ et $\varepsilon = 0{,}1$. En revanche, plafonner à une
-journée par lecteur ajoute $2{,}8$ points à une part de $13{,}7\,\%$, et à cinq journées encore
-$0{,}7$ point --- toujours dans le même sens. Les lecteurs assidus sont plus divers que les
-autres : les écarter fait paraître la plateforme \emph{moins} conforme qu'elle n'est. L'erreur
-commise en protégeant les lecteurs n'innocente donc pas la plateforme.
-
-\paragraph{La sévérité ne résiste pas.} À $\varepsilon = 1$, valeur de référence usuelle,
-$\eta$ passe de $0{,}882 \pm 0{,}046$ à $0{,}505 \pm 0{,}051$. Le bruit sur des effectifs agit
-comme une erreur de mesure : il atténue vers zéro, et l'erreur type ne le signale pas. La
-conséquence est directionnelle --- une sévérité sous-estimée fait paraître l'attention plus plate,
-donc l'enterrement moins grave. Le seuil de publication corrige le niveau puis le dépasse, en
-échangeant l'atténuation contre une \textbf{sélection} : $0{,}881$ sur $57$ contenus à
-$\varepsilon = 3$, mais $1{,}03$ sur $25$ à $\varepsilon = 1$ et $1{,}20$ sur neuf à $0{,}3$.
-
-\paragraph{Le nœud.} La marge de rang survit à tout budget et tombe à $0{,}7\,\%$ de la valeur
-estimée à contenu fixé. Mais on ne le sait que parce qu'on dispose du tableau à contenu fixé,
-celui qu'aucune garantie ne protège : \emph{la quantité qui se publie sans risque est celle qu'on
-ne peut pas vérifier}. Aucun budget de confidentialité ne réconcilie les deux.
-
-\paragraph{Conséquence sur \S\ref{sec:demande}.} Le tableau des cellules ne doit pas être
-demandé sous cette forme. Trois demandes le remplacent : la marge de rang des affichages,
-publiable à $\varepsilon = 0{,}1$ ; l'estimation à effets fixes de contenu \emph{calculée par la
-plateforme} et publiée comme un scalaire bruité, dont la sensibilité est bornée ; et l'écart entre
-les deux, seul contrôle disponible. Le plafond de contributions doit être publié avec le
-résultat, comme l'est le seuil de suppression.
-
-\paragraph{Réserves.} Le mécanisme employé est le plus simple qui soit : ce chapitre borne le
-coût par le haut, il ne prétend pas l'atteindre. La garantie par utilisateur n'est mesurée que sur
-EB-NeRD, seul journal portant un identifiant de lecteur ; sur Baidu-ULTR, seule une garantie par
-impression est possible, ce qui tient au jeu de données et non à la méthode.
 
 \subsection{Qui choisit le catalogue choisit l'indice}
 \label{sec:catalogue}
@@ -1340,51 +758,13 @@ dans une norme, non le nombre.
 \paragraph{Et la diversité exposée n'existe pas au singulier.} Le corpus porte deux axes
 d'étiquetage --- la rubrique thématique et la tonalité déclarée. Leur concordance vaut
 $\rho = +0{,}155$ : parmi le quart le plus divers en rubriques, $23{,}8\,\%$ sont aussi dans le
-quart le plus divers en tonalité, là où l'indépendance donnerait $25\,\%$. Un régulateur doit donc
+quart le plus divers en tonalité, là où l'indépendance donnerait $25\,\%$. Il faut donc
 dire \textbf{sur quel axe} il régule, et ce choix pèse au moins autant que le seuil.
 
 \paragraph{Réserves.} Les catalogues grossiers sont obtenus par regroupement d'un catalogue
 existant, ce qui n'est pas un catalogue conçu comme tel. Le corpus est celui d'un seul journal, et
 c'est la forme de sa queue de distribution qui explique la stabilité observée jusqu'à douze
 modalités.
-
-\subsection{Le prix d'un plancher, sur des fils réels}
-\label{sec:prixplancher}
-
-\S\ref{sec:lignesdebase} chiffre le coût d'une norme de diversité entre $8{,}2$ et $18{,}9\,\%$
-d'engagement, mais suppose la pertinence connue et porte sur des fils simulés. Les
-journées-utilisateur de \S\ref{sec:indicemesure} permettent de poser la question sans rien
-supposer : combien de contenus servis faudrait-il \textbf{remplacer} ?
-
-\paragraph{Le contrôle d'abord.} Le coût est calculé par un procédé glouton --- chaque
-substitution retire un contenu à la rubrique la plus servie et en ajoute un à la moins servie.
-Confronté à l'énumération exhaustive de toutes les redistributions sur deux cents compositions
-courtes, il coïncide $200$ fois sur $200$. Le prix qui suit n'est donc pas une borne prudente.
-
-\paragraph{Le plancher proposé ne contraint presque rien.} Ramener toute la population au-dessus
-de $0{,}40$ demande de remplacer \textbf{un contenu servi sur $177$} --- $0{,}57\,\%$ du journal
---- et la journée-utilisateur médiane à traiter n'exige qu'\emph{une seule} substitution. Le prix
-est convexe : $0{,}21\,\%$ à un plancher de $0{,}30$, $2{,}27\,\%$ à $0{,}50$, $8{,}24\,\%$ à
-$0{,}60$, $17{,}11\,\%$ à $0{,}70$. Le niveau retenu jusqu'ici est à l'extrémité indolore de la
-courbe.
-
-\paragraph{Et la forme de la grandeur réglementée est en cause.} \S\ref{sec:indice} prescrit la
-\emph{part de la population sous le seuil}, précisément pour qu'une moyenne satisfaisante ne
-masque pas une minorité enfermée. Mais une part est un seuil, et un seuil s'atteint par la marge :
-la plateforme corrige les lecteurs \emph{juste} en dessous et laisse les plus enfermés où ils
-sont. La grandeur choisie contre le masquage par la moyenne invite au traitement de la marge.
-
-\paragraph{Un plafond que rien ne lève.} Une entropie ne dépasse pas le logarithme du nombre de
-contenus \emph{servis} : un lecteur qui en reçoit cinq plafonne à $0{,}49$. À un plancher de
-$0{,}60$, $10{,}9\,\%$ des journées-utilisateur sont donc hors d'atteinte quoi que fasse la
-plateforme ; à $0{,}80$, $22{,}9\,\%$. Ce ne sont pas des lecteurs enfermés mais des lecteurs
-\emph{légers}, et la seule mise en conformité possible est de leur servir davantage --- ce qu'une
-norme de diversité n'a aucune raison d'encourager. Deux issues, et il faut choisir : exempter les
-sessions courtes, ou normaliser l'indice par le maximum atteignable plutôt que par $\log_2 k$.
-
-\paragraph{Réserves.} Le coût est mesuré en contenus échangés, non en engagement : EB-NeRD ne
-fournit aucun modèle de pertinence. Le calcul suppose en outre que n'importe quelle rubrique peut
-être servie à n'importe qui, ce qui surestime la facilité.
 
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}
@@ -1429,7 +809,7 @@ ce qui corrobore notre chiffre ; l'étape suivante, elle, ne suit pas mécanique
 \subsection{Sur le modèle}
 
 \paragraph{Calibration à peine entamée.} Un seul paramètre composite est estimé
-(\S\ref{sec:calibration}) ; $J$, $T$, $\gamma$ et $\alpha$ pris séparément n'ont aucune
+$J$, $T$, $\gamma$ et $\alpha$ pris séparément n'ont aucune
 procédure d'estimation. La voie la plus prometteuse serait l'inférence des coefficients de
 Kramers-Moyal sur des séries d'opinion longues, qui permettrait de \emph{tester} la dérive
 plutôt que de l'ajuster.
@@ -1443,18 +823,18 @@ corpus pilote était un artefact de sélection.
 \paragraph{Une analogie n'est pas une explication.} Rien ici ne démontre que les opinions
 \emph{obéissent} à une mécanique statistique ; le travail établit qu'un formalisme emprunté à
 la physique en \emph{reproduit} des comportements. Sur l'analogie de départ elle-même, le
-verdict est plus net encore (\S\ref{sec:analogie}).
+verdict est plus net encore.
 
 \paragraph{Les individus ne sont pas des spins.} L'intentionnalité, l'ironie et
 l'anticonformisme stratégique n'ont pas d'équivalent dans un modèle de spins ; les opinions
 sont multidimensionnelles \citep{deffuant2000}. Surtout, l'environnement n'est pas passif : un
 algorithme optimise une fonction de coût, ce qui en fait un acteur stratégique plutôt qu'un
 bain thermique. C'est le point le plus fragile de l'analogie --- et c'est aussi ce qui rend
-concevable le filtre de \S\ref{sec:filtre} : une fonction de coût peut être changée.
+concevable un filtre qui optimise l'indice : une fonction de coût peut être changée.
 
 \paragraph{Portée des simulations.} Les régimes explorés ont été choisis pour leur lisibilité.
 Aucune étude systématique de sensibilité n'a été menée, les tailles de systèmes sont modestes,
-et les conclusions de la partie~\ref{part:modele} sont qualitatives : elles portent sur
+et les conclusions du modèle retiré étaient qualitatives : elles portaient sur
 l'existence de régimes et le sens des dépendances, jamais sur des valeurs numériques
 transposables.
 
@@ -1469,11 +849,9 @@ indépendants. C'est la dernière réserve de méthode qui ne se lève pas par l
 
 L'intégralité du travail est disponible en accès libre et exécutable en conteneur, avec $556$
 tests automatisés. Les vérifications structurantes portent sur la température critique
-d'Onsager \eqref{eq:onsager}, la conservation exacte de la masse de probabilité, les exposants
-des lois d'échelle du temps de consensus, la positivité de l'aire du cycle d'hystérésis sous
-$T_c$, l'équivalence du filtre \eqref{eq:score} avec un filtre d'engagement à $\mu = 0$, le
-signe du rejet du test d'échangeabilité sur un journal réellement ordonné, et l'exactitude des
-mesures recalculées depuis les tableaux agrégés de \S\ref{sec:demande}.
+de la mesure : l'entropie d'un fil dégénéré, la sévérité estimée sur données simulées à
+sévérité connue, l'exactitude de l'encadrement de l'indice, et chaque chiffre publié dans
+cette note, recalculé depuis les condensés versionnés.
 
 Les journaux d'impressions employés ne sont pas redistribués --- ils pèsent de $135$ Mo à
 $2{,}2$ Go et portent chacun sa licence --- mais le dépôt en conserve des condensés vérifiés,

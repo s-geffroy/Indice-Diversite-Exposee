@@ -7,7 +7,7 @@ journée, par accumulation d'analogies. Cette méthode produit des intuitions ju
 et des raccourcis qui ne tiennent pas. Publier le fil tel quel exposerait
 l'ensemble à être écarté sur un détail, alors que l'intuition de départ mérite mieux.
 
-Vingt-trois points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
+Vingt-sept points sont documentés. Chacun suit la même structure : ce que le fil affirmait, pourquoi
 c'est un problème, et la formulation retenue. Les corrections sont **traçables** :
 chacune est implémentée dans `src/`, vérifiée dans `tests/`, et illustrée dans un
 notebook.
@@ -17,6 +17,17 @@ ne corrige rien : elle énumère les limites qui subsistent, y compris celles qu
 touchent à l'usage réglementaire de l'index.
 
 ---
+
+!!! warning "Ce que ce registre couvre, et pourquoi il couvre plus que le dépôt"
+    Ce dépôt ne mesure plus qu'une chose : la diversité qu'un fil expose réellement. **Trois
+    moitiés en ont été retirées** — l'analogie avec la décohérence quantique, le formalisme de
+    physique statistique qu'elle avait fait emprunter, et l'appareil de régulation : algorithme,
+    plancher, demande d'accès aux données.
+
+    Les corrections qui portent sur ces moitiés sont **conservées ici**. C'est le registre de ce
+    que ce travail a eu faux, et c'est la partie qu'on ne supprime pas — une erreur retirée du
+    dépôt reste une erreur commise. Les renvois vers les pages disparues ont été convertis en
+    texte simple ; les chiffres et les verdicts sont inchangés.
 
 ## A. Nomenclature
 
@@ -386,7 +397,7 @@ ne corrige pas le fil d'origine mais un instrument que ce dépôt avait lui-mêm
 où le taux d'amplification d'un contenu dépasse son taux d'amortissement naturel :
 $\gamma\alpha > \lambda$. »
 
-**Le problème, révélé par la [calibration](calibration.md).** Le rapport
+**Le problème, révélé par la calibration.** Le rapport
 $\gamma\alpha/\lambda$ dépasse 1 dans les 19 épisodes d'attention mesurés, sous les quatre
 estimateurs testés. Ce n'est pas une propriété inquiétante de l'écosystème : c'est une
 **tautologie de la procédure d'estimation**. Un épisode d'attention observable a
@@ -475,8 +486,8 @@ identiques à moins de 0,6 % de la borne exacte : le choix de la mesure ne compt
 sont le **niveau** et la **conscience du rang** qui font la norme.
 
 **Ce que cet épisode enseigne sur la méthode.** Le dépôt disposait déjà de la bonne méthode et ne
-l'avait pas appliquée à ses propres mesures : la comparaison des [lignes de
-base](lignes-de-base.md) fixe le plancher précisément pour rendre les concurrents comparables.
+l'avait pas appliquée à ses propres mesures : la comparaison des lignes de
+base fixe le plancher précisément pour rendre les concurrents comparables.
 Une méthode acquise dans un chapitre ne se transporte pas toute seule dans les autres.
 
 ### 19. Une remise d'attention conventionnelle donnée pour universelle
@@ -516,7 +527,7 @@ cascade entre $z = -208$ et $z = -241$, plus fortement que sur données réelles
 ne suppose rien — il ne teste que l'indépendance.
 
 **Retenu.** La sévérité doit être publiée **avec la forme supposée**, et cette forme reste à
-tester. C'est la piste ouverte de la [page des angles morts](angles-morts.md).
+tester. C'est la piste ouverte de la page des angles morts.
 
 **Ce que cet épisode enseigne sur la méthode.** Un instrument qui ne suppose rien survit à un
 changement de modèle ; un instrument qui suppose une forme ne survit qu'à ce que cette forme
@@ -571,7 +582,7 @@ discrimination est totale ($z = -158$ à $-412$ contre $-1{,}03$), et la **casca
 Baidu-ULTR. La loi de puissance, elle, se révèle le **pire** des trois ajustements sur la courbe
 mesurée : $R^2 = 0{,}72$ contre $0{,}96$ et $0{,}99$.
 
-**Retenu.** L'exposition se **mesure** quand la donnée existe, et la [demande d'accès](article-40.md)
+**Retenu.** L'exposition se **mesure** quand la donnée existe, et la demande d'accès
 réclame désormais une colonne `affichages` — qui retire d'un coup le besoin d'estimer $\eta$,
 l'hypothèse de forme, et le confondant d'attrait.
 
@@ -633,7 +644,7 @@ dont on connaît la réponse fabrique le résultat qu'il devait mesurer.
 **Ce qui reste vrai.** L'effet résiduel est **établi** par l'appariement le plus peuplé, et son
 incidence sur l'indice se chiffre : $0{,}0025$, contre $0{,}0350$ pour la convention $1/R$ que la
 conclusion d'origine devait disqualifier. **Quatorze fois moins.** La loi de rang tient donc, et
-la colonne `format` de la [demande d'accès](article-40.md) passe de nécessaire à utile.
+la colonne `format` de la demande d'accès passe de nécessaire à utile.
 
 **Ce que cet épisode enseigne sur la méthode.** C'est la **quatrième** fois qu'un protocole
 raisonnable fabrique son propre résultat, et la première où il l'a fait dans un chapitre qui
@@ -644,7 +655,7 @@ posé sur la géométrie, pas sur la composition. Un contrôle ne protège que d
 
 **Ce que j'avais écrit.** Six chapitres répètent la même phrase : « aucun jeu de données public
 ne porte à la fois le rang servi et une étiquette de point de vue interprétable ». Elle sert de
-justification à la [demande d'accès](article-40.md), de conclusion à
+justification à la demande d'accès, de conclusion à
 [MIND](mind.md) et à [rang servi](rang-servi.md), et de réserve permanente à l'[indice](ide.md).
 
 **Le problème.** Trois jeux avaient été examinés — MIND, Baidu-ULTR, l'Open Bandit Dataset — et
@@ -751,7 +762,7 @@ parce qu'elle produit des quantités mesurables. Ce n'est pas une loi de la natu
 sociale.
 
 Un seul de ses paramètres est aujourd'hui calibré sur données réelles : le rapport
-$\gamma\alpha/\lambda$ ([calibration](calibration.md)). Et cette calibration, loin de
+$\gamma\alpha/\lambda$ (calibration). Et cette calibration, loin de
 conforter le modèle, a montré qu'une de ses recommandations réglementaires ne voulait rien
 dire (point 15) et que l'un de ses mécanismes n'était pas étayé par les données. **$J$, $T$,
 $\gamma$ et $\alpha$ pris séparément restent sans procédure d'estimation** : le formalisme
@@ -763,9 +774,6 @@ du travail.
     n'avait jamais été énoncée de façon à pouvoir être perdue. Elle l'est maintenant — une
     contrainte de **fluctuation-réponse**, trois invariances, et la liste écrite à l'avance de ce
     que le dépôt devrait retirer si le test échouait.
-    → [l'hypothèse de fond, réfutable](hypothese-testable.md)
-
-
 ### L'analogie de départ est réfutée — et c'est un résultat
 
 Il faut le dire plus nettement que « une analogie n'est pas une explication ». Les
@@ -833,8 +841,7 @@ qu'elles portent sur ce que le mémorandum demande à un législateur.
   différentiellement privé — ce dépôt le propose désormais, et en publie le prix :
   le bruit est presque gratuit sur la grandeur réglementée, ruineux sur la sévérité dont elle
   dépend, et le vrai coût est le **plafonnement des contributions**, qui surestime la
-  non-conformité de 0,6 à 2,5 points. → [ce que la vie privée coûte](vie-privee.md)
-
+  non-conformité de 0,6 à 2,5 points.
 ### Ce que les simulations ne montrent pas
 
 Les notebooks explorent des régimes de paramètres choisis pour être lisibles. Aucune

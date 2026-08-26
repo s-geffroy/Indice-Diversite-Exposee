@@ -31,7 +31,7 @@ That condition is a property of the **dataset**, not of the method. Hence the pr
 written into [roadmap §3.1](feuille-de-route.en.md): measure the real exploration before
 evaluating anything on it. [MIND](https://msnews.github.io/) (*Microsoft News Dataset*, Wu et
 al., ACL 2020) is the reference dataset for news recommendation, and the one on which the
-[algorithm](ade.en.md) was to be evaluated.
+algorithm was to be evaluated.
 
 ![MIND's real exploration](figures/fig16_exploration_mind.png)
 
@@ -189,8 +189,7 @@ and false figures.
 *For those who publish logs — and for the regulator who demands them.* Shuffling the display
 order does not make a dataset unbiased: it makes it **uncorrectable**. Publishing the served
 rank, or failing that the exposure propensity, costs one column and decides what remains
-measurable. → [memorandum](memorandum.en.md)
-
+measurable.
 ## Data provenance
 
 MIND-small's official link (`mind201910small.blob.core.windows.net`) now answers *409 Public

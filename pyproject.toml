@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ide"
-version = "0.1.0"
+version = "0.2.0"
 description = "Indice de Diversité Exposée — mesurer la diversité qu'un fil algorithmique expose réellement"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Sylvain Geffroy" }]
-keywords = ["sociophysics", "opinion-dynamics", "ising", "fokker-planck", "entropy", "dsa"]
+keywords = ["information-diversity", "recommender-systems", "position-bias", "off-policy-evaluation", "entropy"]
 dependencies = [
     "numpy>=1.26",
     "scipy>=1.11",

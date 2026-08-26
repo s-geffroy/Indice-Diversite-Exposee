@@ -126,7 +126,7 @@ longer consulted whatever its position on screen.
 
 ## 4. What this adds to the data access request
 
-[Table 3](article-40.en.md) already asks for a `displays` column. A fourth would be needed: the
+Table 3 already asks for a `displays` column. A fourth would be needed: the
 **format** of the item served, a category declared by the platform.
 
 Without it, two feeds of identical composition can expose different diversities with nothing
@@ -161,5 +161,4 @@ here rather than left to be discovered.
 ---
 
 *Notebook: [24 — Format and return](notebooks/24_format_et_retour.md) ·
-[measured exposure](exposition-mesuree.en.md) · [the form test](test-de-forme.en.md) ·
-[Article 40 request](article-40.en.md)*
+[measured exposure](exposition-mesuree.en.md) · [the form test](test-de-forme.en.md)*

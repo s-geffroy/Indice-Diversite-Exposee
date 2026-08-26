@@ -58,8 +58,6 @@ is the only stable quantity in the table.
 
 **Regulatory consequence.** A regulator cannot fix a single discount. The attention discount is
 part of what must be **measured on the surface**, just as the served rank must be recorded.
-→ [Article 40 request](article-40.en.md)
-
 ## 2. Comparing two measures at the same floor is meaningless
 
 [Adversarial rank](rang-adverse.en.md) compared four measures **at the same 0.70 floor** and
@@ -78,7 +76,7 @@ bound. **Target proximity does not resist better: it is less demanding at the sa
 
 What matters is therefore not the choice of measure but the **level** required and
 **rank-awareness**. The repository had applied the right method elsewhere — the
-[baselines](lignes-de-base.en.md) fix the floor precisely to make methods comparable — and had
+baselines fix the floor precisely to make methods comparable — and had
 not applied it to its own measures.
 
 ## 3. Trust bias, which the estimator ignores
@@ -122,7 +120,7 @@ inherits the very bias one set out to correct. And the effective sample size —
 4,077,727 — **does not change**: it depends only on the distribution of importance weights, that
 is, on the distance between the two policies.
 
-**The problem is structural.** The [memorandum](memorandum.en.md)'s recommendation holds: require
+**The problem is structural.** The memorandum's recommendation holds: require
 a fraction of exploration, not a better estimator.
 
 ## 5. Reading the index as an effective number of viewpoints
@@ -167,7 +165,7 @@ European law is the route to access. We **corroborate**; we do not discover.
 ## What this counter-expertise did not do — and which is now done
 
 The two blind spots announced here have since been measured.
-→ **[The two blind spots](angles-morts.en.md)**
+→ **The two blind spots**
 
 * **Under cascade, the exchangeability test holds**: it rejects between $z = -208$ and
   $z = -241$, more strongly than on real data. The power law $R^{-\eta}$, by contrast,
@@ -180,5 +178,5 @@ The two blind spots announced here have since been measured.
 *Implementation: `ide.radio.rank_weights` (parameterised discount),
 `ide.entropy.effective_viewpoints` ·
 Notebook: [20 — Counter-expertise](notebooks/20_contre_expertise.md) ·
-[adversarial rank](rang-adverse.en.md) · [baselines](lignes-de-base.en.md) ·
+[adversarial rank](rang-adverse.en.md) ·
 [bibliography](bibliographie.en.md)*

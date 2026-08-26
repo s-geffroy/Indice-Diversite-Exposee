@@ -116,7 +116,7 @@ conservative, as it has always said; or coverage is too thin, 108 cells at the s
 threshold, because the same URL rarely reappears in a search log.
 
 !!! warning "What this non-rejection does not do"
-    It **does not validate** the power law. The [blind spots](angles-morts.en.md) showed it errs
+    It **does not validate** the power law. The blind spots showed it errs
     by a factor of 4,110 at rank twelve **if** examination is a cascade. Failing to detect a
     cascade with 108 cells does not establish its absence.
 
@@ -179,7 +179,7 @@ Baidu-ULTR's raw log is not versioned — 0.9 GB, CC BY-NC licence. The digest n
 clicks preceded. No row designates a reader, and the result is recomputed **identically** — zero
 gap, which a test verifies.
 
-This is also a useful property for the [data access request](article-40.en.md): the form test is
+This is also a useful property for the data access request: the form test is
 computable from aggregates, like the repository's other three measurements.
 
 !!! note "One exception, and what it signals"
@@ -191,6 +191,5 @@ computable from aggregates, like the repository's other three measurements.
 
 *Implementation: `ide.logs.upstream_dependence_test`,
 `ide.logs.upstream_dependence_from_counts` · Notebook:
-[22 — The form test](notebooks/22_test_de_forme.md) ·
-[the two blind spots](angles-morts.en.md) · [MIND's exploration](mind.en.md) ·
+[22 — The form test](notebooks/22_test_de_forme.md) · [MIND's exploration](mind.en.md) ·
 [logs that record the rank](rang-servi.en.md)*

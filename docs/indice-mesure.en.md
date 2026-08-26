@@ -102,7 +102,7 @@ decidable again — **by conviction**.
 
 ## 4. What this changes for the access request
 
-The [Article 40 request](article-40.en.md) asked for "the served rank". This chapter shows that
+The Article 40 request asked for "the served rank". This chapter shows that
 is not enough: a platform can supply an order column that is not the rank, without lying and
 without anyone seeing it. What must be asked for is the **verifiable** rank, and the
 exchangeability test is what verifies it — on the delivered data, before any other measurement.
@@ -134,5 +134,4 @@ verify returns the same figures.
 ---
 
 *Notebook: [26 — The index measured](notebooks/26_indice_mesure.md) ·
-[MIND](mind.en.md) · [served rank](rang-servi.en.md) · [the page effect](effet-de-page.en.md) ·
-[Article 40 request](article-40.en.md)*
+[MIND](mind.en.md) · [served rank](rang-servi.en.md) · [the page effect](effet-de-page.en.md)*

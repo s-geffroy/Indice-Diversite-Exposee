@@ -119,7 +119,7 @@ est conservateur, il l'a toujours dit ; ou bien la couverture est trop mince, 10
 le plus strict, parce qu'une même URL réapparaît rarement dans un journal de recherche.
 
 !!! warning "Ce que ce non-rejet ne fait pas"
-    Il **ne valide pas** la loi de puissance. Les [angles morts](angles-morts.md) ont montré
+    Il **ne valide pas** la loi de puissance. Les angles morts ont montré
     qu'elle se trompe d'un facteur 4 110 au douzième rang **si** l'examen est une cascade. Ne pas
     détecter de cascade avec 108 cellules n'établit pas son absence.
 
@@ -182,7 +182,7 @@ désormais les **quatre comptes par cellule** dont le test a besoin : impression
 précédées d'un clic, clics, et clics précédés. Aucune ligne n'y désigne un lecteur, et le
 résultat s'y recalcule **à l'identique** — écart nul, ce qu'un test vérifie.
 
-C'est aussi une propriété utile pour la [demande d'accès aux données](article-40.md) : le test de
+C'est aussi une propriété utile pour la demande d'accès aux données : le test de
 forme est calculable depuis des agrégats, au même titre que les trois autres mesures du dépôt.
 
 !!! note "Une exception, et ce qu'elle signale"
@@ -195,6 +195,5 @@ forme est calculable depuis des agrégats, au même titre que les trois autres m
 
 *Implémentation : `ide.logs.upstream_dependence_test`,
 `ide.logs.upstream_dependence_from_counts` · Notebook :
-[22 — Le test de forme](notebooks/22_test_de_forme.md) ·
-[les deux angles morts](angles-morts.md) · [exploration de MIND](mind.md) ·
+[22 — Le test de forme](notebooks/22_test_de_forme.md) · [exploration de MIND](mind.md) ·
 [journaux qui enregistrent le rang](rang-servi.md)*

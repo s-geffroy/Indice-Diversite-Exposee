@@ -6,38 +6,33 @@ formalité, c'est ce qui décidera s'il vaut quelque chose.
 
 ## Les retours les plus utiles
 
-L'état du travail a changé : l'analogie de départ est [réfutée](limites.md), l'écart empirique
-qui devait l'ancrer [n'existe pas](corpus-etendu.md), et ce qui tient est l'**instrumentation**.
-Les retours utiles ont donc changé aussi, par ordre décroissant :
+Ce dépôt ne mesure plus qu'une chose : la diversité qu'un fil expose réellement. Les retours
+utiles portent donc sur cette mesure, par ordre décroissant :
 
-1. **La forme retenue de l'index, et son niveau.** L'IDE mesure désormais l'entropie des
-   contenus servis, pondérée par l'attention de chaque rang, sur un catalogue déclaré. Est-elle
-   la bonne ? Un plancher exprimé sur cette grandeur est-il applicable, et à quel niveau ? Le
-   dépôt établit la forme et le prix, **pas la valeur**. → [IDE](ide.md)
-2. **Les instruments de mesure.** Le test d'échangeabilité, l'estimation de la sévérité du biais
-   de position, les estimateurs contrefactuels et la [spécification agrégée](article-40.md) sont
-   ce qui survit à tout le reste. Une erreur méthodologique là serait la plus coûteuse.
-   → [MIND](mind.md) · [journaux qui enregistrent le rang](rang-servi.md)
-3. **La discrétisation en points de vue.** Peut-elle être définie sans arbitraire politique ?
-   C'est la question que la mesure rend explicite au lieu de l'enfouir, et elle n'est pas
-   technique.
-4. **Un accès aux données.** La demande au titre de l'article 40 est écrite et vérifiée, mais
-   elle exige un **organisme de recherche** déposant. C'est le seul verrou que ce dépôt ne peut
-   pas lever seul. → [demande au titre de l'article 40](article-40.md)
-5. **Le formalisme résiduel.** L'énergie libre de champ moyen est-elle le bon objet ? Le
-   couplage entre équation de résonance et dynamique d'opinion est-il légitime ? Cette question
-   compte moins qu'avant : le formalisme est cohérent, mais ce n'est plus lui qui porte les
-   résultats.
-6. **Des annotateurs humains.** Les trois codeurs du corpus sont des instances du même modèle de
-   langue ; leur accord surestime ce que produiraient des juges indépendants.
-   → [annotation en aveugle](annotation.md)
+1. **La forme retenue de l'indice.** L'IDE mesure l'entropie des contenus servis, pondérée par
+   l'attention de chaque rang, sur un catalogue déclaré. Est-elle la bonne ? Les trois choix qui
+   la définissent répondent chacun à une attaque qui a réussi — en reste-t-il une qui ne l'a pas
+   été ? → [IDE](ide.md) · [test adverse](gaming.md)
+2. **Les instruments de mesure.** Le test d'échangeabilité, l'estimation de la sévérité, le test
+   de forme et l'encadrement de l'indice sont ce qui survit à tout le reste. Une erreur
+   méthodologique là serait la plus coûteuse. → [MIND](mind.md) · [rang servi](rang-servi.md)
+3. **La discrétisation en points de vue.** Le catalogue décide du niveau — 0,50 sur vingt-six
+   rubriques, 0,92 sur trois — et deux axes d'étiquetage du même corpus ne concordent qu'à
+   $\rho = 0{,}16$. Ce n'est pas une question technique. → [le catalogue](catalogue.md)
+4. **Un journal qui porte un rang vérifiable et une étiquette.** Quatre journaux publics ont été
+   examinés, aucun ne permet la mesure de l'indice **exposé**. C'est le seul verrou que ce dépôt
+   ne peut pas lever seul. → [feuille de route](feuille-de-route.md)
 
 ## Ce qui a déjà été corrigé
 
-Merci de consulter l'[audit critique](limites.md) et les [errata](errata.md) avant de signaler
-une erreur : **dix-sept corrections** y sont documentées, dont les cinq formules invalides du
-raisonnement d'origine, deux découvertes en tentant de mesurer, et le renommage de l'index
-lui-même. Six résultats négatifs y sont publiés comme tels.
+Merci de consulter l'[audit critique](limites.md) et les [errata](errata.md) avant de signaler une
+erreur : **vingt-sept corrections** y sont documentées, dont cinq formules invalides, une moitié
+qui porte sur les propositions du dépôt lui-même, et neuf résultats négatifs publiés comme tels.
+
+Le dépôt a par ailleurs **retiré trois moitiés** : l'analogie avec la décohérence quantique, le
+formalisme de physique statistique qu'elle avait fait emprunter, et l'appareil de régulation
+(algorithme, plancher, demande d'accès). L'audit en garde le registre entier ; il n'est pas prévu
+de les reconstituer.
 
 ## Comment contribuer
 
@@ -52,14 +47,12 @@ Tout retour intégré est crédité dans le [CHANGELOG](https://github.com/s-gef
 
 ## Communautés visées
 
-Le travail se situe à l'intersection de trois champs :
+Le travail se situe à l'intersection de deux champs :
 
 | Champ | Ce qui s'y joue |
 |---|---|
-| **Sociophysique / physique statistique** | validité des modèles d'Ising, de Fokker-Planck et du traitement de champ moyen |
-| **Sciences des réseaux / sociologie computationnelle** | pertinence de l'application aux algorithmes de recommandation réels |
-| **Régulation du numérique** | faisabilité juridique et technique du cadre métrologique proposé, et [demande d'accès aux données](article-40.md) au titre de l'article 40 du DSA |
-| **Recommandation et évaluation hors ligne** | validité du test d'échangeabilité, de l'estimation du biais de position et des estimateurs contrefactuels |
+| **Recommandation et évaluation hors ligne** | validité du test d'échangeabilité, de l'estimation du biais de position, du test de forme et des estimateurs contrefactuels |
+| **Mesure de la diversité informationnelle** | la forme retenue de l'indice, la discrétisation en points de vue, et ce qu'une entropie normalisée mesure vraiment |
 
 ---
 
@@ -79,19 +72,18 @@ coordonnée personnelle n'est incluse dans ce dépôt.
 >
 > **Résumé.** Le travail définit un *Indice de Diversité Exposée* (IDE) — l'entropie des
 > contenus servis sur un catalogue de points de vue déclaré, pondérée par l'attention de chaque
-> rang — et un filtre de recommandation qui l'optimise. Il est parti d'une analogie avec la
-> décohérence quantique, que son propre audit a **réfutée** ; ce qui subsiste relève de la
-> mécanique statistique classique, et l'essentiel des résultats est **métrologique** : un test
-> exact qui dit si un journal de recommandation permet seulement une correction d'exposition,
-> l'estimation de la sévérité du biais de position au lieu de sa supposition, et des estimateurs
-> contrefactuels confrontés à une vérité terrain.
+> rang — puis le soumet aux attaques qu'il doit supporter. Trois d'entre elles réussissent contre
+> les formulations naïves et imposent chacune une correction. L'essentiel des résultats est
+> **métrologique** : trois contrôles à passer sur un journal de recommandation avant toute
+> mesure, la sévérité de l'attention **mesurée** plutôt que supposée — 0,88 et non 1 —, et la
+> première mesure de l'indice sur des fils réels.
 >
-> **Ce que je sollicite en particulier.** Le dépôt publie **six résultats négatifs** et
-> **dix-sept corrections** de son propre raisonnement, dont plusieurs invalidaient une formule.
-> Les avis les plus utiles porteraient sur la forme retenue de l'indice et sur le niveau d'un
-> éventuel plancher — que la mesure ne détermine pas —, ou sur les instruments de mesure
-> eux-mêmes, où une erreur méthodologique serait la plus coûteuse. Une validation d'ensemble me
-> serait bien moins utile.
+> **Ce que je sollicite en particulier.** Le dépôt publie **neuf résultats négatifs** et
+> **vingt-sept corrections** de son propre raisonnement, dont cinq invalidaient une formule et
+> dont la moitié portent sur ses propres propositions. Les avis les plus utiles porteraient sur
+> la forme retenue de l'indice, sur la discrétisation en points de vue, ou sur les instruments de
+> mesure eux-mêmes, où une erreur méthodologique serait la plus coûteuse. Une validation
+> d'ensemble me serait bien moins utile.
 >
 > L'intégralité du travail est en libre accès : équations, code reproductible en conteneur,
 > suite de tests, figures régénérables, et jeux de données dérivés.

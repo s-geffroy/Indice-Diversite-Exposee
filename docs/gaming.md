@@ -22,7 +22,7 @@
     n'est pas la diversité des **étiquettes** servies, mais celle des **contenus** qu'elles
     portent. Le plancher retenu porte sur l'**entropie de position** — l'IDE calculé sur les
     contenus et non sur les étiquettes — publié avec un diagnostic de **plus grand vide**. La
-    [recommandation 1 du mémorandum](memorandum.md) est révisée en conséquence, deux fois.
+    recommandation 1 du mémorandum est révisée en conséquence, deux fois.
 
 ---
 
@@ -293,7 +293,7 @@ réfutait, et faux dans ce qu'il proposait**.
 
 ## Ce que cela change pour le mémorandum
 
-La [recommandation 1](memorandum.md) imposait un plancher d'IDE. Cette formulation est
+La recommandation 1 imposait un plancher d'IDE. Cette formulation est
 **abandonnée** : elle est saturable à coût nul par une plateforme qui découple étiquette et
 contenu, et largement affaiblie bien avant.
 
@@ -339,5 +339,5 @@ faut les nommer :
 
 *Implémentation : `ide.gaming` · Notebook :
 [13 — Test adverse](notebooks/13_test_adverse_index.md) ·
-[IDE — l'index](ide.md) · [mémorandum](memorandum.md) ·
+[IDE — l'index](ide.md) ·
 [audit critique](limites.md)*

@@ -20,8 +20,8 @@
     The result does not destroy the index, it **moves its definition**: what must be measured is
     not the diversity of the **labels** served, but that of the **items** they carry. The
     retained floor is on **position entropy** — the index computed on items rather than labels —
-    published alongside a **largest-gap** diagnostic. [Memorandum recommendation
-    1](memorandum.en.md) is revised accordingly, twice.
+    published alongside a **largest-gap** diagnostic. Memorandum recommendation
+    1 is revised accordingly, twice.
 
 ---
 
@@ -283,7 +283,7 @@ wrong in what it proposed**.
 
 ## What this changes for the memorandum
 
-[Recommendation 1](memorandum.en.md) imposed a floor on the index. That formulation is
+Recommendation 1 imposed a floor on the index. That formulation is
 **abandoned**: it is saturable at zero cost by a platform that decouples label from content, and
 substantially weakened well before that.
 
@@ -327,5 +327,5 @@ must be named:
 
 *Implementation: `ide.gaming` · Notebook:
 [13 — Adversarial test](notebooks/13_test_adverse_index.md) ·
-[EDI — the index](ide.en.md) · [memorandum](memorandum.en.md) ·
+[EDI — the index](ide.en.md) ·
 [critical audit](limites.en.md)*

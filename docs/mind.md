@@ -32,7 +32,7 @@ Cette condition est une propriété du **jeu de données**, pas de la méthode. 
 inscrit à la [feuille de route §3.1](feuille-de-route.md) : mesurer l'exploration réelle avant
 d'évaluer quoi que ce soit. [MIND](https://msnews.github.io/) (*Microsoft News Dataset*,
 Wu et al., ACL 2020) est le jeu de référence de la recommandation d'actualité, celui sur lequel
-l'évaluation de l'[ADE](ade.md) était prévue.
+l'évaluation de l'ADE était prévue.
 
 ![L'exploration réelle de MIND](figures/fig16_exploration_mind.png)
 
@@ -190,8 +190,7 @@ seule la seconde produit des chiffres confiants et faux.
 *Pour ceux qui publient des journaux — et pour le régulateur qui en exige.* Mélanger l'ordre
 d'affichage ne rend pas un jeu de données non biaisé : il le rend **non corrigible**. Publier le
 rang servi, ou à défaut la propension d'exposition, coûte une colonne et décide de ce qui reste
-mesurable. → [mémorandum](memorandum.md)
-
+mesurable.
 ## Provenance des données
 
 Le lien officiel de MIND-small

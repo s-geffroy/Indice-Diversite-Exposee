@@ -7,7 +7,7 @@ analogies. That method produces sound intuitions alongside shortcuts that do not
 Publishing the thread as-is would expose the whole to being dismissed over a detail,
 when the starting intuition deserves better.
 
-Twenty-three points are documented. Each follows the same structure: what the thread claimed, why it is a
+Twenty-seven points are documented. Each follows the same structure: what the thread claimed, why it is a
 problem, and the formulation adopted. Every correction is **traceable** — implemented in
 `src/`, verified in `tests/`, illustrated in a notebook.
 
@@ -16,6 +16,16 @@ nothing: it lists the limitations that remain, including those bearing on regula
 of the index.
 
 ---
+
+!!! warning "What this record covers, and why it covers more than the repository"
+    This repository now measures one thing only: the diversity a feed actually exposes. **Three
+    halves have been removed from it** — the quantum decoherence analogy, the statistical-mechanics
+    formalism it had prompted, and the regulatory apparatus: algorithm, floor, data access request.
+
+    The corrections bearing on those halves are **kept here**. This is the record of what this work
+    got wrong, and it is the part one does not delete — an error removed from the repository
+    remains an error made. Links to the removed pages have been turned into plain text; the figures
+    and verdicts are unchanged.
 
 ## A. Nomenclature
 
@@ -323,7 +333,7 @@ thread but an instrument this repository had itself built.
 configurations in which a piece of content's amplification rate exceeds its natural damping
 rate: $\gamma\alpha > \lambda$."
 
-**The problem, revealed by [calibration](calibration.en.md).** The ratio
+**The problem, revealed by calibration.** The ratio
 $\gamma\alpha/\lambda$ exceeds 1 in all 19 measured attention episodes, under all four
 estimators tested. This is not an alarming property of the ecosystem: it is a **tautology of
 the estimation procedure**. An observable attention episode necessarily went through a growth
@@ -408,7 +418,7 @@ costs, within 0.6 % of the exact bound: the choice of measure barely matters; it
 and **rank-awareness** that make the standard.
 
 **What this episode teaches about method.** The repository already had the right method and had
-not applied it to its own measures: the [baselines](lignes-de-base.en.md) comparison fixes the
+not applied it to its own measures: the baselines comparison fixes the
 floor precisely to make competitors comparable. A method acquired in one chapter does not
 transport itself into the others.
 
@@ -448,7 +458,7 @@ cascade between $z = -208$ and $z = -241$, more strongly than on real data. Prec
 assumes nothing — it tests only independence.
 
 **Adopted.** Severity must be published **with its assumed shape**, and that shape remains to be
-tested. It is the open lead of the [blind spots page](angles-morts.en.md).
+tested. It is the open lead of the blind spots page.
 
 **What this episode teaches about method.** An instrument that assumes nothing survives a change
 of model; an instrument that assumes a shape survives only as long as that shape holds. The
@@ -501,8 +511,8 @@ indistinguishable from a click budget — falls immediately: on examination, dis
 turns out to be the **worst** of three fits on the measured curve: $R^2 = 0.72$ against $0.96$ and
 $0.99$.
 
-**Adopted.** Exposure is **measured** when the data exists, and the [access
-request](article-40.en.md) now asks for a `displays` column — which removes at a stroke the need to
+**Adopted.** Exposure is **measured** when the data exists, and the access
+request now asks for a `displays` column — which removes at a stroke the need to
 estimate $\eta$, the shape assumption, and the attractiveness confounder.
 
 **What this episode teaches about method.** The repository built three successive checks, a
@@ -560,7 +570,7 @@ manufactures the result it was supposed to measure.
 **What remains true.** The residual effect is **established** by the most populated matching, and
 its bearing on the index can be quantified: $0.0025$, against $0.0350$ for the $1/R$ convention
 the original conclusion was meant to disqualify. **Fourteen times less.** The rank law therefore
-holds, and the `format` column of the [access request](article-40.en.md) goes from necessary to
+holds, and the `format` column of the access request goes from necessary to
 useful.
 
 **What this episode teaches about method.** This is the **fourth** time a reasonable protocol has
@@ -572,7 +582,7 @@ not on composition. A control protects only against what it controls.
 
 **What I wrote.** Six chapters repeat the same sentence: "no public dataset carries both the
 served rank and an interpretable viewpoint label". It justifies the
-[access request](article-40.en.md), concludes [MIND](mind.en.md) and
+access request, concludes [MIND](mind.en.md) and
 [served rank](rang-servi.en.md), and stands as a permanent caveat on the [index](ide.en.md).
 
 **The problem.** Three datasets had been examined — MIND, Baidu-ULTR, the Open Bandit Dataset —
@@ -672,7 +682,7 @@ amplification. It is a structural hypothesis, fruitful because it yields measura
 quantities. It is not a law of social nature.
 
 Exactly one of its parameters is now calibrated on real data: the ratio
-$\gamma\alpha/\lambda$ ([calibration](calibration.en.md)). And that calibration, far from
+$\gamma\alpha/\lambda$ (calibration). And that calibration, far from
 reinforcing the model, showed that one of its regulatory recommendations was meaningless
 (point 15) and that one of its mechanisms is not data-supported. **$J$, $T$, $\gamma$ and
 $\alpha$ taken separately still have no estimation procedure**: the formalism is coherent,
@@ -684,9 +694,6 @@ its empirical grounding has barely begun. This remains the work's principal weak
     been stated so that it could be lost. It is now — a **fluctuation–response** constraint,
     three invariances, and the list, written in advance, of what the repository would have to
     withdraw if the test failed.
-    → [the underlying hypothesis, refutable](hypothese-testable.en.md)
-
-
 ### The starting analogy is refuted — and that is a result
 
 This deserves stating more plainly than "an analogy is not an explanation". The claims
@@ -747,8 +754,6 @@ bear on what the memorandum asks of a legislator.
   private — this repository now proposes one, and publishes its price: noise is nearly free on
   the regulated quantity, ruinous on the severity it depends on, and the real cost is the
   **contribution bound**, which overstates non-compliance by 0.6 to 2.5 points.
-  → [what privacy costs](vie-privee.en.md)
-
 ### What the simulations do not show
 
 The notebooks explore parameter regimes chosen for legibility. No systematic sensitivity

@@ -128,7 +128,7 @@ plus consulté quelle que soit sa position à l'écran.
 
 ## 4. Ce qui s'ajoute à la demande d'accès aux données
 
-Le [tableau 3](article-40.md) réclame déjà une colonne `affichages`. Il en faudrait une
+Le tableau 3 réclame déjà une colonne `affichages`. Il en faudrait une
 quatrième : le **format** du contenu servi, catégorie déclarée par la plateforme.
 
 Sans elle, deux fils de composition identique peuvent exposer des diversités différentes sans que
@@ -164,5 +164,4 @@ plutôt que laissée à découvrir.
 ---
 
 *Notebook : [24 — Format et retour](notebooks/24_format_et_retour.md) ·
-[exposition mesurée](exposition-mesuree.md) · [le test de forme](test-de-forme.md) ·
-[demande au titre de l'article 40](article-40.md)*
+[exposition mesurée](exposition-mesuree.md) · [le test de forme](test-de-forme.md)*

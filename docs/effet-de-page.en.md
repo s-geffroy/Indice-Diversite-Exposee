@@ -89,7 +89,7 @@ page. **Two hundredths.**
 
 **The order of priorities reverses.** What a regulator must require first is not the format
 served but the **measurement of exposure itself** — the `impressions` column. The `format` column
-of the [access request](article-40.en.md) remains useful, because it allows this chapter to be
+of the access request remains useful, because it allows this chapter to be
 checked elsewhere, but it **ceases to be necessary** to computing the index.
 
 **And the attention discount becomes portable again.** That was the real stake: if $w_R$ depended
@@ -115,5 +115,4 @@ bearing on the regulated quantity is negligible next to that of the convention i
 ---
 
 *Notebook: [25 — The page effect](notebooks/25_effet_de_page.md) ·
-[format and return](format-et-retour.en.md) · [measured exposure](exposition-mesuree.en.md) ·
-[Article 40 request](article-40.en.md)*
+[format and return](format-et-retour.en.md) · [measured exposure](exposition-mesuree.en.md)*

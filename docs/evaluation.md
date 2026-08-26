@@ -25,7 +25,7 @@
 Le [test adverse](gaming.md) a corrigé deux fois la définition de l'index : mesurer les
 **contenus** et non les étiquettes, puis ne pas mesurer par l'entropie de Rao, qui prescrivait
 la polarisation. Le mouvement suivant annoncé par la [feuille de route](feuille-de-route.md)
-est l'évaluation de l'[ADE](ade.md) sur un jeu de données public de recommandation.
+est l'évaluation de l'ADE sur un jeu de données public de recommandation.
 
 Deux hypothèses portaient encore ce programme, implicites l'une et l'autre :
 
@@ -190,7 +190,7 @@ premier, et il reste un énoncé.
 
 Trois des cinq références de RADio demandent en outre des attributs que ce dépôt n'a pas —
 scores d'affect, annotations de points de vue, codage des minorités. Le
-[corpus étendu](corpus-etendu.md) a montré ce qu'il en coûte de prendre une étiquette
+corpus étendu a montré ce qu'il en coûte de prendre une étiquette
 disponible pour l'attribut qu'on voudrait mesurer.
 
 ## Pistes ouvertes
@@ -210,4 +210,4 @@ disponible pour l'attribut qu'on voudrait mesurer.
 
 *Implémentation : `ide.radio`, `ide.offpolicy` · Notebook :
 [14 — Rang et contrefactuel](notebooks/14_rang_et_contrefactuel.md) ·
-[test adverse](gaming.md) · [ADE](ade.md) · [feuille de route](feuille-de-route.md)*
+[test adverse](gaming.md) · [feuille de route](feuille-de-route.md)*

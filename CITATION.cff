@@ -2,30 +2,29 @@ cff-version: 1.2.0
 message: "Si vous utilisez ce travail, merci de le citer comme suit."
 title: "Indice de Diversité Exposée (IDE) : mesurer la diversité qu'un fil algorithmique expose réellement"
 abstract: >-
-  Formalisation thermodynamique de la dynamique d'opinion sous flux algorithmique.
-  Le travail construit une analogie structurelle entre décohérence quantique et
-  effondrement du consensus, la formalise via les modèles d'Ising et de Voter, puis
-  via l'équation de Fokker-Planck, et en dérive deux instruments : l'Indice de
-  Diversité Exposée (IDE), métrique auditable de la diversité informationnelle
-  d'un fil d'actualité, et l'Algorithme de Diversité Exposée (ADE), filtre de
-  recommandation qui optimise cet index plutôt que l'engagement brut.
+  Mesure de la diversité qu'un fil de recommandation expose réellement à son lecteur.
+  L'Indice de Diversité Exposée (IDE) est l'entropie des contenus servis, projetés sur
+  un catalogue de points de vue déclaré et pondérés par l'attention qu'appelle chaque
+  rang. Le travail définit l'indice, le soumet aux attaques qui le mettent en défaut,
+  mesure l'exposition sur des journaux publics — sévérité de 0,88 et non 1 par
+  convention, cascade réfutée — et publie la première mesure de l'indice sur des fils
+  réels, avec le registre de ses vingt-sept corrections.
 type: software
 authors:
   - family-names: Geffroy
     given-names: Sylvain
-version: 0.1.0
+version: 0.2.0
 date-released: "2026-08-17"
 license: MIT
 license-url: "https://opensource.org/licenses/MIT"
 repository-code: "https://github.com/s-geffroy/Indice-Diversite-Exposee"
 url: "https://s-geffroy.github.io/Indice-Diversite-Exposee/"
 keywords:
-  - sociophysique
-  - dynamique des opinions
-  - modèle d'Ising
-  - équation de Fokker-Planck
+  - diversité informationnelle
+  - systèmes de recommandation
+  - biais de position
+  - évaluation hors ligne
   - entropie de Shannon
-  - Digital Services Act
 references:
   - type: article
     authors:

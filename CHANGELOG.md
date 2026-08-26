@@ -7,6 +7,38 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Retiré — le dépôt ne mesure plus qu'une chose
+
+Décision de périmètre : **un vrai Indice de Diversité Exposée, et pas plus.** Trois moitiés
+quittent le dépôt.
+
+- **L'appareil de régulation** — mémorandum, demande au titre de l'article 40, plancher, coût de
+  la vie privée, tableaux agrégés. Ses propres mesures l'avaient vidé de sa substance : un niveau
+  qui dépend du catalogue, qu'un contenu servi sur 177 suffit à satisfaire, et une grandeur
+  agrégée qui invite à traiter la marge plutôt que les lecteurs les plus enfermés.
+- **L'algorithme** — l'ADE et les lignes de base qui le jugeaient. Ce dépôt mesure, il ne
+  prescrit pas, et une heuristique de 1998 faisait aussi bien.
+- **La physique** — analogie avec la décohérence, Ising, Voter, Fokker-Planck, résonance, modèle
+  à agents, calibration, corpus étendu, annotation en aveugle. L'analogie avait été réfutée
+  transfert par transfert, et la seule prédiction propre du formalisme mesurée quatre fois sans
+  effet.
+
+Ce qui reste est l'indice, ce qui l'attaque et ce qui le mesure : sa définition et ses trois
+choix, les trois contrôles de recevabilité d'un journal, l'exposition mesurée, la mesure sur des
+fils réels, et le catalogue.
+
+- **L'audit est conservé entier.** Les vingt-sept corrections restent, **y compris celles qui
+  portent sur les moitiés retirées** — une erreur retirée du dépôt reste une erreur commise. Les
+  renvois vers les pages disparues sont devenus du texte ; les chiffres et les verdicts sont
+  inchangés. Un avertissement en tête de l'audit dit pourquoi il couvre plus que le dépôt.
+- **Les numéros des notebooks ne sont pas renumérotés.** Les trous sont ceux des chapitres
+  retirés, et l'audit continue de désigner ce dont il parle.
+- Onze modules sur vingt-six, douze notebooks sur vingt-neuf, **261 tests**. Les deux notes
+  LaTeX passent de 29 et 28 pages à **16 et 16**, sans référence morte ni boîte débordante.
+- `README`, page d'accueil, `docs/ide.md`, feuille de route, appel à relecture et métadonnées de
+  citation réécrits autour de l'indice seul. Version **0.2.0**.
+
+
 ### Ajouté — le prix d'un plancher, mesuré sur des fils réels
 
 Le dépôt chiffrait le coût d'une norme de diversité entre 8,2 % et 18,9 % d'engagement — mais en

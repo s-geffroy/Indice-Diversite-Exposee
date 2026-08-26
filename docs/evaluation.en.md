@@ -24,7 +24,7 @@
 The [adversarial test](gaming.en.md) corrected the index's definition twice: measure the
 **items** rather than the labels, then do not measure by Rao's entropy, which prescribed
 polarisation. The next move announced by the [roadmap](feuille-de-route.en.md) is the
-evaluation of the [algorithm](ade.en.md) on a public recommendation dataset.
+evaluation of the algorithm on a public recommendation dataset.
 
 Two assumptions still carried that programme, both implicit:
 
@@ -186,7 +186,7 @@ rank". The second statement is far better than the first, and it remains a state
 
 Three of RADio's five references further require attributes this repository does not have —
 affect scores, viewpoint annotations, minority coding. The
-[extended corpus](corpus-etendu.en.md) showed what it costs to take an available label for the
+extended corpus showed what it costs to take an available label for the
 attribute one would like to measure.
 
 ## Open leads
@@ -206,4 +206,4 @@ attribute one would like to measure.
 
 *Implementation: `ide.radio`, `ide.offpolicy` · Notebook:
 [14 — Rank and counterfactual](notebooks/14_rang_et_contrefactuel.md) ·
-[adversarial test](gaming.en.md) · [algorithm](ade.en.md) · [roadmap](feuille-de-route.en.md)*
+[adversarial test](gaming.en.md) · [roadmap](feuille-de-route.en.md)*

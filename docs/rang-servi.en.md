@@ -20,7 +20,7 @@
     That would need the served rank **and** an interpretable viewpoint label. MIND has the
     categories without the rank; Baidu-ULTR has the rank without labels; the Open Bandit Dataset
     has rank, propensity and three categorical attributes — **anonymised**. The dataset that
-    would allow the [algorithm](ade.en.md) to be evaluated end to end does not exist publicly.
+    would allow the algorithm to be evaluated end to end does not exist publicly.
 
 ---
 
@@ -80,8 +80,6 @@ Click rate follows the expected decay: 0.340 at rank one, 0.088 at rank three, 0
     like this one — decay is **geometric**, and the fitted law overstates real exposure by a
     factor of 40 to 4,110 at rank twelve. The exchangeability test says the order carries
     information; it does not say **in what form**.
-    → [The two blind spots](angles-morts.en.md)
-
     **Figure revised since.** The same quantity, **measured** on display rather than estimated
     through clicks, is $0.882 \pm 0.046$ over 143 documents. The click-based estimate overstates
     decay by **23 %**, because a click conflates examination with attractiveness.
@@ -176,8 +174,7 @@ remains possible fits in three lines, and the [roadmap](feuille-de-route.en.md) 
 1. measure on MIND whatever does not depend on exposure, and say so;
 2. measure on Baidu-ULTR and the Open Bandit Dataset whatever does not depend on viewpoints;
 3. for the rest, **ask for the data** — which, under Article 40 of the DSA, is a provided-for
-   procedure and not a wish. → **[the request, drafted](article-40.en.md)** ·
-   [memorandum](memorandum.en.md)
+   procedure and not a wish. → **the request, drafted**
 
 ## Data provenance
 
