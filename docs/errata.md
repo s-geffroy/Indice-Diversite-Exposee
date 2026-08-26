@@ -5,6 +5,12 @@ Ce dépôt n'est pas une transcription. Chaque écart avec le fil de travail du
 L'[audit critique](limites.md) développe le raisonnement ; cette page sert de table de
 correspondance.
 
+!!! warning "Ce registre couvre plus que le dépôt"
+    Les écarts ci-dessous portent aussi sur des modules et des chapitres **retirés depuis** — le
+    formalisme de physique statistique, l'algorithme, l'appareil de régulation. Ils sont conservés
+    pour la même raison que l'[audit](limites.md) : un écart assumé reste un écart, et le supprimer
+    du registre au motif que son objet a disparu reviendrait à effacer la trace de la décision.
+
 ## Formules modifiées
 
 | Fil de travail | Retenu | Pourquoi | Vérifié par |

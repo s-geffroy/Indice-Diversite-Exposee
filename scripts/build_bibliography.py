@@ -27,13 +27,8 @@ DOCS = Path(__file__).resolve().parents[1] / "docs"
 THEMES: list[tuple[tuple[str, ...], str, str]] = [
     (("shannon1948", "vonneumann1932", "jost2006"),
      "Entropie et information", "Entropy and information"),
-    (("zeh1970", "zurek2003"),
-     "Décohérence quantique — l'analogie de départ, réfutée depuis",
-     "Quantum decoherence — the founding analogy, since refuted"),
-    (("ising1925", "onsager1944", "galam2004", "castellano2009", "clifford1973", "holley1975",
-      "deffuant2000", "kramers1940", "risken1989", "watts1998", "reynolds1987"),
-     "Physique statistique de l'opinion", "Statistical mechanics of opinion"),
-    (("pariser2011", "carbonell1998", "rao1982", "ohsaka2023", "steck2018", "vrijenhoek2022"),
+    (("pariser2011", "carbonell1998", "rao1982", "ohsaka2023", "steck2018", "vrijenhoek2022",
+      "deffuant2000"),
      "Recommandation, diversité et normativité",
      "Recommendation, diversity and normativity"),
     (("joachims2017", "craswell2008", "agarwal2019", "swaminathan2015", "vardasbi2020",
@@ -42,7 +37,6 @@ THEMES: list[tuple[tuple[str, ...], str, str]] = [
      "Position bias and counterfactual evaluation"),
     (("wu2020", "zou2022", "saito2020", "vandrunen2025"),
      "Jeux de données publics", "Public datasets"),
-    (("dsa2022", "delegue2025"), "Droit européen", "European law"),
 ]
 
 #: Ce que chaque référence sert **dans ce dépôt**, et où. Une référence sans usage n'a pas
@@ -56,37 +50,10 @@ USES: dict[str, tuple[str, str]] = {
                  "qu'en entropie normalisée.",
                  "Justifies publishing the index as an **effective number of viewpoints** "
                  "rather than a normalised entropy."),
-    "zeh1970": ("Source de l'analogie décohérence / effondrement du consensus.",
-                "Source of the decoherence / consensus-collapse analogy."),
-    "zurek2003": ("Le résultat dont $\\tau_D \\propto \\tau_R/N$ était une lecture heuristique "
-                  "et fausse.",
-                  "The result of which $\\tau_D \\propto \\tau_R/N$ was a heuristic and "
-                  "incorrect reading."),
-    "ising1925": ("Modèle de la température sociale et de la transition de phase.",
-                  "Model of social temperature and the phase transition."),
-    "onsager1944": ("Température critique exacte, seule prédiction vérifiable du formalisme.",
-                    "Exact critical temperature, the formalism's only checkable prediction."),
-    "galam2004": ("Lignée sociophysique dont relève ce qui subsiste du modèle.",
-                  "The sociophysics lineage to which what survives of the model belongs."),
-    "castellano2009": ("Revue de référence des dynamiques d'opinion.",
-                       "Reference survey of opinion dynamics."),
-    "clifford1973": ("Voter Model, employé pour les lois d'échelle du consensus.",
-                     "Voter model, used for consensus scaling laws."),
-    "holley1975": ("Formalisation du Voter Model et de son temps de consensus.",
-                   "Formalisation of the voter model and its consensus time."),
-    "deffuant2000": ("Opinions continues : rappelle que les individus ne sont pas des spins.",
-                     "Continuous opinions: a reminder that individuals are not spins."),
-    "kramers1940": ("Franchissement de barrière par activation — l'analogue correct de "
-                    "l'« effet tunnel social ».",
-                    "Activated barrier crossing — the correct analogue of \"social tunnelling\"."),
-    "risken1989": ("Équation de Fokker-Planck et ses solutions stationnaires.",
-                   "The Fokker-Planck equation and its stationary solutions."),
-    "watts1998": ("Réseaux « petit monde », dont l'argument d'origine tirait une conclusion "
-                  "fausse.",
-                  "Small-world networks, from which the original argument drew a false "
-                  "conclusion."),
-    "reynolds1987": ("Modèle à agents dont dérive le prototype archivé.",
-                     "Agent model from which the archived prototype derives."),
+    "deffuant2000": ("Rappelle que les opinions sont multidimensionnelles, ce qu'un "
+                      "catalogue de points de vue discrétise nécessairement.",
+                      "A reminder that opinions are multidimensional, which a viewpoint "
+                      "catalogue necessarily discretises."),
     "pariser2011": ("Formulation populaire de la bulle de filtres.",
                     "Popular formulation of the filter bubble."),
     "carbonell1998": ("MMR : la ligne de base qui tient la frontière aussi bien que le filtre "
@@ -137,11 +104,6 @@ USES: dict[str, tuple[str, str]] = {
                       "et le droit européen la voie d'accès.",
                       "Establishes before us that public datasets are the bottleneck, and "
                       "European law the route to access."),
-    "dsa2022": ("Cadre réglementaire : risques systémiques (art. 34) et accès aux données "
-                "(art. 40).",
-                "Regulatory framework: systemic risks (Art. 34) and data access (Art. 40)."),
-    "delegue2025": ("Procédure opérationnelle de la demande d'accès aux données.",
-                    "Operational procedure for the data access request."),
 }
 
 #: Liens vérifiés. Une référence sans lien connu n'en reçoit pas : inventer un DOI serait pire

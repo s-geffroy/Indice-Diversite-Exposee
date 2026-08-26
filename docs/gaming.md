@@ -20,9 +20,8 @@
 !!! tip "Ce que cela prescrit, après correction"
     Le résultat ne détruit pas l'index, il en **déplace la définition** : ce qu'il faut mesurer
     n'est pas la diversité des **étiquettes** servies, mais celle des **contenus** qu'elles
-    portent. Le plancher retenu porte sur l'**entropie de position** — l'IDE calculé sur les
-    contenus et non sur les étiquettes — publié avec un diagnostic de **plus grand vide**. La
-    recommandation 1 du mémorandum est révisée en conséquence, deux fois.
+    portent. La forme retenue est l'**entropie de position** — l'IDE calculé sur les
+    contenus et non sur les étiquettes — accompagnée d'un diagnostic de **plus grand vide**.
 
 ---
 
@@ -115,7 +114,7 @@ Et ce que contient alors le fil :
 ### 3. La dégradation est plus rapide que le découplage
 
 Le découplage complet est une caricature — aucune plateforme ne peut vider *toutes* ses
-étiquettes. La question qui compte pour un régulateur est la vitesse à laquelle la contrainte
+étiquettes. La question qui compte est la vitesse à laquelle la contrainte
 perd sa force.
 
 | $\varphi$ | 0,0 | 0,2 | 0,4 | **0,5** | 0,6 | 0,8 | 1,0 |
@@ -162,7 +161,7 @@ norme tenable : elle inverse l'incitation.
     mesure devenait invariante d'échelle, et un fil réduit à un point y marquait $Q \approx 1$
     sur du bruit d'arrondi — cette page aurait conclu que l'entropie de Rao est manipulable elle
     aussi, c'est-à-dire l'inverse de la vérité. L'unité retenue est donc l'étendue du catalogue
-    **de référence**, fixée par le régulateur, et un test verrouille le point.
+    **de référence**, déclarée, et un test verrouille le point.
 
 ### 5. Une signature de manipulation, sans seuil inventé
 
@@ -179,7 +178,7 @@ dont les étiquettes prédisent le contenu afficherait au même IDE.
 | **excès** | **0,000** | 0,119 | 0,228 | 0,335 | 0,643 |
 
 Nul par construction pour une plateforme honnête, croissant avec la manipulation, et calculable
-par le régulateur puisqu'il ne dépend que du catalogue de référence — qu'il fixe lui-même.
+par celui qui déclare le catalogue, puisqu'il n'en dépend que de lui.
 
 ---
 
@@ -252,7 +251,7 @@ bien qu'au-delà de quelques largeurs de bande, s'éloigner davantage ne rapport
 **La proximité à une cible déclarée** répond à un défaut de principe que les trois autres
 partagent : elles supposent qu'une forme d'exposition est bonne sans le dire. L'entropie suppose
 l'uniforme, l'entropie de Rao suppose l'écartement — et c'est ce non-dit qui la conduit à
-prescrire la bimodalité. Une divergence rend l'hypothèse explicite : le régulateur **déclare**
+prescrire la bimodalité. Une divergence rend l'hypothèse explicite : on **déclare**
 la distribution visée.
 
 ### Leurs défauts propres, avant de recommander
@@ -271,7 +270,7 @@ d'elle plutôt qu'à sa place.
 
 **La Gaussian ILD est métrique** et les distingue — mais elle plafonne à 0,715 sur l'uniforme.
 Sa borne dépend de $k$ et de la largeur de bande, donc un seuil chiffré n'y serait pas lisible
-pour un régulateur. C'est un bon diagnostic, une mauvaise norme.
+comme mesure agrégée. C'est un bon diagnostic, une mauvaise note.
 
 ### Ce que le correctif retient
 
@@ -291,11 +290,10 @@ réfutait, et faux dans ce qu'il proposait**.
 > pas imaginées.** C'est un argument pour aller chercher la littérature avant de prescrire, non
 > après.
 
-## Ce que cela change pour le mémorandum
+## Ce que cela change pour la définition
 
-La recommandation 1 imposait un plancher d'IDE. Cette formulation est
-**abandonnée** : elle est saturable à coût nul par une plateforme qui découple étiquette et
-contenu, et largement affaiblie bien avant.
+Mesurer l'entropie des **étiquettes** est **abandonné** : c'est saturable à coût nul par une
+plateforme qui découple étiquette et contenu, et largement affaibli bien avant.
 
 Ce qui la remplace, **après le correctif de la section précédente** :
 
@@ -303,7 +301,7 @@ Ce qui la remplace, **après le correctif de la section précédente** :
    servis, projetés sur les bacs du catalogue de référence. Ce n'est pas l'entropie de Rao,
    qui prescrirait la polarisation ;
 2. **le plus grand vide est publié à côté du plancher**, parce que l'entropie est nominale ;
-3. **le régulateur fixe le catalogue de référence**, qui sert de grille et d'unité — c'est la
+3. **le catalogue de référence est déclaré**, et sert de grille et d'unité — c'est la
    même question politique que le choix de $k$, déplacée d'un cran ;
 4. **les deux indices — étiquettes et contenus — sont publiés sur le même fil**, et l'excès de
    signature est contrôlé.
@@ -329,10 +327,10 @@ faut les nommer :
    pas, il existe un $\varphi$ d'équilibre, et c'est lui qui détermine si la manipulation est
    rentable.
 3. **Étendre au jeu de Stackelberg** de la [feuille de route §4.2](feuille-de-route.md) : ici la
-   plateforme optimise sous une contrainte fixée, mais un régulateur devrait anticiper la
+   plateforme optimise sous une contrainte fixée, mais il faudrait anticiper la
    réponse et choisir le plancher en conséquence.
 4. **Traiter le choix du catalogue de référence.** Toute la résistance de $Q$ repose sur une
-   étendue fixée par le régulateur. Qui la fixe, et comment, redevient la question politique que
+   étendue déclarée. Qui la fixe, et comment, redevient la question politique que
    l'[audit §2.1](limites.md) posait déjà pour $k$.
 
 ---

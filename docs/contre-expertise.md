@@ -59,7 +59,7 @@ attention très concentrée, enterrer devient presque gratuit — 2,7 % — donc
 Le prix de la norme **consciente du rang**, lui, ne bouge pas : 20,8 à 24,1 % quelle que soit la
 surface. C'est la seule grandeur stable du tableau.
 
-**Conséquence réglementaire.** Le régulateur ne peut pas fixer une remise unique. La remise
+**Conséquence.** Aucune remise unique ne convient à toutes les surfaces. La remise
 d'attention fait partie de ce qui doit être **mesuré sur la surface**, au même titre que le rang
 servi doit être enregistré.
 ## 2. Comparer deux mesures au même plancher n'a pas de sens
@@ -81,7 +81,7 @@ chiffre.**
 
 Ce qui compte n'est donc pas le choix de la mesure mais le **niveau** exigé et la **conscience du
 rang**. Le dépôt avait pourtant appliqué la bonne méthode ailleurs — les
-lignes de base fixent le plancher précisément pour rendre les méthodes
+comparaisons fixaient le plancher précisément pour rendre les méthodes
 comparables — et ne l'avait pas appliquée à ses propres mesures.
 
 ## 3. Le biais de confiance, que l'estimateur ignore
@@ -125,7 +125,7 @@ seau d'enregistrement, hérite du biais qu'on cherchait à corriger. Et la taill
 effective — 1 513 sur 4 077 727 — **ne change pas** : elle ne dépend que de la distribution des
 poids d'importance, c'est-à-dire de la distance entre les deux politiques.
 
-**Le problème est structurel.** La recommandation du mémorandum tient : il faut
+**Le problème est structurel.** La conclusion tient : il faut
 exiger une fraction d'exploration, pas un meilleur estimateur.
 
 ## 5. Lire l'indice en nombre effectif de points de vue
@@ -172,8 +172,7 @@ recommandation diversifiée et que le droit européen est la voie d'accès à en
 
 ## Ce que cette contre-expertise ne faisait pas — et qui est fait
 
-Les deux angles morts annoncés ici ont été mesurés depuis.
-→ **Les deux angles morts**
+Deux angles morts annoncés ici ont été mesurés depuis.
 
 * **Sous cascade, le test d'échangeabilité tient** : il rejette entre $z = -208$ et $z = -241$,
   plus fortement que sur données réelles. En revanche la loi de puissance $R^{-\eta}$, elle,

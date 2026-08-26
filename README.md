@@ -123,5 +123,5 @@ sont les plus utiles. → **[Appel à relecture](docs/relecture.md)**
 
 ## Licences
 
-Code (`src/`, `tests/`, `notebooks/`, `legacy/`) sous [MIT](LICENSE) · contenus
+Code (`src/`, `tests/`, `notebooks/`) sous [MIT](LICENSE) · contenus
 rédactionnels (`docs/`, `paper/`) sous [CC BY 4.0](LICENSE-DOCS).

@@ -32,7 +32,7 @@ Cette condition est une propriété du **jeu de données**, pas de la méthode. 
 inscrit à la [feuille de route §3.1](feuille-de-route.md) : mesurer l'exploration réelle avant
 d'évaluer quoi que ce soit. [MIND](https://msnews.github.io/) (*Microsoft News Dataset*,
 Wu et al., ACL 2020) est le jeu de référence de la recommandation d'actualité, celui sur lequel
-l'évaluation de l'ADE était prévue.
+la mesure de l'indice était prévue.
 
 ![L'exploration réelle de MIND](figures/fig16_exploration_mind.png)
 
@@ -176,7 +176,7 @@ estimée, quoi qu'elles fassent. L'évaluation ne se trompe pas de peu — dans 
 données — 5,8 millions de contenus servis — mais l'absence de la seule variable qui identifierait
 la sévérité. Aucun raffinement de l'estimateur n'y changera rien.
 
-*Pour ce dépôt.* L'évaluation de l'ADE sur MIND reste possible pour ce qui ne dépend pas de
+*Pour ce dépôt.* La mesure sur MIND reste possible pour ce qui ne dépend pas de
 l'exposition : composition des fils, diversité servie, coût en pertinence déclarée. Elle est
 **impossible** pour ce qui en dépend — l'estimation contrefactuelle du coût d'engagement, qui
 était l'objet même de l'exercice. Il faut soit un jeu qui enregistre le rang d'affichage, soit
@@ -187,7 +187,7 @@ assumer un $\eta$ importé, dont le [rang adverse](rang-adverse.md) a chiffré l
 l'anonymisation ? ». Les deux se ressemblent parfaitement du point de vue de l'estimateur, et
 seule la seconde produit des chiffres confiants et faux.
 
-*Pour ceux qui publient des journaux — et pour le régulateur qui en exige.* Mélanger l'ordre
+*Pour ceux qui publient des journaux.* Mélanger l'ordre
 d'affichage ne rend pas un jeu de données non biaisé : il le rend **non corrigible**. Publier le
 rang servi, ou à défaut la propension d'exposition, coûte une colonne et décide de ce qui reste
 mesurable.
@@ -226,9 +226,9 @@ minimale détectable ne résumerait plus.
 2. **Évaluer sur MIND ce qui ne dépend pas de l'exposition**, en le disant : composition,
    diversité servie, frontière de compromis en pertinence déclarée.
 3. **Faire du test d'échangeabilité un contrôle d'acceptation** des journaux transmis au titre
-   de l'article 40 du DSA : un journal dont l'ordre est indiscernable d'un mélange n'est pas
+   d'un journal d'impressions : un ordre indiscernable d'un mélange n'est pas
    auditable contrefactuellement, et il vaut mieux le savoir avant l'audit qu'après.
-4. **Comparer à des lignes de base réglées** — MMR, réordonnancement aléatoire, popularité —
+4. **Comparer à des références réglées** — et non à des variantes de soi-même —
    qui reste la dette la plus ancienne du programme d'évaluation.
 
 ---

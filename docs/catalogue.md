@@ -26,7 +26,7 @@ Depuis le premier jour, l'[indice](ide.md) porte la même réserve :
 > mesurée, et ce découpage n'est pas un acte technique neutre.
 
 C'est vrai, et cela ne dit rien : *de combien* ? Assez pour rendre un plancher arbitraire, ou
-assez peu pour qu'un régulateur s'en accommode ? [Le chapitre 26](indice-mesure.md) fournit
+assez peu pour qu'on s'en accommode ? [Le chapitre 26](indice-mesure.md) fournit
 enfin de quoi trancher — 58 549 journées-utilisateur réelles, composition connue rubrique par
 rubrique.
 
@@ -98,7 +98,7 @@ de choisir sa propre note.
 dessous, l'indice ne classe plus : la concordance avec un catalogue fin tombe à zéro, et deux
 plateformes deviennent incomparables même relativement.
 
-**Et le régulateur doit dire sur quel axe il régule.** Thématique, tonalité, orientation
+**Et il faut dire sur quel axe on mesure.** Thématique, tonalité, orientation
 politique : ces axes ne se déduisent pas l'un de l'autre, et ce choix pèse au moins autant que le
 seuil chiffré.
 ## Réserves

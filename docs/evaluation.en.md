@@ -92,7 +92,7 @@ value:
 **Which direction of divergence is desirable is not given by the mathematics.** A calibration of
 0.013 describes a feed perfectly matching what the reader already read: that is a liberal
 recommender's objective and a deliberative recommender's definition of a bubble. The divergence
-measures; it does not decide — and that is the best thing it has to offer a regulator, who must
+measures; it does not decide — and that is the best thing it has to offer, since one must
 then declare what is aimed at instead of hiding it in the choice of a formula.
 
 ## 3. The offline-evaluation trap
@@ -197,7 +197,7 @@ attribute one would like to measure.
 2. ~~**Redo the adversarial test under rank-aware measurement.**~~
    → **[done](rang-adverse.en.md)**: all four measures are circumvented by burial, and the
    rank-aware floor doubles the engagement cost.
-3. **Compare against tuned baselines** — MMR, random re-ranking, popularity — not against the
+3. **Compare against tuned references** — not against
    pure engagement filter alone, which is a straw man.
 4. **Instantiate the five references on real data**, which presupposes first solving the
    labelling problem the extended corpus documented.

@@ -133,7 +133,7 @@ five, then flattens.
 
 ## 5. What this changes for the data access request
 
-The four tables of Article 40 all bear on clicks. **One more column** — the
+A digest built on clicks alone does not suffice. **One more column** — the
 number of impressions actually **displayed**, per (item, rank) cell — would stop exposure being
 estimated at all.
 

@@ -26,7 +26,7 @@ Since day one the [index](ide.en.md) has carried the same caveat:
 > value, and that cut is not a neutral technical act.
 
 True, and it says nothing: *by how much*? Enough to make a floor arbitrary, or little enough for
-a regulator to live with? [Chapter 26](indice-mesure.en.md) finally provides the means to settle
+to live with? [Chapter 26](indice-mesure.en.md) finally provides the means to settle
 it — 58,549 real user-days, composition known section by section.
 
 ![The catalogue](figures/fig28_catalogue.png)
@@ -96,7 +96,7 @@ mark.
 index no longer ranks: concordance with a fine catalogue falls to zero, and two platforms become
 incomparable even relatively.
 
-**And the regulator must say which axis it regulates.** Topic, tone, political leaning: these
+**And one must say which axis is measured.** Topic, tone, political leaning: these
 axes do not follow from one another, and that choice weighs at least as much as the numeric
 threshold.
 ## Reservations

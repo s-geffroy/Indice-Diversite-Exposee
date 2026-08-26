@@ -20,7 +20,7 @@
     Il y faudrait le rang servi **et** une étiquette de point de vue interprétable. MIND a les
     catégories sans le rang ; Baidu-ULTR a le rang sans étiquette ; l'Open Bandit Dataset a le
     rang, la propension et trois attributs catégoriels — **anonymisés**. Le jeu de données qui
-    permettrait d'évaluer l'ADE de bout en bout n'existe pas publiquement.
+    permettrait de mesurer l'indice de bout en bout n'existe pas publiquement.
 
 ---
 
@@ -164,7 +164,7 @@ un bandeau de trois vignettes. Ce qui reste interdit est de transporter l'un ver
 **Réglé — les estimateurs contrefactuels tiennent devant une vérité terrain**, avec la réserve
 chiffrée que leur précision effective est bien moindre que le nombre de lignes ne le suggère.
 
-**Non réglé — l'évaluation de l'ADE.** Elle demande le rang servi *et* une étiquette de point de
+**Non réglé — la mesure de l'indice exposé.** Elle demande le rang servi *et* une étiquette de point de
 vue interprétable. Aucun des trois jeux mesurés ne porte les deux. Une diversité calculée sur
 des catégories anonymisées ne dit rien : le catalogue de référence de l'[IDE](ide.md) est une
 déclaration politique, et une déclaration sur des hachages n'en est pas une.
@@ -176,8 +176,8 @@ publiquement.** Ce qui reste possible tient en trois lignes, et la
 
 1. mesurer sur MIND ce qui ne dépend pas de l'exposition, en le disant ;
 2. mesurer sur Baidu-ULTR et l'Open Bandit Dataset ce qui ne dépend pas des points de vue ;
-3. pour le reste, **demander la donnée** — ce qui, sous l'article 40 du DSA, est une démarche
-   prévue et non un vœu. → **la demande, rédigée**
+3. pour le reste, **demander la donnée** — un journal portant un rang vérifiable et une
+   étiquette de point de vue.
 
 ## Provenance des données
 

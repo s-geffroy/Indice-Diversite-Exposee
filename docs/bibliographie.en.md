@@ -18,40 +18,6 @@ diverge, and a test checks it. Regenerate with
   Justifies publishing the index as an **effective number of viewpoints** rather than a normalised entropy.
 
 
-## Quantum decoherence — the founding analogy, since refuted
-
-- **Zeh, H. Dieter** (1970). *On the interpretation of measurement in quantum theory*, Foundations of Physics, vol. 1(1), p. 69–76.  
-  Source of the decoherence / consensus-collapse analogy.
-- **Zurek, Wojciech H.** (2003). *Decoherence, einselection, and the quantum origins of the classical*, Reviews of Modern Physics, vol. 75(3), p. 715–775.  
-  The result of which $\tau_D \propto \tau_R/N$ was a heuristic and incorrect reading.
-
-
-## Statistical mechanics of opinion
-
-- **Ising, Ernst** (1925). *Beitrag zur Theorie des Ferromagnetismus*, Zeitschrift f\"ur Physik, vol. 31(1), p. 253–258.  
-  Model of social temperature and the phase transition.
-- **Onsager, Lars** (1944). *Crystal Statistics. I. A Two-Dimensional Model with an Order-Disorder Transition*, Physical Review, vol. 65(3-4), p. 117–149.  
-  Exact critical temperature, the formalism's only checkable prediction.
-- **Galam, Serge** (2004). *Sociophysics: a personal testimony*, Physica A, vol. 336(1-2), p. 49–55.  
-  The sociophysics lineage to which what survives of the model belongs.
-- **Castellano, Claudio ; Fortunato, Santo ; Loreto, Vittorio** (2009). *Statistical physics of social dynamics*, Reviews of Modern Physics, vol. 81(2), p. 591–646.  
-  Reference survey of opinion dynamics.
-- **Clifford, Peter ; Sudbury, Aidan** (1973). *A model for spatial conflict*, Biometrika, vol. 60(3), p. 581–588.  
-  Voter model, used for consensus scaling laws.
-- **Holley, Richard A. ; Liggett, Thomas M.** (1975). *Ergodic Theorems for Weakly Interacting Infinite Systems and the Voter Model*, The Annals of Probability, vol. 3(4), p. 643–663.  
-  Formalisation of the voter model and its consensus time.
-- **Deffuant, Guillaume ; Neau, David ; Amblard, Frederic ; Weisbuch, G\'erard** (2000). *Mixing beliefs among interacting agents*, Advances in Complex Systems, vol. 3(01n04), p. 87–98.  
-  Continuous opinions: a reminder that individuals are not spins.
-- **Kramers, Hendrik A.** (1940). *Brownian motion in a field of force and the diffusion model of chemical reactions*, Physica, vol. 7(4), p. 284–304.  
-  Activated barrier crossing — the correct analogue of "social tunnelling".
-- **Risken, Hannes** (1989). *The Fokker-Planck Equation: Methods of Solution and Applications*.  
-  The Fokker-Planck equation and its stationary solutions.
-- **Watts, Duncan J. ; Strogatz, Steven H.** (1998). *Collective dynamics of `small-world' networks*, Nature, vol. 393(6684), p. 440–442.  
-  Small-world networks, from which the original argument drew a false conclusion.
-- **Reynolds, Craig W.** (1987). *Flocks, herds and schools: A distributed behavioral model*, Proceedings of SIGGRAPH '87, p. 25–34.  
-  Agent model from which the archived prototype derives.
-
-
 ## Recommendation, diversity and normativity
 
 - **Pariser, Eli** (2011). *The Filter Bubble: What the Internet Is Hiding from You*.  
@@ -66,6 +32,8 @@ diverge, and a test checks it. Regenerate with
   Calibrated recommendations: the target as a declared distribution.
 - **Vrijenhoek, Sanne ; Bénédict, Gabriel ; Gutierrez Granada, Mateo ; Odijk, Daan ; de Rijke, Maarten** (2022). *RADio – Rank-Aware Divergence Metrics to Measure Normative Diversity in News Recommendations*, Proceedings of the 16th ACM Conference on Recommender Systems, p. 208–219. [→](https://arxiv.org/abs/2209.13520)  
   RADio: rank-aware divergences and normative diversity, of which the index occupies only one dimension.
+- **Deffuant, Guillaume ; Neau, David ; Amblard, Frederic ; Weisbuch, G\'erard** (2000). *Mixing beliefs among interacting agents*, Advances in Complex Systems, vol. 3(01n04), p. 87–98.  
+  A reminder that opinions are multidimensional, which a viewpoint catalogue necessarily discretises.
 
 
 ## Position bias and counterfactual evaluation
@@ -94,14 +62,6 @@ diverge, and a test checks it. Regenerate with
   Open Bandit Dataset: true propensities and a random bucket, the only confrontation with a ground truth.
 - **van Drunen, Max ; Vrijenhoek, Sanne** (2025). *How public datasets constrain the development of diversity-aware news recommender systems, and what law could do about it*, arXiv preprint arXiv:2510.05952. [→](https://arxiv.org/abs/2510.05952)  
   Establishes before us that public datasets are the bottleneck, and European law the route to access.
-
-
-## European law
-
-- **European Union** (2022). *Regulation (EU) 2022/2065 on a Single Market For Digital Services (Digital Services Act)*, Official Journal of the European Union. [→](https://eur-lex.europa.eu/eli/reg/2022/2065/oj)  
-  Regulatory framework: systemic risks (Art. 34) and data access (Art. 40).
-- **Commission européenne** (2025). *Règlement délégué (UE) 2025/2050 du 1er juillet 2025 complétant le règlement (UE) 2022/2065 en ce qui concerne l'accès aux données des chercheurs agréés*, Journal officiel de l'Union européenne. [→](https://eur-lex.europa.eu/eli/reg_del/2025/2050/oj)  
-  Operational procedure for the data access request.
 
 
 ---

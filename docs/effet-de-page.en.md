@@ -87,13 +87,13 @@ page. **Two hundredths.**
 
 ## 4. What this changes
 
-**The order of priorities reverses.** What a regulator must require first is not the format
+**The order of priorities reverses.** What must be required of a log is not first the format
 served but the **measurement of exposure itself** — the `impressions` column. The `format` column
 of the access request remains useful, because it allows this chapter to be
 checked elsewhere, but it **ceases to be necessary** to computing the index.
 
 **And the attention discount becomes portable again.** That was the real stake: if $w_R$ depended
-on the page, no regulatory floor could be written without describing every page served. It does
+on the page, no measurement could be written without describing every page served. It does
 depend on it, by 6 %, and the index moves by 0.0025.
 
 ## Reservations

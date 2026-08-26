@@ -24,8 +24,8 @@
 
 Le [test adverse](gaming.md) a corrigé deux fois la définition de l'index : mesurer les
 **contenus** et non les étiquettes, puis ne pas mesurer par l'entropie de Rao, qui prescrivait
-la polarisation. Le mouvement suivant annoncé par la [feuille de route](feuille-de-route.md)
-est l'évaluation de l'ADE sur un jeu de données public de recommandation.
+la polarisation. Le mouvement suivant était de mesurer l'indice sur un jeu de données public de
+recommandation.
 
 Deux hypothèses portaient encore ce programme, implicites l'une et l'autre :
 
@@ -95,7 +95,7 @@ valeur normative :
 0,013 décrit un fil parfaitement conforme à ce que le lecteur lisait déjà : c'est l'objectif
 d'un recommandeur libéral et la définition d'une bulle pour un recommandeur délibératif. La
 divergence mesure ; elle ne tranche pas — et c'est ce qu'elle a de mieux à offrir à un
-régulateur, qui doit alors déclarer ce qu'il vise au lieu de le cacher dans le choix d'une
+déclarant, qui doit alors dire ce qu'il vise au lieu de le cacher dans le choix d'une
 formule.
 
 ## 3. Le piège de l'évaluation hors ligne
@@ -167,7 +167,7 @@ plafond 1,2, à −0,0 % sans plafond — et sans lui le résultat n'est pas rep
 
 ## Ce que cela change pour le programme
 
-L'évaluation de l'ADE sur données réelles n'est pas abandonnée : elle est **conditionnée**.
+La mesure sur données réelles n'est pas abandonnée : elle est **conditionnée**.
 
 1. la diversité s'y mesure **par une divergence consciente du rang** à une référence déclarée,
    non par une valeur ponctuelle sur la composition du fil ;
@@ -201,7 +201,7 @@ disponible pour l'attribut qu'on voudrait mesurer.
 2. ~~**Reprendre le test adverse sous mesure consciente du rang.**~~
    → **[fait](rang-adverse.md)** : les quatre mesures se laissent contourner par
    l'enterrement, et le plancher conscient du rang double le coût d'engagement.
-3. **Comparer à des lignes de base réglées** — MMR, réordonnancement aléatoire, popularité — et
+3. **Comparer à des références réglées** — et non à des variantes de soi-même —,
    non au seul filtre d'engagement pur, qui est un homme de paille.
 4. **Instancier les cinq références sur données réelles**, ce qui suppose de résoudre d'abord le
    problème d'étiquetage que le corpus étendu a documenté.

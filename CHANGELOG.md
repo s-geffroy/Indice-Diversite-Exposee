@@ -7,6 +7,25 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Nettoyé — les traces des moitiés retirées
+
+Supprimer des fichiers ne suffit pas à changer un périmètre. Un décompte après coup a trouvé
+**une soixantaine de mentions** des moitiés retirées dans les pages conservées.
+
+- **16 mentions du « régulateur »**, 8 renvois à l'article 40, 6 à l'ADE, 4 au mémorandum et 4
+  aux lignes de base, réécrits — dans les deux langues. Ce qui relevait d'un cadrage normatif
+  (« ce qu'un régulateur doit exiger ») devient ce qu'il faut exiger d'un journal ; ce qui
+  désignait un déposant devient le déclarant du catalogue.
+- **Le test adverse est recadré.** Il attaquait une *norme* ; il attaque une **mesure**. Une
+  grandeur qu'on sature à coût nul est mauvaise, qu'on l'impose ou non.
+- **La bibliographie est ramenée à ce que le travail utilise** : quatre thèmes au lieu de sept,
+  vingt références au lieu de trente-quatre. Décohérence quantique, physique statistique de
+  l'opinion et droit européen disparaissent de `paper/refs.bib`, et les deux notes recompilent
+  sans citation manquante.
+- **`legacy/`** — le prototype `pygame` du modèle à agents — est supprimé.
+- **`docs/errata.md`** reçoit le même avertissement que l'audit : il couvre plus que le dépôt, et
+  c'est délibéré.
+
 ### Retiré — le dépôt ne mesure plus qu'une chose
 
 Décision de périmètre : **un vrai Indice de Diversité Exposée, et pas plus.** Trois moitiés

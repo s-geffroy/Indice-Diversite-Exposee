@@ -56,7 +56,7 @@ burying becomes nearly free — 2.7 % — hence irresistible.
 The price of the **rank-aware** standard does not move: 20.8 to 24.1 % whatever the surface. It
 is the only stable quantity in the table.
 
-**Regulatory consequence.** A regulator cannot fix a single discount. The attention discount is
+**Consequence.** No single discount fits every surface. The attention discount is
 part of what must be **measured on the surface**, just as the served rank must be recorded.
 ## 2. Comparing two measures at the same floor is meaningless
 
@@ -76,7 +76,7 @@ bound. **Target proximity does not resist better: it is less demanding at the sa
 
 What matters is therefore not the choice of measure but the **level** required and
 **rank-awareness**. The repository had applied the right method elsewhere — the
-baselines fix the floor precisely to make methods comparable — and had
+comparisons fixed the floor precisely to make methods comparable — and had
 not applied it to its own measures.
 
 ## 3. Trust bias, which the estimator ignores
@@ -120,7 +120,7 @@ inherits the very bias one set out to correct. And the effective sample size —
 4,077,727 — **does not change**: it depends only on the distribution of importance weights, that
 is, on the distance between the two policies.
 
-**The problem is structural.** The memorandum's recommendation holds: require
+**The problem is structural.** The conclusion holds: require
 a fraction of exploration, not a better estimator.
 
 ## 5. Reading the index as an effective number of viewpoints
@@ -131,7 +131,7 @@ Its conversion into an **effective number** is (Jost, 2006).
 | Index | Effective viewpoints (of 4) | Reading |
 |---|---|---|
 | 0.774 | 2.92 | displayed by the burying feed |
-| 0.700 | **2.64** | proposed regulatory floor |
+| 0.700 | **2.64** | the level once proposed |
 | 0.443 | **1.85** | actually exposed at $\eta = 1$ |
 | 0.157 | 1.24 | actually exposed at $\eta = 2$ |
 
@@ -164,8 +164,7 @@ European law is the route to access. We **corroborate**; we do not discover.
 
 ## What this counter-expertise did not do — and which is now done
 
-The two blind spots announced here have since been measured.
-→ **The two blind spots**
+Two blind spots announced here have since been measured.
 
 * **Under cascade, the exchangeability test holds**: it rejects between $z = -208$ and
   $z = -241$, more strongly than on real data. The power law $R^{-\eta}$, by contrast,

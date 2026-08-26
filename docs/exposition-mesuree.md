@@ -133,7 +133,7 @@ brutalement du troisième au cinquième, puis s'aplatit.
 
 ## 5. Ce que cela change à la demande d'accès aux données
 
-Les quatre tableaux de l'article 40 portent tous sur les clics. Il suffirait
+Un condensé fondé sur les seuls clics ne suffit pas. Il suffirait
 d'**une colonne de plus** — le nombre d'impressions effectivement **affichées**, par cellule
 (contenu, rang) — pour que l'exposition cesse d'être estimée.
 

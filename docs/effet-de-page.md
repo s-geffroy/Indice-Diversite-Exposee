@@ -90,7 +90,7 @@ contrefactuelle nue. **Deux centièmes.**
 
 ## 4. Ce que cela change
 
-**L'ordre des priorités s'inverse.** Ce qu'un régulateur doit exiger d'abord n'est pas le format
+**L'ordre des priorités s'inverse.** Ce qu'il faut exiger d'un journal n'est pas d'abord le format
 servi, mais la **mesure de l'exposition elle-même** — la colonne `affichages`. La colonne
 `format` de la demande d'accès reste utile, parce qu'elle permet de vérifier ce
 chapitre ailleurs, mais elle **cesse d'être nécessaire** au calcul de l'indice.

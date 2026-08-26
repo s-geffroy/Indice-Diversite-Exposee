@@ -158,7 +158,7 @@ Avec $\eta$ estimé sur les données — $1{,}013 \pm 0{,}019$ — le coût tien
 
 ## Ce que cela change pour le programme
 
-La recommandation 1 du mémorandum exigeait déjà une mesure consciente du rang.
+La forme retenue exige une mesure consciente du rang.
 Ce chantier en donne le **prix** — le coût d'engagement double — et une **grandeur de
 contrôle** : l'écart entre la mesure aveugle et la mesure consciente du même fil, qui vaut zéro
 pour une plateforme qui ne relègue pas.

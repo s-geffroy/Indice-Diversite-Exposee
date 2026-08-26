@@ -62,7 +62,7 @@ aurait détecté une sévérité de **0,0066**, quand Baidu-ULTR en mesure **0,8
 pas un manque de puissance, c'est une réponse.
 
 `article_ids_inview` est un **ensemble servi**. L'indice exposé — celui que ce dépôt propose au
-régulateur — n'y est donc pas mesurable. L'indice **aveugle au rang** l'est, et il ne l'avait
+dépôt — n'y est donc pas mesurable. L'indice **aveugle au rang** l'est, et il ne l'avait
 jamais été sur données réelles.
 
 ## 2. La diversité servie, enfin chiffrée
@@ -104,7 +104,7 @@ décidable — **par condamnation**.
 
 ## 4. Ce que cela change pour la demande d'accès
 
-La demande au titre de l'article 40 réclamait « le rang servi ». Ce chapitre
+Un journal d'impressions fournit « le rang servi ». Ce chapitre
 montre que ce n'est pas assez : une plateforme peut fournir une colonne d'ordre qui n'est pas le
 rang, sans mentir et sans qu'on le voie. Il faut donc réclamer le rang **vérifiable**, et le test
 d'échangeabilité est ce qui le vérifie — sur les données livrées, avant toute autre mesure.
@@ -124,7 +124,7 @@ La sévérité $\eta = 0{,}88$ est **transportée** de Baidu-ULTR, un moteur de 
 d'une plateforme à l'autre. D'où le test de sensibilité, qui ne renverse pas la conclusion.
 
 Le catalogue de 26 rubriques est celui du corpus, non un catalogue de référence imposé par un
-régulateur. Changer $k$ change le niveau de l'indice, jamais son classement.
+catalogue de référence imposé. Changer $k$ change le niveau de l'indice, jamais son classement.
 
 L'encadrement exact ne couvre que les fils de **dix contenus ou moins**, soit 64 % du journal :
 au-delà, l'énumération cesse d'être praticable.
