@@ -80,7 +80,7 @@ pourrait porter la conclusion, cela n'est pas un détail.
 Deux fils au même IDE, l'un dispersé et l'autre réduit à un point ; l'effacement de la
 contrainte avec le découplage ; les ciseaux entre diversité affichée et diversité servie ; et
 le seuil au-delà duquel un plancher de Rao devient inatteignable. Figure régénérée par
-[le notebook 13](notebooks/13_test_adverse_index.ipynb).
+[le notebook 13](notebooks/13_test_adverse_index.md).
 ///
 
 ### 1. Sur un catalogue honnête, la contrainte mord
@@ -211,7 +211,7 @@ que lui dicte la maximisation de l'engagement sous contrainte.
 Le verdict de chaque mesure sur un fil polarisé ; le fil que chaque plancher fait effectivement
 servir ; et le coût de chaque norme, la courbe s'interrompant là où le plancher devient
 inatteignable. Figure régénérée par
-[le notebook 13](notebooks/13_test_adverse_index.ipynb).
+[le notebook 13](notebooks/13_test_adverse_index.md).
 ///
 
 ### L'optimum sous plancher de Rao vide le centre
@@ -338,6 +338,6 @@ faut les nommer :
 ---
 
 *Implémentation : `ide.gaming` · Notebook :
-[13 — Test adverse](notebooks/13_test_adverse_index.ipynb) ·
+[13 — Test adverse](notebooks/13_test_adverse_index.md) ·
 [IDE — l'index](ide.md) · [mémorandum](memorandum.md) ·
 [audit critique](limites.md)*

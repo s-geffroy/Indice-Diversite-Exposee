@@ -38,7 +38,7 @@ le format apparaît.
 /// caption
 La description, l'effet une fois le contenu tenu fixe, son absence de tendance avec la
 profondeur, et ce que coûte réellement d'ignorer la page. Figure régénérée par
-[le notebook 25](notebooks/25_effet_de_page.ipynb).
+[le notebook 25](notebooks/25_effet_de_page.md).
 ///
 
 ## 1. Le contrôle qui décide de la suite
@@ -118,6 +118,6 @@ remplace.
 
 ---
 
-*Notebook : [25 — L'effet de page](notebooks/25_effet_de_page.ipynb) ·
+*Notebook : [25 — L'effet de page](notebooks/25_effet_de_page.md) ·
 [format et retour](format-et-retour.md) · [exposition mesurée](exposition-mesuree.md) ·
 [demande au titre de l'article 40](article-40.md)*

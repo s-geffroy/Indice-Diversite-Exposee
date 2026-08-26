@@ -49,7 +49,7 @@ Deux journaux publics répondent, et pas à la même exigence.
 Ce qu'un rang réellement servi fait à la courbe ; le contrôle qui distingue un ordre d'un
 mélange ; l'effet de position mesuré sans modèle sur un bandeau de trois vignettes ; et
 l'estimateur contrefactuel jugé contre la valeur qu'il estime. Figure régénérée par
-[le notebook 17](notebooks/17_rang_servi.ipynb).
+[le notebook 17](notebooks/17_rang_servi.md).
 ///
 
 ## 1. Baidu-ULTR : le contrôle positif
@@ -224,6 +224,6 @@ serait plus faible encore.
 
 *Implémentation : `ide.exposure`, `ide.logs`, `scripts/fetch_exposure.py`,
 `scripts/build_exposure_digest.py` · Notebook :
-[17 — Deux journaux qui enregistrent le rang servi](notebooks/17_rang_servi.ipynb) ·
+[17 — Deux journaux qui enregistrent le rang servi](notebooks/17_rang_servi.md) ·
 [exploration réelle de MIND](mind.md) · [rang adverse et sévérité](rang-adverse.md) ·
 [feuille de route](feuille-de-route.md)*

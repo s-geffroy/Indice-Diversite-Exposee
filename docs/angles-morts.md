@@ -33,7 +33,7 @@ l'attention**, l'autre sur ce que la plateforme **sait de son lecteur** — et a
 Le test d'échangeabilité sous cascade ; l'exposition réelle contre la loi ajustée ; les deux
 formes de décroissance du taux de clic ; et l'effondrement de l'avantage des méthodes réglées
 quand la pertinence est estimée. Figure régénérée par
-[le notebook 21](notebooks/21_angles_morts.ipynb).
+[le notebook 21](notebooks/21_angles_morts.md).
 ///
 
 ## 1. Le test survit, la loi de puissance non
@@ -144,6 +144,6 @@ défilement — que Baidu-ULTR publie et que ce dépôt n'a jamais lue.
 ---
 
 *Implémentation : `ide.logs.simulate_cascade` · Notebook :
-[21 — Les deux angles morts](notebooks/21_angles_morts.ipynb) ·
+[21 — Les deux angles morts](notebooks/21_angles_morts.md) ·
 [contre-expertise](contre-expertise.md) · [lignes de base](lignes-de-base.md) ·
 [bibliographie](bibliographie.md)*

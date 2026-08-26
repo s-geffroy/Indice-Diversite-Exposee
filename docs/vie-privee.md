@@ -35,7 +35,7 @@ n'offre **aucune garantie formelle** : il rend l'attaque plus laborieuse, pas im
 /// caption
 La sévérité atténuée par le bruit puis surcorrigée par le seuil, la grandeur réglementée
 insensible, le plafonnement comme vrai coût, et la raison de tout cela — la sparsité du tableau.
-Figure régénérée par [le notebook 27](notebooks/27_vie_privee.ipynb).
+Figure régénérée par [le notebook 27](notebooks/27_vie_privee.md).
 ///
 
 ## 1. Deux coûts distincts
@@ -140,6 +140,6 @@ du condensé ; un tirage réel s'en écarte de quelques millièmes.
 
 ---
 
-*Notebook : [27 — Ce que la vie privée coûte](notebooks/27_vie_privee.ipynb) ·
+*Notebook : [27 — Ce que la vie privée coûte](notebooks/27_vie_privee.md) ·
 [demande au titre de l'article 40](article-40.md) · [l'indice mesuré](indice-mesure.md) ·
 [audit critique](limites.md)*

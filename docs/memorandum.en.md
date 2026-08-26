@@ -104,7 +104,7 @@ required to reinject a "cooling flow" of semantically diverse content.
 
 **Rationale.** A collapsed index is the signature of a zero local social temperature, i.e.
 a frozen state in the Ising sense. Below that temperature, the memory of false beliefs
-becomes persistent ([notebook 05](notebooks/05_hysteresis_et_contre_champ.ipynb)).
+becomes persistent ([notebook 05](notebooks/05_hysteresis_et_contre_champ.md)).
 
 **What the regulator must set itself:**
 
@@ -193,9 +193,9 @@ $$\frac{\gamma\alpha}{\lambda} \leq \rho_{\max}$$
 
 **Rationale.** Beyond $\gamma\alpha = \lambda$, effective damping of the feedback loop
 becomes negative: the system accumulates energy instead of dissipating it
-([notebook 06](notebooks/06_resonance_larsen.ipynb)). That regime is the norm, not the
+([notebook 06](notebooks/06_resonance_larsen.md)). That regime is the norm, not the
 exception — measurement places the information ecosystem between **1.5 and 12**, median
-**2.5 to 4.2** ([notebook 09](notebooks/09_calibration_visibilite.ipynb)). The relevant
+**2.5 to 4.2** ([notebook 09](notebooks/09_calibration_visibilite.md)). The relevant
 regulatory quantity is therefore the **margin**, not the crossing.
 
 **Why this remains the most solid recommendation.** It presupposes no malicious intent to be
@@ -250,7 +250,7 @@ anomaly is detected.
 small-world structure of social networks makes consensus impossible. This is measurably
 false: consensus time grows as $N^2$ on a local network and only as $N$ in mean field —
 **global connectivity accelerates convergence**
-([notebook 03](notebooks/03_voter_consensus_et_taille.ipynb),
+([notebook 03](notebooks/03_voter_consensus_et_taille.md),
 [audit, point 12](limites.en.md)).
 
 What fragments is not link density but the **directional bias** of algorithmic
@@ -287,7 +287,7 @@ collaborative filtering, breaking the hysteresis sustained by one's history.
 
 **A measured nuance, and it matters.** Noise is not monotonically beneficial: beyond a
 certain level, exposure diversity degrades again
-([notebook 08](notebooks/08_abm_compas_politique.ipynb)). The original thread anticipated
+([notebook 08](notebooks/08_abm_compas_politique.md)). The original thread anticipated
 this — "injecting thermal noise permanently makes society chaotic and illegible". It is
 therefore not the quantity of noise that matters but its **dosage**, which argues for an
 on-demand mode and cyclical annealing rather than permanent noise.

@@ -80,7 +80,7 @@ monte plus raide qu'un événement anticipé, indépendamment de sa charge émot
 /// caption
 Un épisode vu de près ; la distribution du rapport par classe ; la sensibilité de la médiane
 au choix d'estimateur ; et l'artefact qui a imposé le second estimateur. Figure régénérée par
-[le notebook 09](notebooks/09_calibration_visibilite.ipynb).
+[le notebook 09](notebooks/09_calibration_visibilite.md).
 ///
 
 | Estimateur | n | médiane | IQR | étendue | p (accusation vs découverte) |
@@ -179,5 +179,5 @@ docker compose run --rm notebooks jupyter nbconvert --to notebook --execute --in
 ```
 
 *Implémentation : `ide.calibration`, `ide.pageviews`, `ide.corpus` · Notebook :
-[09 — Calibration](notebooks/09_calibration_visibilite.ipynb) ·
+[09 — Calibration](notebooks/09_calibration_visibilite.md) ·
 [feuille de route](feuille-de-route.md)*

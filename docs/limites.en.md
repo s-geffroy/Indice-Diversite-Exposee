@@ -599,6 +599,35 @@ missing: **a claim of absence must publish the extent of the search behind it.**
 dataset" should have read "none of the three datasets examined", and the gap between those two
 phrasings is exactly what let the error live for six chapters.
 
+### 26. A site that built without publishing what it claimed
+
+**What the repository claimed.** That the notebooks are "rendered in the site", and that building
+in strict mode guarantees no link and no page is missing. The roadmap, the README and the landing
+page have repeated it since day one.
+
+**The problem.** Every notebook was published as **raw JSON**. A reader opening
+`/notebooks/11_corpus_etendu/` received `{ "cells": [ …` over several thousand lines. The cause is
+an interaction between two plugins: `mkdocs-jupyter` wraps `.ipynb` files in a class that renders
+them as pages, and `mkdocs-static-i18n` then rebuilds the file collection — losing the wrapper.
+MkDocs copied the notebook verbatim.
+
+**What makes the episode instructive.** The build succeeded **in strict mode**, without a single
+warning, and continuous integration was green every time. Every version combination tried
+afterwards fails the same way: the rendering therefore **never** worked. Nobody saw it for months,
+because nothing compared what was produced with what was announced.
+
+**The fix.** Notebooks are now rendered by `scripts/render_notebooks.py` before MkDocs, with
+`nbconvert` alone — no plugin interaction to hope for. The site image's versions are **pinned**
+rather than bounded: an open range is what let the failure stay invisible. And
+`scripts/check_site.py`, called on every build, **opens the produced pages** and rejects a site
+where a notebook is not HTML.
+
+**What this episode teaches about method.** It is the same error the repository has been
+correcting for twenty-five entries, applied this time to its own tooling: **a check that passes
+proves nothing until you have looked at what it checks**. Strict mode verified links and missing
+files — not page content. A green test on the wrong quantity is more dangerous than no test at
+all, because it excuses you from looking.
+
 ---
 
 ## What the model cannot do
@@ -701,7 +730,7 @@ hundred), and no result is compared against real data. The conclusions are
 never transposable numerical values.
 
 
-### What twenty-five corrections teach, taken together
+### What twenty-six corrections teach, taken together
 
 The corrections above were recorded one by one, in the order they occurred. Taken together, they
 trace three regularities worth more than their sum.
@@ -714,8 +743,9 @@ the right sign, with the right conclusion — exactly what no re-reading catches
 
 **What caught them was never re-reading, it was confrontation.** With data whose answer is known,
 with a ground truth, with another estimation method, or with the field's literature. Five of the
-twenty-five corrections come from the initial reading of the thread; the other twenty come from
-having measured — or, for the last one, from having looked.
+twenty-six corrections come from the initial reading of the thread; the other twenty-one come from
+having measured, from having searched — or, for the last one, from simply opening the
+published page.
 
 **And half bear on the repository's own proposals, not on its starting point.** An instrument
 built to check other people's claims must be turned against one's own, and here it is turned that
@@ -730,7 +760,7 @@ withdrawn, for three reasons.
   is known, test an explanation like a figure — are **banal**. Nobody disputes them, they are not
   being stated here for the first time, and no reviewer will receive them as a result.
 * The demonstration is **circular**. The argument was "the method is worth something because it
-  caught twenty-five errors"; but the same work produced those errors. A method assessed on its
+  caught twenty-six errors"; but the same work produced those errors. A method assessed on its
   own faults is compared against a baseline it manufactured. With no error, there is nothing to
   catch and the claimed value drops to zero.
 * Nothing has been **validated from the outside**. The 623 tests check that the code does what is

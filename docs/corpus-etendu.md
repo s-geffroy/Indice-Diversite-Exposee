@@ -63,7 +63,7 @@ constitue le pré-enregistrement, et un résultat publié se rapporte à un corp
 Le déséquilibre d'audience entre registres ; la disparition de l'écart de taux quand on
 contrôle le trafic ; la non-réplication de l'écart de persistance ; et le taux de basculement
 qui suit l'audience plutôt que le registre. Figure régénérée par
-[le notebook 11](notebooks/11_corpus_etendu.ipynb).
+[le notebook 11](notebooks/11_corpus_etendu.md).
 ///
 
 ### 1. Un écart apparaît, puis s'évanouit
@@ -175,5 +175,5 @@ calcul.
 ---
 
 *Implémentation : `ide.catalogue` · Notebook :
-[11 — Corpus étendu](notebooks/11_corpus_etendu.ipynb) ·
+[11 — Corpus étendu](notebooks/11_corpus_etendu.md) ·
 [corpus pilote](regimes.md) · [feuille de route](feuille-de-route.md)*

@@ -39,7 +39,7 @@ l'ordre**.
 /// caption
 La diversité servie mesurée sur des fils réels, ce que l'ordre inconnu laisse indéterminé, les
 trois verdicts possibles sans la colonne de rang, et leur dépendance à la sévérité supposée.
-Figure régénérée par [le notebook 26](notebooks/26_indice_mesure.ipynb).
+Figure régénérée par [le notebook 26](notebooks/26_indice_mesure.md).
 ///
 
 ## 1. Le premier contrôle retire l'ordre
@@ -128,6 +128,6 @@ triés et anonymes — dont quatre tests vérifient qu'il rend les mêmes chiffr
 
 ---
 
-*Notebook : [26 — L'indice mesuré](notebooks/26_indice_mesure.ipynb) ·
+*Notebook : [26 — L'indice mesuré](notebooks/26_indice_mesure.md) ·
 [MIND](mind.md) · [rang servi](rang-servi.md) · [l'effet de page](effet-de-page.md) ·
 [demande au titre de l'article 40](article-40.md)*

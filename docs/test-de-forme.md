@@ -53,7 +53,7 @@ dont les contenus sont meilleurs, et la comparaison ne mesurerait que cela.
 /// caption
 Les deux contrôles sur modèles purs ; le budget de clics qui imite la cascade ; l'application à
 Baidu-ULTR ; et la restriction qui fabrique la signature qu'elle cherche. Figure régénérée par
-[le notebook 22](notebooks/22_test_de_forme.ipynb).
+[le notebook 22](notebooks/22_test_de_forme.md).
 ///
 
 ## Les deux contrôles
@@ -195,6 +195,6 @@ forme est calculable depuis des agrégats, au même titre que les trois autres m
 
 *Implémentation : `ide.logs.upstream_dependence_test`,
 `ide.logs.upstream_dependence_from_counts` · Notebook :
-[22 — Le test de forme](notebooks/22_test_de_forme.ipynb) ·
+[22 — Le test de forme](notebooks/22_test_de_forme.md) ·
 [les deux angles morts](angles-morts.md) · [exploration de MIND](mind.md) ·
 [journaux qui enregistrent le rang](rang-servi.md)*

@@ -122,4 +122,4 @@ maille dépasse 2 — ce qui est le régime normal ici, la diffusion étant en $
 ---
 
 *Implémentation : `ide.fokker_planck` · Notebook :
-[04 — Fokker-Planck](../notebooks/04_fokker_planck_paysage.ipynb)*
+[04 — Fokker-Planck](../notebooks/04_fokker_planck_paysage.md)*

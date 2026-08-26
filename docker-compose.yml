@@ -63,8 +63,8 @@ services:
   site:
     <<: *site
     command: >
-      sh -c "rm -rf docs/notebooks docs/figures &&
-      cp -r notebooks docs/notebooks &&
+      sh -c "rm -rf docs/figures &&
+      python scripts/render_notebooks.py &&
       cp -r paper/figures docs/figures &&
       mkdocs serve --dev-addr 0.0.0.0:8000"
     ports:
@@ -73,10 +73,11 @@ services:
   site-build:
     <<: *site
     command: >
-      sh -c "rm -rf docs/notebooks docs/figures &&
-      cp -r notebooks docs/notebooks &&
+      sh -c "rm -rf docs/figures &&
+      python scripts/render_notebooks.py &&
       cp -r paper/figures docs/figures &&
-      mkdocs build --strict"
+      mkdocs build --strict &&
+      python scripts/check_site.py"
 
   latex:
     build:

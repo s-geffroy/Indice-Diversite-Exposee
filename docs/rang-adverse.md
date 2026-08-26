@@ -27,7 +27,7 @@
 
 ## Deux dettes, réglées ensemble
 
-Le [notebook 14](notebooks/14_rang_et_contrefactuel.ipynb) laissait deux dettes explicites, et
+Le [notebook 14](notebooks/14_rang_et_contrefactuel.md) laissait deux dettes explicites, et
 elles ont la même racine : **le rang**.
 
 Les quatre mesures comparées au [test adverse](gaming.md) l'avaient été sur des
@@ -41,7 +41,7 @@ la sévérité était **posée**, non mesurée.
 La diversité affichée contre celle qui est réellement exposée ; l'écart selon l'exigence de la
 norme ; la sévérité retrouvée, et le seuil au-delà duquel elle cesse de l'être ; et ce que coûte
 un $\eta$ posé au jugé. Figure régénérée par
-[le notebook 15](notebooks/15_rang_adverse_et_severite.ipynb).
+[le notebook 15](notebooks/15_rang_adverse_et_severite.md).
 ///
 
 ## 1. Le test adverse, sur des fils ordonnés
@@ -203,6 +203,6 @@ garantie.
 ---
 
 *Implémentation : `ide.ranking`, `ide.offpolicy` · Notebook :
-[15 — Rang adverse et sévérité](notebooks/15_rang_adverse_et_severite.ipynb) ·
+[15 — Rang adverse et sévérité](notebooks/15_rang_adverse_et_severite.md) ·
 [test adverse](gaming.md) · [rang et contrefactuel](evaluation.md) ·
 [mémorandum](memorandum.md)*

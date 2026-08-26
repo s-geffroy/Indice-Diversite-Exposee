@@ -108,5 +108,5 @@ injecte du bruit thermique en permanence, la société devient chaotique et illi
 ---
 
 *Implémentation : `ide.ising` · Notebooks :
-[02 — Ising](../notebooks/02_ising_temperature_sociale.ipynb),
-[05 — Hystérésis](../notebooks/05_hysteresis_et_contre_champ.ipynb)*
+[02 — Ising](../notebooks/02_ising_temperature_sociale.md),
+[05 — Hystérésis](../notebooks/05_hysteresis_et_contre_champ.md)*

@@ -36,7 +36,7 @@ cohérent mais flottant, et aucun seuil réglementaire n'est calibrable.
 
     Livré : `ide.calibration`, `ide.pageviews`, `ide.corpus`,
     `scripts/fetch_pageviews.py`, cache versionné de 24 séries, 40 tests, et le
-    [notebook 09](notebooks/09_calibration_visibilite.ipynb).
+    [notebook 09](notebooks/09_calibration_visibilite.md).
 
 Les suites directes de cette mesure, par ordre d'importance :
 
@@ -265,7 +265,7 @@ C'est ce qui permettrait de répondre à la seule objection sérieuse d'une plat
 !!! success "Et la demande est écrite, spécifiée et vérifiée"
     → **[Demande au titre de l'article 40](article-40.md)**. Elle ne réclame ni journal ni
     donnée personnelle, mais **quatre tableaux agrégés** dont le
-    [notebook 18](notebooks/18_demande_article_40.ipynb) vérifie qu'ils recalculent **à
+    [notebook 18](notebooks/18_demande_article_40.md) vérifie qu'ils recalculent **à
     l'identique** le test d'échangeabilité, la sévérité $\eta$ et les deux mesures de diversité
     — écart de $3 \times 10^{-12}$ pour l'un, exactement nul pour l'autre.
 

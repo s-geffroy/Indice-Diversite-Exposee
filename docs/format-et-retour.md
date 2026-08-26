@@ -34,7 +34,7 @@ survit pas à sa vérification.
 /// caption
 Le retour après clic ; l'effet d'un format enrichi au-dessus ; la survie de cet effet une fois la
 géométrie neutralisée ; et l'hypothèse du pli d'écran mise en échec. Figure régénérée par
-[le notebook 24](notebooks/24_format_et_retour.ipynb).
+[le notebook 24](notebooks/24_format_et_retour.md).
 ///
 
 ## 1. Le retour après clic, mesuré
@@ -163,6 +163,6 @@ plutôt que laissée à découvrir.
 
 ---
 
-*Notebook : [24 — Format et retour](notebooks/24_format_et_retour.ipynb) ·
+*Notebook : [24 — Format et retour](notebooks/24_format_et_retour.md) ·
 [exposition mesurée](exposition-mesuree.md) · [le test de forme](test-de-forme.md) ·
 [demande au titre de l'article 40](article-40.md)*

@@ -93,7 +93,7 @@ Le fil de travail définissait l'index sur les **étiquettes** d'un fil, sans re
 $$H_{\text{norm}} = \frac{H(X)}{\log_2 k}$$
 
 C'est ce que calcule `ide.entropy.label_diversity_index`, dont le nom dit désormais la portée.
-Cette forme reste utile là où le rang n'existe pas — le [modèle à agents](notebooks/08_abm_compas_politique.ipynb)
+Cette forme reste utile là où le rang n'existe pas — le [modèle à agents](notebooks/08_abm_compas_politique.md)
 décrit ainsi l'exposition d'un individu — mais elle **ne peut pas servir de norme** : c'est elle
 que le test adverse met en défaut.
 
@@ -132,11 +132,11 @@ devient un objet politique — voir les [limites](#limites).
 
 Le lien avec la théorie est direct : un IDE effondré est la signature d'une
 température sociale locale nulle, c'est-à-dire d'un état figé au sens du modèle
-d'Ising. Le [notebook 01](notebooks/01_entropie_et_purete.ipynb) montre que l'index
+d'Ising. Le [notebook 01](notebooks/01_entropie_et_purete.md) montre que l'index
 franchit le seuil critique **bien avant** la fermeture complète du fil : un régulateur
 peut donc constater un gel *en cours*, et pas seulement une fois établi.
 
-Le [notebook 08](notebooks/08_abm_compas_politique.ipynb) mesure sa réponse au
+Le [notebook 08](notebooks/08_abm_compas_politique.md) mesure sa réponse au
 paramètre que l'algorithme contrôle réellement — le seuil de bulle :
 
 | Seuil de bulle | IDE moyen | Population en bulle gelée |

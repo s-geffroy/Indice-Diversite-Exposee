@@ -34,7 +34,7 @@ and no regulatory threshold is calibratable.
 
     Delivered: `ide.calibration`, `ide.pageviews`, `ide.corpus`,
     `scripts/fetch_pageviews.py`, a versioned cache of 24 series, 40 tests, and
-    [notebook 09](notebooks/09_calibration_visibilite.ipynb).
+    [notebook 09](notebooks/09_calibration_visibilite.md).
 
 Direct follow-ups, in order of importance:
 
@@ -238,7 +238,7 @@ And it requires no privileged data access.
 
 !!! success "And the request is written, specified and verified"
     → **[Article 40 data request](article-40.en.md)**. It asks for no logs and no personal data,
-    but **four aggregate tables** which [notebook 18](notebooks/18_demande_article_40.ipynb)
+    but **four aggregate tables** which [notebook 18](notebooks/18_demande_article_40.md)
     verifies recompute **identically** the exchangeability test, severity $\eta$ and both
     diversity measures — a gap of $3 \times 10^{-12}$ for one, exactly zero for the other.
 

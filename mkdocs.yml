@@ -92,11 +92,6 @@ plugins:
             Errata: Errata
             Appel à relecture: Call for review
             Notebooks: Notebooks
-  - mkdocs-jupyter:
-      include: ["notebooks/*.ipynb"]
-      execute: false
-      include_source: true
-      ignore_h1_titles: false
 
 markdown_extensions:
   - admonition
@@ -162,30 +157,30 @@ nav:
       - Bibliographie: bibliographie.md
       - Appel à relecture: relecture.md
   - Notebooks:
-      - 01 — Entropie et pureté: notebooks/01_entropie_et_purete.ipynb
-      - 02 — Ising: notebooks/02_ising_temperature_sociale.ipynb
-      - 03 — Voter Model: notebooks/03_voter_consensus_et_taille.ipynb
-      - 04 — Fokker-Planck: notebooks/04_fokker_planck_paysage.ipynb
-      - 05 — Hystérésis: notebooks/05_hysteresis_et_contre_champ.ipynb
-      - 06 — Résonance: notebooks/06_resonance_larsen.ipynb
-      - 07 — ADE: notebooks/07_ade_filtre_entropique.ipynb
-      - 08 — Modèle à agents: notebooks/08_abm_compas_politique.ipynb
-      - 09 — Calibration: notebooks/09_calibration_visibilite.ipynb
-      - 10 — Changement de régime: notebooks/10_changement_de_regime.ipynb
-      - 11 — Corpus étendu: notebooks/11_corpus_etendu.ipynb
-      - 12 — Annotation en aveugle: notebooks/12_annotation_en_aveugle.ipynb
-      - 13 — Test adverse: notebooks/13_test_adverse_index.ipynb
-      - 14 — Rang et contrefactuel: notebooks/14_rang_et_contrefactuel.ipynb
-      - 15 — Rang adverse: notebooks/15_rang_adverse_et_severite.ipynb
-      - 16 — Exploration de MIND: notebooks/16_exploration_mind.ipynb
-      - 17 — Rang servi: notebooks/17_rang_servi.ipynb
-      - 18 — Demande article 40: notebooks/18_demande_article_40.ipynb
-      - 19 — Lignes de base: notebooks/19_lignes_de_base.ipynb
-      - 20 — Contre-expertise: notebooks/20_contre_expertise.ipynb
-      - 21 — Angles morts: notebooks/21_angles_morts.ipynb
-      - 22 — Test de forme: notebooks/22_test_de_forme.ipynb
-      - 23 — Exposition mesurée: notebooks/23_exposition_mesuree.ipynb
-      - 24 — Format et retour: notebooks/24_format_et_retour.ipynb
-      - 25 — L'effet de page: notebooks/25_effet_de_page.ipynb
-      - 26 — L'indice mesuré: notebooks/26_indice_mesure.ipynb
-      - 27 — Vie privée: notebooks/27_vie_privee.ipynb
+      - 01 — Entropie et pureté: notebooks/01_entropie_et_purete.md
+      - 02 — Ising: notebooks/02_ising_temperature_sociale.md
+      - 03 — Voter Model: notebooks/03_voter_consensus_et_taille.md
+      - 04 — Fokker-Planck: notebooks/04_fokker_planck_paysage.md
+      - 05 — Hystérésis: notebooks/05_hysteresis_et_contre_champ.md
+      - 06 — Résonance: notebooks/06_resonance_larsen.md
+      - 07 — ADE: notebooks/07_ade_filtre_entropique.md
+      - 08 — Modèle à agents: notebooks/08_abm_compas_politique.md
+      - 09 — Calibration: notebooks/09_calibration_visibilite.md
+      - 10 — Changement de régime: notebooks/10_changement_de_regime.md
+      - 11 — Corpus étendu: notebooks/11_corpus_etendu.md
+      - 12 — Annotation en aveugle: notebooks/12_annotation_en_aveugle.md
+      - 13 — Test adverse: notebooks/13_test_adverse_index.md
+      - 14 — Rang et contrefactuel: notebooks/14_rang_et_contrefactuel.md
+      - 15 — Rang adverse: notebooks/15_rang_adverse_et_severite.md
+      - 16 — Exploration de MIND: notebooks/16_exploration_mind.md
+      - 17 — Rang servi: notebooks/17_rang_servi.md
+      - 18 — Demande article 40: notebooks/18_demande_article_40.md
+      - 19 — Lignes de base: notebooks/19_lignes_de_base.md
+      - 20 — Contre-expertise: notebooks/20_contre_expertise.md
+      - 21 — Angles morts: notebooks/21_angles_morts.md
+      - 22 — Test de forme: notebooks/22_test_de_forme.md
+      - 23 — Exposition mesurée: notebooks/23_exposition_mesuree.md
+      - 24 — Format et retour: notebooks/24_format_et_retour.md
+      - 25 — L'effet de page: notebooks/25_effet_de_page.md
+      - 26 — L'indice mesuré: notebooks/26_indice_mesure.md
+      - 27 — Vie privée: notebooks/27_vie_privee.md

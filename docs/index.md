@@ -11,7 +11,7 @@ lecteur, calculable sans accès au code de la plateforme — et la **méthode ad
 l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel, y compris
 quand ce qui tombe vient du dépôt lui-même.
 
-Il en reste vingt-sept notebooks exécutables, 638 tests, **vingt-cinq corrections consignées**,
+Il en reste vingt-sept notebooks exécutables, 646 tests, **vingt-six corrections consignées**,
 et un état des lieux qui ne ressemble ni à ce que le projet annonçait, ni à ce qu'il croyait avoir
 établi six chapitres plus tôt.
 
@@ -22,7 +22,7 @@ clics](figures/fig23_exposition_mesuree.png)
 Le résultat le plus net du dépôt : pendant six chapitres, ce dépôt a **estimé** l'exposition à
 travers les clics ; une colonne du fichier permettait de la **mesurer**. L'estimation surestimait
 la décroissance de 23 %. Figure régénérée par
-[le notebook 23](notebooks/23_exposition_mesuree.ipynb).
+[le notebook 23](notebooks/23_exposition_mesuree.md).
 ///
 
 ## Le verdict, en une page
@@ -141,7 +141,7 @@ qu'une mesure a montré ce qu'on perdait sans elle.
 * **Le niveau du plancher est une décision politique**, comme le catalogue de points de vue. La
   mesure décrit, elle ne prescrit pas.
 * **Les trois codeurs de l'annotation sont des instances du même modèle de langue.**
-* **Rien n'a été validé de l'extérieur.** Les 638 tests vérifient que le code fait ce qui est
+* **Rien n'a été validé de l'extérieur.** Les 646 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 * **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique** —
@@ -177,7 +177,7 @@ stationnaires, et scission d'une société initialement modérée](figures/fig04
 /// caption
 Les trois régimes de l'opinion publique, obtenus en changeant deux paramètres du même paysage
 d'énergie libre. Figure régénérée par
-[le notebook 04](notebooks/04_fokker_planck_paysage.ipynb).
+[le notebook 04](notebooks/04_fokker_planck_paysage.md).
 ///
 
 ## Explorer
@@ -187,30 +187,30 @@ note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
 |---|---|
-| [01 — Entropie et pureté](notebooks/01_entropie_et_purete.ipynb) | une superposition cohérente a une entropie nulle ; l'IDE et sa normalisation |
-| [02 — Ising](notebooks/02_ising_temperature_sociale.ipynb) | la température critique d'Onsager, retrouvée numériquement |
-| [03 — Voter Model](notebooks/03_voter_consensus_et_taille.ipynb) | les lois d'échelle du consensus, et pourquoi la connectivité n'est pas la coupable |
-| [04 — Fokker-Planck](notebooks/04_fokker_planck_paysage.ipynb) | les trois régimes de l'opinion publique dans un même paysage d'énergie libre |
-| [05 — Hystérésis](notebooks/05_hysteresis_et_contre_champ.ipynb) | la mémoire d'une fausse croyance, et les deux façons de l'effacer |
-| [06 — Résonance](notebooks/06_resonance_larsen.ipynb) | le seuil $\gamma\alpha > \lambda$ et le cycle limite de l'attention |
-| [07 — ADE](notebooks/07_ade_filtre_entropique.ipynb) | un fil gelé qui se réouvre sous l'effet du recuit |
-| [08 — Modèle à agents](notebooks/08_abm_compas_politique.ipynb) | la bulle de filtres vue depuis l'individu |
-| [09 — Calibration](notebooks/09_calibration_visibilite.ipynb) | $\gamma\alpha/\lambda$ mesuré sur 19 épisodes d'attention publics |
-| [10 — Changement de régime](notebooks/10_changement_de_regime.ipynb) | 14 basculements datés, et pourquoi le rapport n'y est pas identifiable |
-| [11 — Corpus étendu](notebooks/11_corpus_etendu.ipynb) | 440 sujets dérivés de catégories : l'écart de persistance ne se réplique pas |
-| [12 — Annotation en aveugle](notebooks/12_annotation_en_aveugle.ipynb) | 40 % de bruit d'étiquetage mesuré, et le double recodage à $\kappa = 0{,}92$ |
-| [13 — Test adverse](notebooks/13_test_adverse_index.ipynb) | un plancher d'IDE saturé à coût nul, et le correctif qui prescrivait la polarisation |
-| [14 — Rang et contrefactuel](notebooks/14_rang_et_contrefactuel.ipynb) | l'enterrement de la diversité, et l'évaluation hors ligne fausse de 201 % |
-| [15 — Rang adverse](notebooks/15_rang_adverse_et_severite.ipynb) | les quatre mesures contournées par l'ordre, et la sévérité du biais estimée |
-| [16 — Exploration de MIND](notebooks/16_exploration_mind.ipynb) | un ordre indiscernable d'un mélange, et cinq sévérités tirées du même jeu |
-| [17 — Rang servi](notebooks/17_rang_servi.ipynb) | deux journaux qui enregistrent le rang, et un estimateur jugé contre la vérité |
-| [18 — Demande article 40](notebooks/18_demande_article_40.ipynb) | quatre tableaux agrégés qui suffisent, et la preuve qu'ils suffisent |
-| [19 — Lignes de base](notebooks/19_lignes_de_base.ipynb) | le filtre jugé contre quatre concurrents et contre la frontière exacte |
-| [20 — Contre-expertise](notebooks/20_contre_expertise.ipynb) | cinq contre-épreuves, dont une qui retire une conclusion publiée |
-| [21 — Angles morts](notebooks/21_angles_morts.ipynb) | le test tient sous cascade, la loi de puissance non |
-| [22 — Test de forme](notebooks/22_test_de_forme.ipynb) | le troisième contrôle, et le collider qu'il a failli publier |
-| [23 — Exposition mesurée](notebooks/23_exposition_mesuree.ipynb) | une colonne jamais lue, et six chapitres d'estimation rendus inutiles |
-| [24 — Format et retour](notebooks/24_format_et_retour.ipynb) | la cascade réfutée deux fois, et une de mes explications retirée |
+| [01 — Entropie et pureté](notebooks/01_entropie_et_purete.md) | une superposition cohérente a une entropie nulle ; l'IDE et sa normalisation |
+| [02 — Ising](notebooks/02_ising_temperature_sociale.md) | la température critique d'Onsager, retrouvée numériquement |
+| [03 — Voter Model](notebooks/03_voter_consensus_et_taille.md) | les lois d'échelle du consensus, et pourquoi la connectivité n'est pas la coupable |
+| [04 — Fokker-Planck](notebooks/04_fokker_planck_paysage.md) | les trois régimes de l'opinion publique dans un même paysage d'énergie libre |
+| [05 — Hystérésis](notebooks/05_hysteresis_et_contre_champ.md) | la mémoire d'une fausse croyance, et les deux façons de l'effacer |
+| [06 — Résonance](notebooks/06_resonance_larsen.md) | le seuil $\gamma\alpha > \lambda$ et le cycle limite de l'attention |
+| [07 — ADE](notebooks/07_ade_filtre_entropique.md) | un fil gelé qui se réouvre sous l'effet du recuit |
+| [08 — Modèle à agents](notebooks/08_abm_compas_politique.md) | la bulle de filtres vue depuis l'individu |
+| [09 — Calibration](notebooks/09_calibration_visibilite.md) | $\gamma\alpha/\lambda$ mesuré sur 19 épisodes d'attention publics |
+| [10 — Changement de régime](notebooks/10_changement_de_regime.md) | 14 basculements datés, et pourquoi le rapport n'y est pas identifiable |
+| [11 — Corpus étendu](notebooks/11_corpus_etendu.md) | 440 sujets dérivés de catégories : l'écart de persistance ne se réplique pas |
+| [12 — Annotation en aveugle](notebooks/12_annotation_en_aveugle.md) | 40 % de bruit d'étiquetage mesuré, et le double recodage à $\kappa = 0{,}92$ |
+| [13 — Test adverse](notebooks/13_test_adverse_index.md) | un plancher d'IDE saturé à coût nul, et le correctif qui prescrivait la polarisation |
+| [14 — Rang et contrefactuel](notebooks/14_rang_et_contrefactuel.md) | l'enterrement de la diversité, et l'évaluation hors ligne fausse de 201 % |
+| [15 — Rang adverse](notebooks/15_rang_adverse_et_severite.md) | les quatre mesures contournées par l'ordre, et la sévérité du biais estimée |
+| [16 — Exploration de MIND](notebooks/16_exploration_mind.md) | un ordre indiscernable d'un mélange, et cinq sévérités tirées du même jeu |
+| [17 — Rang servi](notebooks/17_rang_servi.md) | deux journaux qui enregistrent le rang, et un estimateur jugé contre la vérité |
+| [18 — Demande article 40](notebooks/18_demande_article_40.md) | quatre tableaux agrégés qui suffisent, et la preuve qu'ils suffisent |
+| [19 — Lignes de base](notebooks/19_lignes_de_base.md) | le filtre jugé contre quatre concurrents et contre la frontière exacte |
+| [20 — Contre-expertise](notebooks/20_contre_expertise.md) | cinq contre-épreuves, dont une qui retire une conclusion publiée |
+| [21 — Angles morts](notebooks/21_angles_morts.md) | le test tient sous cascade, la loi de puissance non |
+| [22 — Test de forme](notebooks/22_test_de_forme.md) | le troisième contrôle, et le collider qu'il a failli publier |
+| [23 — Exposition mesurée](notebooks/23_exposition_mesuree.md) | une colonne jamais lue, et six chapitres d'estimation rendus inutiles |
+| [24 — Format et retour](notebooks/24_format_et_retour.md) | la cascade réfutée deux fois, et une de mes explications retirée |
 
 ## Reproduire
 
@@ -220,7 +220,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 638 tests
+docker compose run --rm test          # 646 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

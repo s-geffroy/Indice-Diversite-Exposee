@@ -36,7 +36,7 @@ n'observait que ce qui avait été **cliqué**.
 /// caption
 La discrimination cascade / budget sur l'examen ; l'examen après un clic sur Baidu-ULTR ;
 l'exposition mesurée contre l'exposition estimée ; et les trois formes ajustées sur la courbe
-mesurée. Figure régénérée par [le notebook 23](notebooks/23_exposition_mesuree.ipynb).
+mesurée. Figure régénérée par [le notebook 23](notebooks/23_exposition_mesuree.md).
 ///
 
 ## 1. Le contrôle, d'abord
@@ -171,6 +171,6 @@ consigné plutôt que par un test ; la seconde établit qu'un format enrichi au-
 ---
 
 *Implémentation : `ide.exposure.examination_counts`, `ide.logs.upstream_dependence_test` ·
-Notebook : [23 — L'exposition mesurée](notebooks/23_exposition_mesuree.ipynb) ·
+Notebook : [23 — L'exposition mesurée](notebooks/23_exposition_mesuree.md) ·
 [le test de forme](test-de-forme.md) · [journaux qui enregistrent le rang](rang-servi.md) ·
 [demande au titre de l'article 40](article-40.md)*

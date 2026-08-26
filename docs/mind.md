@@ -39,7 +39,7 @@ l'évaluation de l'[ADE](ade.md) était prévue.
 /// caption
 La courbe agrégée et son démenti à longueur fixée ; ce que le test aurait su détecter ; les cinq
 sévérités tirées du même jeu ; et ce que coûte la variable détruite. Figure régénérée par
-[le notebook 16](notebooks/16_exploration_mind.ipynb).
+[le notebook 16](notebooks/16_exploration_mind.md).
 ///
 
 ## 1. La condition d'identifiabilité est satisfaite — abondamment
@@ -235,6 +235,6 @@ minimale détectable ne résumerait plus.
 ---
 
 *Implémentation : `ide.mind`, `scripts/fetch_mind.py`, `scripts/build_mind_digest.py` ·
-Notebook : [16 — L'exploration réelle de MIND](notebooks/16_exploration_mind.ipynb) ·
+Notebook : [16 — L'exploration réelle de MIND](notebooks/16_exploration_mind.md) ·
 [rang adverse et sévérité](rang-adverse.md) · [rang et contrefactuel](evaluation.md) ·
 [feuille de route](feuille-de-route.md)*

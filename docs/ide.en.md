@@ -92,7 +92,7 @@ The working thread defined the index on a feed's **labels**, without looking at 
 $$H_{\text{norm}} = \frac{H(X)}{\log_2 k}$$
 
 That is what `ide.entropy.label_diversity_index` computes, and its name now states its scope.
-The form remains useful where rank does not exist — the [agent model](notebooks/08_abm_compas_politique.ipynb)
+The form remains useful where rank does not exist — the [agent model](notebooks/08_abm_compas_politique.md)
 describes an individual's exposure this way — but it **cannot serve as a standard**: it is the
 one the adversarial test defeats.
 
@@ -128,11 +128,11 @@ object — see [limitations](#limitations).
 
 The link to the theory is direct: a collapsed index is the signature of a zero local
 social temperature, i.e. a frozen state in the Ising sense.
-[Notebook 01](notebooks/01_entropie_et_purete.ipynb) shows that the index crosses the
+[Notebook 01](notebooks/01_entropie_et_purete.md) shows that the index crosses the
 critical threshold **well before** the feed closes completely: a regulator can therefore
 observe a freeze *in progress*, not merely once established.
 
-[Notebook 08](notebooks/08_abm_compas_politique.ipynb) measures its response to the
+[Notebook 08](notebooks/08_abm_compas_politique.md) measures its response to the
 parameter the algorithm actually controls — the bubble threshold:
 
 | Bubble threshold | Mean index | Population in a frozen bubble |

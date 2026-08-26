@@ -93,4 +93,4 @@ confondre est l'erreur la plus lourde du raisonnement d'origine.
 ---
 
 *Implémentation : `ide.entropy` · Notebook :
-[01 — Entropie et pureté](../notebooks/01_entropie_et_purete.ipynb)*
+[01 — Entropie et pureté](../notebooks/01_entropie_et_purete.md)*

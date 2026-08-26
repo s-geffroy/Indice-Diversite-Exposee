@@ -672,6 +672,36 @@ manquait : **une affirmation d'absence doit publier l'étendue de la recherche q
 « Aucun jeu public » aurait dû s'écrire « aucun des trois jeux examinés », et l'écart entre les
 deux formulations est exactement ce qui a permis à l'erreur de vivre six chapitres.
 
+### 26. Un site qui se construisait sans publier ce qu'il annonçait
+
+**Ce que le dépôt affirmait.** Que les notebooks sont « rendus dans le site », et que la
+construction en mode strict garantit qu'aucun lien ni aucune page ne manque. La feuille de route,
+le README et la page d'accueil le répètent depuis le premier jour.
+
+**Le problème.** Chaque notebook était publié en **JSON brut**. Un lecteur qui ouvrait
+`/notebooks/11_corpus_etendu/` recevait `{ "cells": [ …` sur plusieurs milliers de lignes. La
+cause est une interaction entre deux greffons : `mkdocs-jupyter` enveloppe les fichiers `.ipynb`
+dans une classe qui les rend comme des pages, et `mkdocs-static-i18n` reconstruit ensuite la
+collection de fichiers — perdant l'enveloppe. MkDocs recopiait alors le notebook tel quel.
+
+**Ce qui rend l'épisode instructif.** La construction réussissait **en mode strict**, sans une
+seule alerte, et l'intégration continue était verte à chaque fois. Toutes les combinaisons de
+versions essayées après coup échouent de la même façon : le rendu n'a donc **jamais** fonctionné.
+Personne ne l'a vu pendant des mois, parce que rien ne comparait ce qui était produit à ce qui
+était annoncé.
+
+**Le correctif.** Les notebooks sont désormais rendus par `scripts/render_notebooks.py` avant
+MkDocs, avec `nbconvert` seul — sans interaction entre greffons à espérer. Les versions de
+l'image du site sont **figées** et non plus bornées : une plage ouverte est ce qui a permis à la
+panne de rester invisible. Et `scripts/check_site.py`, appelé à chaque construction, **ouvre les
+pages produites** et refuse un site où un notebook n'est pas du HTML.
+
+**Ce que cet épisode enseigne sur la méthode.** C'est la même erreur que le dépôt corrige depuis
+vingt-cinq entrées, appliquée cette fois à son propre outillage : **une vérification qui réussit
+ne prouve rien tant qu'on n'a pas regardé ce qu'elle vérifie**. Le mode strict contrôlait les
+liens et les fichiers manquants — pas le contenu des pages. Un test vert sur la mauvaise grandeur
+est plus dangereux qu'une absence de test, parce qu'il dispense de regarder.
+
 ---
 
 ## Ce que le modèle ne peut pas faire
@@ -784,7 +814,7 @@ elles portent sur l'existence de régimes et le sens des dépendances, jamais su
 valeurs numériques transposables.
 
 
-### Ce que vingt-cinq corrections enseignent, prises ensemble
+### Ce que vingt-six corrections enseignent, prises ensemble
 
 Les corrections ci-dessus ont été consignées une à une, dans l'ordre où elles sont survenues.
 Prises ensemble, elles dessinent trois régularités qui valent plus que leur somme.
@@ -798,8 +828,9 @@ du bon signe, avec la bonne conclusion — c'est exactement ce qu'aucune relectu
 
 **Ce qui les a attrapées n'est jamais la relecture, c'est la confrontation.** À des données dont
 on connaît la réponse, à une vérité terrain, à une autre méthode d'estimation, ou à la
-littérature du domaine. Cinq des vingt-cinq corrections viennent de la lecture initiale du fil ;
-les vingt autres viennent d'avoir mesuré — ou, pour la dernière, d'avoir cherché.
+littérature du domaine. Cinq des vingt-six corrections viennent de la lecture initiale du fil ;
+les vingt et une autres viennent d'avoir mesuré, d'avoir cherché — ou, pour la
+dernière, d'avoir simplement ouvert la page publiée.
 
 **Et la moitié portent sur les propositions du dépôt lui-même, non sur son point de départ.**
 Un instrument construit pour vérifier les affirmations d'autrui doit être retourné contre les
@@ -816,7 +847,7 @@ trois raisons.
   les conteste, elles ne s'énoncent pas ici pour la première fois, et aucun relecteur ne les
   recevra comme un résultat.
 * La démonstration est **circulaire**. L'argument était « la méthode vaut parce qu'elle a rattrapé
-  vingt-cinq erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
+  vingt-six erreurs » ; or c'est le même travail qui les a produites. Une méthode évaluée sur
   ses propres fautes se compare à une référence qu'elle a fabriquée. Sans erreur, rien à rattraper
   et la valeur affichée tombe à zéro.
 * Rien n'a été **validé de l'extérieur**. Les 623 tests vérifient que le code fait ce qui est

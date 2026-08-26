@@ -7,6 +7,32 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Corrigé — le site publiait les notebooks en JSON brut
+
+Signalé par un lecteur : ouvrir n'importe quel notebook du site rendait
+`{ "cells": [ …` sur plusieurs milliers de lignes. **Aucun notebook n'a jamais été rendu.**
+
+- **La cause.** `mkdocs-jupyter` enveloppe les `.ipynb` dans une classe qui les rend comme des
+  pages ; `mkdocs-static-i18n` reconstruit ensuite la collection de fichiers et **perd
+  l'enveloppe**. MkDocs recopie alors le notebook tel quel. Toutes les combinaisons de versions
+  essayées échouent de la même façon : le rendu n'a jamais fonctionné.
+- **Ce qui rend la panne remarquable :** la construction réussissait **en mode strict**, sans une
+  alerte, et l'intégration continue était verte à chaque fois. Le mode strict vérifie les liens
+  et les fichiers manquants — **pas le contenu des pages**.
+- **Le correctif.** [`scripts/render_notebooks.py`](scripts/render_notebooks.py) rend les
+  notebooks en Markdown avec `nbconvert` **avant** MkDocs : plus aucune interaction entre
+  greffons à espérer. Les liens internes sont recalculés pour l'arborescence du site, et chaque
+  page renvoie vers sa source exécutable.
+- **Le garde-fou.** [`scripts/check_site.py`](scripts/check_site.py), appelé à chaque
+  construction locale et en intégration continue, **ouvre les pages produites** et refuse un site
+  où un notebook n'est pas du HTML. Quatre tests couvrent le rendu et le contrôle.
+- **Les versions de l'image du site sont figées**, non plus bornées : une plage ouverte est ce
+  qui a permis à la panne de rester invisible.
+- [`docs/limites.md`](docs/limites.md) reçoit sa **vingt-sixième correction**, dont la leçon est
+  la même que les vingt-cinq précédentes, appliquée cette fois à l'outillage du dépôt :
+  *une vérification qui réussit ne prouve rien tant qu'on n'a pas regardé ce qu'elle vérifie.*
+- 646 tests, site vérifié page par page.
+
 ### Ajouté — ce que la vie privée coûte à l'audit
 
 La demande au titre de l'article 40 prouvait que quatre tableaux agrégés **suffisent**. Elle ne

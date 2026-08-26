@@ -55,7 +55,7 @@ aveugle au rang offre ce gain gratuitement.
 L'enterrement à composition constante ; l'effet de la remise de rang selon sa forme, la courbe
 sans remise étant plate par construction ; les estimateurs contre la valeur vraie ; et la
 distribution des erreurs du replay sur soixante jeux de contenus. Figure régénérée par
-[le notebook 14](notebooks/14_rang_et_contrefactuel.ipynb).
+[le notebook 14](notebooks/14_rang_et_contrefactuel.md).
 ///
 
 ### La remise de rang
@@ -209,5 +209,5 @@ disponible pour l'attribut qu'on voudrait mesurer.
 ---
 
 *Implémentation : `ide.radio`, `ide.offpolicy` · Notebook :
-[14 — Rang et contrefactuel](notebooks/14_rang_et_contrefactuel.ipynb) ·
+[14 — Rang et contrefactuel](notebooks/14_rang_et_contrefactuel.md) ·
 [test adverse](gaming.md) · [ADE](ade.md) · [feuille de route](feuille-de-route.md)*

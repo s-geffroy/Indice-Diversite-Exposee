@@ -39,7 +39,7 @@ Cinq contre-épreuves, dont une invalide une conclusion publiée.
 L'enterrement selon la sévérité de l'attention ; le prix des deux normes selon la même
 sévérité ; les deux mesures comparées à diversité exposée égale ; et la dérive de l'estimateur
 sous biais de confiance. Figure régénérée par
-[le notebook 20](notebooks/20_contre_expertise.ipynb).
+[le notebook 20](notebooks/20_contre_expertise.md).
 ///
 
 ## 1. La remise $1/R$ est une convention, pas une mesure
@@ -185,6 +185,6 @@ Les deux angles morts annoncés ici ont été mesurés depuis.
 ---
 
 *Implémentation : `ide.radio.rank_weights` (remise paramétrée), `ide.entropy.effective_viewpoints` ·
-Notebook : [20 — Contre-expertise](notebooks/20_contre_expertise.ipynb) ·
+Notebook : [20 — Contre-expertise](notebooks/20_contre_expertise.md) ·
 [rang adverse](rang-adverse.md) · [lignes de base](lignes-de-base.md) ·
 [bibliographie](bibliographie.md)*

@@ -176,7 +176,7 @@ profil d'un bruit qui dilue sans biaiser, tel que le corpus étendu l'avait supp
 /// caption
 Le bruit d'étiquetage ; la disparition de l'écart de taux avec l'étiquette corrigée ; la
 persistance par registre annoté ; et le défaut de conception que l'annotation révèle. Figure
-régénérée par [le notebook 12](notebooks/12_annotation_en_aveugle.ipynb).
+régénérée par [le notebook 12](notebooks/12_annotation_en_aveugle.md).
 ///
 
 | Étiquette | accusation | découverte | rapport de cotes | p |
@@ -277,7 +277,7 @@ hors de portée sur ce type de données.
 /// caption
 Les accords corrigés du hasard ; la nature des trente-quatre désaccords ; et le résultat sous
 les trois étiquetages. Figure régénérée par
-[le notebook 12](notebooks/12_annotation_en_aveugle.ipynb).
+[le notebook 12](notebooks/12_annotation_en_aveugle.md).
 ///
 
 ### Les marges, puis les sujets

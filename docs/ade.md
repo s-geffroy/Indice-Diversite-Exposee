@@ -113,7 +113,7 @@ brute, mais par le **bonus entropique** du premier. Le fil étant gelé, $\mu$ e
 valeur de recuit maximale : c'est ce qui permet à un écart de pertinence de $0{,}45$
 d'être renversé par un impact entropique de $0{,}14$.
 
-Le [notebook 07](notebooks/07_ade_filtre_entropique.ipynb) montre la boucle complète :
+Le [notebook 07](notebooks/07_ade_filtre_entropique.md) montre la boucle complète :
 un fil initialement gelé voit son IDE remonter au fil des cycles de service, alors
 qu'un filtre d'engagement pur l'y maintient indéfiniment.
 
@@ -135,8 +135,8 @@ mêmes paramètres et n'ont pas la même solidité :
 
 | Levier | Action | Solidité |
 |---|---|---|
-| **Bruit thermique** | augmenter $T$ : injecter un quota de contenus non personnalisés | bien étayée — l'hystérésis décroît avec $T$ ([notebook 05](notebooks/05_hysteresis_et_contre_champ.ipynb)) |
-| **Recuit simulé** | faire fluctuer $T(t)$ : pics ponctuels en période de crise, puis refroidissement | étayée, et **préférable au bruit permanent** : le [notebook 08](notebooks/08_abm_compas_politique.ipynb) montre qu'un bruit excessif dégrade à nouveau la diversité |
+| **Bruit thermique** | augmenter $T$ : injecter un quota de contenus non personnalisés | bien étayée — l'hystérésis décroît avec $T$ ([notebook 05](notebooks/05_hysteresis_et_contre_champ.md)) |
+| **Recuit simulé** | faire fluctuer $T(t)$ : pics ponctuels en période de crise, puis refroidissement | étayée, et **préférable au bruit permanent** : le [notebook 08](notebooks/08_abm_compas_politique.md) montre qu'un bruit excessif dégrade à nouveau la diversité |
 | **Contre-champ $-H$** | saturer les flux touchés par un contre-discours de puissance équivalente | conséquence directe de l'hystérésis, mais coûteuse et politiquement délicate |
 | **Restructuration topologique** | limiter la portée des partages en cascade | **à reformuler** : la connectivité accélère le consensus plus qu'elle ne le bloque ([audit, point 12](limites.md)). Défendable comme mesure d'urgence, pas comme diagnostic |
 
@@ -161,5 +161,5 @@ mêmes paramètres et n'ont pas la même solidité :
 ---
 
 *Implémentation : `ide.ade` · Notebook :
-[07 — ADE](notebooks/07_ade_filtre_entropique.ipynb) ·
+[07 — ADE](notebooks/07_ade_filtre_entropique.md) ·
 [Mémorandum de régulation](memorandum.md)*

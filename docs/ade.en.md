@@ -108,7 +108,7 @@ whose score remains its raw relevance, but through the **entropic bonus** of the
 The feed being frozen, $\mu$ sits at its maximum annealing value: that is what lets a
 relevance gap of $0.45$ be overturned by an entropic impact of $0.14$.
 
-[Notebook 07](notebooks/07_ade_filtre_entropique.ipynb) shows the full loop: an initially
+[Notebook 07](notebooks/07_ade_filtre_entropique.md) shows the full loop: an initially
 frozen feed sees its index recover over successive serving cycles, whereas a pure
 engagement filter holds it there indefinitely.
 
@@ -127,8 +127,8 @@ freezing. That is also what limits its cost in perceived relevance.
 
 | Lever | Action | Solidity |
 |---|---|---|
-| **Thermal noise** | raise $T$: inject a quota of non-personalised content | well supported — hysteresis decreases with $T$ ([notebook 05](notebooks/05_hysteresis_et_contre_champ.ipynb)) |
-| **Simulated annealing** | modulate $T(t)$: spikes during crises, then cooling | supported, and **preferable to permanent noise**: [notebook 08](notebooks/08_abm_compas_politique.ipynb) shows excessive noise degrades diversity again |
+| **Thermal noise** | raise $T$: inject a quota of non-personalised content | well supported — hysteresis decreases with $T$ ([notebook 05](notebooks/05_hysteresis_et_contre_champ.md)) |
+| **Simulated annealing** | modulate $T(t)$: spikes during crises, then cooling | supported, and **preferable to permanent noise**: [notebook 08](notebooks/08_abm_compas_politique.md) shows excessive noise degrades diversity again |
 | **Counter-field $-H$** | saturate affected feeds with equally forceful counter-speech | direct consequence of hysteresis, but costly and politically delicate |
 | **Topological restructuring** | limit cascading share reach | **to reformulate**: connectivity accelerates consensus more than it blocks it ([audit, point 12](limites.en.md)). Defensible as an emergency measure, not as a diagnosis |
 
@@ -153,5 +153,5 @@ freezing. That is also what limits its cost in perceived relevance.
 ---
 
 *Implementation: `ide.ade` · Notebook:
-[07](notebooks/07_ade_filtre_entropique.ipynb) ·
+[07](notebooks/07_ade_filtre_entropique.md) ·
 [Regulatory memorandum](memorandum.en.md)*

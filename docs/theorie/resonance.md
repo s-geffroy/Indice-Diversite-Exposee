@@ -110,4 +110,4 @@ Mais une fonction de coût, contrairement à une loi physique, **peut être chan
 ---
 
 *Implémentation : `ide.resonance` · Notebook :
-[06 — Résonance](../notebooks/06_resonance_larsen.ipynb)*
+[06 — Résonance](../notebooks/06_resonance_larsen.md)*

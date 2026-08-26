@@ -130,7 +130,7 @@ Trois autres précautions se sont révélées nécessaires à l'usage :
 QAnon et ses deux basculements datés ; la démonstration de non-identifiabilité sous
 saturation logistique ; la persistance par registre émotionnel ; et la position des séries
 réelles vis-à-vis de la précision atteignable. Figure régénérée par
-[le notebook 10](notebooks/10_changement_de_regime.ipynb).
+[le notebook 10](notebooks/10_changement_de_regime.md).
 ///
 
 ### Les dates sont les bonnes
@@ -240,5 +240,5 @@ sont des instruments de constat, non la preuve d'un mécanisme.
 ---
 
 *Implémentation : `ide.regime` · Notebook :
-[10 — Changement de régime](notebooks/10_changement_de_regime.ipynb) ·
+[10 — Changement de régime](notebooks/10_changement_de_regime.md) ·
 [calibration par pic](calibration.md) · [feuille de route](feuille-de-route.md)*

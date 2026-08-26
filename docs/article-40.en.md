@@ -9,7 +9,7 @@
 
 !!! success "What makes this request unusual"
     It asks for **no logs** and **no personal data**. It asks for **four aggregate tables**,
-    which [notebook 18](notebooks/18_demande_article_40.ipynb) verifies are sufficient to
+    which [notebook 18](notebooks/18_demande_article_40.md) verifies are sufficient to
     recompute **identically** the four measurements that decide everything — and which weigh, on
     a real log, **95 times fewer rows** than the log itself.
 
@@ -191,7 +191,7 @@ not its choice.
 | counterfactual estimation and effective sample size | 3, with propensities |
 | composed and exposed diversity, burial gap | 4 |
 
-**What is verified, not asserted.** [Notebook 18](notebooks/18_demande_article_40.ipynb)
+**What is verified, not asserted.** [Notebook 18](notebooks/18_demande_article_40.md)
 recomputes these measurements twice — directly on a complete log, then on the tables alone — and
 publishes the gap. It is $3 \times 10^{-12}$ for the exchangeability test and **exactly zero**
 for severity. The code that consumes the tables is
@@ -283,6 +283,6 @@ to design the specification, only to file it.
 ---
 
 *Implementation: `ide.aggregates` · Notebook:
-[18 — What to ask for](notebooks/18_demande_article_40.ipynb) ·
+[18 — What to ask for](notebooks/18_demande_article_40.md) ·
 [MIND's real exploration](mind.en.md) · [logs that record the rank](rang-servi.en.md) ·
 [memorandum](memorandum.en.md)*

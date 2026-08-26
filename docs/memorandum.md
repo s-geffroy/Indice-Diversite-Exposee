@@ -109,7 +109,7 @@ refroidissement » composé de contenus à haute diversité sémantique.
 **Fondement.** Un IDE effondré est la signature d'une température sociale locale nulle,
 c'est-à-dire d'un état figé au sens du modèle d'Ising. Sous cette température, la
 mémoire des fausses croyances devient persistante
-([notebook 05](notebooks/05_hysteresis_et_contre_champ.ipynb)).
+([notebook 05](notebooks/05_hysteresis_et_contre_champ.md)).
 
 **Ce que le régulateur doit fixer lui-même :**
 
@@ -202,9 +202,9 @@ $$\frac{\gamma\alpha}{\lambda} \leq \rho_{\max}$$
 
 **Fondement.** Au-delà de $\gamma\alpha = \lambda$, l'amortissement effectif de la boucle de
 rétroaction devient négatif : le système accumule l'énergie au lieu de la dissiper
-([notebook 06](notebooks/06_resonance_larsen.ipynb)). Ce régime est la norme et non
+([notebook 06](notebooks/06_resonance_larsen.md)). Ce régime est la norme et non
 l'exception — la mesure situe l'écosystème informationnel entre **1,5 et 12**, de médiane
-**2,5 à 4,2** ([notebook 09](notebooks/09_calibration_visibilite.ipynb)). La grandeur
+**2,5 à 4,2** ([notebook 09](notebooks/09_calibration_visibilite.md)). La grandeur
 réglementaire pertinente est donc la **marge**, pas le franchissement.
 
 **Pourquoi cette recommandation reste la plus solide.** Elle ne suppose aucune intention
@@ -260,7 +260,7 @@ qu'une anomalie de propagation est détectée.
 la structure « petit monde » des réseaux sociaux rend le consensus impossible. C'est
 mesurablement faux : le temps de consensus croît comme $N^2$ sur un réseau local et
 comme $N$ seulement en champ moyen — **la connectivité globale accélère la
-convergence** ([notebook 03](notebooks/03_voter_consensus_et_taille.ipynb),
+convergence** ([notebook 03](notebooks/03_voter_consensus_et_taille.md),
 [audit, point 12](limites.md)).
 
 Ce qui fragmente n'est pas la densité des liens mais le **biais directionnel** des
@@ -301,7 +301,7 @@ l'historique.
 
 **Une nuance mesurée, et elle importe.** Le bruit n'est pas monotoniquement
 bénéfique : au-delà d'un certain niveau, la diversité d'exposition se dégrade à nouveau
-([notebook 08](notebooks/08_abm_compas_politique.ipynb)). Le fil de travail l'avait
+([notebook 08](notebooks/08_abm_compas_politique.md)). Le fil de travail l'avait
 anticipé — « injecter du bruit en permanence rend la société chaotique et illisible ».
 Ce n'est donc pas la quantité de bruit qui compte mais son **dosage**, ce qui plaide
 pour un mode ponctuel et un recuit cyclique plutôt qu'un bruit permanent.

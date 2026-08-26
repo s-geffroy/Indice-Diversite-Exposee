@@ -10,7 +10,7 @@
 
 !!! success "Ce que la demande a de particulier"
     Elle ne réclame **aucun journal** et **aucune donnée personnelle**. Elle demande **quatre
-    tableaux agrégés**, dont le [notebook 18](notebooks/18_demande_article_40.ipynb) vérifie
+    tableaux agrégés**, dont le [notebook 18](notebooks/18_demande_article_40.md) vérifie
     qu'ils suffisent à recalculer **à l'identique** les quatre mesures qui décident de tout — et
     qui pèsent, sur un journal réel, **95 fois moins de lignes** que le journal lui-même.
 
@@ -197,7 +197,7 @@ choix.
 | estimation contrefactuelle et taille d'échantillon effective | 3, avec propensions |
 | diversité composée et diversité exposée, écart d'enterrement | 4 |
 
-**Ce qui est vérifié, non affirmé.** Le [notebook 18](notebooks/18_demande_article_40.ipynb)
+**Ce qui est vérifié, non affirmé.** Le [notebook 18](notebooks/18_demande_article_40.md)
 recalcule ces mesures deux fois — directement sur un journal complet, puis sur les seuls
 tableaux — et publie l'écart. Il est de $3 \times 10^{-12}$ pour le test d'échangeabilité et
 **exactement nul** pour la sévérité. Le code qui consomme les tableaux est
@@ -296,6 +296,6 @@ concevoir la spécification, seulement à la déposer.
 ---
 
 *Implémentation : `ide.aggregates` · Notebook :
-[18 — Ce qu'il faut demander](notebooks/18_demande_article_40.ipynb) ·
+[18 — Ce qu'il faut demander](notebooks/18_demande_article_40.md) ·
 [exploration réelle de MIND](mind.md) · [journaux qui enregistrent le rang](rang-servi.md) ·
 [mémorandum](memorandum.md)*

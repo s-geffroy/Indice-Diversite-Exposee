@@ -61,7 +61,7 @@ s'y conformant — exactement la question que pose un régulateur.
 Un vivier, sa frontière exacte et ce que chaque méthode y atteint ; le manque à gagner médian
 sur 150 viviers ; la part des viviers où le plancher n'est jamais atteint ; et le prix de la
 norme selon l'alignement entre pertinence et point de vue. Figure régénérée par
-[le notebook 19](notebooks/19_lignes_de_base.ipynb).
+[le notebook 19](notebooks/19_lignes_de_base.md).
 ///
 
 ## Ce que 150 viviers donnent
@@ -156,6 +156,6 @@ serait pire que celle rapportée.
 ---
 
 *Implémentation : `ide.baselines` · Notebook :
-[19 — Les lignes de base](notebooks/19_lignes_de_base.ipynb) ·
+[19 — Les lignes de base](notebooks/19_lignes_de_base.md) ·
 [ADE — l'algorithme](ade.md) · [rang adverse et sévérité](rang-adverse.md) ·
 [mémorandum](memorandum.md)*
