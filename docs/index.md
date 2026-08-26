@@ -138,7 +138,9 @@ qu'une mesure a montré ce qu'on perdait sans elle.
 * **Rien n'a été validé de l'extérieur.** Les 623 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
-* **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique.**
+* **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique** —
+  mais l'hypothèse est désormais posée sous une forme qui peut échouer, avec la liste de ce
+  qu'il faudrait retirer si elle échouait. → [l'hypothèse de fond](hypothese-testable.md)
 
 ## Les deux instruments
 

@@ -136,7 +136,9 @@ without it. → [Article 40 request](article-40.en.md)
 * **Nothing has been validated from the outside.** The 623 tests check that the code does what is
   claimed, not that what is claimed is true, and no reviewer has been through it. This is the one
   lock the repository cannot open by itself. → [call for review](relecture.md)
-* **Nothing demonstrates that human opinion *obeys* statistical mechanics.**
+* **Nothing demonstrates that human opinion *obeys* statistical mechanics** — but the
+  hypothesis is now stated in a form that can fail, with the list of what would have to be
+  withdrawn if it did. → [the underlying hypothesis](hypothese-testable.en.md)
 
 ## The two instruments
 

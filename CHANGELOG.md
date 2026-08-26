@@ -7,6 +7,34 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — l'hypothèse de fond, enfin sous une forme qui peut échouer
+
+L'audit se terminait depuis le premier jour sur la même réserve : *rien ne démontre que les
+opinions humaines obéissent à une mécanique statistique*. Ce n'était pas de la prudence, c'était
+un aveu — l'hypothèse n'avait jamais été énoncée de façon à pouvoir être perdue.
+
+- **L'énoncé décisif est une contrainte de fluctuation-réponse.** Ce qui distingue une mécanique
+  statistique d'une métaphore thermodynamique n'est pas un bon ajustement — un modèle à deux
+  paramètres ajuste n'importe quelle bimodale — mais le fait qu'**un seul et même nombre**
+  gouverne ce qu'un groupe fait tout seul et ce qu'il fait quand on le pousse :
+  $\hat{T} = N \, \mathrm{Var}(\bar{x}) / \chi$.
+- **Le contenu réfutable est l'invariance, non la valeur** : le champ n'étant défini qu'à une
+  échelle près, seule compte la constance de $\hat{T}$ à travers les tailles de groupe, les
+  intensités d'intervention et les groupes de même diversité d'exposition. Trois régressions,
+  trois seuils de réfutation écrits à l'avance.
+- **La liste des retraits est publiée avant le test**, pas après : énergie libre, paysage,
+  hystérésis, recuit et température sociale tombent si le test échoue — et les trois contrôles de
+  journal, la sévérité mesurée, l'encadrement de l'indice et la demande d'accès **n'en dépendent
+  pas**. C'est la partition qui compte.
+- **Une ligne du verdict de l'audit est corrigée.** « Plus le système est grand, plus il se
+  désordonne : faux, et à l'envers » invitait à lire « donc plus ordonné ». Ce n'est pas ce que
+  le modèle dit : la fluctuation de la **moyenne** décroît en $1/N$, la dispersion des opinions
+  **individuelles** ne fait l'objet d'aucune prédiction. Ce qui croît avec la taille est la
+  **stabilité du désaccord**, pas l'accord.
+- [`docs/hypothese-testable.md`](docs/hypothese-testable.md), sa jumelle anglaise, et les renvois
+  depuis l'audit et la page d'accueil. **Ce chapitre ne mesure rien** — c'est le premier du dépôt
+  dans ce cas, et il le dit en tête.
+
 ### Ajouté — l'indice, mesuré pour la première fois sur un fil réel
 
 Six chapitres répétaient qu'« aucun jeu de données public ne porte à la fois le rang servi et une

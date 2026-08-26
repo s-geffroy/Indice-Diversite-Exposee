@@ -697,6 +697,13 @@ $\gamma$ et $\alpha$ pris séparément restent sans procédure d'estimation** : 
 est cohérent, son ancrage empirique n'est qu'entamé. C'est toujours la principale faiblesse
 du travail.
 
+!!! tip "L'hypothèse est désormais posée sous une forme qui peut échouer"
+    Cette réserve est restée intacte depuis le premier jour, et c'était un aveu : l'hypothèse
+    n'avait jamais été énoncée de façon à pouvoir être perdue. Elle l'est maintenant — une
+    contrainte de **fluctuation-réponse**, trois invariances, et la liste écrite à l'avance de ce
+    que le dépôt devrait retirer si le test échouait.
+    → [l'hypothèse de fond, réfutable](hypothese-testable.md)
+
 
 ### L'analogie de départ est réfutée — et c'est un résultat
 
@@ -706,7 +713,7 @@ tenu :
 
 | Ce que l'analogie affirmait | Verdict |
 |---|---|
-| plus le système est grand, plus il se désordonne | **faux, et à l'envers** — la variable macroscopique devient *plus* déterministe en $1/N$ (point 3) |
+| plus le système est grand, plus il se désordonne | **faux, et à l'envers** — non pas « plus ordonné », mais **plus rigide** : les fluctuations de la variable macroscopique décroissent en $1/N$ alors que la dispersion des opinions individuelles, elle, ne dit rien (point 3) |
 | la décohérence augmente l'entropie | **faux** — l'évolution globale reste unitaire ; c'est le sous-système réduit qui voit son entropie croître (point 8) |
 | $\tau_D \propto \tau_R/N$ | heuristique, pas le résultat de Zurek (point 11) |
 | effet tunnel social | **métaphore** — l'analogue correct est le franchissement de barrière par activation (point 9) |

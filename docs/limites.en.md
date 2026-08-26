@@ -622,6 +622,13 @@ $\alpha$ taken separately still have no estimation procedure**: the formalism is
 its empirical grounding has barely begun. This remains the work's principal weakness. See the
 [roadmap](feuille-de-route.en.md).
 
+!!! tip "The hypothesis is now stated in a form that can fail"
+    This caveat stood untouched from day one, and it was an admission: the hypothesis had never
+    been stated so that it could be lost. It is now — a **fluctuation–response** constraint,
+    three invariances, and the list, written in advance, of what the repository would have to
+    withdraw if the test failed.
+    → [the underlying hypothesis, refutable](hypothese-testable.en.md)
+
 
 ### The starting analogy is refuted — and that is a result
 
@@ -630,7 +637,7 @@ This deserves stating more plainly than "an analogy is not an explanation". The 
 
 | What the analogy claimed | Verdict |
 |---|---|
-| the larger the system, the more disordered | **false, and backwards** — the macroscopic variable becomes *more* deterministic, as $1/N$ (point 3) |
+| the larger the system, the more disordered | **false, and backwards** — not "more ordered" but **more rigid**: fluctuations of the macroscopic variable shrink as $1/N$, while the dispersion of individual opinions is left unsaid (point 3) |
 | decoherence increases entropy | **false** — global evolution stays unitary; it is the reduced subsystem whose entropy grows (point 8) |
 | $\tau_D \propto \tau_R/N$ | heuristic, not Zurek's result (point 11) |
 | social tunnelling | **metaphor** — the correct analogue is activated barrier crossing (point 9) |
