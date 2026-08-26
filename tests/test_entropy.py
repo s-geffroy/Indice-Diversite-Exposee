@@ -2,16 +2,18 @@
 
 from __future__ import annotations
 
-from itertools import permutations
+from itertools import combinations_with_replacement, permutations
 
 import numpy as np
 import pytest
 
 from ide.entropy import (
+    attainable_index,
     exposed_index_bounds,
     label_diversity_index,
     shannon_entropy,
     shannon_entropy_from_counts,
+    substitutions_to_floor,
     von_neumann_entropy,
 )
 
@@ -235,3 +237,69 @@ class TestEncadrementExpose:
             exposed_index_bounds((2, 2), catalogue_size=1)
         with pytest.raises(ValueError):
             exposed_index_bounds((2, -1), catalogue_size=4)
+
+
+class TestPrixDuPlancher:
+    """Ce qu'une norme de diversité coûte, dans l'unité la moins discutable : un contenu."""
+
+    def test_le_plafond_depend_du_nombre_de_contenus_servis(self):
+        """Un plancher élevé régule le volume sous couvert de réguler la diversité."""
+        assert attainable_index(5, catalogue_size=26) == pytest.approx(0.494, abs=0.001)
+        assert attainable_index(26, catalogue_size=26) == 1.0
+        assert attainable_index(1000, catalogue_size=26) == 1.0
+
+    def test_un_fil_deja_conforme_ne_coute_rien(self):
+        assert substitutions_to_floor([5, 5, 5, 5], catalogue_size=4, floor=0.9) == 0
+
+    def test_un_plancher_hors_d_atteinte_est_signale(self):
+        """Quatre contenus ne peuvent pas remplir un catalogue de seize."""
+        assert substitutions_to_floor([4, 0], catalogue_size=16, floor=0.9) is None
+
+    def test_le_glouton_atteint_l_optimum_sur_les_cas_enumerables(self):
+        """La règle du dépôt : confronter le protocole à une réponse connue.
+
+        On énumère toutes les redistributions de ``m`` contenus, pour ``m`` croissant, et on
+        compare au procédé glouton — celui qui déplace du point de vue le plus servi vers le
+        moins servi.
+        """
+        generator = np.random.default_rng(20260826)
+        catalogue = 8
+
+        def exhaustive(counts, floor, maximum=3):
+            counts = np.asarray(counts, dtype=np.int64)
+            total, width = counts.sum(), counts.size
+
+            def value(vector):
+                parts = vector[vector > 0].astype(float)
+                parts = parts / parts.sum()
+                return float(-(parts * np.log2(parts)).sum() / np.log2(catalogue))
+
+            if value(counts) >= floor:
+                return 0
+            for moves in range(1, maximum + 1):
+                for taken in combinations_with_replacement(range(width), moves):
+                    removed = counts.copy()
+                    if any(removed[index] < taken.count(index) for index in set(taken)):
+                        continue
+                    for index in taken:
+                        removed[index] -= 1
+                    for given in combinations_with_replacement(range(width), moves):
+                        added = removed.copy()
+                        for index in given:
+                            added[index] += 1
+                        if added.sum() == total and value(added) >= floor:
+                            return moves
+            return None
+
+        for _ in range(60):
+            counts = generator.integers(0, 5, size=4)
+            if counts.sum() < 2:
+                continue
+            for floor in (0.4, 0.6):
+                assert substitutions_to_floor(counts, catalogue, floor) == exhaustive(counts, floor)
+
+    def test_un_fil_vide_est_refuse(self):
+        with pytest.raises(ValueError):
+            substitutions_to_floor([0, 0], catalogue_size=4, floor=0.5)
+        with pytest.raises(ValueError):
+            attainable_index(0, catalogue_size=4)

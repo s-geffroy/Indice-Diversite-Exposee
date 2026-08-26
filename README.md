@@ -35,6 +35,7 @@ comme tel, y compris quand ce qui tombe vient du dépôt lui-même.
 | l'indice exposé, sur ces mêmes fils | **encadré, non mesuré** : la colonne d'ordre du seul jeu qui l'offre ne contient pas le rang |
 | sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, trois fois plus petite que publiée** : 6 % d'examen, 0,0025 d'indice |
 | le **catalogue de points de vue**, « choix politique » jamais chiffré | **mesuré** : 0,50 sur 26 rubriques, 0,92 sur 3 — l'ordre entre lecteurs tient jusqu'à six |
+| le **plancher** proposé, au niveau retenu | **décoratif** : un contenu servi sur 177 suffit à y amener toute la population |
 
 **La théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle qui décide de tout
 le reste, et qu'on peut mesurer au lieu de la supposer : 0,88 et non 1, sans cascade, et à 6 %
@@ -136,7 +137,7 @@ Tout s'exécute en conteneur. Rien n'est installé sur la machine hôte.
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 650 tests, dont les exemples de docstrings
+docker compose run --rm test          # 659 tests, dont les exemples de docstrings
 docker compose run --rm lint          # ruff
 docker compose run --rm notebooks     # régénère les 11 figures de la note
 docker compose up lab                 # JupyterLab      → http://localhost:8888
@@ -174,8 +175,8 @@ src/ide/            noyau scientifique — modules purs, graines explicites
 ├── baselines.py    lignes de base réglées et frontière exacte (diversité, engagement)
 └── abm/            modèle à agents « compas politique »
 
-tests/              650 tests — validation physique, numérique et statistique
-notebooks/          01 à 28, un par bloc théorique, exécutables
+tests/              659 tests — validation physique, numérique et statistique
+notebooks/          01 à 29, un par bloc théorique, exécutables
 data/pageviews/     464 séries de consultation, versionnées pour la reproductibilité
 data/catalogue.json manifeste pré-enregistré du corpus étendu (440 sujets)
 data/mind_digest.npz  condensé de MIND-small (1,5 Mo) — le jeu brut n'est pas versionné

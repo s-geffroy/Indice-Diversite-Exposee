@@ -149,6 +149,7 @@ nav:
       - L'indice mesuré: indice-mesure.md
       - Ce que la vie privée coûte: vie-privee.md
       - Le catalogue: catalogue.md
+      - Le prix d'un plancher: prix-du-plancher.md
       - Mémorandum de régulation: memorandum.md
   - Réserves:
       - Audit critique et limites: limites.md
@@ -186,3 +187,4 @@ nav:
       - 26 — L'indice mesuré: notebooks/26_indice_mesure.md
       - 27 — Vie privée: notebooks/27_vie_privee.md
       - 28 — Le catalogue: notebooks/28_catalogue.md
+      - 29 — Le prix d'un plancher: notebooks/29_prix_du_plancher.md

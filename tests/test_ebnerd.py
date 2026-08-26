@@ -13,7 +13,12 @@ from ide.ebnerd import (
     section_counts,
     signature_counts,
 )
-from ide.entropy import coarsen_catalogue, exposed_index_bounds
+from ide.entropy import (
+    attainable_index,
+    coarsen_catalogue,
+    exposed_index_bounds,
+    substitutions_to_floor,
+)
 from ide.logs import detectable_severity, exchangeability_test
 
 
@@ -180,3 +185,42 @@ def test_le_catalogue_deplace_le_niveau_sans_deplacer_l_ordre():
     assert concordance(coarse[12]) > 0.99
     assert concordance(coarse[6]) > 0.85
     assert abs(concordance(coarse[3])) < 0.3
+
+
+def test_le_plancher_propose_par_ce_depot_ne_contraint_presque_rien():
+    """Le résultat publié, verrouillé sur le condensé versionné.
+
+    Ramener toute la population au-dessus de 0,40 demande de remplacer un contenu servi sur
+    177. Une norme peut être peu coûteuse sans être décorative ; celle-ci est les deux.
+    """
+    digest = load_digest()
+    catalogue = catalogue_size(digest)
+    sections, occurrences = section_counts(digest, "section")
+    served = sections.sum(1)
+    total = float((served * occurrences).sum())
+
+    values = np.array([normalised_entropy(row, catalogue) for row in sections])
+    below = np.flatnonzero(values < 0.40)
+    costs = np.array([substitutions_to_floor(sections[row], catalogue, 0.40) for row in below],
+                     dtype=object)
+
+    assert all(cost is not None for cost in costs), "à 0,40, aucun fil n'est hors d'atteinte"
+    numeric = np.array(list(costs), dtype=float)
+
+    spend = float((numeric * occurrences[below]).sum() / total)
+    assert spend == pytest.approx(0.0057, abs=0.0005)
+    assert np.median(np.repeat(numeric, occurrences[below])) == 1.0
+
+
+def test_au_dela_de_la_moitie_un_plancher_regule_le_volume():
+    """Un lecteur léger ne peut pas être rendu conforme, quoi que fasse la plateforme."""
+    digest = load_digest()
+    catalogue = catalogue_size(digest)
+    sections, occurrences = section_counts(digest, "section")
+    weights = occurrences / occurrences.sum()
+
+    ceiling = np.array([attainable_index(int(count), catalogue) for count in sections.sum(1)])
+
+    assert weights[ceiling < 0.40].sum() == 0.0
+    assert weights[ceiling < 0.60].sum() == pytest.approx(0.109, abs=0.01)
+    assert weights[ceiling < 0.80].sum() == pytest.approx(0.229, abs=0.01)

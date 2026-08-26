@@ -1348,6 +1348,44 @@ existant, ce qui n'est pas un catalogue conçu comme tel. Le corpus est celui d'
 c'est la forme de sa queue de distribution qui explique la stabilité observée jusqu'à douze
 modalités.
 
+\subsection{Le prix d'un plancher, sur des fils réels}
+\label{sec:prixplancher}
+
+\S\ref{sec:lignesdebase} chiffre le coût d'une norme de diversité entre $8{,}2$ et $18{,}9\,\%$
+d'engagement, mais suppose la pertinence connue et porte sur des fils simulés. Les
+journées-utilisateur de \S\ref{sec:indicemesure} permettent de poser la question sans rien
+supposer : combien de contenus servis faudrait-il \textbf{remplacer} ?
+
+\paragraph{Le contrôle d'abord.} Le coût est calculé par un procédé glouton --- chaque
+substitution retire un contenu à la rubrique la plus servie et en ajoute un à la moins servie.
+Confronté à l'énumération exhaustive de toutes les redistributions sur deux cents compositions
+courtes, il coïncide $200$ fois sur $200$. Le prix qui suit n'est donc pas une borne prudente.
+
+\paragraph{Le plancher proposé ne contraint presque rien.} Ramener toute la population au-dessus
+de $0{,}40$ demande de remplacer \textbf{un contenu servi sur $177$} --- $0{,}57\,\%$ du journal
+--- et la journée-utilisateur médiane à traiter n'exige qu'\emph{une seule} substitution. Le prix
+est convexe : $0{,}21\,\%$ à un plancher de $0{,}30$, $2{,}27\,\%$ à $0{,}50$, $8{,}24\,\%$ à
+$0{,}60$, $17{,}11\,\%$ à $0{,}70$. Le niveau retenu jusqu'ici est à l'extrémité indolore de la
+courbe.
+
+\paragraph{Et la forme de la grandeur réglementée est en cause.} \S\ref{sec:indice} prescrit la
+\emph{part de la population sous le seuil}, précisément pour qu'une moyenne satisfaisante ne
+masque pas une minorité enfermée. Mais une part est un seuil, et un seuil s'atteint par la marge :
+la plateforme corrige les lecteurs \emph{juste} en dessous et laisse les plus enfermés où ils
+sont. La grandeur choisie contre le masquage par la moyenne invite au traitement de la marge.
+
+\paragraph{Un plafond que rien ne lève.} Une entropie ne dépasse pas le logarithme du nombre de
+contenus \emph{servis} : un lecteur qui en reçoit cinq plafonne à $0{,}49$. À un plancher de
+$0{,}60$, $10{,}9\,\%$ des journées-utilisateur sont donc hors d'atteinte quoi que fasse la
+plateforme ; à $0{,}80$, $22{,}9\,\%$. Ce ne sont pas des lecteurs enfermés mais des lecteurs
+\emph{légers}, et la seule mise en conformité possible est de leur servir davantage --- ce qu'une
+norme de diversité n'a aucune raison d'encourager. Deux issues, et il faut choisir : exempter les
+sessions courtes, ou normaliser l'indice par le maximum atteignable plutôt que par $\log_2 k$.
+
+\paragraph{Réserves.} Le coût est mesuré en contenus échangés, non en engagement : EB-NeRD ne
+fournit aucun modèle de pertinence. Le calcul suppose en outre que n'importe quelle rubrique peut
+être servie à n'importe qui, ce qui surestime la facilité.
+
 \subsection{Ce que la contre-expertise a retiré ou restreint}
 \label{sec:contreexpertise}
 

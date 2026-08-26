@@ -11,7 +11,7 @@ lecteur, calculable sans accès au code de la plateforme — et la **méthode ad
 l'épreuve : chaque proposition y est attaquée, et ce qui tombe est publié comme tel, y compris
 quand ce qui tombe vient du dépôt lui-même.
 
-Il en reste vingt-huit notebooks exécutables, 650 tests, **vingt-sept corrections consignées**,
+Il en reste vingt-neuf notebooks exécutables, 659 tests, **vingt-sept corrections consignées**,
 et un état des lieux qui ne ressemble ni à ce que le projet annonçait, ni à ce qu'il croyait avoir
 établi six chapitres plus tôt.
 
@@ -42,6 +42,7 @@ la décroissance de 23 %. Figure régénérée par
 | Sa dépendance à la **page servie**, que ce dépôt disait rédhibitoire | **mesurée à contenu fixé, et trois fois plus petite que publiée** : 6 % d'examen, $0{,}0025$ d'indice → [l'effet de page](effet-de-page.md) |
 | La **confidentialité** de la demande d'accès, jamais garantie formellement | **garantie et chiffrée** : le plancher survit à $\varepsilon = 0{,}1$, la sévérité est divisée par deux à $\varepsilon = 1$ → [ce que la vie privée coûte](vie-privee.md) |
 | Le **catalogue de points de vue**, « choix politique » jamais chiffré | **mesuré** : le même corpus vaut 0,50 sur 26 rubriques et 0,92 sur 3 — mais l'ordre entre lecteurs tient jusqu'à six → [le catalogue](catalogue.md) |
+| Le **plancher** proposé au régulateur, au niveau retenu | **décoratif** : un contenu servi sur 177 suffit à y amener toute la population → [le prix d'un plancher](prix-du-plancher.md) |
 
 **En une phrase : la théorie n'a pas tenu. Ce qui tient est une grandeur — l'exposition, celle
 qui décide de tout le reste, et qu'on peut mesurer au lieu de la supposer : $0{,}88$ et non $1$,
@@ -128,6 +129,9 @@ qu'une mesure a montré ce qu'on perdait sans elle.
   élevés → [lignes de base](lignes-de-base.md) ;
 * **l'explication du « pli d'écran » est fausse** — le rang prédit mieux que les pixels
   → [format et retour](format-et-retour.md) ;
+* **le plancher proposé au niveau retenu ne contraint presque rien** — un contenu servi sur
+  177 suffit, et la grandeur réglementée invite à traiter la marge plutôt que les plus
+  enfermés → [le prix d'un plancher](prix-du-plancher.md) ;
 * **et l'effet de format publié était pour les deux tiers une composition** — 18 % à rang fixé,
   6 % à contenu fixé, et une simulation sans aucun effet reproduit le chiffre publié
   → [l'effet de page](effet-de-page.md).
@@ -143,7 +147,7 @@ qu'une mesure a montré ce qu'on perdait sans elle.
   et le **catalogue** pèse autant que le seuil : le même corpus passe de 0,50 à 0,92 selon le
   découpage. → [le catalogue](catalogue.md)
 * **Les trois codeurs de l'annotation sont des instances du même modèle de langue.**
-* **Rien n'a été validé de l'extérieur.** Les 650 tests vérifient que le code fait ce qui est
+* **Rien n'a été validé de l'extérieur.** Les 659 tests vérifient que le code fait ce qui est
   annoncé, non que ce qui est annoncé soit vrai, et aucun relecteur n'est passé. C'est le seul
   verrou que ce dépôt ne peut pas lever seul. → [appel à relecture](relecture.md)
 * **Rien ne démontre que les opinions humaines *obéissent* à une mécanique statistique** —
@@ -184,7 +188,7 @@ d'énergie libre. Figure régénérée par
 
 ## Explorer
 
-Les vingt-huit notebooks sont exécutables et produisent l'intégralité des figures de la
+Les vingt-neuf notebooks sont exécutables et produisent l'intégralité des figures de la
 note. Chacun se lit indépendamment.
 
 | Notebook | Ce qu'il montre |
@@ -222,7 +226,7 @@ Tout s'exécute en conteneur. Aucune dépendance n'est installée sur la machine
 git clone git@github.com:s-geffroy/Indice-Diversite-Exposee.git
 cd Indice-Diversite-Exposee
 
-docker compose run --rm test          # 650 tests
+docker compose run --rm test          # 659 tests
 docker compose run --rm notebooks     # régénère les figures
 docker compose up lab                 # JupyterLab sur :8888
 docker compose up site                # cette documentation sur :8000

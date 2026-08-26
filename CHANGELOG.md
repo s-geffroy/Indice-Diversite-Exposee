@@ -7,6 +7,34 @@ versionnement respecte [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### Ajouté — le prix d'un plancher, mesuré sur des fils réels
+
+Le dépôt chiffrait le coût d'une norme de diversité entre 8,2 % et 18,9 % d'engagement — mais en
+**supposant la pertinence connue**, sur des fils simulés. Les journées-utilisateur réelles
+permettent de poser la question sans rien supposer : combien de contenus servis faudrait-il
+**remplacer** ?
+
+- **Le contrôle d'abord.** Le calcul est glouton ; confronté à l'énumération exhaustive de
+  toutes les redistributions sur deux cents compositions courtes, il coïncide **200 fois sur
+  200**. Le prix publié n'est donc pas une borne prudente.
+- **Le plancher proposé par ce dépôt est décoratif.** Ramener toute la population au-dessus de
+  0,40 demande de remplacer **un contenu servi sur 177** — 0,57 % du journal — et la
+  journée-utilisateur médiane à traiter n'exige qu'**une seule** substitution.
+- **Le prix est convexe** : 0,21 % à un plancher de 0,30 ; **2,27 %** à 0,50 ; **8,24 %** à
+  0,60 ; **17,11 %** à 0,70. Le niveau retenu jusqu'ici est à l'extrémité indolore de la courbe.
+- **La forme de la grandeur réglementée est en cause.** La part sous le seuil a été choisie
+  contre le masquage par la moyenne ; mais une part est un seuil, et un seuil s'atteint **par la
+  marge** — on corrige les lecteurs juste en dessous, les plus enfermés restent où ils sont.
+- **Un plafond que rien ne lève.** Une entropie ne dépasse pas le logarithme du nombre de
+  contenus *servis* : cinq contenus plafonnent à 0,49. À 0,60, **10,9 %** des journées sont hors
+  d'atteinte ; à 0,80, **22,9 %**. Ce sont des lecteurs **légers**, pas enfermés, et la seule
+  conformité possible serait de leur servir davantage — ce qu'une norme de diversité n'a aucune
+  raison d'encourager.
+- `ide.entropy.attainable_index` et `substitutions_to_floor`,
+  [`docs/prix-du-plancher.md`](docs/prix-du-plancher.md) et
+  [notebook 29](notebooks/29_prix_du_plancher.ipynb).
+- 659 tests, deux notes recompilées (29 et 28 pages).
+
 ### Ajouté — qui choisit le catalogue choisit l'indice
 
 Le dépôt répétait depuis le premier jour que « la discrétisation en points de vue est un choix

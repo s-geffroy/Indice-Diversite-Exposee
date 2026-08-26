@@ -1300,6 +1300,43 @@ and that choice weighs at least as much as the threshold.
 which is not a catalogue designed as such. The corpus is that of a single newspaper, and it is the
 shape of its distribution tail that explains the stability observed up to twelve modalities.
 
+\subsection{What a floor costs, on real feeds}
+\label{sec:floorprice}
+
+\S\ref{sec:baselines} prices a diversity standard between $8.2$ and $18.9\%$ of engagement, but
+assumes relevance known and bears on simulated feeds. The user-days of
+\S\ref{sec:indexmeasured} allow the question to be asked without assuming anything: how many
+served items would have to be \textbf{replaced}?
+
+\paragraph{The check first.} The cost is computed greedily --- each substitution removes an item
+from the most-served section and adds one to the least-served. Confronted with exhaustive
+enumeration of every redistribution over two hundred short compositions, it coincides $200$ times
+out of $200$. The price that follows is therefore not a cautious bound.
+
+\paragraph{The proposed floor constrains almost nothing.} Lifting the whole population above
+$0.40$ requires replacing \textbf{one served item in $177$} --- $0.57\%$ of the log --- and the
+median user-day needing treatment requires a \emph{single} substitution. The price is convex:
+$0.21\%$ at a floor of $0.30$, $2.27\%$ at $0.50$, $8.24\%$ at $0.60$, $17.11\%$ at $0.70$. The
+level used so far sits at the painless end of the curve.
+
+\paragraph{And the shape of the regulated quantity is at fault.} \S\ref{sec:index} prescribes the
+\emph{share of the population below the threshold}, precisely so a satisfactory mean cannot hide
+an enclosed minority. But a share is a threshold, and a threshold is met at the margin: the
+platform fixes readers \emph{just} below and leaves the most enclosed where they are. The quantity
+chosen against masking by the mean invites treating the margin.
+
+\paragraph{A ceiling nothing lifts.} An entropy cannot exceed the logarithm of the number of items
+\emph{served}: a reader receiving five caps out at $0.49$. At a floor of $0.60$, $10.9\%$ of
+user-days are therefore out of reach whatever the platform does; at $0.80$, $22.9\%$. These are
+not enclosed readers but \emph{light} ones, and the only possible compliance is to serve them more
+--- which a diversity standard has no reason to encourage. Two ways out, and one must be chosen:
+exempt short sessions, or normalise the index by the attainable maximum rather than by
+$\log_2 k$.
+
+\paragraph{Reservations.} The cost is measured in items exchanged, not in engagement: EB-NeRD
+provides no relevance model. The computation further assumes any section can be served to anyone,
+which overstates ease.
+
 \subsection{What the counter-expertise withdrew or restricted}
 \label{sec:counterexpertise}
 
