@@ -7,7 +7,8 @@ site_url: https://s-geffroy.github.io/Indice-Diversite-Exposee/
 repo_url: https://github.com/s-geffroy/Indice-Diversite-Exposee
 repo_name: s-geffroy/Indice-Diversite-Exposee
 copyright: >-
-  Code sous licence MIT · contenus rédactionnels sous licence CC BY 4.0
+  Code sous licence MIT · contenus rédactionnels sous licence CC BY 4.0 ·
+  un travail de <a href="https://www.ligne-de-crete.fr/travaux/indice-diversite-exposee/">Ligne de crête</a>
 
 docs_dir: docs
 # `docs/notebooks/` et `docs/figures/` sont recopiés depuis la racine avant le build
