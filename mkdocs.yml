@@ -18,6 +18,7 @@ docs_dir: docs
 
 theme:
   name: material
+  custom_dir: overrides
   language: fr
   icon:
     repo: fontawesome/brands/github
